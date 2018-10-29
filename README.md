@@ -1,5 +1,3 @@
-asdf
-
 Looking to mix up a backend with express/sequelize and a frontend with react/redux? That's `boilermaker`!
 
 Follow along with the workshop to make your own! This canonical version can serve as a reference, or a starting point all on its own.
@@ -130,5 +128,4 @@ Now, you should be deployed!
 
 Why do all of these steps? The big reason is because we don't want our production server to be cluttered up with dev dependencies like webpack, but at the same time we don't want our development git-tracking to be cluttered with production build files like bundle.js! By doing these steps, we make sure our development and production environments both stay nice and clean!
 
-
-Yo whaddup, it's me -Jason
+[![Waffle.io - Issues in progress](https://badge.waffle.io/gshop-jelly-toves/grace-shopper.png?label=in%20progress&title=In%20Progress)](http://waffle.io/gshop-jelly-toves/grace-shopper)
