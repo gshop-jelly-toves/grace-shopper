@@ -6,7 +6,7 @@
     "node": ">= 7.0.0"
   },
   "main": "index.js",
-  "scripts": {
+  "scripts": { 
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
     "deploy": "script/deploy",
