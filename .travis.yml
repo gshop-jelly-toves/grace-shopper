@@ -16,12 +16,12 @@ install:
 before_script:
   - psql -c 'create database "grace-shopper";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: jelly-belly # see README
+  api_key:
+    secure: GA5wLnWPmHBYiYswzn9TTDUVdASeRYgTgiJDJE6vzgpKsfmbJ0+xnItPw2cC7C6Q2NbjoDVahkCC+toi48Peh5L5sDCXqr2/TZeGSywr8OViZArjho2atPVEmX3kSocQnMZJmiuq1sxbjQ55IkMvb/Xupr/oux7quabd8bdgvLuXJKUPgEATBy+7JC80Mj/fT/eSw9Bw7Qdldyx0FexigsQ2T8Sq2taAWnU7Wmir/3MIWIy4Yi70Xk1we3IK6xEa8IM/6+rUUEExDQiXdZwrgPVQGYHrU5iEGoEHXD32F8Dk1AiO2+9OXb95bc3k8pp81Q45UYhzxhFl77Qo/fkgFfo+oPPI/KBLWO30KCpK5oDFsuIWPyIhlA5OAQ+tglw8nfPIp2F+3pBQBRJ2CzsVXPev62LcMXn8jdUpp18JlIor29ZSRPph4JAZfUJCfart6FVjBM3i+xCkEb58DpVpUoWUsjGVkWTQk6byTc4xcSRiE44gWYKkrggogqvLaD5bYsZsT2+8Ofam6UbKGCzF6fnvQb5kPgbdUuGsCpWQ4pA4hl9bARz5ynkn1+1gD76YuDlxxnprxeKqbNG1rv09oHOXWGMfDXbpvlwYVlZXtKcJ5SYEDoKlLySGPyFh+I3Q5KiqnS61l6Y8daWMX81lUbpw/yQtq8DgQ0b4Tmdu9dQ=
