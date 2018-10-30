@@ -27,6 +27,27 @@ describe('User model', () => {
       it('returns false if the password is incorrect', () => {
         expect(cody.correctPassword('bonez')).to.be.equal(false)
       })
+
+      it('returns the correct access level', () => {
+        expect(cody.getAccessLevel()).to.be.equal(1)
+      })
+
     }) // end describe('correctPassword')
   }) // end describe('instanceMethods')
+
+  describe('default role', () => {
+    let cody
+    
+    beforeEach(async () => {
+      cody = await User.create({
+        email: 'cody@puppybook.com',
+        password: 'bones'
+      })
+    })
+
+    it('defaults role to user', () => {
+      expect(cody.role).to.be.equal('user')
+    })
+  })
+
 }) // end describe('User model')
