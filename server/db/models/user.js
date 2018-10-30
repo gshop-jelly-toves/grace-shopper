@@ -34,6 +34,9 @@ const User = db.define('user', {
       return () => this.getDataValue('salt')
     }
   },
+  googleId: {
+    type: Sequelize.STRING
+  },
   role: {
     // ENUM lets you define preset values for a field
     type: Sequelize.ENUM,
