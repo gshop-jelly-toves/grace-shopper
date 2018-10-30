@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const {Product} = require('./index')
 
 const Review = db.define('review', {
   text: {
@@ -12,12 +13,28 @@ const Review = db.define('review', {
     }
   },
   starRating: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
     validate: {
       min: 1,
       max: 5
     }
   }
 })
+
+const averageRating = async review => {
+  const productP = Product.findById(review.productId)
+  const reviewsP = Review.findAll({
+    where: {
+      productId: review.productId
+    }
+  })
+
+  const [product, reviews] = await Promise.all([productP, reviewsP])
+
+  const rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
+  await product.update({rating})
+}
+
+Review.afterCreate(averageRating)
 
 module.exports = Review
