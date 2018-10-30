@@ -1,20 +1,20 @@
 const { User } = require('../db/models')
 
 
-// `checkAccessLevel` is a factory function which produces 
+// `checkAccessLevel` is a factory function which produces
 //  middleware funcs that make sure the user has the necessary permissions
 const checkAccessLevel = requiredLevel => async (req, res, next) => {
   // isAuthenticated comes from passport. it makes sure user is logged in.
   // not sure if this will work with users who don't sign in with
   // google. may have to write a custom req prototype method for this
   if (req.isAuthenticated()) {
-    // because the user is signed in, access is on req.user 
+    // because the user is signed in, access is on req.user
     // this is not default, it is assigned in deserialize user
-    const { accessLevel } = req.user
+    const { accessLevel } = req.user.dataValues
 
     try {
       // const user = await User.findById(id)
-      
+
       // sorry for the ternary.
       // ok we got the user, check if they can get access
       accessLevel >= requiredLevel ?

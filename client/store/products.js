@@ -54,7 +54,7 @@ export const fetchCategories = () => async dispatch => {
  */
 export default function(state = initState, action) {
   switch (action.type) {
-    case GET_PRODUCTS: 
+    case GET_PRODUCTS:
       return { ...state, products: action.products }
     case GET_CATEGORIES:
       return { ...state, categories: action.categories }
