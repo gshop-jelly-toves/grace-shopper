@@ -19,6 +19,8 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
+  // Please fix this.
+
   await Promise.all(dummyUsers.map(user => User.create(user)))
   await Promise.all(dummyOrders.map(order => Order.create(order)))
   await Promise.all(dummyProducts.map(product => Product.create(product)))
