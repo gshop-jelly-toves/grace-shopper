@@ -3,37 +3,67 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    // Making `.password` act like a func hides it when serializing to JSON.
-    // This is a hack to get around Sequelize's lack of a "private" option.
-    get() {
-      return () => this.getDataValue('password')
+    email: {
+      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false
+    },
+    password: {
+      type: Sequelize.STRING,
+      // Making `.password` act like a func hides it when serializing to JSON.
+      // This is a hack to get around Sequelize's lack of a "private" option.
+      get() {
+        return () => this.getDataValue('password')
+      }
+    },
+    salt: {
+      type: Sequelize.STRING,
+      // Making `.salt` act like a function hides it when serializing to JSON.
+      // This is a hack to get around Sequelize's lack of a "private" option.
+      get() {
+        return () => this.getDataValue('salt')
+      }
+    },
+    googleId: {
+      type: Sequelize.STRING
+    },
+
+    role: {
+      // ENUM lets you define preset values for a field
+      type: Sequelize.ENUM,
+      // seller may be a bit ambitious for the scope of this
+      // project. dev is included to grant a higher access
+      // level than those who become admins later on
+      values: ['user', 'seller', 'admin', 'dev'],
+      defaultValue: 'user'
     }
-  },
-  salt: {
-    type: Sequelize.STRING,
-    // Making `.salt` act like a function hides it when serializing to JSON.
-    // This is a hack to get around Sequelize's lack of a "private" option.
-    get() {
-      return () => this.getDataValue('salt')
-    }
-  },
-  googleId: {
-    type: Sequelize.STRING
   }
-})
+)
 
 module.exports = User
 
 /**
  * instanceMethods
  */
+
+// can be used to check a users role and
+// choose which features they have access to
+// see /server/middlewares/user
+User.prototype.getAccessLevel = function () {
+  switch (this.role) {
+    case 'user':
+      return 1
+    case 'seller':
+      return 2
+    case 'admin':
+      return 3
+    case 'dev':
+      return 4
+    default:
+      return 0
+  }
+}
+
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
 }
