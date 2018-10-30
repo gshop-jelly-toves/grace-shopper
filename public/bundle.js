@@ -611,7 +611,7 @@ exports.UserHome = UserHome;
 
 var mapState = function mapState(state) {
   return {
-    email: state.user.email
+    email: state.user.user.user.email
   };
 };
 
@@ -801,7 +801,7 @@ var mapState = function mapState(state) {
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     loadInitialData: function loadInitialData() {
-      dispatch((0, _store.me)());
+      dispatch((0, _store.fetchUser)());
     }
   };
 }; // The `withRouter` wrapper makes sure that updates are not blocked
@@ -887,7 +887,18 @@ Object.keys(_user).forEach(function (key) {
   });
 });
 
-var _products = _interopRequireDefault(__webpack_require__(/*! ./products */ "./client/store/products.js"));
+var _products = _interopRequireWildcard(__webpack_require__(/*! ./products */ "./client/store/products.js"));
+
+Object.keys(_products).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _products[key];
+    }
+  });
+});
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -1106,13 +1117,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
-exports.logout = exports.auth = exports.me = void 0;
+exports.logout = exports.auth = exports.fetchUser = void 0;
 
 var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
 var _history = _interopRequireDefault(__webpack_require__(/*! ../history */ "./client/history.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -1127,10 +1142,13 @@ var REMOVE_USER = 'REMOVE_USER';
  * INITIAL STATE
  */
 
-var defaultUser = {};
-/**
- * ACTION CREATORS
- */
+var initState = {
+  user: {}
+  /**
+   * ACTION CREATORS
+   */
+
+};
 
 var getUser = function getUser(user) {
   return {
@@ -1149,14 +1167,15 @@ var removeUser = function removeUser() {
  */
 
 
-var me = function me() {
+var fetchUser = function fetchUser() {
   return (
     /*#__PURE__*/
     function () {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(dispatch) {
-        var res;
+        var _ref2, data, action;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -1166,23 +1185,24 @@ var me = function me() {
                 return _axios.default.get('/auth/me');
 
               case 3:
-                res = _context.sent;
-                console.log('RES', res);
-                dispatch(getUser(res.data || defaultUser));
-                _context.next = 11;
+                _ref2 = _context.sent;
+                data = _ref2.data;
+                action = getUser(data);
+                dispatch(action);
+                _context.next = 12;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, this, [[0, 9]]);
       }));
 
       return function (_x) {
@@ -1192,13 +1212,13 @@ var me = function me() {
   );
 };
 
-exports.me = me;
+exports.fetchUser = fetchUser;
 
 var auth = function auth(email, password, method) {
   return (
     /*#__PURE__*/
     function () {
-      var _ref2 = _asyncToGenerator(
+      var _ref3 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2(dispatch) {
         var res;
@@ -1243,7 +1263,7 @@ var auth = function auth(email, password, method) {
       }));
 
       return function (_x2) {
-        return _ref2.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       };
     }()
   );
@@ -1255,7 +1275,7 @@ var logout = function logout() {
   return (
     /*#__PURE__*/
     function () {
-      var _ref3 = _asyncToGenerator(
+      var _ref4 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(dispatch) {
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -1288,7 +1308,7 @@ var logout = function logout() {
       }));
 
       return function (_x3) {
-        return _ref3.apply(this, arguments);
+        return _ref4.apply(this, arguments);
       };
     }()
   );
@@ -1301,15 +1321,19 @@ var logout = function logout() {
 exports.logout = logout;
 
 function _default() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultUser;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case GET_USER:
-      return action.user;
+      return _objectSpread({}, state, {
+        user: action.user
+      });
 
     case REMOVE_USER:
-      return defaultUser;
+      return _objectSpread({}, state, {
+        user: {}
+      });
 
     default:
       return state;
