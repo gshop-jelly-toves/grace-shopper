@@ -332,6 +332,143 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./client/components/NoMatch.js":
+/*!**************************************!*\
+  !*** ./client/components/NoMatch.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NoMatch = function NoMatch(props) {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Sorry the page you're looking for doesn't exist"), _react.default.createElement("img", {
+    id: "errorcat",
+    src: "https://i.imgur.com/unzfnaD.jpg"
+  }));
+};
+
+var _default = NoMatch;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/SingleProduct.js":
+/*!********************************************!*\
+  !*** ./client/components/SingleProduct.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+var _NoMatch = _interopRequireDefault(__webpack_require__(/*! ./NoMatch */ "./client/components/NoMatch.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var SingleProduct =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SingleProduct, _Component);
+
+  function SingleProduct(props) {
+    _classCallCheck(this, SingleProduct);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SingleProduct).call(this, props));
+  }
+
+  _createClass(SingleProduct, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var productId = this.props.match.params.productId;
+      this.props.fetchSingleProduct(productId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var latest = this.props.match.params.productId;
+      var prev = prevProps.match.params.productId;
+
+      if (prev !== latest) {
+        this.props.fetchSingleProduct(latest);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.props);
+      var product = this.props.product;
+      return this.props.product ? _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("h2", null, product.name), _react.default.createElement("img", {
+        src: product.photo
+      }), _react.default.createElement("h4", null, "Inventory: ", product.inventory, ":"), _react.default.createElement("p", null, "Rating: ", product.rating, " / 5"), _react.default.createElement("p", null, "Description: ", product.description))) : _react.default.createElement(_NoMatch.default, null);
+    }
+  }]);
+
+  return SingleProduct;
+}(_react.Component);
+
+var mapState = function mapState(state) {
+  return {
+    product: state.products.singleProduct
+  };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    fetchSingleProduct: function fetchSingleProduct(productId) {
+      return dispatch((0, _store.fetchSingleProduct)(productId));
+    }
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(SingleProduct);
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./client/components/auth-form.js":
 /*!****************************************!*\
   !*** ./client/components/auth-form.js ***!
@@ -469,6 +606,12 @@ Object.defineProperty(exports, "CreateProduct", {
     return _CreateProduct.default;
   }
 });
+Object.defineProperty(exports, "SingleProduct", {
+  enumerable: true,
+  get: function get() {
+    return _SingleProduct.default;
+  }
+});
 Object.defineProperty(exports, "Login", {
   enumerable: true,
   get: function get() {
@@ -487,6 +630,8 @@ var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./clie
 var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
 
 var _CreateProduct = _interopRequireDefault(__webpack_require__(/*! ./CreateProduct */ "./client/components/CreateProduct.js"));
+
+var _SingleProduct = _interopRequireDefault(__webpack_require__(/*! ./SingleProduct */ "./client/components/SingleProduct.js"));
 
 var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 
@@ -525,16 +670,22 @@ var Navbar = function Navbar(_ref) {
   var handleClick = _ref.handleClick,
       isLoggedIn = _ref.isLoggedIn,
       isAdmin = _ref.isAdmin;
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Jelly for your Belly!"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/home"
-  }, "Home"), _react.default.createElement("a", {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Jelly for your Belly!"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/home",
+    activeClassName: "nav-active"
+  }, "Home"), _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/products",
+    activeClassName: "nav-active"
+  }, "Shop"), _react.default.createElement("a", {
     href: "#",
     onClick: handleClick
-  }, "Logout")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/login"
-  }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/signup"
-  }, "Sign Up")), isAdmin && _react.default.createElement(_reactRouterDom.Link, {
+  }, "Logout")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/login",
+    activeClassName: "nav-active"
+  }, "Login"), _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/signup",
+    activeClassName: "nav-active"
+  }, "Sign Up")), isAdmin && _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/create"
   }, "Add Product")), _react.default.createElement("hr", null));
 };
@@ -545,8 +696,8 @@ var Navbar = function Navbar(_ref) {
 
 var mapState = function mapState(state) {
   return {
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.accessLevel >= 3
+    isLoggedIn: !!state.user.user.id,
+    isAdmin: state.user.user.accessLevel >= 3
   };
 };
 
@@ -771,8 +922,11 @@ function (_Component) {
         path: "/signup",
         component: _components.Signup
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/create",
+        path: "/products/add",
         component: _components.CreateProduct
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/products/:productId",
+        component: _components.SingleProduct
       }), isLoggedIn && _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         path: "/home",
         component: _components.UserHome
@@ -931,7 +1085,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
-exports.fetchCategories = exports.fetchProducts = void 0;
+exports.fetchSingleProduct = exports.fetchCategories = exports.fetchProducts = void 0;
 
 var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
@@ -952,12 +1106,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 var GET_CATEGORIES = 'GET_CATEGORIES';
 var GET_PRODUCTS = 'GET_PRODUCTS';
+var GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT';
 /**
  * INITIAL STATE
  */
 
 var initState = {
-  products: [],
+  products: {},
+  singleProduct: {},
   categories: []
   /**
    * ACTION CREATORS
@@ -976,6 +1132,13 @@ var getCategories = function getCategories(categories) {
   return {
     type: GET_CATEGORIES,
     categories: categories
+  };
+};
+
+var getSingleProduct = function getSingleProduct(product) {
+  return {
+    type: GET_SINGLE_PRODUCT,
+    product: product
   };
 };
 /**
@@ -1074,12 +1237,59 @@ var fetchCategories = function fetchCategories() {
     }()
   );
 };
+
+exports.fetchCategories = fetchCategories;
+
+var fetchSingleProduct = function fetchSingleProduct(productId) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref5 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        var _ref6, data, action;
+
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return _axios.default.get("/api/products/".concat(productId));
+
+              case 3:
+                _ref6 = _context3.sent;
+                data = _ref6.data;
+                action = getSingleProduct(data);
+                dispatch(action);
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
+                console.error(_context3.t0);
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 9]]);
+      }));
+
+      return function (_x3) {
+        return _ref5.apply(this, arguments);
+      };
+    }()
+  );
+};
 /**
  * REDUCER
  */
 
 
-exports.fetchCategories = fetchCategories;
+exports.fetchSingleProduct = fetchSingleProduct;
 
 function _default() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
@@ -1088,7 +1298,15 @@ function _default() {
   switch (action.type) {
     case GET_PRODUCTS:
       return _objectSpread({}, state, {
-        products: action.products
+        products: action.products.reduce(function (obj, item) {
+          obj[item.id] = item;
+          return obj;
+        }, {})
+      });
+
+    case GET_SINGLE_PRODUCT:
+      return _objectSpread({}, state, {
+        singleProduct: action.product
       });
 
     case GET_CATEGORIES:

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
@@ -11,7 +11,8 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
+          <NavLink to="/home" activeClassName='nav-active'>Home</NavLink>
+          <NavLink to="/products" activeClassName='nav-active'>Shop</NavLink>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
@@ -19,11 +20,11 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <NavLink to="/login" activeClassName='nav-active'>Login</NavLink>
+          <NavLink to="/signup" activeClassName='nav-active'>Sign Up</NavLink>
         </div>
       )}
-      {isAdmin && <Link to="/create">Add Product</Link>}
+      {isAdmin && <NavLink to="/create">Add Product</NavLink>}
     </nav>
     <hr />
   </div>
@@ -34,8 +35,8 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.accessLevel >= 3
+    isLoggedIn: !!state.user.user.id,
+    isAdmin: state.user.user.accessLevel >= 3
   }
 }
 
