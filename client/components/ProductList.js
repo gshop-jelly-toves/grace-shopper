@@ -5,32 +5,11 @@ import {fetchProducts} from '../store'
 
 class ProductList extends Component {
   componentDidMount() {
-    // this.props.fetchProducts()
-
-    console.log('///////')
+    this.props.fetchProducts()
   }
 
   render() {
-    const products = [
-      {
-        id: 1,
-        name: 'grape tho',
-        photo: './glassjar.jpg',
-        price: 4.99
-      },
-      {
-        id: 2,
-        name: 'grape again tho',
-        photo: './glassjar.jpg',
-        price: 4.99
-      },
-      {
-        id: 3,
-        name: 'le jelly tho',
-        photo: './glassjar.jpg',
-        price: 4.99
-      }
-    ]
+    const {products} = this.props.state.products
     console.log(this.props.state)
 
     return (
@@ -49,14 +28,12 @@ class ProductList extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     state
-//   }
-// }
+const mapState = state => {
+  return {
+    state
+  }
+}
 
-// const mapDispatch = {fetchProducts}
+const mapDispatch = {fetchProducts}
 
-// export default connect(mapState, mapDispatch)(ProductList)
-
-export default ProductList
+export default connect(mapState, mapDispatch)(ProductList)
