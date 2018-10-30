@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import {fetchCategories} from '../../store'
+import {fetchCategories} from '../store/products'
 import axios from 'axios'
 
 class CreateProduct extends Component {
@@ -18,9 +18,9 @@ class CreateProduct extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.props.fetchCategories()
-  // }
+  componentDidMount() {
+    this.props.fetchCategories()
+  }
 
   handleChange(event) {
     this.setState({
@@ -86,12 +86,7 @@ class CreateProduct extends Component {
           <label>Select Category</label>
           <select name="category" onChange={this.handleChange}>
             <option>-</option>
-            {/* {this.props.categories.map(category => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))} */}
-            {dummyArray.map(category => (
+            {this.props.categories.map(category => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>
@@ -120,16 +115,16 @@ class CreateProduct extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     categories: state.products.categories
-//   }
-// }
+const mapState = state => {
+  return {
+    categories: state.products.categories
+  }
+}
 
-// const mapDispatch = dispatch => {
-//   return {
-//     fetchCategories: () => dispatch(fetchCategories())
-//   }
-// }
+const mapDispatch = dispatch => {
+  return {
+    fetchCategories: () => dispatch(fetchCategories())
+  }
+}
 
-export default connect(null, null)(CreateProduct)
+export default connect(mapState, mapDispatch)(CreateProduct)
