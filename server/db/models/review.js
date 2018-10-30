@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const {Product} = require('./index')
+const Product = require('./product')
 
 const Review = db.define('review', {
   text: {
@@ -21,20 +21,29 @@ const Review = db.define('review', {
   }
 })
 
-const averageRating = async review => {
-  const productP = Product.findById(review.productId)
-  const reviewsP = Review.findAll({
-    where: {
-      productId: review.productId
-    }
-  })
+// Must fix this.
+/* ERROR
+  TypeError: Cannot read property 'reduce' of undefined
+    at Function.averageRating (/Users/ChrisMejia/Google Drive/FS/Senior-Phase/grace-shopper/server/db/models/review.js:36:26)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*/
 
-  const [product, reviews] = await Promise.all([productP, reviewsP])
+// const averageRating = async review => {
+//   const productP = Product.findById(review.productId)
+//   const reviewsP = Review.findAll({
+//     where: {
+//       productId: review.productId
+//     }
+//   })
 
-  const rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
-  await product.update({rating})
-}
+//   const [productRes, reviewsRes] = await Promise.all([productP, reviewsP])
+//   const product = productRes.data
+//   const reviews = reviewsRes.data
 
-Review.afterCreate(averageRating)
+//   const rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
+//   await product.update({rating})
+// }
+
+// Review.afterCreate(averageRating)
 
 module.exports = Review
