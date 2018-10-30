@@ -19,7 +19,7 @@ export const UserHome = props => {
  * CONTAINER
  */
 const mapState = state => ({
-  email: state.user.user.user.email
+  email: state.user.user.email
 })
 
 export default connect(mapState)(UserHome)
