@@ -8,15 +8,16 @@ const checkAccessLevel = requiredLevel => async (req, res, next) => {
   // not sure if this will work with users who don't sign in with
   // google. may have to write a custom req prototype method for this
   if (req.isAuthenticated()) {
-    // because the user is signed in, id is on req.user (more passport)
-    const { id } = req.user
+    // because the user is signed in, access is on req.user 
+    // this is not default, it is assigned in deserialize user
+    const { accessLevel } = req.user
 
     try {
-      const user = await User.findById(id)
+      // const user = await User.findById(id)
       
       // sorry for the ternary.
       // ok we got the user, check if they can get access
-      user.getAccessLevel() >= requiredLevel ?
+      accessLevel >= requiredLevel ?
         // they got access, proceed to route (or next middleware)
         next()
         // they don't have access (suspiscious...)

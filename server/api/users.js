@@ -10,7 +10,9 @@ module.exports = router
   USER ROUTES
 */
 
-
+router.get('/test', requireLogin, async (req, res, next) => {
+  res.json({message: 'success'})
+})
 
 /*
   SELLER ROUTES

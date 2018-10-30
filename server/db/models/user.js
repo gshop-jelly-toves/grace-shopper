@@ -49,7 +49,7 @@ module.exports = User
 // can be used to check a users role and
 // choose which features they have access to
 // see /server/middlewares/user
-User.prototype.accessLevel = function () {
+User.prototype.getAccessLevel = function () {
   switch (this.role) {
     case 'user':
       return 1
