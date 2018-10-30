@@ -332,6 +332,115 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./client/components/ProductList.js":
+/*!******************************************!*\
+  !*** ./client/components/ProductList.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ProductList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ProductList, _Component);
+
+  function ProductList() {
+    _classCallCheck(this, ProductList);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ProductList).apply(this, arguments));
+  }
+
+  _createClass(ProductList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // this.props.fetchProducts()
+      console.log('///////');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var products = [{
+        id: 1,
+        name: 'grape tho',
+        photo: './glassjar.jpg',
+        price: 4.99
+      }, {
+        id: 2,
+        name: 'grape again tho',
+        photo: './glassjar.jpg',
+        price: 4.99
+      }, {
+        id: 3,
+        name: 'le jelly tho',
+        photo: './glassjar.jpg',
+        price: 4.99
+      }];
+      console.log(this.props.state);
+      return _react.default.createElement("div", {
+        id: "productList"
+      }, products.map(function (product) {
+        return _react.default.createElement("div", {
+          key: product.id
+        }, _react.default.createElement(_reactRouterDom.Link, {
+          to: "/".concat(product.id)
+        }, _react.default.createElement("img", {
+          src: product.photo
+        }), _react.default.createElement("h3", null, product.name), _react.default.createElement("p", null, "$", product.price)));
+      }));
+    }
+  }]);
+
+  return ProductList;
+}(_react.Component); // const mapState = state => {
+//   return {
+//     state
+//   }
+// }
+// const mapDispatch = {fetchProducts}
+// export default connect(mapState, mapDispatch)(ProductList)
+
+
+var _default = ProductList;
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./client/components/auth-form.js":
 /*!****************************************!*\
   !*** ./client/components/auth-form.js ***!
@@ -469,6 +578,12 @@ Object.defineProperty(exports, "CreateProduct", {
     return _CreateProduct.default;
   }
 });
+Object.defineProperty(exports, "ProductList", {
+  enumerable: true,
+  get: function get() {
+    return _ProductList.default;
+  }
+});
 Object.defineProperty(exports, "Login", {
   enumerable: true,
   get: function get() {
@@ -487,6 +602,8 @@ var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./clie
 var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
 
 var _CreateProduct = _interopRequireDefault(__webpack_require__(/*! ./CreateProduct */ "./client/components/CreateProduct.js"));
+
+var _ProductList = _interopRequireDefault(__webpack_require__(/*! ./ProductList */ "./client/components/ProductList.js"));
 
 var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 
@@ -773,6 +890,9 @@ function (_Component) {
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/create",
         component: _components.CreateProduct
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/",
+        component: _components.ProductList
       }), isLoggedIn && _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         path: "/home",
         component: _components.UserHome
