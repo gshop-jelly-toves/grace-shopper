@@ -10,7 +10,9 @@ const REMOVE_USER = 'REMOVE_USER'
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const initState = {
+  user: {}
+}
 
 /**
  * ACTION CREATORS
@@ -21,10 +23,11 @@ const removeUser = () => ({type: REMOVE_USER})
 /**
  * THUNK CREATORS
  */
-export const me = () => async dispatch => {
+export const fetchUser = () => async dispatch => {
   try {
-    const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    const { data } = await axios.get('/auth/me')
+    const action = getUser(data)
+    dispatch(action)
   } catch (err) {
     console.error(err)
   }
@@ -59,12 +62,12 @@ export const logout = () => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function(state = initState, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user
+      return { ...state, user: action.user}
     case REMOVE_USER:
-      return defaultUser
+      return { ...state, user: {} }
     default:
       return state
   }

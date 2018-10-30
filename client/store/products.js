@@ -11,7 +11,7 @@ const GET_PRODUCTS = 'GET_PRODUCTS'
  * INITIAL STATE
  */
 const initState = {
-  products,
+  products: [],
   categories: []
 }
 
