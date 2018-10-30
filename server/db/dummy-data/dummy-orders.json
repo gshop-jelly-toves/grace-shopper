@@ -1,0 +1,302 @@
+[
+  {
+    "status": "delivered",
+    "cartTotal": 48.25,
+    "orderTotal": 202.89,
+    "userId": 18
+  },
+  {
+    "status": "created",
+    "cartTotal": 23.74,
+    "orderTotal": 269.33,
+    "userId": 44
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 57.51,
+    "orderTotal": 342.73,
+    "userId": 33
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 45.22,
+    "orderTotal": 157.35,
+    "userId": 27
+  },
+  {
+    "status": "processing",
+    "cartTotal": 75.02,
+    "orderTotal": 376.0,
+    "userId": 25
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 58.32,
+    "orderTotal": 446.27,
+    "userId": 47
+  },
+  {
+    "status": "cart",
+    "cartTotal": 21.51,
+    "orderTotal": 353.75,
+    "userId": 17
+  },
+  {
+    "status": "cart",
+    "cartTotal": 65.31,
+    "orderTotal": 315.55,
+    "userId": 49
+  },
+  {
+    "status": "cart",
+    "cartTotal": 13.94,
+    "orderTotal": 251.21,
+    "userId": 9
+  },
+  {
+    "status": "processing",
+    "cartTotal": 90.58,
+    "orderTotal": 357.48,
+    "userId": 15
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 3.34,
+    "orderTotal": 340.04,
+    "userId": 36
+  },
+  {
+    "status": "cart",
+    "cartTotal": 33.29,
+    "orderTotal": 438.11,
+    "userId": 19
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 91.82,
+    "orderTotal": 372.29,
+    "userId": 49
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 64.73,
+    "orderTotal": 354.34,
+    "userId": 23
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 51.77,
+    "orderTotal": 267.84,
+    "userId": 46
+  },
+  {
+    "status": "created",
+    "cartTotal": 73.8,
+    "orderTotal": 403.37,
+    "userId": 5
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 72.42,
+    "orderTotal": 138.93,
+    "userId": 4
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 86.36,
+    "orderTotal": 345.97,
+    "userId": 12
+  },
+  {
+    "status": "cart",
+    "cartTotal": 46.8,
+    "orderTotal": 308.56,
+    "userId": 50
+  },
+  {
+    "status": "processing",
+    "cartTotal": 51.25,
+    "orderTotal": 433.51,
+    "userId": 41
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 68.24,
+    "orderTotal": 368.7,
+    "userId": 41
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 40.17,
+    "orderTotal": 231.51,
+    "userId": 8
+  },
+  {
+    "status": "cart",
+    "cartTotal": 85.36,
+    "orderTotal": 307.83,
+    "userId": 40
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 67.4,
+    "orderTotal": 156.99,
+    "userId": 19
+  },
+  {
+    "status": "processing",
+    "cartTotal": 4.8,
+    "orderTotal": 145.75,
+    "userId": 42
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 6.01,
+    "orderTotal": 178.75,
+    "userId": 48
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 61.0,
+    "orderTotal": 181.86,
+    "userId": 26
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 39.09,
+    "orderTotal": 494.92,
+    "userId": 25
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 60.05,
+    "orderTotal": 232.27,
+    "userId": 28
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 90.5,
+    "orderTotal": 285.91,
+    "userId": 16
+  },
+  {
+    "status": "cart",
+    "cartTotal": 30.13,
+    "orderTotal": 241.64,
+    "userId": 44
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 5.66,
+    "orderTotal": 290.04,
+    "userId": 44
+  },
+  {
+    "status": "cart",
+    "cartTotal": 98.03,
+    "orderTotal": 191.2,
+    "userId": 15
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 51.32,
+    "orderTotal": 206.82,
+    "userId": 18
+  },
+  {
+    "status": "cart",
+    "cartTotal": 28.84,
+    "orderTotal": 222.55,
+    "userId": 43
+  },
+  {
+    "status": "cancelled",
+    "cartTotal": 99.48,
+    "orderTotal": 357.14,
+    "userId": 24
+  },
+  {
+    "status": "processing",
+    "cartTotal": 13.95,
+    "orderTotal": 410.11,
+    "userId": 31
+  },
+  {
+    "status": "cart",
+    "cartTotal": 3.36,
+    "orderTotal": 359.07,
+    "userId": 1
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 22.17,
+    "orderTotal": 338.79,
+    "userId": 50
+  },
+  {
+    "status": "created",
+    "cartTotal": 38.61,
+    "orderTotal": 465.74,
+    "userId": 31
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 11.07,
+    "orderTotal": 174.3,
+    "userId": 16
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 53.79,
+    "orderTotal": 177.46,
+    "userId": 23
+  },
+  {
+    "status": "cart",
+    "cartTotal": 61.59,
+    "orderTotal": 268.34,
+    "userId": 19
+  },
+  {
+    "status": "processing",
+    "cartTotal": 40.47,
+    "orderTotal": 346.14,
+    "userId": 24
+  },
+  {
+    "status": "shipped",
+    "cartTotal": 30.53,
+    "orderTotal": 361.3,
+    "userId": 6
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 68.65,
+    "orderTotal": 306.04,
+    "userId": 32
+  },
+  {
+    "status": "processing",
+    "cartTotal": 11.43,
+    "orderTotal": 274.26,
+    "userId": 18
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 17.87,
+    "orderTotal": 212.57,
+    "userId": 47
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 31.48,
+    "orderTotal": 482.01,
+    "userId": 50
+  },
+  {
+    "status": "delivered",
+    "cartTotal": 99.28,
+    "orderTotal": 403.81,
+    "userId": 10
+  }
+]

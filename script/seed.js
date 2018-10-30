@@ -1,19 +1,36 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {Order, User, Product, Review} = require('../server/db/models')
+
+/*  ------------- Dummy Data -------------
+    - 50 Orders
+    - 50 Users      (all 'user' level)
+    - 20 Products
+    - 40 Reviews    (80% of users)
+*/
+
+const dummyUsers = require('../server/db/dummy-data/dummy-users.json')
+const dummyOrders = require('../server/db/dummy-data/dummy-orders.json')
+const dummyProducts = require('../server/db/dummy-data/dummy-products.json')
+const dummyReviews = require('../server/db/dummy-data/dummy-reviews.json')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  // const users = await Promise.all([
-  //   User.create({email: 'cody@email.com', password: '123', role: 'user'}),
-  //   User.create({email: 'murphy@email.com', password: '123', role: 'user'})
-  // ])
+  await Promise.all(dummyUsers.map(user => User.create(user)))
+  await Promise.all(dummyOrders.map(order => Order.create(order)))
+  await Promise.all(dummyProducts.map(product => Product.create(product)))
+  await Promise.all(dummyReviews.map(review => Review.create(review)))
 
-  //   console.log(`seeded ${users.length} users`)
-  //   console.log(`seeded successfully`)
+  console.log(`\n########### SEEDING REPORT ###########\n`)
+  console.log(`Seeded ${dummyOrders.length} orders.`)
+  console.log(`Seeded ${dummyUsers.length} users.`)
+  console.log(`Seeded ${dummyProducts.length} products.`)
+  console.log(`Seeded ${dummyReviews.length} reviews.`)
+  console.log(`Seeding completed successfully!\n`)
+  console.log(`######################################\n`)
 }
 
 // We've separated the `seed` function from the `runSeed` function.

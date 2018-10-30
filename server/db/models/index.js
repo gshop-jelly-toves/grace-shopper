@@ -17,11 +17,19 @@ const Order = require('./orders')
  * instead of: const User = require('../db/models/user')
  */
 
-Product.belongsToMany(Order, {through: 'product-order'})
+
 Order.hasMany(Product)
+Product.belongsToMany(Order, {through: 'product-order'})
+
+/* On Order - userId */
 Order.belongsTo(User)
 User.hasMany(Order)
+
+/* On Review - productId */
 Review.belongsTo(Product)
+Product.hasMany(Review)
+
+/* On Review - userId */
 Review.belongsTo(User)
 User.hasMany(Review)
 

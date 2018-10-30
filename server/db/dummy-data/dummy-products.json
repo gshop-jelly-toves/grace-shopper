@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Soup Bowl Clear 8oz92008",
+    "description": "felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius",
+    "price": 67.0,
+    "inventory": 46,
+    "category": "spicy",
+    "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
+  },
+  {
+    "name": "Ice Cream - Fudge Bars",
+    "description": "metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget",
+    "price": 54.86,
+    "inventory": 61,
+    "category": "floral",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Container - Clear 32 Oz",
+    "description": "posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui",
+    "price": 34.91,
+    "inventory": 41,
+    "category": "cosmetic",
+    "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
+  },
+  {
+    "name": "Water - Aquafina Vitamin",
+    "description": "eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor",
+    "price": 25.15,
+    "inventory": 31,
+    "category": "performance",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Egg - Salad Premix",
+    "description": "posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam",
+    "price": 37.99,
+    "inventory": 39,
+    "category": "cosmetic",
+    "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
+  },
+  {
+    "name": "Wine - Red, Cabernet Merlot",
+    "description": "sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam",
+    "price": 44.73,
+    "inventory": 47,
+    "category": "iconic",
+    "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
+  },
+  {
+    "name": "Cocoa Powder - Natural",
+    "description": "odio porttitor id consequat in consequat ut nulla sed accumsan felis",
+    "price": 13.0,
+    "inventory": 127,
+    "category": "floral",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Beef - Rib Roast, Capless",
+    "description": "ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum",
+    "price": 28.6,
+    "inventory": 8,
+    "category": "cosmetic",
+    "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
+  },
+  {
+    "name": "Nantucket Orange Juice",
+    "description": "malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet",
+    "price": 78.13,
+    "inventory": 50,
+    "category": "performance",
+    "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
+  },
+  {
+    "name": "Doilies - 12, Paper",
+    "description": "integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat",
+    "price": 42.22,
+    "inventory": 34,
+    "category": "iconic",
+    "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
+  },
+  {
+    "name": "Cheese - Boursin, Garlic / Herbs",
+    "description": "dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et",
+    "price": 88.95,
+    "inventory": 96,
+    "category": "performance",
+    "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
+  },
+  {
+    "name": "Snails - Large Canned",
+    "description": "rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam",
+    "price": 13.71,
+    "inventory": 115,
+    "category": "iconic",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Vodka - Smirnoff",
+    "description": "orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus",
+    "price": 64.38,
+    "inventory": 117,
+    "category": "iconic",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Cheese - Provolone",
+    "description": "sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam",
+    "price": 83.09,
+    "inventory": 50,
+    "category": "iconic",
+    "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
+  },
+  {
+    "name": "Bread - Triangle White",
+    "description": "eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra",
+    "price": 77.17,
+    "inventory": 42,
+    "category": "cosmetic",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Cheese - Brick With Onion",
+    "description": "in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at",
+    "price": 65.21,
+    "inventory": 99,
+    "category": "floral",
+    "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
+  },
+  {
+    "name": "Garlic - Peeled",
+    "description": "dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit",
+    "price": 1.63,
+    "inventory": 82,
+    "category": "cosmetic",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Sugar - Brown, Individual",
+    "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod",
+    "price": 38.61,
+    "inventory": 112,
+    "category": "iconic",
+    "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
+  },
+  {
+    "name": "Bread - Petit Baguette",
+    "description": "amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices",
+    "price": 7.34,
+    "inventory": 16,
+    "category": "cosmetic",
+    "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
+  },
+  {
+    "name": "Bread - Rosemary Focaccia",
+    "description": "imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo",
+    "price": 4.24,
+    "inventory": 106,
+    "category": "floral",
+    "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
+  }
+]
