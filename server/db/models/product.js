@@ -18,12 +18,13 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  category: {
-    type: Sequelize.ENUM('spicy', 'floral', 'iconic', 'performance', 'cosmetic')
-  },
   photo: {
     type: Sequelize.STRING,
     defaultValue: 'https://imgur.com/a/gFQZ7yi'
+  },
+  rating: {
+    type: Sequelize.FLOAT,
+    defaultValue: 0
   }
 })
 
