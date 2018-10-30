@@ -10,6 +10,8 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const User = require('./db/models/user')
+
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -33,8 +35,9 @@ passport.serializeUser((user, done) => done(null, user.id))
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await db.models.user.findById(id)
-    if (user) user.accessLevel = user.getAccessLevel()
+    const user = await User.findOne({where: {id}})
+    // console.log('USER', user)
+    if (user.dataValues.id) user.dataValues.accessLevel = user.getAccessLevel()
     done(null, user)
   } catch (err) {
     done(err)
