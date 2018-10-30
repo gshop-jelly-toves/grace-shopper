@@ -3,42 +3,50 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
-    email: {
-      type: Sequelize.STRING,
-      unique: true,
-      allowNull: false
-    },
-    password: {
-      type: Sequelize.STRING,
-      // Making `.password` act like a func hides it when serializing to JSON.
-      // This is a hack to get around Sequelize's lack of a "private" option.
-      get() {
-        return () => this.getDataValue('password')
-      }
-    },
-    salt: {
-      type: Sequelize.STRING,
-      // Making `.salt` act like a function hides it when serializing to JSON.
-      // This is a hack to get around Sequelize's lack of a "private" option.
-      get() {
-        return () => this.getDataValue('salt')
-      }
-    },
-    googleId: {
-      type: Sequelize.STRING
-    },
-
-    role: {
-      // ENUM lets you define preset values for a field
-      type: Sequelize.ENUM,
-      // seller may be a bit ambitious for the scope of this
-      // project. dev is included to grant a higher access
-      // level than those who become admins later on
-      values: ['user', 'seller', 'admin', 'dev'],
-      defaultValue: 'user'
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  avatar: {
+    type: Sequelize.STRING,
+    defaultValue:
+      'https://thesocietypages.org/socimages/files/2009/05/nopic_192.gif'
+  },
+  email: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+    isEmail: true
+  },
+  password: {
+    type: Sequelize.STRING,
+    // Making `.password` act like a func hides it when serializing to JSON.
+    // This is a hack to get around Sequelize's lack of a "private" option.
+    get() {
+      return () => this.getDataValue('password')
     }
+  },
+  salt: {
+    type: Sequelize.STRING,
+    // Making `.salt` act like a function hides it when serializing to JSON.
+    // This is a hack to get around Sequelize's lack of a "private" option.
+    get() {
+      return () => this.getDataValue('salt')
+    }
+  },
+  googleId: {
+    type: Sequelize.STRING
+  },
+  role: {
+    // ENUM lets you define preset values for a field
+    type: Sequelize.ENUM,
+    // seller may be a bit ambitious for the scope of this
+    // project. dev is included to grant a higher access
+    // level than those who become admins later on
+    values: ['user', 'seller', 'admin', 'dev'],
+    defaultValue: 'user'
   }
-)
+})
 
 module.exports = User
 
@@ -49,7 +57,7 @@ module.exports = User
 // can be used to check a users role and
 // choose which features they have access to
 // see /server/middlewares/user
-User.prototype.getAccessLevel = function () {
+User.prototype.getAccessLevel = function() {
   switch (this.role) {
     case 'user':
       return 1

@@ -7,18 +7,19 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123', role: 'user'}),
-    User.create({email: 'murphy@email.com', password: '123', role: 'user'})
-  ])
+  // const users = await Promise.all([
+  //   User.create({email: 'cody@email.com', password: '123', role: 'user'}),
+  //   User.create({email: 'murphy@email.com', password: '123', role: 'user'})
+  // ])
 
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
+  //   console.log(`seeded ${users.length} users`)
+  //   console.log(`seeded successfully`)
 }
 
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
+
 async function runSeed() {
   console.log('seeding...')
   try {

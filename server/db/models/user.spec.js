@@ -15,6 +15,7 @@ describe('User model', () => {
 
       beforeEach(async () => {
         cody = await User.create({
+          name: 'cody',
           email: 'cody@puppybook.com',
           password: 'bones'
         })
@@ -31,15 +32,15 @@ describe('User model', () => {
       it('returns the correct access level', () => {
         expect(cody.getAccessLevel()).to.be.equal(1)
       })
-
     }) // end describe('correctPassword')
   }) // end describe('instanceMethods')
 
   describe('default role', () => {
     let cody
-    
+
     beforeEach(async () => {
       cody = await User.create({
+        name: 'cody',
         email: 'cody@puppybook.com',
         password: 'bones'
       })
@@ -49,5 +50,4 @@ describe('User model', () => {
       expect(cody.role).to.be.equal('user')
     })
   })
-
 }) // end describe('User model')
