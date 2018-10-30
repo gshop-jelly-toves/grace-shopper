@@ -22,7 +22,7 @@ const Review = db.define('review', {
 })
 
 // Must fix this.
-/*
+/* ERROR
   TypeError: Cannot read property 'reduce' of undefined
     at Function.averageRating (/Users/ChrisMejia/Google Drive/FS/Senior-Phase/grace-shopper/server/db/models/review.js:36:26)
     at process._tickCallback (internal/process/next_tick.js:68:7)

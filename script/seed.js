@@ -1,15 +1,17 @@
 'use strict'
 
 const db = require('../server/db')
-const {Order, User, Product, Review} = require('../server/db/models')
+const {Order, User, Product, Review, Category} = require('../server/db/models')
 
 /*  ------------- Dummy Data -------------
+    - 8 Categories
     - 50 Orders
     - 50 Users      (all 'user' level)
     - 20 Products
     - 40 Reviews    (80% of users)
 */
 
+const dummyCategories = require('../server/db/dummy-data/dummy-categories.json')
 const dummyUsers = require('../server/db/dummy-data/dummy-users.json')
 const dummyOrders = require('../server/db/dummy-data/dummy-orders.json')
 const dummyProducts = require('../server/db/dummy-data/dummy-products.json')
@@ -21,12 +23,14 @@ async function seed() {
 
   // Please fix this.
 
+  await Promise.all(dummyCategories.map(category => Category.create(category)))
   await Promise.all(dummyUsers.map(user => User.create(user)))
   await Promise.all(dummyOrders.map(order => Order.create(order)))
   await Promise.all(dummyProducts.map(product => Product.create(product)))
   await Promise.all(dummyReviews.map(review => Review.create(review)))
 
   console.log(`\n########### SEEDING REPORT ###########\n`)
+  console.log(`Seeded ${dummyCategories.length} categories.`)
   console.log(`Seeded ${dummyOrders.length} orders.`)
   console.log(`Seeded ${dummyUsers.length} users.`)
   console.log(`Seeded ${dummyProducts.length} products.`)
