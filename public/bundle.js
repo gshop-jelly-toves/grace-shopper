@@ -611,7 +611,7 @@ exports.UserHome = UserHome;
 
 var mapState = function mapState(state) {
   return {
-    email: state.user.user.user.email
+    email: state.user.user.email
   };
 };
 
@@ -793,8 +793,8 @@ var mapState = function mapState(state) {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.accessLevel >= 3
+    isLoggedIn: !!state.user.user.id,
+    isAdmin: state.user.user.accessLevel >= 3
   };
 };
 
