@@ -17,6 +17,15 @@ router.get('/', async (req, res, next) => {
   } catch (e) { next(e) }
 })
 
+// /api/products/categories GET
+router.get('/categories', async (req, res, next) => {
+  try {
+    const categories = await Category.findAll()
+    res.json(categories)
+  } catch (e) { next(e) }
+})
+
+
 // /api/products/:productId GET
 router.get('/:productId', async (req, res, next) => {
   try {
@@ -26,14 +35,7 @@ router.get('/:productId', async (req, res, next) => {
   } catch (e) { next(e) }
 })
 
-// /api/products/categories GET
-router.get('/categories', async (req, res, next) => {
-  try {
-    const categories = await Category.findAll()
-    const list = categories.map(category => category.name)
-    res.json(list)
-  } catch (e) { next(e) }
-})
+
 
 /*
   ADMIN ROUTES
@@ -44,7 +46,7 @@ router.post('/', requireAdmin, async (req, res, next) => {
   try {
     const product = await Product.create(req.body)
     res.json(product)
-  } catch (e) { next(e) }  
+  } catch (e) { console.error(e)}
 })
 
 // /api/products/:productId PUT
@@ -52,6 +54,6 @@ router.put('/', requireAdmin, async (req, res, next) => {
   try {
     const product = await Product.update(req.body)
     res.json(product)
-  } catch (e) { next(e) }  
+  } catch (e) { next(e) }
 })
 
