@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCategories} from '../../store'
+// import {fetchCategories} from '../../store'
 import axios from 'axios'
 
 class CreateProduct extends Component {
@@ -10,17 +10,17 @@ class CreateProduct extends Component {
       name: '',
       description: '',
       price: '',
-      inventory: null,
-      category: null,
+      inventory: '',
+      category: '',
       photo: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
-    this.props.fetchCategories()
-  }
+  // componentDidMount() {
+  //   this.props.fetchCategories()
+  // }
 
   handleChange(event) {
     this.setState({
@@ -36,6 +36,7 @@ class CreateProduct extends Component {
       name: '',
       description: '',
       price: '',
+      inventory: '',
       category: null,
       photo: ''
     })
@@ -44,7 +45,8 @@ class CreateProduct extends Component {
   render() {
     const {name, description, price, inventory} = this.state
     const isEnabled = name && description && price && inventory
-
+    const dummyArray = []
+    console.log('HELLO?')
     return (
       <div>
         <form>
@@ -84,7 +86,12 @@ class CreateProduct extends Component {
           <label>Select Category</label>
           <select name="category" onChange={this.handleChange}>
             <option>-</option>
-            {this.props.categories.map(category => (
+            {/* {this.props.categories.map(category => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))} */}
+            {dummyArray.map(category => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>
@@ -94,6 +101,7 @@ class CreateProduct extends Component {
           <input
             type="url"
             name="photo"
+            placeholder="http://example.com"
             value={this.state.photo}
             onChange={this.handleChange}
             required
@@ -112,16 +120,16 @@ class CreateProduct extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    categories: state.products.categories
-  }
-}
+// const mapState = state => {
+//   return {
+//     categories: state.products.categories
+//   }
+// }
 
-const mapDispatch = dispatch => {
-  return {
-    fetchCategories: () => dispatch(fetchCategories())
-  }
-}
+// const mapDispatch = dispatch => {
+//   return {
+//     fetchCategories: () => dispatch(fetchCategories())
+//   }
+// }
 
-export default connect(mapState, mapDispatch)(CreateProduct)
+export default connect(null, null)(CreateProduct)
