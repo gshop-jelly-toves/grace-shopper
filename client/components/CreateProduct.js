@@ -11,7 +11,7 @@ class CreateProduct extends Component {
       description: '',
       price: '',
       inventory: '',
-      category: '',
+      categoryId: '',
       photo: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -83,14 +83,14 @@ class CreateProduct extends Component {
           />
           <label>Select Category</label>
           <select
-            name="category"
+            name="categoryId"
             value={this.state.category}
             onChange={this.handleChange}
           >
             <option>-</option>
             {this.props.categories.map(category => (
-              <option key={category} value={category}>
-                {category}
+              <option key={category.id} value={category.id}>
+                {category.name}
               </option>
             ))}
           </select>

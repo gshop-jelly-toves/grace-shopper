@@ -21,8 +21,7 @@ router.get('/', async (req, res, next) => {
 router.get('/categories', async (req, res, next) => {
   try {
     const categories = await Category.findAll()
-    const list = categories.map(category => category.name)
-    res.json(list)
+    res.json(categories)
   } catch (e) { next(e) }
 })
 
@@ -47,7 +46,7 @@ router.post('/', requireAdmin, async (req, res, next) => {
   try {
     const product = await Product.create(req.body)
     res.json(product)
-  } catch (e) { next(e) }
+  } catch (e) { console.error(e)}
 })
 
 // /api/products/:productId PUT

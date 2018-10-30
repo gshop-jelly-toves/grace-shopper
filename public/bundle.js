@@ -223,7 +223,7 @@ function (_Component) {
       description: '',
       price: '',
       inventory: '',
-      category: '',
+      categoryId: '',
       photo: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -283,14 +283,14 @@ function (_Component) {
         onChange: this.handleChange,
         required: true
       }), _react.default.createElement("label", null, "Select Category"), _react.default.createElement("select", {
-        name: "category",
+        name: "categoryId",
         value: this.state.category,
         onChange: this.handleChange
       }, _react.default.createElement("option", null, "-"), this.props.categories.map(function (category) {
         return _react.default.createElement("option", {
-          key: category,
-          value: category
-        }, category);
+          key: category.id,
+          value: category.id
+        }, category.name);
       })), _react.default.createElement("label", {
         htmlFor: "photo"
       }, "Product Photo"), _react.default.createElement("input", {
@@ -1167,21 +1167,22 @@ var me = function me() {
 
               case 3:
                 res = _context.sent;
+                console.log('RES', res);
                 dispatch(getUser(res.data || defaultUser));
-                _context.next = 10;
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 7]]);
+        }, _callee, this, [[0, 8]]);
       }));
 
       return function (_x) {
