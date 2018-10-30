@@ -389,28 +389,12 @@ function (_Component) {
   _createClass(ProductList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // this.props.fetchProducts()
-      console.log('///////');
+      this.props.fetchProducts();
     }
   }, {
     key: "render",
     value: function render() {
-      var products = [{
-        id: 1,
-        name: 'grape tho',
-        photo: './glassjar.jpg',
-        price: 4.99
-      }, {
-        id: 2,
-        name: 'grape again tho',
-        photo: './glassjar.jpg',
-        price: 4.99
-      }, {
-        id: 3,
-        name: 'le jelly tho',
-        photo: './glassjar.jpg',
-        price: 4.99
-      }];
+      var products = this.props.state.products.products;
       console.log(this.props.state);
       return _react.default.createElement("div", {
         id: "productList"
@@ -427,16 +411,20 @@ function (_Component) {
   }]);
 
   return ProductList;
-}(_react.Component); // const mapState = state => {
-//   return {
-//     state
-//   }
-// }
-// const mapDispatch = {fetchProducts}
-// export default connect(mapState, mapDispatch)(ProductList)
+}(_react.Component);
 
+var mapState = function mapState(state) {
+  return {
+    state: state
+  };
+};
 
-var _default = ProductList;
+var mapDispatch = {
+  fetchProducts: _store.fetchProducts
+};
+
+var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(ProductList);
+
 exports.default = _default;
 
 /***/ }),
