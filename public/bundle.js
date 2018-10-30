@@ -201,7 +201,7 @@ function (_Component) {
                   description: '',
                   price: '',
                   inventory: '',
-                  category: null,
+                  category: '-',
                   photo: ''
                 });
 
@@ -250,8 +250,6 @@ function (_Component) {
           price = _this$state.price,
           inventory = _this$state.inventory;
       var isEnabled = name && description && price && inventory;
-      var dummyArray = [];
-      console.log('HELLO?');
       return _react.default.createElement("div", null, _react.default.createElement("form", null, _react.default.createElement("h2", null, "Add Product"), _react.default.createElement("label", {
         htmlFor: "name"
       }, "Product Name:"), _react.default.createElement("input", {
@@ -286,12 +284,13 @@ function (_Component) {
         required: true
       }), _react.default.createElement("label", null, "Select Category"), _react.default.createElement("select", {
         name: "category",
+        value: this.state.category,
         onChange: this.handleChange
       }, _react.default.createElement("option", null, "-"), this.props.categories.map(function (category) {
         return _react.default.createElement("option", {
-          key: category.id,
-          value: category.id
-        }, category.name);
+          key: category,
+          value: category
+        }, category);
       })), _react.default.createElement("label", {
         htmlFor: "photo"
       }, "Product Photo"), _react.default.createElement("input", {
@@ -524,7 +523,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Navbar = function Navbar(_ref) {
   var handleClick = _ref.handleClick,
-      isLoggedIn = _ref.isLoggedIn;
+      isLoggedIn = _ref.isLoggedIn,
+      isAdmin = _ref.isAdmin;
   return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Jelly for your Belly!"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/home"
   }, "Home"), _react.default.createElement("a", {
@@ -534,7 +534,9 @@ var Navbar = function Navbar(_ref) {
     to: "/login"
   }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
-  }, "Sign Up"))), _react.default.createElement("hr", null));
+  }, "Sign Up")), isAdmin && _react.default.createElement(_reactRouterDom.Link, {
+    to: "/create"
+  }, "Add Product")), _react.default.createElement("hr", null));
 };
 /**
  * CONTAINER
@@ -543,7 +545,8 @@ var Navbar = function Navbar(_ref) {
 
 var mapState = function mapState(state) {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.accessLevel >= 3
   };
 };
 
@@ -790,7 +793,8 @@ var mapState = function mapState(state) {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.accessLevel >= 3
   };
 };
 
@@ -883,12 +887,15 @@ Object.keys(_user).forEach(function (key) {
   });
 });
 
+var _products = _interopRequireDefault(__webpack_require__(/*! ./products */ "./client/store/products.js"));
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var reducer = (0, _redux.combineReducers)({
-  user: _user.default
+  user: _user.default,
+  products: _products.default
 });
 var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default, (0, _reduxLogger.default)({
   collapsed: true

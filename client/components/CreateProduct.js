@@ -37,7 +37,7 @@ class CreateProduct extends Component {
       description: '',
       price: '',
       inventory: '',
-      category: null,
+      category: '-',
       photo: ''
     })
   }
@@ -45,8 +45,6 @@ class CreateProduct extends Component {
   render() {
     const {name, description, price, inventory} = this.state
     const isEnabled = name && description && price && inventory
-    const dummyArray = []
-    console.log('HELLO?')
     return (
       <div>
         <form>
@@ -84,11 +82,15 @@ class CreateProduct extends Component {
             required
           />
           <label>Select Category</label>
-          <select name="category" onChange={this.handleChange}>
+          <select
+            name="category"
+            value={this.state.category}
+            onChange={this.handleChange}
+          >
             <option>-</option>
             {this.props.categories.map(category => (
-              <option key={category.id} value={category.id}>
-                {category.name}
+              <option key={category} value={category}>
+                {category}
               </option>
             ))}
           </select>

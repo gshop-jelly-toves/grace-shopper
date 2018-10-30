@@ -34,7 +34,8 @@ passport.serializeUser((user, done) => done(null, user.id))
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.models.user.findById(id)
-    if (user) user.accessLevel = user.getAccessLevel()
+    if (user.dataValues.id) user.dataValues.accessLevel = user.getAccessLevel()
+    console.log('USER', user)
     done(null, user)
   } catch (err) {
     done(err)
