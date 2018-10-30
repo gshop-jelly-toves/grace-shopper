@@ -23,7 +23,8 @@ const Product = db.define('product', {
     defaultValue: 'https://imgur.com/a/gFQZ7yi'
   },
   rating: {
-    type: Sequelize.FLOAT
+    type: Sequelize.FLOAT,
+    defaultValue: 0
   }
 })
 
