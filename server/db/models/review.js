@@ -10,6 +10,13 @@ const Review = db.define('review', {
         msg: 'Minimum review is 72 characters'
       }
     }
+  },
+  starRating: {
+    type: Sequelize.FLOAT,
+    validate: {
+      min: 1,
+      max: 5
+    }
   }
 })
 
