@@ -34,8 +34,14 @@ const User = db.define('user', {
       return () => this.getDataValue('salt')
     }
   },
-  googleId: {
-    type: Sequelize.STRING
+  role: {
+    // ENUM lets you define preset values for a field
+    type: Sequelize.ENUM,
+    // seller may be a bit ambitious for the scope of this
+    // project. dev is included to grant a higher access
+    // level than those who become admins later on
+    values: ['user', 'seller', 'admin', 'dev'],
+    defaultValue: 'user'
   }
 })
 
@@ -44,6 +50,25 @@ module.exports = User
 /**
  * instanceMethods
  */
+
+// can be used to check a users role and
+// choose which features they have access to
+// see /server/middlewares/user
+User.prototype.getAccessLevel = function() {
+  switch (this.role) {
+    case 'user':
+      return 1
+    case 'seller':
+      return 2
+    case 'admin':
+      return 3
+    case 'dev':
+      return 4
+    default:
+      return 0
+  }
+}
+
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
 }

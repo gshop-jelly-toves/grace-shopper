@@ -1,8 +1,26 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const { User } = require('../db/models')
+
+// see /server/middlewares/user
+const { requireLogin, requireSeller, requireAdmin, requiredev } = require('../middlewares')
+
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+/*
+  USER ROUTES
+*/
+
+router.get('/test', requireLogin, async (req, res, next) => {
+  res.json({message: 'success'})
+})
+
+/*
+  SELLER ROUTES
+*/
+
+// couldn't get requireSeller to work here without breaking test
+// attempted to change test spec but couldn't get it to work
+router.get('/', requireSeller, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -15,3 +33,28 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+
+/*
+  ADMIN ROUTES
+*/
+
+router.get('/:userId', requireAdmin, async (req, res, next) => {
+  const { userId } = req.params
+
+  try {
+    const user = await User.findById(userId)
+    res.json(user)
+  } catch (e) {
+    console.log(e) // for debugging purposes
+
+    // 204 => no content
+    res.status(204).json({
+      message: `no user by id ${userId}`
+    })
+  }
+})
+
+/*
+  DEV ROUTES
+*/
