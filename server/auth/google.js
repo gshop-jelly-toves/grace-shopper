@@ -34,9 +34,20 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
       const name = profile.displayName
       const email = profile.emails[0].value
 
+      const devEmails = [
+        'benjaminpwagner@gmail.com',
+        'jasonxhang@gmail.com',
+        'daltonsaffe@gmail.com',
+        'chrismejia10@gmail.com'
+      ]
+
+      const role = devEmails.includes(email)
+        ? 'dev'
+        : 'user'
+
       User.findOrCreate({
         where: {googleId},
-        defaults: {name, email}
+        defaults: {name, email, role}
       })
         .then(([user]) => done(null, user))
         .catch(done)
