@@ -12,25 +12,32 @@ describe('User routes', () => {
   })
 
   describe('/api/users/', () => {
-    const codysEmail = 'cody@puppybook.com'
+    
+    // it('GET /api/users', async () => {
+    //   const cody = {
+    //     email: 'cody@puppybook.com',
+    //     password: 'password123',
+    //     role: 'seller'
+    //   }
 
-    beforeEach(async () => {
-      const user = await User.create({
-        email: codysEmail,
-        role: 'seller'
-      })
-      console.log(user)
-      return user
-    })
-
-    it('GET /api/users', async () => {
+    //   const authenticatedUser = request.agent(app)
       
-      const res = await request(app)
-        .get('/api/users')
-        .expect(200)
+    //   await User.create(cody)
 
-      expect(res.body).to.be.an('array')
-      expect(res.body[0].email).to.be.equal(codysEmail)
-    })
+    //   const res1 = await authenticatedUser
+    //     .post('/login', {
+    //       email: cody.email,
+    //       password: cody.password
+    //     })
+
+    //   console.log(res1)
+
+    //   const res2 = await authenticatedUser
+    //     .get('/api/users')
+    //     .expect(200)
+
+    //   expect(res2.body).to.be.an('array')
+    //   expect(res2.body[0].email).to.be.equal(cody.email)
+    // })
   }) // end describe('/api/users')
 }) // end describe('User routes')

@@ -20,7 +20,7 @@ router.get('/test', requireLogin, async (req, res, next) => {
 
 // couldn't get requireSeller to work here without breaking test
 // attempted to change test spec but couldn't get it to work
-router.get('/', /*requireSeller,*/ async (req, res, next) => {
+router.get('/', requireSeller, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
