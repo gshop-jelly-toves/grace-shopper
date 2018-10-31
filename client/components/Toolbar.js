@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+
 import {fetchCategories, setCategory} from '../store'
 
 class Toolbar extends Component {
   constructor(props) {
     super(props)
+
     this.handleChange = this.handleChange.bind(this)
   }
 
