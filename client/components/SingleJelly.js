@@ -28,7 +28,7 @@ class SingleJelly extends Component {
         <div>
           <h2>{jelly.name}</h2>
           <img src={jelly.photo} />
-          <h4>Inventory: {jelly.inventory}:</h4>
+          <h4>Inventory: {jelly.inventory}</h4>
           <p>Rating: {jelly.rating} / 5</p>
           <p>Description: {jelly.description}</p>
         </div>

@@ -118,224 +118,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./client/components/CreateProduct.js":
-/*!********************************************!*\
-  !*** ./client/components/CreateProduct.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
-var _products = __webpack_require__(/*! ../store/products */ "./client/store/products.js");
-
-var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var CreateProduct =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(CreateProduct, _Component);
-
-  function CreateProduct(props) {
-    var _this;
-
-    _classCallCheck(this, CreateProduct);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateProduct).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSubmit",
-    /*#__PURE__*/
-    function () {
-      var _ref = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee(event) {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                event.preventDefault();
-                _context.next = 3;
-                return _axios.default.post('/api/products', _this.state);
-
-              case 3:
-                _this.setState({
-                  name: '',
-                  description: '',
-                  price: '',
-                  inventory: '',
-                  category: '-',
-                  photo: ''
-                });
-
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }());
-
-    _this.state = {
-      name: '',
-      description: '',
-      price: '',
-      inventory: '',
-      categoryId: '',
-      photo: ''
-    };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
-
-  _createClass(CreateProduct, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchCategories();
-    }
-  }, {
-    key: "handleChange",
-    value: function handleChange(event) {
-      this.setState(_defineProperty({}, event.target.name, event.target.value));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          name = _this$state.name,
-          description = _this$state.description,
-          price = _this$state.price,
-          inventory = _this$state.inventory;
-      var isEnabled = name && description && price && inventory;
-      return _react.default.createElement("div", null, _react.default.createElement("form", null, _react.default.createElement("h2", null, "Add Product"), _react.default.createElement("label", {
-        htmlFor: "name"
-      }, "Product Name:"), _react.default.createElement("input", {
-        type: "text",
-        name: "name",
-        value: this.state.name,
-        onChange: this.handleChange,
-        required: true
-      }), _react.default.createElement("label", {
-        htmlFor: "description"
-      }, "Description:"), _react.default.createElement("input", {
-        type: "text",
-        name: "description",
-        value: this.state.description,
-        onChange: this.handleChange,
-        required: true
-      }), _react.default.createElement("label", {
-        htmlFor: "price"
-      }, "Price: $"), _react.default.createElement("input", {
-        type: "number",
-        name: "price",
-        value: this.state.price,
-        onChange: this.handleChange,
-        required: true
-      }), _react.default.createElement("label", {
-        htmlFor: "inventory"
-      }, "Inventory"), _react.default.createElement("input", {
-        type: "number",
-        name: "inventory",
-        value: this.state.inventory,
-        onChange: this.handleChange,
-        required: true
-      }), _react.default.createElement("label", null, "Select Category"), _react.default.createElement("select", {
-        name: "categoryId",
-        value: this.state.category,
-        onChange: this.handleChange
-      }, _react.default.createElement("option", null, "-"), this.props.categories.map(function (category) {
-        return _react.default.createElement("option", {
-          key: category.id,
-          value: category.id
-        }, category.name);
-      })), _react.default.createElement("label", {
-        htmlFor: "photo"
-      }, "Product Photo"), _react.default.createElement("input", {
-        type: "url",
-        name: "photo",
-        placeholder: "http://example.com",
-        value: this.state.photo,
-        onChange: this.handleChange,
-        required: true
-      }), _react.default.createElement("button", {
-        type: "submit",
-        onClick: this.handleSubmit,
-        disabled: !isEnabled,
-        className: isEnabled ? 'enabled' : 'disabled'
-      }, "Add Product")));
-    }
-  }]);
-
-  return CreateProduct;
-}(_react.Component);
-
-var mapState = function mapState(state) {
-  return {
-    categories: state.products.categories
-  };
-};
-
-var mapDispatch = function mapDispatch(dispatch) {
-  return {
-    fetchCategories: function fetchCategories() {
-      return dispatch((0, _products.fetchCategories)());
-    }
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(CreateProduct);
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./client/components/auth-form.js":
-/*!****************************************!*\
-  !*** ./client/components/auth-form.js ***!
-  \****************************************/
+/***/ "./client/components/AuthForm.js":
+/*!***************************************!*\
+  !*** ./client/components/AuthForm.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -438,10 +224,10 @@ AuthForm.propTypes = {
 
 /***/ }),
 
-/***/ "./client/components/index.js":
-/*!************************************!*\
-  !*** ./client/components/index.js ***!
-  \************************************/
+/***/ "./client/components/Homepage.js":
+/*!***************************************!*\
+  !*** ./client/components/Homepage.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -451,52 +237,152 @@ AuthForm.propTypes = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "Navbar", {
-  enumerable: true,
-  get: function get() {
-    return _navbar.default;
-  }
-});
-Object.defineProperty(exports, "UserHome", {
-  enumerable: true,
-  get: function get() {
-    return _userHome.default;
-  }
-});
-Object.defineProperty(exports, "CreateProduct", {
-  enumerable: true,
-  get: function get() {
-    return _CreateProduct.default;
-  }
-});
-Object.defineProperty(exports, "Login", {
-  enumerable: true,
-  get: function get() {
-    return _authForm.Login;
-  }
-});
-Object.defineProperty(exports, "Signup", {
-  enumerable: true,
-  get: function get() {
-    return _authForm.Signup;
-  }
-});
+exports.default = exports.Homepage = void 0;
 
-var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./client/components/navbar.js"));
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
 
-var _CreateProduct = _interopRequireDefault(__webpack_require__(/*! ./CreateProduct */ "./client/components/CreateProduct.js"));
-
-var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * COMPONENT
+ */
+var Homepage = function Homepage(props) {
+  var email = props.email;
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Welcome, ", email), _react.default.createElement("p", null, "because we don't want our jelly server to be"), _react.default.createElement("p", null, "cluttered with dev dependencies like jellypack,"), _react.default.createElement("p", null, "we adhere to strict jellyOps principles in"), _react.default.createElement("p", null, "order avoid any jelly-merge conflicts"));
+};
+/**
+ * CONTAINER
+ */
+
+
+exports.Homepage = Homepage;
+
+var mapState = function mapState(state) {
+  return {
+    email: state.user.user.email
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapState)(Homepage);
+/**
+ * PROP TYPES
+ */
+
+
+exports.default = _default;
+Homepage.propTypes = {
+  email: _propTypes.default.string
+};
+
 /***/ }),
 
-/***/ "./client/components/navbar.js":
+/***/ "./client/components/JellyList.js":
+/*!****************************************!*\
+  !*** ./client/components/JellyList.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var JellyList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(JellyList, _Component);
+
+  function JellyList(props) {
+    _classCallCheck(this, JellyList);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(JellyList).call(this, props));
+  }
+
+  _createClass(JellyList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchJellies();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var keyedJellies = this.props.jellies;
+      var jelliesList = Object.keys(keyedJellies).map(function (key) {
+        return keyedJellies[key];
+      });
+      return _react.default.createElement("div", {
+        id: "jellyList"
+      }, jelliesList.map(function (jelly) {
+        return _react.default.createElement("div", {
+          key: jelly.id
+        }, _react.default.createElement(_reactRouterDom.Link, {
+          to: "/jellies/".concat(jelly.id)
+        }, _react.default.createElement("img", {
+          src: jelly.photo
+        }), _react.default.createElement("h3", null, jelly.name), _react.default.createElement("p", null, "$", jelly.price)));
+      }));
+    }
+  }]);
+
+  return JellyList;
+}(_react.Component);
+
+var mapState = function mapState(_ref) {
+  var jellies = _ref.jellies.jellies;
+  return {
+    jellies: jellies
+  };
+};
+
+var mapDispatch = {
+  fetchJellies: _store.fetchJellies
+};
+
+var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(JellyList);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/Navbar.js":
 /*!*************************************!*\
-  !*** ./client/components/navbar.js ***!
+  !*** ./client/components/Navbar.js ***!
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -525,18 +411,26 @@ var Navbar = function Navbar(_ref) {
   var handleClick = _ref.handleClick,
       isLoggedIn = _ref.isLoggedIn,
       isAdmin = _ref.isAdmin;
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Jelly for your Belly!"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/home"
-  }, "Home"), _react.default.createElement("a", {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Jelly for your Belly!"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", {
+    id: "navbar-main"
+  }, _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/home",
+    activeClassName: "nav-active"
+  }, "Home"), _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/jellies",
+    activeClassName: "nav-active"
+  }, "Shop"), _react.default.createElement("a", {
     href: "#",
     onClick: handleClick
-  }, "Logout")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/login"
-  }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/signup"
-  }, "Sign Up")), isAdmin && _react.default.createElement(_reactRouterDom.Link, {
-    to: "/create"
-  }, "Add Product")), _react.default.createElement("hr", null));
+  }, "Logout")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/login",
+    activeClassName: "nav-active"
+  }, "Login"), _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/signup",
+    activeClassName: "nav-active"
+  }, "Sign Up")), isAdmin && _react.default.createElement(_reactRouterDom.NavLink, {
+    to: "/admin"
+  }, "Admin Tools")), _react.default.createElement("hr", null));
 };
 /**
  * CONTAINER
@@ -545,8 +439,8 @@ var Navbar = function Navbar(_ref) {
 
 var mapState = function mapState(state) {
   return {
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.accessLevel >= 3
+    isLoggedIn: !!state.user.user.id,
+    isAdmin: state.user.user.accessLevel >= 3
   };
 };
 
@@ -572,10 +466,10 @@ Navbar.propTypes = {
 
 /***/ }),
 
-/***/ "./client/components/user-home.js":
-/*!****************************************!*\
-  !*** ./client/components/user-home.js ***!
-  \****************************************/
+/***/ "./client/components/NoMatch.js":
+/*!**************************************!*\
+  !*** ./client/components/NoMatch.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -585,46 +479,450 @@ Navbar.propTypes = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.UserHome = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NoMatch = function NoMatch() {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Sorry the page you're looking for doesn't exist"), _react.default.createElement("img", {
+    id: "errorcat",
+    src: "https://i.imgur.com/unzfnaD.jpg"
+  }));
+};
+
+var _default = NoMatch;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/SingleJelly.js":
+/*!******************************************!*\
+  !*** ./client/components/SingleJelly.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
+var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+var _NoMatch = _interopRequireDefault(__webpack_require__(/*! ./NoMatch */ "./client/components/NoMatch.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * COMPONENT
- */
-var UserHome = function UserHome(props) {
-  var email = props.email;
-  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Welcome, ", email));
-};
-/**
- * CONTAINER
- */
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-exports.UserHome = UserHome;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var mapState = function mapState(state) {
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var SingleJelly =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SingleJelly, _Component);
+
+  function SingleJelly(props) {
+    _classCallCheck(this, SingleJelly);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SingleJelly).call(this, props));
+  }
+
+  _createClass(SingleJelly, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var jellyId = this.props.match.params.jellyId;
+      this.props.fetchSingleJelly(jellyId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var latest = this.props.match.params.jellyId;
+      var prev = prevProps.match.params.jellyId;
+
+      if (prev !== latest) {
+        this.props.fetchSingleJelly(latest);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var jelly = this.props.singleJelly;
+      return jelly ? _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("h2", null, jelly.name), _react.default.createElement("img", {
+        src: jelly.photo
+      }), _react.default.createElement("h4", null, "Inventory: ", jelly.inventory), _react.default.createElement("p", null, "Rating: ", jelly.rating, " / 5"), _react.default.createElement("p", null, "Description: ", jelly.description))) : _react.default.createElement(_NoMatch.default, null);
+    }
+  }]);
+
+  return SingleJelly;
+}(_react.Component);
+
+var mapState = function mapState(_ref) {
+  var singleJelly = _ref.jellies.singleJelly;
   return {
-    email: state.user.email
+    singleJelly: singleJelly
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapState)(UserHome);
-/**
- * PROP TYPES
- */
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    fetchSingleJelly: function fetchSingleJelly(jellyId) {
+      return dispatch((0, _store.fetchSingleJelly)(jellyId));
+    }
+  };
+};
 
+var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(SingleJelly);
 
 exports.default = _default;
-UserHome.propTypes = {
-  email: _propTypes.default.string
+
+/***/ }),
+
+/***/ "./client/components/admin/AddJellyForm.js":
+/*!*************************************************!*\
+  !*** ./client/components/admin/AddJellyForm.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _jellies = __webpack_require__(/*! ../../store/jellies */ "./client/store/jellies.js");
+
+var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var AddJellyForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AddJellyForm, _Component);
+
+  function AddJellyForm(props) {
+    var _this;
+
+    _classCallCheck(this, AddJellyForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddJellyForm).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSubmit",
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(event) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                event.preventDefault();
+                _context.next = 3;
+                return _axios.default.post('/api/jellies', _this.state);
+
+              case 3:
+                _this.setState({
+                  name: '',
+                  description: '',
+                  price: '',
+                  inventory: '',
+                  category: '-',
+                  photo: ''
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+
+    _this.state = {
+      name: '',
+      description: '',
+      price: '',
+      inventory: '',
+      categoryId: '',
+      photo: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(AddJellyForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCategories();
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          name = _this$state.name,
+          description = _this$state.description,
+          price = _this$state.price,
+          inventory = _this$state.inventory;
+      var isEnabled = name && description && price && inventory;
+      return _react.default.createElement("div", null, _react.default.createElement("form", null, _react.default.createElement("h2", null, "Add Jelly"), _react.default.createElement("label", {
+        htmlFor: "name"
+      }, "Jelly Name:"), _react.default.createElement("input", {
+        type: "text",
+        name: "name",
+        value: this.state.name,
+        onChange: this.handleChange,
+        required: true
+      }), _react.default.createElement("label", {
+        htmlFor: "description"
+      }, "Description:"), _react.default.createElement("input", {
+        type: "text",
+        name: "description",
+        value: this.state.description,
+        onChange: this.handleChange,
+        required: true
+      }), _react.default.createElement("label", {
+        htmlFor: "price"
+      }, "Price: $"), _react.default.createElement("input", {
+        type: "number",
+        name: "price",
+        value: this.state.price,
+        onChange: this.handleChange,
+        required: true
+      }), _react.default.createElement("label", {
+        htmlFor: "inventory"
+      }, "Inventory"), _react.default.createElement("input", {
+        type: "number",
+        name: "inventory",
+        value: this.state.inventory,
+        onChange: this.handleChange,
+        required: true
+      }), _react.default.createElement("label", null, "Select Category"), _react.default.createElement("select", {
+        name: "categoryId",
+        value: this.state.category,
+        onChange: this.handleChange
+      }, _react.default.createElement("option", null, "-"), this.props.categories.map(function (category) {
+        return _react.default.createElement("option", {
+          key: category.id,
+          value: category.id
+        }, category.name);
+      })), _react.default.createElement("label", {
+        htmlFor: "photo"
+      }, "Jelly Photo"), _react.default.createElement("input", {
+        type: "url",
+        name: "photo",
+        placeholder: "http://example.com",
+        value: this.state.photo,
+        onChange: this.handleChange,
+        required: true
+      }), _react.default.createElement("button", {
+        type: "submit",
+        onClick: this.handleSubmit,
+        disabled: !isEnabled,
+        className: isEnabled ? 'enabled' : 'disabled'
+      }, "Add Jelly")));
+    }
+  }]);
+
+  return AddJellyForm;
+}(_react.Component);
+
+var mapState = function mapState(_ref2) {
+  var categories = _ref2.jellies.categories;
+  return {
+    categories: categories
+  };
 };
+
+var mapDispatch = {
+  fetchCategories: _jellies.fetchCategories
+};
+
+var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(AddJellyForm);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/admin/AdminLanding.js":
+/*!*************************************************!*\
+  !*** ./client/components/admin/AdminLanding.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AdminLanding = function AdminLanding(props) {
+  return _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/admin/addjelly"
+  }, _react.default.createElement("p", null, "Add Jelly")));
+};
+
+var _default = AdminLanding;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/index.js":
+/*!************************************!*\
+  !*** ./client/components/index.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "Navbar", {
+  enumerable: true,
+  get: function get() {
+    return _Navbar.default;
+  }
+});
+Object.defineProperty(exports, "UserHome", {
+  enumerable: true,
+  get: function get() {
+    return _Homepage.default;
+  }
+});
+Object.defineProperty(exports, "AddJellyForm", {
+  enumerable: true,
+  get: function get() {
+    return _AddJellyForm.default;
+  }
+});
+Object.defineProperty(exports, "AdminLanding", {
+  enumerable: true,
+  get: function get() {
+    return _AdminLanding.default;
+  }
+});
+Object.defineProperty(exports, "SingleJelly", {
+  enumerable: true,
+  get: function get() {
+    return _SingleJelly.default;
+  }
+});
+Object.defineProperty(exports, "JellyList", {
+  enumerable: true,
+  get: function get() {
+    return _JellyList.default;
+  }
+});
+Object.defineProperty(exports, "Login", {
+  enumerable: true,
+  get: function get() {
+    return _AuthForm.Login;
+  }
+});
+Object.defineProperty(exports, "Signup", {
+  enumerable: true,
+  get: function get() {
+    return _AuthForm.Signup;
+  }
+});
+
+var _Navbar = _interopRequireDefault(__webpack_require__(/*! ./Navbar */ "./client/components/Navbar.js"));
+
+var _Homepage = _interopRequireDefault(__webpack_require__(/*! ./Homepage */ "./client/components/Homepage.js"));
+
+var _AddJellyForm = _interopRequireDefault(__webpack_require__(/*! ./admin/AddJellyForm */ "./client/components/admin/AddJellyForm.js"));
+
+var _AdminLanding = _interopRequireDefault(__webpack_require__(/*! ./admin/AdminLanding */ "./client/components/admin/AdminLanding.js"));
+
+var _SingleJelly = _interopRequireDefault(__webpack_require__(/*! ./SingleJelly */ "./client/components/SingleJelly.js"));
+
+var _JellyList = _interopRequireDefault(__webpack_require__(/*! ./JellyList */ "./client/components/JellyList.js"));
+
+var _AuthForm = __webpack_require__(/*! ./AuthForm */ "./client/components/AuthForm.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 
@@ -771,8 +1069,17 @@ function (_Component) {
         path: "/signup",
         component: _components.Signup
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/create",
-        component: _components.CreateProduct
+        path: "/admin/addjelly",
+        component: _components.AddJellyForm
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/admin",
+        component: _components.AdminLanding
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/jellies/:jellyId",
+        component: _components.SingleJelly
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/jellies",
+        component: _components.JellyList
       }), isLoggedIn && _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         path: "/home",
         component: _components.UserHome
@@ -793,15 +1100,15 @@ var mapState = function mapState(state) {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.accessLevel >= 3
+    isLoggedIn: !!state.user.user.id,
+    isAdmin: state.user.user.accessLevel >= 3
   };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     loadInitialData: function loadInitialData() {
-      dispatch((0, _store.me)());
+      dispatch((0, _store.fetchUser)());
     }
   };
 }; // The `withRouter` wrapper makes sure that updates are not blocked
@@ -887,7 +1194,18 @@ Object.keys(_user).forEach(function (key) {
   });
 });
 
-var _products = _interopRequireDefault(__webpack_require__(/*! ./products */ "./client/store/products.js"));
+var _jellies = _interopRequireWildcard(__webpack_require__(/*! ./jellies */ "./client/store/jellies.js"));
+
+Object.keys(_jellies).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _jellies[key];
+    }
+  });
+});
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -895,7 +1213,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var reducer = (0, _redux.combineReducers)({
   user: _user.default,
-  products: _products.default
+  jellies: _jellies.default
 });
 var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default, (0, _reduxLogger.default)({
   collapsed: true
@@ -906,10 +1224,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./client/store/products.js":
-/*!**********************************!*\
-  !*** ./client/store/products.js ***!
-  \**********************************/
+/***/ "./client/store/jellies.js":
+/*!*********************************!*\
+  !*** ./client/store/jellies.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -920,7 +1238,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
-exports.fetchCategories = exports.fetchProducts = void 0;
+exports.fetchSingleJelly = exports.fetchCategories = exports.fetchJellies = void 0;
 
 var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
@@ -940,13 +1258,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  * ACTION TYPES
  */
 var GET_CATEGORIES = 'GET_CATEGORIES';
-var GET_PRODUCTS = 'GET_PRODUCTS';
+var GET_JELLIES = 'GET_JELLIES';
+var GET_SINGLE_JELLY = 'GET_SINGLE_JELLY';
 /**
  * INITIAL STATE
  */
 
 var initState = {
-  products: [],
+  jellies: {},
+  singleJelly: {},
   categories: []
   /**
    * ACTION CREATORS
@@ -954,10 +1274,10 @@ var initState = {
 
 };
 
-var getProducts = function getProducts(products) {
+var getJellies = function getJellies(jellies) {
   return {
-    type: GET_PRODUCTS,
-    products: products
+    type: GET_JELLIES,
+    jellies: jellies
   };
 };
 
@@ -967,12 +1287,19 @@ var getCategories = function getCategories(categories) {
     categories: categories
   };
 };
+
+var getSingleJelly = function getSingleJelly(jelly) {
+  return {
+    type: GET_SINGLE_JELLY,
+    jelly: jelly
+  };
+};
 /**
  * THUNK CREATORS
  */
 
 
-var fetchProducts = function fetchProducts() {
+var fetchJellies = function fetchJellies() {
   return (
     /*#__PURE__*/
     function () {
@@ -987,12 +1314,12 @@ var fetchProducts = function fetchProducts() {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _axios.default.get('/api/products');
+                return _axios.default.get('/api/jellies');
 
               case 3:
                 _ref2 = _context.sent;
                 data = _ref2.data;
-                action = getProducts(data);
+                action = getJellies(data);
                 dispatch(action);
                 _context.next = 12;
                 break;
@@ -1017,7 +1344,7 @@ var fetchProducts = function fetchProducts() {
   );
 };
 
-exports.fetchProducts = fetchProducts;
+exports.fetchJellies = fetchJellies;
 
 var fetchCategories = function fetchCategories() {
   return (
@@ -1034,7 +1361,7 @@ var fetchCategories = function fetchCategories() {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _axios.default.get('/api/products/categories');
+                return _axios.default.get('/api/jellies/categories');
 
               case 3:
                 _ref4 = _context2.sent;
@@ -1063,21 +1390,77 @@ var fetchCategories = function fetchCategories() {
     }()
   );
 };
+
+exports.fetchCategories = fetchCategories;
+
+var fetchSingleJelly = function fetchSingleJelly(jellyId) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref5 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        var _ref6, data, action;
+
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                console.log('jellyId:', jellyId);
+                _context3.next = 4;
+                return _axios.default.get("/api/jellies/".concat(jellyId));
+
+              case 4:
+                _ref6 = _context3.sent;
+                data = _ref6.data;
+                action = getSingleJelly(data);
+                dispatch(action);
+                _context3.next = 13;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](0);
+                console.error(_context3.t0);
+
+              case 13:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 10]]);
+      }));
+
+      return function (_x3) {
+        return _ref5.apply(this, arguments);
+      };
+    }()
+  );
+};
 /**
  * REDUCER
  */
 
 
-exports.fetchCategories = fetchCategories;
+exports.fetchSingleJelly = fetchSingleJelly;
 
 function _default() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case GET_PRODUCTS:
+    case GET_JELLIES:
       return _objectSpread({}, state, {
-        products: action.products
+        jellies: action.jellies.reduce(function (obj, item) {
+          obj[item.id] = item;
+          return obj;
+        }, {})
+      });
+
+    case GET_SINGLE_JELLY:
+      return _objectSpread({}, state, {
+        singleJelly: action.jelly
       });
 
     case GET_CATEGORIES:
@@ -1106,13 +1489,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
-exports.logout = exports.auth = exports.me = void 0;
+exports.logout = exports.auth = exports.fetchUser = void 0;
 
 var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
 var _history = _interopRequireDefault(__webpack_require__(/*! ../history */ "./client/history.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -1127,10 +1514,13 @@ var REMOVE_USER = 'REMOVE_USER';
  * INITIAL STATE
  */
 
-var defaultUser = {};
-/**
- * ACTION CREATORS
- */
+var initState = {
+  user: {}
+  /**
+   * ACTION CREATORS
+   */
+
+};
 
 var getUser = function getUser(user) {
   return {
@@ -1149,14 +1539,15 @@ var removeUser = function removeUser() {
  */
 
 
-var me = function me() {
+var fetchUser = function fetchUser() {
   return (
     /*#__PURE__*/
     function () {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(dispatch) {
-        var res;
+        var _ref2, data, action;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -1166,22 +1557,24 @@ var me = function me() {
                 return _axios.default.get('/auth/me');
 
               case 3:
-                res = _context.sent;
-                dispatch(getUser(res.data || defaultUser));
-                _context.next = 10;
+                _ref2 = _context.sent;
+                data = _ref2.data;
+                action = getUser(data);
+                dispatch(action);
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 7]]);
+        }, _callee, this, [[0, 9]]);
       }));
 
       return function (_x) {
@@ -1191,13 +1584,13 @@ var me = function me() {
   );
 };
 
-exports.me = me;
+exports.fetchUser = fetchUser;
 
 var auth = function auth(email, password, method) {
   return (
     /*#__PURE__*/
     function () {
-      var _ref2 = _asyncToGenerator(
+      var _ref3 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2(dispatch) {
         var res;
@@ -1242,7 +1635,7 @@ var auth = function auth(email, password, method) {
       }));
 
       return function (_x2) {
-        return _ref2.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       };
     }()
   );
@@ -1254,7 +1647,7 @@ var logout = function logout() {
   return (
     /*#__PURE__*/
     function () {
-      var _ref3 = _asyncToGenerator(
+      var _ref4 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(dispatch) {
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -1287,7 +1680,7 @@ var logout = function logout() {
       }));
 
       return function (_x3) {
-        return _ref3.apply(this, arguments);
+        return _ref4.apply(this, arguments);
       };
     }()
   );
@@ -1300,15 +1693,19 @@ var logout = function logout() {
 exports.logout = logout;
 
 function _default() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultUser;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case GET_USER:
-      return action.user;
+      return _objectSpread({}, state, {
+        user: action.user
+      });
 
     case REMOVE_USER:
-      return defaultUser;
+      return _objectSpread({}, state, {
+        user: {}
+      });
 
     default:
       return state;
