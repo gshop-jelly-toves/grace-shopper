@@ -34,7 +34,7 @@ Jelly.hasMany(Review)
 Review.belongsTo(User)
 User.hasMany(Review)
 Category.hasMany(Jelly)
-Jelly.belongsTo(Category)
+Jelly.belongsToMany(Category)
 
 module.exports = {
   User,
