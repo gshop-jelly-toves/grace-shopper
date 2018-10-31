@@ -57,3 +57,10 @@ router.put('/', requireAdmin, async (req, res, next) => {
   } catch (e) { next(e) }
 })
 
+// /api/jellies/categories POST
+router.post('/categories', requireAdmin, async (req, res, next) => {
+  try {
+    const category = await Category.create(req.body)
+    res.json(category)
+  } catch (e) { console.error(e)}
+})
