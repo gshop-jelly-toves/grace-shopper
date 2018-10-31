@@ -19,7 +19,7 @@ class JellyList extends Component {
 
     return (
       <div id="jellyList">
-        {jellysList.map(jelly => (
+        { jellysList.map(jelly => (
           <div key={jelly.id}>
             <Link to={`/jellys/${jelly.id}`}>
               <img src={jelly.photo} />
@@ -33,11 +33,9 @@ class JellyList extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    jellys: state.jellys.jellys
-  }
-}
+const mapState = ({ jellys: {jellys} }) => ({
+  jellys
+})
 
 const mapDispatch = { fetchJellys }
 

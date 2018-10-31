@@ -117,16 +117,12 @@ class AddJellyForm extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    categories: state.jellys.categories
-  }
-}
+const mapState = ({ jellys: {categories} }) => ({
+  categories
+})
 
-const mapDispatch = dispatch => {
-  return {
-    fetchCategories: () => dispatch(fetchCategories())
-  }
+const mapDispatch = {
+  fetchCategories
 }
 
 export default connect(mapState, mapDispatch)(AddJellyForm)

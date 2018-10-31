@@ -12,10 +12,10 @@ export const Homepage = props => {
     <div>
       <h3>Welcome, {email}</h3>
 
-      <p>because we don't want our jellyion server to be</p> 
-      <p>cluttered up with dev jellypendencies like jellypack,</p>
-      <p>but at the same jelly we don't want our jellyvelopment git-jellying</p>
-      <p>to be jellied with jellyion build jellies...</p>
+      <p>because we don't want our jelly server to be</p> 
+      <p>cluttered with dev dependencies like jellypack,</p>
+      <p>we adhere to strict jellyOps principles in</p>
+      <p>order avoid any jelly-merge conflicts</p>
     </div>
   )
 }

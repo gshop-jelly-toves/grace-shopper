@@ -22,8 +22,8 @@ class SingleJelly extends Component {
   }
 
   render() {
-    const { jelly } = this.props
-    return this.props.jelly ? (
+    const jelly = this.props.singleJelly
+    return jelly ? (
       <div>
         <div>
           <h2>{jelly.name}</h2>
@@ -39,16 +39,12 @@ class SingleJelly extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    jelly: state.jellys.singleJelly
-  }
-}
+const mapState = ({ jellys: {singleJelly} }) => ({
+  singleJelly
+})
 
-const mapDispatch = dispatch => {
-  return {
-    fetchSingleJelly: jellyId => dispatch(fetchSingleJelly(jellyId))
-  }
-}
+const mapDispatch = dispatch => ({
+  fetchSingleJelly: jellyId => dispatch( fetchSingleJelly(jellyId) )
+})
 
 export default connect(mapState, mapDispatch)(SingleJelly)
