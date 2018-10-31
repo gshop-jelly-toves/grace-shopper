@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, CreateProduct, ProductList, SingleProduct} from './components'
+import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly } from './components'
 import {fetchUser} from './store'
 
 /**
@@ -21,9 +21,9 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/products/add" component={CreateProduct} />
-        <Route path='/products/:productId' component={SingleProduct} />
-        <Route path="/products" component={ProductList} />        
+        <Route path="/jellies/add" component={AddJellyForm} />
+        <Route path='/jellies/:jellyId' component={SingleJelly} />
+        <Route path="/jellies" component={JellyList} />        
          {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

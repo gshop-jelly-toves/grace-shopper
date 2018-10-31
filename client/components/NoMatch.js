@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NoMatch = props => {
+const NoMatch = () => {
   return (
     <div>
       <h1>Sorry the page you're looking for doesn't exist</h1>

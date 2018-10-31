@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {fetchCategories} from '../store/products'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchCategories } from '../../store/jellies'
 import axios from 'axios'
 
-class CreateProduct extends Component {
+class AddJellyForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,7 +30,7 @@ class CreateProduct extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    await axios.post('/api/products', this.state)
+    await axios.post('/api/jellies', this.state)
 
     this.setState({
       name: '',
@@ -43,13 +43,13 @@ class CreateProduct extends Component {
   }
 
   render() {
-    const {name, description, price, inventory} = this.state
+    const { name, description, price, inventory } = this.state
     const isEnabled = name && description && price && inventory
     return (
       <div>
         <form>
-          <h2>Add Product</h2>
-          <label htmlFor="name">Product Name:</label>
+          <h2>Add Jelly</h2>
+          <label htmlFor="name">Jelly Name:</label>
           <input
             type="text"
             name="name"
@@ -94,7 +94,7 @@ class CreateProduct extends Component {
               </option>
             ))}
           </select>
-          <label htmlFor="photo">Product Photo</label>
+          <label htmlFor="photo">Jelly Photo</label>
           <input
             type="url"
             name="photo"
@@ -109,7 +109,7 @@ class CreateProduct extends Component {
             disabled={!isEnabled}
             className={isEnabled ? 'enabled' : 'disabled'}
           >
-            Add Product
+            Add Jelly
           </button>
         </form>
       </div>
@@ -117,16 +117,12 @@ class CreateProduct extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    categories: state.products.categories
-  }
+const mapState = ({ jellies: {categories} }) => ({
+  categories
+})
+
+const mapDispatch = {
+  fetchCategories
 }
 
-const mapDispatch = dispatch => {
-  return {
-    fetchCategories: () => dispatch(fetchCategories())
-  }
-}
-
-export default connect(mapState, mapDispatch)(CreateProduct)
+export default connect(mapState, mapDispatch)(AddJellyForm)
