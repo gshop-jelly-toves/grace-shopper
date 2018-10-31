@@ -13,7 +13,8 @@ class AddJellyForm extends Component {
       price: '',
       inventory: '',
       categoryIds: [],
-      photo: ''
+      photo: '',
+      checked: false
     }
   }
 
@@ -71,9 +72,15 @@ class AddJellyForm extends Component {
     const newJelly = this.state
     await axios.post('/api/jellies', newJelly)
 
-    console.log('ENTIRE SET', this.selectedCheckboxes)
+    // console.log('ENTIRE SET', this.selectedCheckboxes)
     // this.selectedCheckboxes.forEach(e => e.delete(e))
     // console.log(this.selectedCheckboxes)
+
+
+    // (function() {
+    // document.getElementById("add-jelly-form").reset();
+    // })()
+
 
     this.setState({
       name: '',
@@ -81,7 +88,7 @@ class AddJellyForm extends Component {
       price: '',
       inventory: '',
       categoryIds: [],
-      photo: ''
+      photo: '',
     })
   }
 
@@ -96,11 +103,11 @@ class AddJellyForm extends Component {
   render() {
     const {name, description, price, inventory} = this.state
     const isEnabled = name && description && price && inventory
-    console.log(this.state)
+    console.log('STATE', this.state)
 
     return (
       <div>
-        <form>
+        <form id="add-jelly-form">
           <h2>Add Jelly</h2>
           <label htmlFor="name">Jelly Name:</label>
           <input
@@ -135,18 +142,12 @@ class AddJellyForm extends Component {
             required
           />
           <label htmlFor="category">Categories</label>
-          {/* <select
-            name="categoryId"
-            value={this.state.category}
-            onChange={this.handleChange}
-          >
-            <option>-</option>
-            {this.props.categories.map(category => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select> */}
+
+
+
+
+{/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
+
           {this.props.categories.map(category => (
             <CheckboxCategory
               category={category}
@@ -155,6 +156,7 @@ class AddJellyForm extends Component {
               checked={false}
             />
           ))}
+
 
           <label htmlFor="photo">Jelly Photo</label>
           <input
