@@ -5,14 +5,14 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_CATEGORIES = 'GET_CATEGORIES'
-const GET_JELLYS = 'GET_JELLYS'
+const GET_JELLIES = 'GET_JELLIES'
 const GET_SINGLE_JELLY ='GET_SINGLE_JELLY'
 
 /**
  * INITIAL STATE
  */
 const initState = {
-  jellys: {},
+  jellies: {},
   singleJelly: {},
   categories: []
 }
@@ -20,8 +20,8 @@ const initState = {
 /**
  * ACTION CREATORS
  */
-const getJellys = jellys => ({
-  type: GET_JELLYS, jellys
+const getJellies = jellies => ({
+  type: GET_JELLIES, jellies
 })
 
 const getCategories = categories => ({
@@ -35,10 +35,10 @@ const getSingleJelly = jelly => ({
 /**
  * THUNK CREATORS
  */
-export const fetchJellys = () => async dispatch => {
+export const fetchJellies = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/jellys')
-    const action = getJellys(data)
+    const { data } = await axios.get('/api/jellies')
+    const action = getJellies(data)
     dispatch(action)
   } catch (e) {
     console.error(e)
@@ -47,7 +47,7 @@ export const fetchJellys = () => async dispatch => {
 
 export const fetchCategories = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/jellys/categories')
+    const { data } = await axios.get('/api/jellies/categories')
     const action = getCategories(data)
     dispatch(action)
   } catch (e) {
@@ -58,7 +58,7 @@ export const fetchCategories = () => async dispatch => {
 export const fetchSingleJelly = jellyId => async dispatch => {
   try {
     console.log('jellyId:', jellyId)
-    const { data } = await axios.get(`/api/jellys/${jellyId}`)
+    const { data } = await axios.get(`/api/jellies/${jellyId}`)
     const action = getSingleJelly(data)
     dispatch(action)
   } catch (e) {
@@ -71,9 +71,9 @@ export const fetchSingleJelly = jellyId => async dispatch => {
  */
 export default function(state = initState, action) {
   switch (action.type) {
-    case GET_JELLYS:
-      return { ...state, jellys: 
-        action.jellys.reduce( (obj, item) => {
+    case GET_JELLIES:
+      return { ...state, jellies: 
+        action.jellies.reduce( (obj, item) => {
           obj[item.id] = item
           return obj
         }, {})

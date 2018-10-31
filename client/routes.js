@@ -21,9 +21,9 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/jellys/add" component={AddJellyForm} />
-        <Route path='/jellys/:jellyId' component={SingleJelly} />
-        <Route path="/jellys" component={JellyList} />        
+        <Route path="/jellies/add" component={AddJellyForm} />
+        <Route path='/jellies/:jellyId' component={SingleJelly} />
+        <Route path="/jellies" component={JellyList} />        
          {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

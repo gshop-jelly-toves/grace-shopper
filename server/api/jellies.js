@@ -8,16 +8,16 @@ module.exports = router
   GUEST ROUTES
 */
 
-// /api/jellys GET
+// /api/jellies GET
 router.get('/', async (req, res, next) => {
   try {
     // console.log(req.query)
-    const jellys = await Jelly.findAll()
-    res.json(jellys)
+    const jellies = await Jelly.findAll()
+    res.json(jellies)
   } catch (e) { next(e) }
 })
 
-// /api/jellys/categories GET
+// /api/jellies/categories GET
 router.get('/categories', async (req, res, next) => {
   try {
     const categories = await Category.findAll()
@@ -26,7 +26,7 @@ router.get('/categories', async (req, res, next) => {
 })
 
 
-// /api/jellys/:jellyId GET
+// /api/jellies/:jellyId GET
 router.get('/:jellyId', async (req, res, next) => {
   try {
     const { jellyId } = req.params
@@ -41,7 +41,7 @@ router.get('/:jellyId', async (req, res, next) => {
   ADMIN ROUTES
 */
 
-// /api/jellys POST
+// /api/jellies POST
 router.post('/', requireAdmin, async (req, res, next) => {
   try {
     const jelly = await Jelly.create(req.body)
@@ -49,7 +49,7 @@ router.post('/', requireAdmin, async (req, res, next) => {
   } catch (e) { console.error(e)}
 })
 
-// /api/jellys/:jellyId PUT
+// /api/jellies/:jellyId PUT
 router.put('/', requireAdmin, async (req, res, next) => {
   try {
     const jelly = await Jelly.update(req.body)

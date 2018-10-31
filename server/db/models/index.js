@@ -1,7 +1,7 @@
 const User = require('./user')
-const Jelly = require('./jellys')
+const Jelly = require('./jelly')
 const Review = require('./review')
-const Order = require('./orders')
+const Order = require('./order')
 const Category = require('./category')
 
 /**

@@ -39,7 +39,7 @@ class SingleJelly extends Component {
   }
 }
 
-const mapState = ({ jellys: {singleJelly} }) => ({
+const mapState = ({ jellies: {singleJelly} }) => ({
   singleJelly
 })
 

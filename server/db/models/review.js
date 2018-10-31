@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Jelly = require('./jellys')
+const Jelly = require('./index')
 
 const Review = db.define('review', {
   text: {

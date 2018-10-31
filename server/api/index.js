@@ -2,7 +2,7 @@ const router = require('express').Router()
 module.exports = router
 
 router.use('/users', require('./users'))
-router.use('/jellys', require('./jellys'))
+router.use('/jellies', require('./jellies'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

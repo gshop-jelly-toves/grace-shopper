@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchCategories } from '../../store/jellys'
+import { fetchCategories } from '../../store/jellies'
 import axios from 'axios'
 
 class AddJellyForm extends Component {
@@ -30,7 +30,7 @@ class AddJellyForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    await axios.post('/api/jellys', this.state)
+    await axios.post('/api/jellies', this.state)
 
     this.setState({
       name: '',
@@ -117,7 +117,7 @@ class AddJellyForm extends Component {
   }
 }
 
-const mapState = ({ jellys: {categories} }) => ({
+const mapState = ({ jellies: {categories} }) => ({
   categories
 })
 

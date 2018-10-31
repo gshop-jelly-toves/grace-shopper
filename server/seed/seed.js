@@ -7,14 +7,14 @@ const {Order, User, Jelly, Review, Category} = require('../db/models')
     - 8 Categories
     - 50 Orders
     - 50 Users      (all 'user' level)
-    - 50 Jellys
+    - 50 Jellies
     - 40 Reviews    (80% of users)
 */
 
 const Categories = require('./categories.json')
 const Users = require('./users.json')
 const Orders = require('./orders.json')
-const Jellys = require('./jellys.json')
+const Jellies = require('./jellies.json')
 const Reviews = require('./reviews.json')
 
 async function seed() {
@@ -26,14 +26,14 @@ async function seed() {
   await Promise.all(Categories.map(category => Category.create(category)))
   await Promise.all(Users.map(user => User.create(user)))
   await Promise.all(Orders.map(order => Order.create(order)))
-  await Promise.all(Jellys.map(jelly => Jelly.create(jelly)))
+  await Promise.all(Jellies.map(jelly => Jelly.create(jelly)))
   await Promise.all(Reviews.map(review => Review.create(review)))
 
   console.log(`\n########### SEEDING REPORT ###########\n`)
   console.log(`Seeded ${Categories.length} categories.`)
   console.log(`Seeded ${Orders.length} orders.`)
   console.log(`Seeded ${Users.length} users.`)
-  console.log(`Seeded ${Jellys.length} jellys.`)
+  console.log(`Seeded ${Jellies.length} jellies.`)
   console.log(`Seeded ${Reviews.length} reviews.`)
   console.log(`Seeding completed successfully!\n`)
   console.log(`######################################\n`)

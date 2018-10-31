@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const Jelly = require('./jellys')
+const Jelly = require('./index')
 const db = require('../db')
 
 const Order = db.define('order', {

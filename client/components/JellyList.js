@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchJellys} from '../store'
+import {fetchJellies} from '../store'
 
 class JellyList extends Component {
   constructor(props) {
@@ -9,19 +9,19 @@ class JellyList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchJellys()
+    this.props.fetchJellies()
   }
 
   render() {
-    const keyedJellys = this.props.jellys
-    const jellysList = Object.keys(keyedJellys)
-      .map( key => keyedJellys[key] )
+    const keyedJellies = this.props.jellies
+    const jelliesList = Object.keys(keyedJellies)
+      .map( key => keyedJellies[key] )
 
     return (
       <div id="jellyList">
-        { jellysList.map(jelly => (
+        { jelliesList.map(jelly => (
           <div key={jelly.id}>
-            <Link to={`/jellys/${jelly.id}`}>
+            <Link to={`/jellies/${jelly.id}`}>
               <img src={jelly.photo} />
               <h3>{jelly.name}</h3>
               <p>${jelly.price}</p>
@@ -33,10 +33,10 @@ class JellyList extends Component {
   }
 }
 
-const mapState = ({ jellys: {jellys} }) => ({
-  jellys
+const mapState = ({ jellies: {jellies} }) => ({
+  jellies
 })
 
-const mapDispatch = { fetchJellys }
+const mapDispatch = { fetchJellies }
 
 export default connect(mapState, mapDispatch)(JellyList)
