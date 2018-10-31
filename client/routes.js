@@ -16,7 +16,7 @@ class Routes extends Component {
   render() {
     const {isLoggedIn} = this.props
  
-    return (
+    return ( 
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
@@ -36,7 +36,7 @@ class Routes extends Component {
     )
   }
 }
-
+ 
 /**
  * CONTAINER
  */
