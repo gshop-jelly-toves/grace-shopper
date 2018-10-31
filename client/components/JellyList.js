@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchJellies, fetchCategories} from '../store'
+import {fetchJellies} from '../store'
 
 class JellyList extends Component {
   constructor(props) {
@@ -14,13 +14,11 @@ class JellyList extends Component {
   componentDidMount() {
     const amount = this.state.jelliesPerReq
     this.props.fetchJellies(0, amount)
-    this.props.fetchCategories()
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-      //filter here
     })
   }
 
@@ -63,8 +61,7 @@ const mapState = ({jellies: {jellies}}) => ({
 })
 
 const mapDispatch = dispatch => ({
-  fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount)),
-  fetchCategories: () => dispatch(fetchCategories())
+  fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount))
 })
 
 export default connect(mapState, mapDispatch)(JellyList)

@@ -3,25 +3,35 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import {logout} from '../store'
+import {Toolbar} from './index'
 
 const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <div>
     <h1>Jelly for your Belly!</h1>
     <nav>
       {isLoggedIn ? (
-        <div id='navbar-main'>
+        <div id="navbar-main">
           {/* The navbar will show these links after you log in */}
-          <NavLink to="/home" activeClassName='nav-active'>Home</NavLink>
-          <NavLink to="/jellies" activeClassName='nav-active'>Shop</NavLink>
+          <NavLink to="/home" activeClassName="nav-active">
+            Home
+          </NavLink>
+          <NavLink to="/jellies" activeClassName="nav-active">
+            Shop
+          </NavLink>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
+          <Toolbar />
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <NavLink to="/login" activeClassName='nav-active'>Login</NavLink>
-          <NavLink to="/signup" activeClassName='nav-active'>Sign Up</NavLink>
+          <NavLink to="/login" activeClassName="nav-active">
+            Login
+          </NavLink>
+          <NavLink to="/signup" activeClassName="nav-active">
+            Sign Up
+          </NavLink>
         </div>
       )}
       {isAdmin && <NavLink to="/admin">Admin Tools</NavLink>}
