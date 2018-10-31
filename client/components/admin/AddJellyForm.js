@@ -31,7 +31,6 @@ class AddJellyForm extends Component {
   handleSubmit = async event => {
     event.preventDefault()
     const newJelly = this.state
-    console.log(this.state)
     await axios.post('/api/jellies', newJelly)
 
     this.setState({
