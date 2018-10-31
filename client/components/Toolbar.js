@@ -6,8 +6,12 @@ class Toolbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      category: ''
+      category: '',
+      search: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -19,6 +23,17 @@ class Toolbar extends Component {
       category: event.target.value
     })
     console.log('LOCAL STATE BELOW\n', this.state)
+  }
+
+  handleSearch(e) {
+    this.setState({
+      search: e.target.value
+    })
+  }
+
+  handleSearch(e) {
+    e.preventDefault()
+    console.log('//////', this.state.search)
   }
 
   render() {
@@ -37,6 +52,17 @@ class Toolbar extends Component {
             </option>
           ))}
         </select>
+        <form>
+          <input
+            type="text"
+            placeholder="search jellies"
+            onChange={this.handleSearch}
+            value={this.state.search}
+          />
+          <button type="submit" value="submit" onClick={this.handleSubmit}>
+            Search
+          </button>
+        </form>
       </div>
     )
   }
