@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Product, Category } = require('../db/models')
+const { Jelly, Category } = require('../db/models')
 const { requireLogin, requireSeller, requireAdmin, requireDev } = require('../middlewares')
 
 module.exports = router
@@ -8,16 +8,16 @@ module.exports = router
   GUEST ROUTES
 */
 
-// /api/products GET
+// /api/jellys GET
 router.get('/', async (req, res, next) => {
   try {
     // console.log(req.query)
-    const products = await Product.findAll()
-    res.json(products)
+    const jellys = await Jelly.findAll()
+    res.json(jellys)
   } catch (e) { next(e) }
 })
 
-// /api/products/categories GET
+// /api/jellys/categories GET
 router.get('/categories', async (req, res, next) => {
   try {
     const categories = await Category.findAll()
@@ -26,12 +26,12 @@ router.get('/categories', async (req, res, next) => {
 })
 
 
-// /api/products/:productId GET
-router.get('/:productId', async (req, res, next) => {
+// /api/jellys/:jellyId GET
+router.get('/:jellyId', async (req, res, next) => {
   try {
-    const { productId } = req.params
-    const product = await Product.findById(productId)
-    res.json(product)
+    const { jellyId } = req.params
+    const jelly = await Jelly.findById(jellyId)
+    res.json(jelly)
   } catch (e) { next(e) }
 })
 
@@ -41,19 +41,19 @@ router.get('/:productId', async (req, res, next) => {
   ADMIN ROUTES
 */
 
-// /api/products POST
+// /api/jellys POST
 router.post('/', requireAdmin, async (req, res, next) => {
   try {
-    const product = await Product.create(req.body)
-    res.json(product)
+    const jelly = await Jelly.create(req.body)
+    res.json(jelly)
   } catch (e) { console.error(e)}
 })
 
-// /api/products/:productId PUT
+// /api/jellys/:jellyId PUT
 router.put('/', requireAdmin, async (req, res, next) => {
   try {
-    const product = await Product.update(req.body)
-    res.json(product)
+    const jelly = await Jelly.update(req.body)
+    res.json(jelly)
   } catch (e) { next(e) }
 })
 

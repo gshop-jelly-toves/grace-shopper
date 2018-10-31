@@ -5,40 +5,40 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_CATEGORIES = 'GET_CATEGORIES'
-const GET_PRODUCTS = 'GET_PRODUCTS'
-const GET_SINGLE_PRODUCT ='GET_SINGLE_PRODUCT'
+const GET_JELLYS = 'GET_JELLYS'
+const GET_SINGLE_JELLY ='GET_SINGLE_JELLY'
 
 /**
  * INITIAL STATE
  */
 const initState = {
-  products: {},
-  singleProduct: {},
+  jellys: {},
+  singleJelly: {},
   categories: []
 }
 
 /**
  * ACTION CREATORS
  */
-const getProducts = products => ({
-  type: GET_PRODUCTS, products
+const getJellys = jellys => ({
+  type: GET_JELLYS, jellys
 })
 
 const getCategories = categories => ({
   type: GET_CATEGORIES, categories
 })
 
-const getSingleProduct = product => ({
-  type: GET_SINGLE_PRODUCT, product
+const getSingleJelly = jelly => ({
+  type: GET_SINGLE_JELLY, jelly
 })
 
 /**
  * THUNK CREATORS
  */
-export const fetchProducts = () => async dispatch => {
+export const fetchJellys = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/products')
-    const action = getProducts(data)
+    const { data } = await axios.get('/api/jellys')
+    const action = getJellys(data)
     dispatch(action)
   } catch (e) {
     console.error(e)
@@ -47,7 +47,7 @@ export const fetchProducts = () => async dispatch => {
 
 export const fetchCategories = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/products/categories')
+    const { data } = await axios.get('/api/jellys/categories')
     const action = getCategories(data)
     dispatch(action)
   } catch (e) {
@@ -55,10 +55,11 @@ export const fetchCategories = () => async dispatch => {
   }
 }
 
-export const fetchSingleProduct = productId => async dispatch => {
+export const fetchSingleJelly = jellyId => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/products/${productId}`)
-    const action = getSingleProduct(data)
+    console.log('jellyId:', jellyId)
+    const { data } = await axios.get(`/api/jellys/${jellyId}`)
+    const action = getSingleJelly(data)
     dispatch(action)
   } catch (e) {
     console.error(e)
@@ -70,15 +71,15 @@ export const fetchSingleProduct = productId => async dispatch => {
  */
 export default function(state = initState, action) {
   switch (action.type) {
-    case GET_PRODUCTS:
-      return { ...state, products: 
-        action.products.reduce( (obj, item) => {
+    case GET_JELLYS:
+      return { ...state, jellys: 
+        action.jellys.reduce( (obj, item) => {
           obj[item.id] = item
           return obj
         }, {})
       }
-    case GET_SINGLE_PRODUCT:
-      return { ...state, singleProduct: action.product }
+    case GET_SINGLE_JELLY:
+      return { ...state, singleJelly: action.jelly }
     case GET_CATEGORIES:
       return { ...state, categories: action.categories }
     default:

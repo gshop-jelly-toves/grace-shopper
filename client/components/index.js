@@ -3,9 +3,9 @@
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
-export {default as Navbar} from './navbar'
-export {default as UserHome} from './user-home'
-export {default as CreateProduct} from './CreateProduct'
-export {default as SingleProduct} from './SingleProduct'
-export {default as ProductList} from './ProductList'
-export {Login, Signup} from './auth-form'
+export {default as Navbar} from './Navbar'
+export {default as UserHome} from './Homepage'
+export {default as AddJellyForm} from './admin/AddJellyForm'
+export {default as SingleJelly} from './SingleJelly'
+export {default as JellyList} from './JellyList'
+export {Login, Signup} from './AuthForm'

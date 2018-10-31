@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Product = require('./product')
+const Jelly = require('./jellys')
 
 const Review = db.define('review', {
   text: {
@@ -29,19 +29,19 @@ const Review = db.define('review', {
 */
 
 // const averageRating = async review => {
-//   const productP = Product.findById(review.productId)
+//   const jellyP = Jelly.findById(review.jellyId)
 //   const reviewsP = Review.findAll({
 //     where: {
-//       productId: review.productId
+//       jellyId: review.jellyId
 //     }
 //   })
 
-//   const [productRes, reviewsRes] = await Promise.all([productP, reviewsP])
-//   const product = productRes.data
+//   const [jellyRes, reviewsRes] = await Promise.all([jellyP, reviewsP])
+//   const jelly = jellyRes.data
 //   const reviews = reviewsRes.data
 
 //   const rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
-//   await product.update({rating})
+//   await jelly.update({rating})
 // }
 
 // Review.afterCreate(averageRating)

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const Product = require('./product')
+const Jelly = require('./jellys')
 const db = require('../db')
 
 const Order = db.define('order', {
@@ -25,7 +25,7 @@ const Order = db.define('order', {
 })
 
 const setCartTotal = async order => {
-  const items = await Product.findAll({
+  const items = await Jelly.findAll({
     where: {
       orderId: order.id
     }
