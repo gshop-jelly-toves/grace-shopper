@@ -35,6 +35,9 @@ class JellyList extends Component {
             if (a.rating < b.rating) return 1
             return 0
           })
+          // #######FILTER GOES#######
+          // .filter(jelly => jelly.)
+          // #######RIGHT HERE#######
           .map(jelly => (
             <div key={jelly.id}>
               <Link to={`/jellies/${jelly.id}`}>
@@ -56,8 +59,9 @@ class JellyList extends Component {
   }
 }
 
-const mapState = ({jellies: {jellies}}) => ({
-  jellies
+const mapState = ({jellies: {jellies}, user: {selectedCategory}}) => ({
+  jellies,
+  selectedCategory
 })
 
 const mapDispatch = dispatch => ({
