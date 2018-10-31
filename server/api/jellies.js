@@ -1,6 +1,18 @@
 const router = require('express').Router()
-const { Jelly, Category } = require('../db/models')
+
+// const { Jelly, Category } = require('../db/models')
+
+
 const { requireLogin, requireSeller, requireAdmin, requireDev } = require('../middlewares')
+
+
+const db = require('../db/db')
+
+const {
+    jelly: Jelly,
+    category: Category,
+    jelly_category: JellyCategory,
+} = db.models
 
 module.exports = router
 
@@ -11,8 +23,18 @@ module.exports = router
 // /api/jellies GET
 router.get('/', async (req, res, next) => {
   try {
-    // console.log(req.query)
-    const jellies = await Jelly.findAll()
+    const index = parseInt(req.query.index)
+    const amount = parseInt(req.query.amount)
+    const allJellies = await Jelly.findAll()
+
+    const jellies = allJellies
+      .sort(function(a, b) {
+        if (a.rating > b.rating) return -1
+        if (a.rating < b.rating) return 1
+        return 0;
+      })
+      .slice(index, index+amount)
+
     res.json(jellies)
   } catch (e) { next(e) }
 })
@@ -46,6 +68,12 @@ router.post('/', requireAdmin, async (req, res, next) => {
   try {
     const jelly = await Jelly.create(req.body)
     res.json(jelly)
+    await JellyCategory.create({
+      jellyId: jelly.dataValues.id,
+      categoryId: req.body.categoryId
+    })
+
+
   } catch (e) { console.error(e)}
 })
 
