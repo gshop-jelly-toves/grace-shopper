@@ -18,8 +18,6 @@ const Category = require('./category')
  * instead of: const User = require('../db/models/user')
  */
 
-
-Order.hasMany(Jelly)
 Jelly.belongsToMany(Order, {through: 'jelly-order'})
 
 /* On Order - userId */

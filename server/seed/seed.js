@@ -4,11 +4,11 @@ const db = require('../db')
 const {Order, User, Jelly, Review, Category} = require('../db/models')
 
 /*  -------------  Data -------------
-    - 8 Categories
+    - 11 Categories  (multiple per jelly??)
     - 50 Orders
     - 50 Users      (all 'user' level)
     - 50 Jellies
-    - 40 Reviews    (80% of users)
+    - 100 Reviews   (~2 per jelly)
 */
 
 const Categories = require('./categories.json')
@@ -18,10 +18,8 @@ const Jellies = require('./jellies.json')
 const Reviews = require('./reviews.json')
 
 async function seed() {
-
   await db.sync({force: true})
   console.log('db synced!')
-
 
   await Promise.all(Categories.map(category => Category.create(category)))
   await Promise.all(Users.map(user => User.create(user)))
