@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCategories} from '../store'
+
+import {fetchCategories, setCategory} from '../store'
 
 class Toolbar extends Component {
   constructor(props) {
     super(props)
+<<<<<<< HEAD
     this.state = {
       category: '',
       search: ''
@@ -12,6 +14,11 @@ class Toolbar extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+=======
+
+    this.handleChange = this.handleChange.bind(this)
+
+>>>>>>> master
   }
 
   componentDidMount() {
@@ -19,10 +26,10 @@ class Toolbar extends Component {
   }
 
   handleChange(event) {
-    this.setState({
+    this.props.setCategory({
       category: event.target.value
     })
-    console.log('LOCAL STATE BELOW\n', this.state)
+
   }
 
   handleSearch(e) {
@@ -44,7 +51,9 @@ class Toolbar extends Component {
 
     return (
       <div id="toolbar">
-        <select>
+
+        <select onChange={this.handleChange}>
+
           <option>Choose Category</option>
           {categories.map(category => (
             <option key={category.id} value={category.name}>
@@ -69,12 +78,15 @@ class Toolbar extends Component {
 }
 
 // DO NOT TOUCH
-const mapState = ({jellies: {categories}}) => ({
-  categories
+const mapState = ({jellies: {categories}, user: {selectedCategory}}) => ({
+  categories,
+  selectedCategory
 })
 
 const mapDispatch = dispatch => ({
-  fetchCategories: () => dispatch(fetchCategories())
+  fetchCategories: () => dispatch(fetchCategories()),
+  setCategory: category => dispatch(setCategory(category))
+
 })
 
 export default connect(mapState, mapDispatch)(Toolbar)
