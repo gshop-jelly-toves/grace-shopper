@@ -13,9 +13,7 @@ class Toolbar extends Component {
   }
 
   handleChange(event) {
-    this.props.setCategory({
-      category: event.target.value
-    })
+    this.props.setCategory(event.target.value)
   }
 
   render() {
