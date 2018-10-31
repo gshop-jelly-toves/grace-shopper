@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchCategories} from '../../store/jellies'
 import axios from 'axios'
+import CheckboxCategory from './CheckboxCategory'
 
 class AddJellyForm extends Component {
   constructor(props) {
@@ -11,41 +12,92 @@ class AddJellyForm extends Component {
       description: '',
       price: '',
       inventory: '',
-      categoryId: '',
+      categoryIds: [],
       photo: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  UNSAFE_componentWillMount = () => {
+    this.selectedCheckboxes = new Set()
   }
 
   componentDidMount() {
     this.props.fetchCategories()
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = async event => {
+  // toggleCheckbox = checkbox => {
+  //   if (this.selectedCheckboxes.has(checkbox)) {
+  //     this.selectedCheckboxes.delete(checkbox)
+
+  //     let array = [...this.state.categoryIds]
+  //     let index = array.indexOf(checkbox.id)
+  //     array.splice(index, 1)
+
+  //     this.setState({categoryIds: array})
+  //   } else {
+  //     this.selectedCheckboxes.add(checkbox)
+  //     this.setState(prevState => ({
+  //       categoryIds: [...prevState.categoryIds, checkbox.id]
+  //     }))
+  //   }
+  // }
+
+  toggleCheckbox = (checkbox) => {
+    if (this.selectedCheckboxes.has(checkbox)) {
+      this.selectedCheckboxes.delete(checkbox)
+
+      let array = [...this.state.categoryIds]
+      let index = array.indexOf(checkbox.id)
+      array.splice(index, 1)
+
+      this.setState({categoryIds: array})
+    } else {
+      this.selectedCheckboxes.add(checkbox)
+      this.setState(prevState => ({
+        categoryIds: [...prevState.categoryIds, checkbox.id]
+      }))
+    }
+    console.log('ONE CHECKBOX', this.selectedCheckboxes)
+  }
+
+  handleAddAnother = async event => {
     event.preventDefault()
     const newJelly = this.state
     await axios.post('/api/jellies', newJelly)
+
+    console.log('ENTIRE SET', this.selectedCheckboxes)
+    // this.selectedCheckboxes.forEach(e => e.delete(e))
+    // console.log(this.selectedCheckboxes)
 
     this.setState({
       name: '',
       description: '',
       price: '',
       inventory: '',
-      category: '-',
+      categoryIds: [],
       photo: ''
     })
+  }
+
+  handleSaveRedirect = async event => {
+    event.preventDefault()
+    const newJelly = this.state
+    const {data} = await axios.post('/api/jellies', newJelly)
+
+    this.props.history.push(`/jellies/${data.id}`)
   }
 
   render() {
     const {name, description, price, inventory} = this.state
     const isEnabled = name && description && price && inventory
+    console.log(this.state)
+
     return (
       <div>
         <form>
@@ -82,7 +134,7 @@ class AddJellyForm extends Component {
             onChange={this.handleChange}
             required
           />
-          <p>Select Category</p>
+          <label htmlFor="category">Categories</label>
           {/* <select
             name="categoryId"
             value={this.state.category}
@@ -95,18 +147,15 @@ class AddJellyForm extends Component {
               </option>
             ))}
           </select> */}
-          <select
-            name="categoryId"
-            value={this.state.category}
-            onChange={this.handleCheckbox}
-          >
-            <option>-</option>
-            {this.props.categories.map(category => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+          {this.props.categories.map(category => (
+            <CheckboxCategory
+              category={category}
+              key={category.id}
+              handleCheckboxChange={this.toggleCheckbox}
+              checked={false}
+            />
+          ))}
+
           <label htmlFor="photo">Jelly Photo</label>
           <input
             type="url"
@@ -118,11 +167,19 @@ class AddJellyForm extends Component {
           />
           <button
             type="submit"
-            onClick={this.handleSubmit}
+            onClick={this.handleAddAnother}
             disabled={!isEnabled}
             className={isEnabled ? 'enabled' : 'disabled'}
           >
-            Add Jelly
+            Save and add another
+          </button>
+          <button
+            type="submit"
+            onClick={this.handleSaveRedirect}
+            disabled={!isEnabled}
+            className={isEnabled ? 'enabled' : 'disabled'}
+          >
+            Save and go to jelly
           </button>
         </form>
       </div>
