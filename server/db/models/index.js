@@ -19,7 +19,7 @@ const Category = require('./category')
  */
 
 
-Order.hasMany(Jelly)
+
 Jelly.belongsToMany(Order, {through: 'jelly-order'})
 
 /* On Order - userId */
@@ -33,8 +33,9 @@ Jelly.hasMany(Review)
 /* On Review - userId */
 Review.belongsTo(User)
 User.hasMany(Review)
-Category.hasMany(Jelly)
-Jelly.belongsToMany(Category, {through:'jelly-category'})
+
+Jelly.belongsToMany(Category, {through:'jelly_category'})
+Category.belongsToMany(Jelly, {through:'jelly_category'})
 
 module.exports = {
   User,

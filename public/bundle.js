@@ -672,15 +672,18 @@ function (_Component) {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(event) {
+        var newJelly;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 event.preventDefault();
-                _context.next = 3;
-                return _axios.default.post('/api/jellies', _this.state);
+                newJelly = _this.state;
+                console.log(_this.state);
+                _context.next = 5;
+                return _axios.default.post('/api/jellies', newJelly);
 
-              case 3:
+              case 5:
                 _this.setState({
                   name: '',
                   description: '',
@@ -690,7 +693,7 @@ function (_Component) {
                   photo: ''
                 });
 
-              case 4:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -767,7 +770,7 @@ function (_Component) {
         value: this.state.inventory,
         onChange: this.handleChange,
         required: true
-      }), _react.default.createElement("label", null, "Select Category"), _react.default.createElement("select", {
+      }), _react.default.createElement("p", null, "Select Category"), _react.default.createElement("select", {
         name: "categoryId",
         value: this.state.category,
         onChange: this.handleChange

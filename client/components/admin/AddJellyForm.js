@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchCategories } from '../../store/jellies'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {fetchCategories} from '../../store/jellies'
 import axios from 'axios'
 
 class AddJellyForm extends Component {
@@ -30,7 +30,9 @@ class AddJellyForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    await axios.post('/api/jellies', this.state)
+    const newJelly = this.state
+    console.log(this.state)
+    await axios.post('/api/jellies', newJelly)
 
     this.setState({
       name: '',
@@ -43,7 +45,7 @@ class AddJellyForm extends Component {
   }
 
   render() {
-    const { name, description, price, inventory } = this.state
+    const {name, description, price, inventory} = this.state
     const isEnabled = name && description && price && inventory
     return (
       <div>
@@ -81,11 +83,23 @@ class AddJellyForm extends Component {
             onChange={this.handleChange}
             required
           />
-          <label>Select Category</label>
-          <select
+          <p>Select Category</p>
+          {/* <select
             name="categoryId"
             value={this.state.category}
             onChange={this.handleChange}
+          >
+            <option>-</option>
+            {this.props.categories.map(category => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select> */}
+          <select
+            name="categoryId"
+            value={this.state.category}
+            onChange={this.handleCheckbox}
           >
             <option>-</option>
             {this.props.categories.map(category => (
@@ -117,7 +131,7 @@ class AddJellyForm extends Component {
   }
 }
 
-const mapState = ({ jellies: {categories} }) => ({
+const mapState = ({jellies: {categories}}) => ({
   categories
 })
 
