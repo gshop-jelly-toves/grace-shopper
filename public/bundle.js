@@ -329,34 +329,52 @@ function (_Component) {
   _inherits(JellyList, _Component);
 
   function JellyList(props) {
+    var _this;
+
     _classCallCheck(this, JellyList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(JellyList).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(JellyList).call(this, props));
+    _this.state = {
+      jelliesPerReq: 10
+    };
+    return _this;
   }
 
   _createClass(JellyList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchJellies();
+      var amount = this.state.jelliesPerReq;
+      this.props.fetchJellies(0, amount);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var keyedJellies = this.props.jellies;
       var jelliesList = Object.keys(keyedJellies).map(function (key) {
         return keyedJellies[key];
       });
+      var amount = this.state.jelliesPerReq;
       return _react.default.createElement("div", {
         id: "jellyList"
-      }, jelliesList.map(function (jelly) {
+      }, jelliesList.sort(function (a, b) {
+        if (a.rating > b.rating) return -1;
+        if (a.rating < b.rating) return 1;
+        return 0;
+      }).map(function (jelly) {
         return _react.default.createElement("div", {
           key: jelly.id
         }, _react.default.createElement(_reactRouterDom.Link, {
           to: "/jellies/".concat(jelly.id)
         }, _react.default.createElement("img", {
           src: jelly.photo
-        }), _react.default.createElement("h3", null, jelly.name), _react.default.createElement("p", null, "$", jelly.price)));
-      }));
+        }), _react.default.createElement("h3", null, jelly.name), _react.default.createElement("p", null, jelly.rating, "/5"), _react.default.createElement("p", null, jelly.price)));
+      }), _react.default.createElement("button", {
+        onClick: function onClick() {
+          return _this2.props.fetchJellies(jelliesList.length, amount);
+        }
+      }, "MORE JELLIES"));
     }
   }]);
 
@@ -370,8 +388,12 @@ var mapState = function mapState(_ref) {
   };
 };
 
-var mapDispatch = {
-  fetchJellies: _store.fetchJellies
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    fetchJellies: function fetchJellies(index, amount) {
+      return dispatch((0, _store.fetchJellies)(index, amount));
+    }
+  };
 };
 
 var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(JellyList);
@@ -1299,7 +1321,7 @@ var getSingleJelly = function getSingleJelly(jelly) {
  */
 
 
-var fetchJellies = function fetchJellies() {
+var fetchJellies = function fetchJellies(index, amount) {
   return (
     /*#__PURE__*/
     function () {
@@ -1314,7 +1336,7 @@ var fetchJellies = function fetchJellies() {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _axios.default.get('/api/jellies');
+                return _axios.default.get("/api/jellies?index=".concat(index, "&amount=").concat(amount));
 
               case 3:
                 _ref2 = _context.sent;
@@ -1452,10 +1474,10 @@ function _default() {
   switch (action.type) {
     case GET_JELLIES:
       return _objectSpread({}, state, {
-        jellies: action.jellies.reduce(function (obj, item) {
+        jellies: _objectSpread({}, state.jellies, action.jellies.reduce(function (obj, item) {
           obj[item.id] = item;
           return obj;
-        }, {})
+        }, {}))
       });
 
     case GET_SINGLE_JELLY:
