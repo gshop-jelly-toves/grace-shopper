@@ -33,12 +33,10 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
 /**
  * CONTAINER
  */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.user.id,
-    isAdmin: state.user.user.accessLevel >= 3
-  }
-}
+const mapState = ({ user: {user} }) => ({
+    isLoggedIn: !!user.id,
+    isAdmin: user.accessLevel >= 3
+})
 
 const mapDispatch = dispatch => {
   return {
