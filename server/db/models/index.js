@@ -18,8 +18,6 @@ const Category = require('./category')
  * instead of: const User = require('../db/models/user')
  */
 
-
-
 Jelly.belongsToMany(Order, {through: 'jelly-order'})
 
 /* On Order - userId */
@@ -34,8 +32,8 @@ Jelly.hasMany(Review)
 Review.belongsTo(User)
 User.hasMany(Review)
 
-Jelly.belongsToMany(Category, {through:'jelly_category'})
-Category.belongsToMany(Jelly, {through:'jelly_category'})
+Jelly.belongsToMany(Category, {through: 'jelly_category'})
+Category.belongsToMany(Jelly, {through: 'jelly_category'})
 
 module.exports = {
   User,

@@ -16,12 +16,19 @@ class JellyList extends Component {
     this.props.fetchJellies(0, amount)
   }
 
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+      //filter here
+    })
+  }
+
   render() {
     const keyedJellies = this.props.jellies
     const jelliesList = Object.keys(keyedJellies)
       .map( key => keyedJellies[key] )
     const amount = this.state.jelliesPerReq
-    
+
 
     return (
       <div id="jellyList">
@@ -42,7 +49,7 @@ class JellyList extends Component {
             </div>
           ))
         }
-        
+
         <button onClick={ () =>
           this.props.fetchJellies(jelliesList.length, amount)
         }>MORE JELLIES</button>
@@ -52,12 +59,12 @@ class JellyList extends Component {
   }
 }
 
-const mapState = ({ jellies: {jellies} }) => ({
+const mapState = ({jellies: {jellies}}) => ({
   jellies
 })
 
 const mapDispatch = dispatch => ({
-  fetchJellies: (index, amount) => 
+  fetchJellies: (index, amount) =>
     dispatch( fetchJellies(index, amount) )
 })
 

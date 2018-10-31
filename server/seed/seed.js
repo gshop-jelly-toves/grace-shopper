@@ -1,40 +1,47 @@
 'use strict'
 
 const db = require('../db')
+const dbFilled = require('../db/db')
 const {Order, User, Jelly, Review, Category} = require('../db/models')
 
 /*  -------------  Data -------------
-    - 8 Categories
+    - 11 Categories  (multiple per jelly??)
     - 50 Orders
     - 50 Users      (all 'user' level)
     - 50 Jellies
-    - 40 Reviews    (80% of users)
+    - 100 Reviews   (~2 per jelly)
 */
-
+// SEED FILES
 const Categories = require('./categories.json')
 const Users = require('./users.json')
 const Orders = require('./orders.json')
 const Jellies = require('./jellies.json')
 const Reviews = require('./reviews.json')
+const JellyCat = require('./jelly-category.json')
+
+const {jelly_category: jellyCategory} = dbFilled.models
 
 async function seed() {
-
   await db.sync({force: true})
   console.log('db synced!')
 
-
+  // MODEL TABLES
   await Promise.all(Categories.map(category => Category.create(category)))
   await Promise.all(Users.map(user => User.create(user)))
   await Promise.all(Orders.map(order => Order.create(order)))
   await Promise.all(Jellies.map(jelly => Jelly.create(jelly)))
   await Promise.all(Reviews.map(review => Review.create(review)))
 
+  // ASSOCIATION TABLES
+  await Promise.all(JellyCat.map(jellyCat => jellyCategory.create(jellyCat)))
+
   console.log(`\n########### SEEDING REPORT ###########\n`)
   console.log(`Seeded ${Categories.length} categories.`)
   console.log(`Seeded ${Orders.length} orders.`)
   console.log(`Seeded ${Users.length} users.`)
   console.log(`Seeded ${Jellies.length} jellies.`)
-  console.log(`Seeded ${Reviews.length} reviews.`)
+  console.log(`Seeded ${Reviews.length} reviews.\n`)
+  console.log(`Seeded ${JellyCat.length} associations.\n`)
   console.log(`Seeding completed successfully!\n`)
   console.log(`######################################\n`)
 }
