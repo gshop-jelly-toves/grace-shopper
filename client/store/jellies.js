@@ -57,7 +57,6 @@ export const fetchCategories = () => async dispatch => {
 
 export const fetchSingleJelly = jellyId => async dispatch => {
   try {
-    console.log('jellyId:', jellyId)
     const { data } = await axios.get(`/api/jellies/${jellyId}`)
     const action = getSingleJelly(data)
     dispatch(action)
