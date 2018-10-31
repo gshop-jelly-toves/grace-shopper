@@ -21,7 +21,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/admin/addjelly" component={AddJellyForm} />
+        <Route path="/admin/jellies/add" component={AddJellyForm} />
         <Route path="/admin" component={AdminLanding} />
         <Route path='/jellies/:jellyId' component={SingleJelly} />
         <Route path="/jellies" component={JellyList} />
