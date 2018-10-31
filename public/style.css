@@ -19,3 +19,12 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.nav-active {
+  color: green
+}
+
+#navbar-main {
+  display: flex;
+  align-content: center;
+}

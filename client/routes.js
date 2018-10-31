@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, CreateProduct} from './components'
-import {me} from './store'
+import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly } from './components'
+import {fetchUser} from './store'
 
 /**
  * COMPONENT
@@ -15,13 +15,15 @@ class Routes extends Component {
 
   render() {
     const {isLoggedIn} = this.props
-
-    return (
+ 
+    return ( 
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/create" component={CreateProduct} />
+        <Route path="/jellies/add" component={AddJellyForm} />
+        <Route path='/jellies/:jellyId' component={SingleJelly} />
+        <Route path="/jellies" component={JellyList} />        
          {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -34,7 +36,7 @@ class Routes extends Component {
     )
   }
 }
-
+ 
 /**
  * CONTAINER
  */
@@ -42,15 +44,15 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.accessLevel >= 3
+    isLoggedIn: !!state.user.user.id,
+    isAdmin: state.user.user.accessLevel >= 3
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(me())
+      dispatch(fetchUser())
     }
   }
 }
