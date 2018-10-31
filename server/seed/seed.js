@@ -1,6 +1,7 @@
 'use strict'
 
 const db = require('../db')
+const dbFilled = require('../db/db')
 const {Order, User, Jelly, Review, Category} = require('../db/models')
 
 /*  -------------  Data -------------
@@ -10,12 +11,15 @@ const {Order, User, Jelly, Review, Category} = require('../db/models')
     - 50 Jellies
     - 100 Reviews   (~2 per jelly)
 */
-
+// SEED FILES
 const Categories = require('./categories.json')
 const Users = require('./users.json')
 const Orders = require('./orders.json')
 const Jellies = require('./jellies.json')
 const Reviews = require('./reviews.json')
+
+const {jellyCategory} = db.models
+
 const JellyCat = require('./jelly-category.json')
 
 async function seed() {
@@ -30,9 +34,7 @@ async function seed() {
   await Promise.all(Reviews.map(review => Review.create(review)))
 
   // ASSOCIATION TABLES
-  // await Promise.all(
-  //   JellyCat.map(jellyCat => jellyCategory.bulkCreate(jellyCat))
-  // )
+  await Promise.all(JellyCat.map(jellyCat => jellyCategory.create(jellyCat)))
 
   console.log(`\n########### SEEDING REPORT ###########\n`)
   console.log(`Seeded ${Categories.length} categories.`)
@@ -40,7 +42,7 @@ async function seed() {
   console.log(`Seeded ${Users.length} users.`)
   console.log(`Seeded ${Jellies.length} jellies.`)
   console.log(`Seeded ${Reviews.length} reviews.\n`)
-  // console.log(`Seeded ${JellyCat.length} associations.\n`)
+  console.log(`Seeded ${JellyCat.length} associations.\n`)
   console.log(`Seeding completed successfully!\n`)
   console.log(`######################################\n`)
 }

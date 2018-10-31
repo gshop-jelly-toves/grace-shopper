@@ -40,6 +40,5 @@ module.exports = {
   Jelly,
   Review,
   Order,
-  Category,
-  jellyCategory
+  Category
 }
