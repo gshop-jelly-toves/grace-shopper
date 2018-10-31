@@ -6,12 +6,14 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const SET_CATEGORY = 'SET_CATEGORY'
 
 /**
  * INITIAL STATE
  */
 const initState = {
-  user: {}
+  user: {},
+  selectedCategory: ''
 }
 
 /**
@@ -19,13 +21,14 @@ const initState = {
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+export const setCategory = category => ({type: SET_CATEGORY, category})
 
 /**
  * THUNK CREATORS
  */
 export const fetchUser = () => async dispatch => {
   try {
-    const { data } = await axios.get('/auth/me')
+    const {data} = await axios.get('/auth/me')
     const action = getUser(data)
     dispatch(action)
   } catch (err) {
@@ -65,9 +68,11 @@ export const logout = () => async dispatch => {
 export default function(state = initState, action) {
   switch (action.type) {
     case GET_USER:
-      return { ...state, user: action.user}
+      return {...state, user: action.user}
     case REMOVE_USER:
-      return { ...state, user: {} }
+      return {...state, user: {}}
+    case SET_CATEGORY:
+      return {...state, selectedCategory: action.category}
     default:
       return state
   }
