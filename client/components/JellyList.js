@@ -19,24 +19,21 @@ class JellyList extends Component {
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-      //filter here
     })
   }
 
   render() {
     const keyedJellies = this.props.jellies
-    const jelliesList = Object.keys(keyedJellies)
-      .map( key => keyedJellies[key] )
+    const jelliesList = Object.keys(keyedJellies).map(key => keyedJellies[key])
     const amount = this.state.jelliesPerReq
-
 
     return (
       <div id="jellyList">
-        { jelliesList
+        {jelliesList
           .sort(function(a, b) {
             if (a.rating > b.rating) return -1
             if (a.rating < b.rating) return 1
-            return 0;
+            return 0
           })
           .map(jelly => (
             <div key={jelly.id}>
@@ -47,13 +44,13 @@ class JellyList extends Component {
                 <p>{jelly.price}</p>
               </Link>
             </div>
-          ))
-        }
+          ))}
 
-        <button onClick={ () =>
-          this.props.fetchJellies(jelliesList.length, amount)
-        }>MORE JELLIES</button>
-
+        <button
+          onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
+        >
+          MORE JELLIES
+        </button>
       </div>
     )
   }
@@ -64,8 +61,7 @@ const mapState = ({jellies: {jellies}}) => ({
 })
 
 const mapDispatch = dispatch => ({
-  fetchJellies: (index, amount) =>
-    dispatch( fetchJellies(index, amount) )
+  fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount))
 })
 
 export default connect(mapState, mapDispatch)(JellyList)
