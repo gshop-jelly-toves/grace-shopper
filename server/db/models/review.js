@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Jelly = require('./index')
+const Jelly = require('./jelly')
 
 const Review = db.define('review', {
   text: {
@@ -28,22 +28,23 @@ const Review = db.define('review', {
     at process._tickCallback (internal/process/next_tick.js:68:7)
 */
 
-// const averageRating = async review => {
-//   const jellyP = Jelly.findById(review.jellyId)
-//   const reviewsP = Review.findAll({
-//     where: {
-//       jellyId: review.jellyId
-//     }
-//   })
+const averageRating = async review => {
+  const jellyP = Jelly.findById(review.jellyId)
+  const reviewsP = Review.findAll({
+    where: { jellyId: review.jellyId }
+  })
+  
+  const [jellyRes, reviewsRes] = await Promise.all([jellyP, reviewsP])
 
-//   const [jellyRes, reviewsRes] = await Promise.all([jellyP, reviewsP])
-//   const jelly = jellyRes.data
-//   const reviews = reviewsRes.data
+  const reviews = Object.keys(reviewsRes).map(keys => reviewsRes[keys] )
+    .map(review => review.dataValues)
 
-//   const rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
-//   await jelly.update({rating})
-// }
+  let rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
+  rating = Math.round(rating * 10) / 10
 
-// Review.afterCreate(averageRating)
+  await jellyRes.update({rating})
+}
+
+Review.afterCreate(averageRating)
 
 module.exports = Review
