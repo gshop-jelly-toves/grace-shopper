@@ -35,9 +35,9 @@ const getSingleJelly = jelly => ({
 /**
  * THUNK CREATORS
  */
-export const fetchJellies = () => async dispatch => {
+export const fetchJellies = (index, amount) => async dispatch => {
   try {
-    const { data } = await axios.get('/api/jellies')
+    const { data } = await axios.get(`/api/jellies?index=${index}&amount=${amount}`)
     const action = getJellies(data)
     dispatch(action)
   } catch (e) {
@@ -72,11 +72,12 @@ export const fetchSingleJelly = jellyId => async dispatch => {
 export default function(state = initState, action) {
   switch (action.type) {
     case GET_JELLIES:
-      return { ...state, jellies: 
-        action.jellies.reduce( (obj, item) => {
-          obj[item.id] = item
-          return obj
-        }, {})
+      return { ...state, jellies: { ...state.jellies,
+          ...action.jellies.reduce( (obj, item) => {
+            obj[item.id] = item
+            return obj
+          }, {})
+        }
       }
     case GET_SINGLE_JELLY:
       return { ...state, singleJelly: action.jelly }

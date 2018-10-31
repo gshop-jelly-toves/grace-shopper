@@ -11,8 +11,18 @@ module.exports = router
 // /api/jellies GET
 router.get('/', async (req, res, next) => {
   try {
-    // console.log(req.query)
-    const jellies = await Jelly.findAll()
+    const index = parseInt(req.query.index)
+    const amount = parseInt(req.query.amount)
+    const allJellies = await Jelly.findAll()
+
+    const jellies = allJellies
+      .sort(function(a, b) {
+        if (a.rating > b.rating) return -1
+        if (a.rating < b.rating) return 1
+        return 0;
+      })
+      .slice(index, index+amount)
+
     res.json(jellies)
   } catch (e) { next(e) }
 })
