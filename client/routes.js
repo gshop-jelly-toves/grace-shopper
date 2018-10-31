@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly } from './components'
+import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly, AdminLanding } from './components'
 import {fetchUser} from './store'
 
 /**
@@ -15,15 +15,16 @@ class Routes extends Component {
 
   render() {
     const {isLoggedIn} = this.props
- 
-    return ( 
+
+    return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/jellies/add" component={AddJellyForm} />
+        <Route path="/admin/addjelly" component={AddJellyForm} />
+        <Route path="/admin" component={AdminLanding} />
         <Route path='/jellies/:jellyId' component={SingleJelly} />
-        <Route path="/jellies" component={JellyList} />        
+        <Route path="/jellies" component={JellyList} />
          {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -36,7 +37,7 @@ class Routes extends Component {
     )
   }
 }
- 
+
 /**
  * CONTAINER
  */

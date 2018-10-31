@@ -17,14 +17,14 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
             Logout
           </a>
         </div>
-      ) : ( 
+      ) : (
         <div>
           {/* The navbar will show these links before you log in */}
           <NavLink to="/login" activeClassName='nav-active'>Login</NavLink>
           <NavLink to="/signup" activeClassName='nav-active'>Sign Up</NavLink>
         </div>
       )}
-      {isAdmin && <NavLink to="/jellies/add">Add Jelly</NavLink>}
+      {isAdmin && <NavLink to="/admin">Admin Tools</NavLink>}
     </nav>
     <hr />
   </div>
