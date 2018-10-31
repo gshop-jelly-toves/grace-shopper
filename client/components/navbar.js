@@ -9,7 +9,7 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
     <h1>Jelly for your Belly!</h1>
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div id='navbar-main'>
           {/* The navbar will show these links after you log in */}
           <NavLink to="/home" activeClassName='nav-active'>Home</NavLink>
           <NavLink to="/products" activeClassName='nav-active'>Shop</NavLink>
@@ -17,14 +17,14 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
             Logout
           </a>
         </div>
-      ) : (
+      ) : ( 
         <div>
           {/* The navbar will show these links before you log in */}
           <NavLink to="/login" activeClassName='nav-active'>Login</NavLink>
           <NavLink to="/signup" activeClassName='nav-active'>Sign Up</NavLink>
         </div>
       )}
-      {isAdmin && <NavLink to="/create">Add Product</NavLink>}
+      {isAdmin && <NavLink to="/products/add">Add Product</NavLink>}
     </nav>
     <hr />
   </div>
