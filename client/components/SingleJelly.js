@@ -2,10 +2,21 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleJelly} from '../store'
 import NoMatch from './NoMatch'
+import EditJellyForm from './admin/EditJellyForm';
 
 class SingleJelly extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      editing: false
+    }
+    this.doneEditing = this.doneEditing.bind(this)
+  }
+
+  doneEditing() {
+    this.setState({ editing: false })
+    const jellyId = this.props.match.params.jellyId
+    this.props.fetchSingleJelly(jellyId)
   }
 
   componentDidMount() {
@@ -22,25 +33,45 @@ class SingleJelly extends Component {
   }
 
   render() {
+    const { editing } = this.state
+    const { isAdmin } = this.props
     const jelly = this.props.singleJelly
-    return jelly ? (
-      <div>
-        <div>
-          <h2>{jelly.name}</h2>
-          <img src={jelly.photo} />
-          <h4>Inventory: {jelly.inventory}</h4>
-          <p>Rating: {jelly.rating} / 5</p>
-          <p>Description: {jelly.description}</p>
+
+    return jelly 
+      ? ( 
+        <div>  
+          { editing && isAdmin  
+            ? <EditJellyForm done={this.doneEditing} />
+            : ( 
+              <div>
+                <h2>{jelly.name}</h2>
+                <img src={jelly.photo} />
+                <p>${jelly.price}</p>
+                <p>Rating: {jelly.rating}/5</p>
+                <p>{jelly.inventory} remaining</p>
+                <p>Description: {jelly.description}</p>
+
+                { isAdmin &&
+                  <button onClick={ () => {
+                    this.setState({ editing: true })
+                  }}>EDIT JELLY</button>
+                }
+              </div>
+            )
+          }
         </div>
-      </div>
-    ) : (
-      <NoMatch />
-    )
+      ) : (
+        <NoMatch />
+      )
   }
 }
 
-const mapState = ({ jellies: {singleJelly} }) => ({
-  singleJelly
+const mapState = ({ 
+  jellies: {singleJelly},
+  user: {user}
+}) => ({
+  singleJelly,
+  isAdmin: user.accessLevel >= 3
 })
 
 const mapDispatch = dispatch => ({
