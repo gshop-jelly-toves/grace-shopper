@@ -31,13 +31,15 @@ Jelly.hasMany(Review)
 /* On Review - userId */
 Review.belongsTo(User)
 User.hasMany(Review)
-Category.hasMany(Jelly)
-Jelly.belongsToMany(Category, {through:'jelly-category'})
+
+Category.belongsToMany(Jelly, {through: 'jellyCategory'})
+Jelly.belongsToMany(Category, {through: 'jellyCategory'})
 
 module.exports = {
   User,
   Jelly,
   Review,
   Order,
-  Category
+  Category,
+  jellyCategory
 }

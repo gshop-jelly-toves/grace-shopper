@@ -1,11 +1,10 @@
 [
   {
-    "name": "Cheese - Stilton",
+    "name": "TEST JELLIES",
     "description":
-      "feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut",
+      "test jellies  test jellies  test jellies  test jellies  test jellies  test jellies  test jellies  test jellies  test jellies  ",
     "price": 73.27,
     "inventory": 115,
-    "category": "pearl",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -14,7 +13,6 @@
       "ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec",
     "price": 18.88,
     "inventory": 129,
-    "category": "preserves",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -23,7 +21,6 @@
       "id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus",
     "price": 8.78,
     "inventory": 35,
-    "category": "performance",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -32,7 +29,6 @@
       "at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a",
     "price": 87.85,
     "inventory": 136,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -41,7 +37,6 @@
       "urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in",
     "price": 4.74,
     "inventory": 98,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -50,7 +45,6 @@
       "sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa",
     "price": 39.51,
     "inventory": 130,
-    "category": "performance",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -59,7 +53,6 @@
       "maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra",
     "price": 51.68,
     "inventory": 94,
-    "category": "performance",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -68,7 +61,6 @@
       "proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget",
     "price": 85.47,
     "inventory": 133,
-    "category": "hand-crafted",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -76,7 +68,6 @@
     "description": "nec sem duis aliquam convallis nunc proin at turpis a pede",
     "price": 50.15,
     "inventory": 67,
-    "category": "pearl",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -85,7 +76,6 @@
       "donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non",
     "price": 6.33,
     "inventory": 33,
-    "category": "spicy",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -94,7 +84,6 @@
       "et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat",
     "price": 44.5,
     "inventory": 37,
-    "category": "preserves",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -103,7 +92,6 @@
       "in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero",
     "price": 16.27,
     "inventory": 119,
-    "category": "spicy",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -112,7 +100,6 @@
       "sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius",
     "price": 91.49,
     "inventory": 140,
-    "category": "artisan",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -121,7 +108,6 @@
       "vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus",
     "price": 9.83,
     "inventory": 7,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -130,7 +116,6 @@
       "risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum",
     "price": 21.4,
     "inventory": 101,
-    "category": "kosher",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -139,7 +124,6 @@
       "massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea",
     "price": 54.47,
     "inventory": 94,
-    "category": "kosher",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -148,7 +132,6 @@
       "nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat",
     "price": 55.07,
     "inventory": 11,
-    "category": "cosmetic",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -157,7 +140,6 @@
       "potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst",
     "price": 22.74,
     "inventory": 136,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -166,7 +148,6 @@
       "nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit",
     "price": 22.12,
     "inventory": 131,
-    "category": "artisan",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -175,7 +156,6 @@
       "sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum",
     "price": 10.63,
     "inventory": 11,
-    "category": "hand-crafted",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -184,7 +164,6 @@
       "sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus",
     "price": 26.69,
     "inventory": 81,
-    "category": "marmalade",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -193,7 +172,6 @@
       "duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim",
     "price": 39.83,
     "inventory": 12,
-    "category": "pearl",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -202,7 +180,6 @@
       "porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
     "price": 96.09,
     "inventory": 148,
-    "category": "floral",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -211,7 +188,6 @@
       "viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc",
     "price": 69.53,
     "inventory": 44,
-    "category": "organic",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -220,7 +196,6 @@
       "aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim",
     "price": 57.57,
     "inventory": 73,
-    "category": "spicy",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -229,7 +204,6 @@
       "ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci",
     "price": 93.67,
     "inventory": 8,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -238,7 +212,6 @@
       "dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet",
     "price": 36.88,
     "inventory": 71,
-    "category": "performance",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -247,7 +220,6 @@
       "praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer",
     "price": 42.69,
     "inventory": 129,
-    "category": "marmalade",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -256,7 +228,6 @@
       "nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac",
     "price": 19.18,
     "inventory": 128,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -265,7 +236,6 @@
       "varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed",
     "price": 24.95,
     "inventory": 100,
-    "category": "artisan",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -273,7 +243,6 @@
     "description": "ligula vehicula consequat morbi a ipsum integer a nibh in",
     "price": 1.36,
     "inventory": 40,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -282,7 +251,6 @@
       "sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat",
     "price": 5.62,
     "inventory": 70,
-    "category": "pearl",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -291,7 +259,6 @@
       "sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non",
     "price": 68.46,
     "inventory": 9,
-    "category": "spicy",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -300,7 +267,6 @@
       "nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna",
     "price": 30.35,
     "inventory": 55,
-    "category": "marmalade",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -309,7 +275,6 @@
       "curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem",
     "price": 5.36,
     "inventory": 88,
-    "category": "organic",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -318,7 +283,6 @@
       "eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna",
     "price": 87.01,
     "inventory": 52,
-    "category": "preserves",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -327,7 +291,6 @@
       "donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum",
     "price": 82.28,
     "inventory": 58,
-    "category": "kosher",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -336,7 +299,6 @@
       "sed tristique in tempus sit amet sem fusce consequat nulla nisl",
     "price": 41.25,
     "inventory": 22,
-    "category": "organic",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -345,7 +307,6 @@
       "leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus",
     "price": 56.58,
     "inventory": 95,
-    "category": "cosmetic",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -354,7 +315,6 @@
       "est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat",
     "price": 11.39,
     "inventory": 106,
-    "category": "floral",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -363,7 +323,6 @@
       "nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse",
     "price": 13.95,
     "inventory": 143,
-    "category": "pearl",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -372,7 +331,6 @@
       "diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis",
     "price": 96.76,
     "inventory": 147,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/ff4444/ffffff"
   },
   {
@@ -381,7 +339,6 @@
       "est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo",
     "price": 16.54,
     "inventory": 60,
-    "category": "floral",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -390,7 +347,6 @@
       "platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas",
     "price": 23.34,
     "inventory": 70,
-    "category": "artisan",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -399,7 +355,6 @@
       "nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit",
     "price": 47.97,
     "inventory": 105,
-    "category": "preserves",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -408,7 +363,6 @@
       "pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut",
     "price": 93.24,
     "inventory": 100,
-    "category": "cosmetic",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -417,7 +371,6 @@
       "sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur",
     "price": 78.02,
     "inventory": 76,
-    "category": "artisan",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   },
   {
@@ -426,7 +379,6 @@
       "in consequat ut nulla sed accumsan felis ut at dolor quis odio",
     "price": 21.93,
     "inventory": 8,
-    "category": "hand-crafted",
     "photo": "http://dummyimage.com/400x250.jpg/cc0000/ffffff"
   },
   {
@@ -435,7 +387,6 @@
       "fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet",
     "price": 92.82,
     "inventory": 102,
-    "category": "iconic",
     "photo": "http://dummyimage.com/400x250.jpg/dddddd/000000"
   },
   {
@@ -444,7 +395,6 @@
       "sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis",
     "price": 73.05,
     "inventory": 131,
-    "category": "marmalade",
     "photo": "http://dummyimage.com/400x250.jpg/5fa2dd/ffffff"
   }
 ]
