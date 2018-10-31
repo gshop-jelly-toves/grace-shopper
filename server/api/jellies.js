@@ -1,6 +1,18 @@
 const router = require('express').Router()
-const { Jelly, Category } = require('../db/models')
+
+// const { Jelly, Category } = require('../db/models')
+
+
 const { requireLogin, requireSeller, requireAdmin, requireDev } = require('../middlewares')
+
+
+const db = require('../db/db')
+
+const {
+    jelly: Jelly,
+    category: Category,
+    jelly_category: JellyCategory,
+} = db.models
 
 module.exports = router
 
@@ -56,6 +68,12 @@ router.post('/', requireAdmin, async (req, res, next) => {
   try {
     const jelly = await Jelly.create(req.body)
     res.json(jelly)
+    await JellyCategory.create({
+      jellyId: jelly.dataValues.id,
+      categoryId: req.body.categoryId
+    })
+
+
   } catch (e) { console.error(e)}
 })
 
