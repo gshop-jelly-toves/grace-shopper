@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const AdminLanding = props => {
   return (
     <div>
-      <Link to="/admin/addjelly">
+      <Link to="/admin/jellies/add">
         <p>Add Jelly</p>
       </Link>
     </div>
