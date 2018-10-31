@@ -6,12 +6,14 @@ import history from '../history'
  */
 const GET_CATEGORIES = 'GET_CATEGORIES'
 const GET_PRODUCTS = 'GET_PRODUCTS'
+const GET_SINGLE_PRODUCT ='GET_SINGLE_PRODUCT'
 
 /**
  * INITIAL STATE
  */
 const initState = {
-  products: [],
+  products: {},
+  singleProduct: {},
   categories: []
 }
 
@@ -24,6 +26,10 @@ const getProducts = products => ({
 
 const getCategories = categories => ({
   type: GET_CATEGORIES, categories
+})
+
+const getSingleProduct = product => ({
+  type: GET_SINGLE_PRODUCT, product
 })
 
 /**
@@ -49,13 +55,30 @@ export const fetchCategories = () => async dispatch => {
   }
 }
 
+export const fetchSingleProduct = productId => async dispatch => {
+  try {
+    const { data } = await axios.get(`/api/products/${productId}`)
+    const action = getSingleProduct(data)
+    dispatch(action)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 /**
  * REDUCER
  */
 export default function(state = initState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
-      return { ...state, products: action.products }
+      return { ...state, products: 
+        action.products.reduce( (obj, item) => {
+          obj[item.id] = item
+          return obj
+        }, {})
+      }
+    case GET_SINGLE_PRODUCT:
+      return { ...state, singleProduct: action.product }
     case GET_CATEGORIES:
       return { ...state, categories: action.categories }
     default:

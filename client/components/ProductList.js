@@ -4,19 +4,22 @@ import {connect} from 'react-redux'
 import {fetchProducts} from '../store'
 
 class ProductList extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     this.props.fetchProducts()
   }
 
   render() {
-    const {products} = this.props.state.products
-    console.log(this.props.state)
+    const { products } = this.props
 
     return (
       <div id="productList">
         {products.map(product => (
           <div key={product.id}>
-            <Link to={`/${product.id}`}>
+            <Link to={`/products/${product.id}`}>
               <img src={product.photo} />
               <h3>{product.name}</h3>
               <p>${product.price}</p>
@@ -29,8 +32,10 @@ class ProductList extends Component {
 }
 
 const mapState = state => {
+  const { products } = state.products
   return {
-    state
+    products: Object.keys(products)
+      .map( key => products[key] )
   }
 }
 

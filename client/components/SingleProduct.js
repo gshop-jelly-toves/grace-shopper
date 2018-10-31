@@ -1,9 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchSingleProduct} from '../../store'
+import {fetchSingleProduct} from '../store'
 import NoMatch from './NoMatch'
 
 class SingleProduct extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     const productId = this.props.match.params.productId
     this.props.fetchSingleProduct(productId)
@@ -18,7 +22,8 @@ class SingleProduct extends Component {
   }
 
   render() {
-    const product = this.props.singleProduct
+    console.log(this.props)
+    const { product } = this.props
     return this.props.product ? (
       <div>
         <div>
