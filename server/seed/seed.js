@@ -17,10 +17,9 @@ const Users = require('./users.json')
 const Orders = require('./orders.json')
 const Jellies = require('./jellies.json')
 const Reviews = require('./reviews.json')
-
-const {jellyCategory} = db.models
-
 const JellyCat = require('./jelly-category.json')
+
+const {jelly_category: jellyCategory} = dbFilled.models
 
 async function seed() {
   await db.sync({force: true})
