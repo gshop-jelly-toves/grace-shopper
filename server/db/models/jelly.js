@@ -20,7 +20,9 @@ const Jelly = db.define('jelly', {
   },
   photo: {
     type: Sequelize.STRING,
-    defaultValue: 'https://imgur.com/a/gFQZ7yi'
+    allowNull: true,
+    defaultValue:
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/300px-Cat03.jpg'
   },
   rating: {
     type: Sequelize.FLOAT,
