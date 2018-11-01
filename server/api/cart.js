@@ -1,21 +1,28 @@
 const router = require('express').Router()
-const { Order } = require('../db/models')
+const { User } = require('../db/models')
+
+// see /server/middlewares/user
 const { requireLogin, requireSeller, requireAdmin, requiredev } = require('../middlewares')
 
 module.exports = router
 
-/*
-  USER ROUTES
-*/
+router.get('/', async (req, res, user) => {
+  let cart
 
-// /api/cart GET
-router.get('/', requireLogin, async (req, res, next) => {
-  try {
-    const cart = await Order.findOne({where: {
-      userId: req.user.id,
-      status: 'cart'
-    }})
-  } catch (e) { next(e) }
+  if (req.user) {
+    try {
+      const user = await User.findById(req.user.id)
+      cart = await user.deserializeCart()
+    } catch (e) { next(e) }
+  } else {
+    cart = req.session.cart || []
+  }
+
+  req.session.cart = cart
+  res.json(req.session.cart)
 })
 
-
+// router.get('/add', async (req, res, next) => {
+//   req.session.cart.push({jelly:'jelly'})
+//   res.json(req.session.cart)
+// })

@@ -2,7 +2,7 @@
 
 const db = require('../db')
 const dbFilled = require('../db/db')
-const {Order, User, Jelly, Review, Category} = require('../db/models')
+const {Order, User, Jelly, Review, Category, JellyOrder} = require('../db/models')
 
 /*  -------------  Data -------------
     - 11 Categories  (multiple per jelly??)
@@ -18,6 +18,7 @@ const Orders = require('./orders.json')
 const Jellies = require('./jellies.json')
 const Reviews = require('./reviews.json')
 const JellyCat = require('./jelly-category.json')
+const JellyOrders = require('./jelly-orders.json')
 
 const {jelly_category: jellyCategory} = dbFilled.models
 
@@ -28,11 +29,18 @@ async function seed() {
   // MODEL TABLES
   await Promise.all(Categories.map(category => Category.create(category)))
   await Promise.all(Users.map(user => User.create(user)))
-  await Promise.all(Orders.map(order => Order.create(order)))
+
+  // changed this so that beforeCreate hook can see
+  // previously seeded orders and perform cart checks
+  for( let i=0; i < Orders.length; i++ ) {
+    await Order.create( Orders[i] )
+  }
+
   await Promise.all(Jellies.map(jelly => Jelly.create(jelly)))
   await Promise.all(Reviews.map(review => Review.create(review)))
-
+  
   // ASSOCIATION TABLES
+  await Promise.all(JellyOrders.map(item => JellyOrder.create(item) ))
   await Promise.all(JellyCat.map(jellyCat => jellyCategory.create(jellyCat)))
 
   console.log(`\n########### SEEDING REPORT ###########\n`)
