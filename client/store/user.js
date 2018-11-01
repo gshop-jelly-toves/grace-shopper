@@ -6,14 +6,12 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
-const SET_CATEGORY = 'SET_CATEGORY'
 
 /**
  * INITIAL STATE
  */
 const initState = {
   user: {},
-  selectedCategory: ''
 }
 
 /**
@@ -23,7 +21,6 @@ const getUser = user => ({type: GET_USER, user})
 
 const removeUser = () => ({type: REMOVE_USER})
 
-export const setCategory = category => ({type: SET_CATEGORY, category})
 
 /**
  * THUNK CREATORS
@@ -73,8 +70,6 @@ export default function(state = initState, action) {
       return {...state, user: action.user}
     case REMOVE_USER:
       return {...state, user: {}}
-    case SET_CATEGORY:
-      return {...state, selectedCategory: action.category}
     default:
       return state
   }

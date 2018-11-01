@@ -8,6 +8,7 @@ const GET_CATEGORIES = 'GET_CATEGORIES'
 const GET_JELLIES = 'GET_JELLIES'
 const GET_SINGLE_JELLY = 'GET_SINGLE_JELLY'
 const SET_SEARCH = 'SET_SEARCH'
+const SET_CATEGORY = 'SET_CATEGORY'
 
 /**
  * INITIAL STATE
@@ -16,7 +17,8 @@ const initState = {
   jellies: {},
   singleJelly: {},
   categories: [],
-  search: ''
+  search: '',
+  selectedCategory: ''
 }
 
 /**
@@ -41,6 +43,9 @@ export const setSearch = search => ({
   type: SET_SEARCH,
   search
 })
+
+export const setCategory = category => ({type: SET_CATEGORY, category})
+
 
 /**
  * THUNK CREATORS
@@ -97,6 +102,8 @@ export default function(state = initState, action) {
       return {...state, singleJelly: action.jelly}
     case GET_CATEGORIES:
       return {...state, categories: action.categories}
+    case SET_CATEGORY:
+      return {...state, selectedCategory: action.category}
     case SET_SEARCH:
       return {...state, search: action.search}
     default:
