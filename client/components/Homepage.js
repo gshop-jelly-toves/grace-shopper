@@ -52,18 +52,11 @@ export const Homepage = props => {
         >
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="sr-only">Next</span>
+          {/*<h3>Welcome, {email}</h3>*/}
         </a>
       </div>
     </main>
   )
-}
-{
-  /* /* <h3>Welcome, {email}</h3>
-
-    <p>because we don't want our jelly server to be</p>
-    <p>cluttered with dev dependencies like jellypack,</p>
-    <p>we adhere to strict jellyOps principles in</p>
-    <p>order avoid any jelly-merge conflicts</p>  */
 }
 
 /**
