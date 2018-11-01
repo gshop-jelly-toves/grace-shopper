@@ -21,9 +21,7 @@ class Toolbar extends Component {
   }
 
   handleSearch(event) {
-    this.props.setSearch({
-      search: event.target.value
-    })
+    this.props.setSearch(event.target.value)
   }
 
   render() {
@@ -52,7 +50,7 @@ class Toolbar extends Component {
 }
 
 // DO NOT TOUCH
-const mapState = ({jellies: {categories}, user: {selectedCategory}}) => ({
+const mapState = ({jellies: {categories}, jellies: {selectedCategory}}) => ({
   categories,
   selectedCategory
 })
