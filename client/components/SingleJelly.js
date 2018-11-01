@@ -31,7 +31,7 @@ class SingleJelly extends Component {
       this.props.fetchSingleJelly(latest)
     }
   }
-
+  
   render() {
     const { editing } = this.state
     const { isAdmin } = this.props

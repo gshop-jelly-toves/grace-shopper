@@ -27,6 +27,9 @@ class Toolbar extends Component {
   }
 
   render() {
+    // const keyedJellies = this.props.jellies
+    // const jelliesList = Object.keys(keyedJellies).map(key => keyedJellies[key])
+
     const {categories} = this.props
 
     return (
