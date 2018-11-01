@@ -27,18 +27,6 @@ class JellyList extends Component {
     const search = this.props.search
     const keyedJellies = this.props.jellies
 
-    const searchFilter = jellyArr => {
-      if (!search) {
-        return jellyArr
-      } else {
-        return jellyArr
-          .map(jel => {
-            return {...jel, name: jel.name.toLowerCase()}
-          })
-          .filter(j => j.name.indexOf(search.search.toLowerCase()) !== -1)
-      }
-    }
-
     const jelliesList = Object.keys(keyedJellies)
       .map(key => keyedJellies[key])
       .sort(function(a, b) {
@@ -47,8 +35,13 @@ class JellyList extends Component {
         return 0
       })
 
-    const searchJellies = searchFilter(jelliesList)
-    console.log(searchJellies)
+    const searchFilter = jellyArr =>
+      search
+        ? jellyArr
+        : [...jellyArr].filter(
+            jelly =>
+              jelly.name.toLowerCase().indexOf(search.search.toLowerCase()) > -1
+          )
 
     return (
       <div id="jellyList">
