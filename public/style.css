@@ -1,5 +1,9 @@
 /* Going with react bootstrap*/
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -23,7 +27,7 @@ form div {
 }
 
 .nav-active {
-  color: green
+  color: green;
 }
 
 #navbar-main {
