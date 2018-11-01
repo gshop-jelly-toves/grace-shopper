@@ -36,20 +36,6 @@ class JellyList extends Component {
             return {...jel, name: jel.name.toLowerCase()}
           })
           .filter(j => j.name.indexOf(search.search.toLowerCase()) !== -1)
-        // .map(j => {
-        //   console.log('//////', j.name)
-        //   return {
-        //     ...j,
-        //     name: j.name.split(' ')
-        //   }
-        // })
-        // .map(j => {
-        //   console.log('...inside MAP', j)
-        //   return {
-        //     ...j,
-        //     name: j.name[0][0].toUpperCase() + j.name.slice(1)
-        //   }
-        // })
       }
     }
 
