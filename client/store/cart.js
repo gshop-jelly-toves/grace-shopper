@@ -6,23 +6,21 @@ import history from '../history'
 */
 
 const SERIALIZE_CART = 'SERIALIZE_CART'
-const DESERIALIZE_CART = 'DESERIALIZE_CART'
+const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
 /**
  * INITIAL STATE
  */
-const initState = {
-  cart: []
-}
+const cart = {}
 
 /**
  * ACTION CREATORS
  */
 
-const deserializeCart = cart => ({
-  type: DESERIALIZE_CART, cart
+const getCart = cart => ({
+  type: GET_CART, cart
 })
 
 const addToCart = jelly => ({
@@ -40,7 +38,7 @@ const removeFromCart = jelly => ({
 export const fetchCart = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/cart')
-    const action = deserializeCart(data)
+    const action = getCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
 }
@@ -57,9 +55,17 @@ export const addJelly = jellyId => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = initState, action) {
+export default function(state = cart, action) {
   switch (action.type) {
-
+    case GET_CART: 
+      return action.cart
+    case ADD_TO_CART: 
+      return {
+        ...state, items: [
+          ...state.items,
+          action.jelly
+        ]
+      }
     default:
       return state
   }

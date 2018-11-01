@@ -3,14 +3,13 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly, AdminLanding } from './components'
-import {fetchUser} from './store'
+import {fetchUser, fetchCart} from './store'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount() {
-    // attachs req.user and req.session.cart
     this.props.loadInitialData()
   }
 
@@ -55,6 +54,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(fetchUser())
+      dispatch(fetchCart())
     }
   }
 }
