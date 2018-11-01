@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {fetchCategories, setCategory} from '../store'
+import {fetchCategories, setCategory, setSearch} from '../store'
 
 class Toolbar extends Component {
   constructor(props) {
     super(props)
-
     this.handleChange = this.handleChange.bind(this)
-
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount() {
@@ -19,7 +18,12 @@ class Toolbar extends Component {
     this.props.setCategory({
       category: event.target.value
     })
+  }
 
+  handleSearch(event) {
+    this.props.setSearch({
+      search: event.target.value
+    })
   }
 
   render() {
@@ -30,9 +34,7 @@ class Toolbar extends Component {
 
     return (
       <div id="toolbar">
-
         <select onChange={this.handleChange}>
-
           <option>Choose Category</option>
           {categories.map(category => (
             <option key={category.id} value={category.name}>
@@ -40,6 +42,10 @@ class Toolbar extends Component {
             </option>
           ))}
         </select>
+        <form>
+          <label>SEARCH JELLIES</label>
+          <input type="text" name="search" onChange={this.handleSearch} />
+        </form>
       </div>
     )
   }
@@ -53,8 +59,8 @@ const mapState = ({jellies: {categories}, user: {selectedCategory}}) => ({
 
 const mapDispatch = dispatch => ({
   fetchCategories: () => dispatch(fetchCategories()),
-  setCategory: category => dispatch(setCategory(category))
-
+  setCategory: category => dispatch(setCategory(category)),
+  setSearch: search => dispatch(setSearch(search))
 })
 
 export default connect(mapState, mapDispatch)(Toolbar)
