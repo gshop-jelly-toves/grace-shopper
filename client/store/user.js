@@ -20,7 +20,9 @@ const initState = {
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
+
 const removeUser = () => ({type: REMOVE_USER})
+
 export const setCategory = category => ({type: SET_CATEGORY, category})
 
 /**

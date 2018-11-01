@@ -3,6 +3,7 @@ const Jelly = require('./jelly')
 const Review = require('./review')
 const Order = require('./order')
 const Category = require('./category')
+const JellyOrder = require('./jellyOrder')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -18,7 +19,8 @@ const Category = require('./category')
  * instead of: const User = require('../db/models/user')
  */
 
-Jelly.belongsToMany(Order, {through: 'jelly-order'})
+Jelly.belongsToMany(Order, {through: {model: JellyOrder, unique: false}, constraints: false})
+Order.belongsToMany(Jelly, {through: {model: JellyOrder, unique: false}, constraints: false})
 
 /* On Order - userId */
 Order.belongsTo(User)
@@ -40,5 +42,6 @@ module.exports = {
   Jelly,
   Review,
   Order,
-  Category
+  Category,
+  JellyOrder
 }
