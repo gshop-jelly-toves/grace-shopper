@@ -26,17 +26,30 @@ class JellyList extends Component {
     const amount = this.state.jelliesPerReq
     const search = this.props.search
     const keyedJellies = this.props.jellies
-    console.log('...', search)
 
     const searchFilter = jellyArr => {
       if (!search) {
         return jellyArr
       } else {
-        return (
-          jellyArr
-            // .map(jel => jel.name.toLowerCase())
-            .filter(j => j.name.indexOf(search.search.toLowerCase()) !== -1)
-        )
+        return jellyArr
+          .map(jel => {
+            return {...jel, name: jel.name.toLowerCase()}
+          })
+          .filter(j => j.name.indexOf(search.search.toLowerCase()) !== -1)
+        // .map(j => {
+        //   console.log('//////', j.name)
+        //   return {
+        //     ...j,
+        //     name: j.name.split(' ')
+        //   }
+        // })
+        // .map(j => {
+        //   console.log('...inside MAP', j)
+        //   return {
+        //     ...j,
+        //     name: j.name[0][0].toUpperCase() + j.name.slice(1)
+        //   }
+        // })
       }
     }
 
