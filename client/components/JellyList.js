@@ -24,7 +24,7 @@ class JellyList extends Component {
 
   render() {
     const amount = this.state.jelliesPerReq
-    const search = this.props.search
+    const {search} = this.props
     const keyedJellies = this.props.jellies
 
     const jelliesList = Object.keys(keyedJellies)
@@ -36,11 +36,11 @@ class JellyList extends Component {
       })
 
     const searchFilter = jellyArr =>
-      search
+      search === ''
         ? jellyArr
         : [...jellyArr].filter(
             jelly =>
-              jelly.name.toLowerCase().indexOf(search.search.toLowerCase()) > -1
+              jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
 
     return (
