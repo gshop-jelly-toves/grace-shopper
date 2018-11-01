@@ -61,10 +61,7 @@ export default function(state = cart, action) {
       return action.cart
     case ADD_TO_CART: 
       return {
-        ...state, items: [
-          ...state.items,
-          action.jelly
-        ]
+        ...state //todo
       }
     default:
       return state
