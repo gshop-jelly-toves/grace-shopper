@@ -26,7 +26,7 @@ router.put('/', async (req, res, next) => {
   if (req.session.cart) {
     try {
       const jellyId = req.body
-      const item = await JellyOrder.findOrCreate({
+      const item = await JellyOrder.findOrCreate({ 
         jellyId,
         orderId: req.session.cart.id
       })
