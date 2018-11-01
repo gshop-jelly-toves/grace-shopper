@@ -1,6 +1,10 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
+const { Op } = Sequelize
 const db = require('../db')
+const JellyOrder = require('./jellyOrder')
+const Order = require('./order')
+const Jelly = require('./jelly')
 
 const User = db.define('user', {
   name: {
@@ -53,6 +57,30 @@ module.exports = User
 /**
  * instanceMethods
  */
+
+User.prototype.deserializeCart = async function() {
+  try {
+    const cart = await Order.findOrCreateCartByUserId(this.id)
+    const jellyOrders = await JellyOrder.findAll(
+      {where: {orderId: cart.id}}
+    )
+    // const jellyIds = jellyOrders.map(item => ({id: item.jellyId}) )
+    // const jellys = await Jelly.findAll({
+    //   where: {
+    //     [Op.or]: jellyIds
+    //   }
+    // })
+    // console.log(jellys)
+    // return jellys
+    
+    return {
+      ...cart.dataValues,
+      items: Object.keys(jellyOrders)
+        .map(key => jellyOrders[key].dataValues)
+    }
+  } catch (e) { console.error(e) }    
+}
+
 
 // can be used to check a users role and
 // choose which features they have access to

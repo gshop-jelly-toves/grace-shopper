@@ -5,9 +5,11 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import user from './user'
 import jellies from './jellies'
 import reviews from './reviews'
+import cart from './cart'
 
 const reducer = combineReducers({
   user,
+  cart,
   jellies,
   reviews
 })
@@ -20,3 +22,4 @@ export default store
 export * from './user'
 export * from './jellies'
 export * from './reviews'
+export * from './cart'

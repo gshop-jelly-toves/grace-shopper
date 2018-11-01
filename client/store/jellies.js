@@ -6,7 +6,9 @@ import history from '../history'
  */
 const GET_CATEGORIES = 'GET_CATEGORIES'
 const GET_JELLIES = 'GET_JELLIES'
-const GET_SINGLE_JELLY ='GET_SINGLE_JELLY'
+const GET_SINGLE_JELLY = 'GET_SINGLE_JELLY'
+const SET_SEARCH = 'SET_SEARCH'
+const SET_CATEGORY = 'SET_CATEGORY'
 
 /**
  * INITIAL STATE
@@ -14,30 +16,45 @@ const GET_SINGLE_JELLY ='GET_SINGLE_JELLY'
 const initState = {
   jellies: {},
   singleJelly: {},
-  categories: []
+  categories: [],
+  search: '',
+  selectedCategory: ''
 }
 
 /**
  * ACTION CREATORS
  */
 const getJellies = jellies => ({
-  type: GET_JELLIES, jellies
+  type: GET_JELLIES,
+  jellies
 })
 
 const getCategories = categories => ({
-  type: GET_CATEGORIES, categories
+  type: GET_CATEGORIES,
+  categories
 })
 
 const getSingleJelly = jelly => ({
-  type: GET_SINGLE_JELLY, jelly
+  type: GET_SINGLE_JELLY,
+  jelly
 })
+
+export const setSearch = search => ({
+  type: SET_SEARCH,
+  search
+})
+
+export const setCategory = category => ({type: SET_CATEGORY, category})
+
 
 /**
  * THUNK CREATORS
  */
 export const fetchJellies = (index, amount) => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/jellies?index=${index}&amount=${amount}`)
+    const {data} = await axios.get(
+      `/api/jellies?index=${index}&amount=${amount}`
+    )
     const action = getJellies(data)
     dispatch(action)
   } catch (e) {
@@ -47,7 +64,7 @@ export const fetchJellies = (index, amount) => async dispatch => {
 
 export const fetchCategories = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/jellies/categories')
+    const {data} = await axios.get('/api/jellies/categories')
     const action = getCategories(data)
     dispatch(action)
   } catch (e) {
@@ -57,7 +74,7 @@ export const fetchCategories = () => async dispatch => {
 
 export const fetchSingleJelly = jellyId => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/jellies/${jellyId}`)
+    const {data} = await axios.get(`/api/jellies/${jellyId}`)
     const action = getSingleJelly(data)
     dispatch(action)
   } catch (e) {
@@ -71,17 +88,24 @@ export const fetchSingleJelly = jellyId => async dispatch => {
 export default function(state = initState, action) {
   switch (action.type) {
     case GET_JELLIES:
-      return { ...state, jellies: { ...state.jellies,
-          ...action.jellies.reduce( (obj, item) => {
+      return {
+        ...state,
+        jellies: {
+          ...state.jellies,
+          ...action.jellies.reduce((obj, item) => {
             obj[item.id] = item
             return obj
           }, {})
         }
       }
     case GET_SINGLE_JELLY:
-      return { ...state, singleJelly: action.jelly }
+      return {...state, singleJelly: action.jelly}
     case GET_CATEGORIES:
-      return { ...state, categories: action.categories }
+      return {...state, categories: action.categories}
+    case SET_CATEGORY:
+      return {...state, selectedCategory: action.category}
+    case SET_SEARCH:
+      return {...state, search: action.search}
     default:
       return state
   }

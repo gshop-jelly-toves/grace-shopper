@@ -1,18 +1,13 @@
 import React, {Component} from 'react'
-import Search from './Search'
 import {connect} from 'react-redux'
 
-import {fetchCategories, setCategory} from '../store'
+import {fetchCategories, setCategory, setSearch} from '../store'
 
 class Toolbar extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      search: ''
-    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -25,19 +20,14 @@ class Toolbar extends Component {
     })
   }
 
-  handleSearch(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-    console.log('/////', this.state)
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    console.log('/////SUBMIT/////', this.state.search)
+  handleSearch(event) {
+    this.props.setSearch(event.target.value)
   }
 
   render() {
+    // const keyedJellies = this.props.jellies
+    // const jelliesList = Object.keys(keyedJellies).map(key => keyedJellies[key])
+
     const {categories} = this.props
 
     return (
@@ -50,25 +40,25 @@ class Toolbar extends Component {
             </option>
           ))}
         </select>
-        <Search
-          {...this.props}
-          handleSearch={this.handleSearch}
-          handleSubmit={this.handleSubmit}
-        />
+        <form>
+          <label>SEARCH JELLIES</label>
+          <input type="text" name="search" onChange={this.handleSearch} />
+        </form>
       </div>
     )
   }
 }
 
 // DO NOT TOUCH
-const mapState = ({jellies: {categories}, user: {selectedCategory}}) => ({
+const mapState = ({jellies: {categories}, jellies: {selectedCategory}}) => ({
   categories,
   selectedCategory
 })
 
 const mapDispatch = dispatch => ({
   fetchCategories: () => dispatch(fetchCategories()),
-  setCategory: category => dispatch(setCategory(category))
+  setCategory: category => dispatch(setCategory(category)),
+  setSearch: search => dispatch(setSearch(search))
 })
 
 export default connect(mapState, mapDispatch)(Toolbar)

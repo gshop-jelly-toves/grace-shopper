@@ -23,28 +23,38 @@ class JellyList extends Component {
   }
 
   render() {
-    const keyedJellies = this.props.jellies
-    const jelliesList = Object.keys(keyedJellies).map(key => keyedJellies[key])
     const amount = this.state.jelliesPerReq
+    const {search} = this.props
+    const keyedJellies = this.props.jellies
+
+    const jelliesList = Object.keys(keyedJellies)
+      .map(key => keyedJellies[key])
+      .sort(function(a, b) {
+        if (a.rating > b.rating) return -1
+        if (a.rating < b.rating) return 1
+        return 0
+      })
+
+    const searchFilter = jellyArr =>
+      search === ''
+        ? jellyArr
+        : [...jellyArr].filter(
+            jelly =>
+              jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+          )
 
     return (
       <div id="jellyList">
-        {jelliesList
-          .sort(function(a, b) {
-            if (a.rating > b.rating) return -1
-            if (a.rating < b.rating) return 1
-            return 0
-          })
-          .map(jelly => (
-            <div key={jelly.id}>
-              <Link to={`/jellies/${jelly.id}`}>
-                <img src={jelly.photo} />
-                <h3>{jelly.name}</h3>
-                <p>{jelly.rating}/5</p>
-                <p>{jelly.price}</p>
-              </Link>
-            </div>
-          ))}
+        {searchFilter(jelliesList).map(jelly => (
+          <div key={jelly.id}>
+            <Link to={`/jellies/${jelly.id}`}>
+              <img src={jelly.photo} />
+              <h3>{jelly.name}</h3>
+              <p>{jelly.rating}/5</p>
+              <p>{jelly.price}</p>
+            </Link>
+          </div>
+        ))}
 
         <button
           onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
@@ -56,8 +66,9 @@ class JellyList extends Component {
   }
 }
 
-const mapState = ({jellies: {jellies}}) => ({
-  jellies
+const mapState = ({jellies: {jellies}, jellies: {search}}) => ({
+  jellies,
+  search
 })
 
 const mapDispatch = dispatch => ({
