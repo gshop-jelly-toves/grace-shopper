@@ -10,6 +10,7 @@ import {fetchUser} from './store'
  */
 class Routes extends Component {
   componentDidMount() {
+    // attachs req.user and req.session.cart
     this.props.loadInitialData()
   }
 
