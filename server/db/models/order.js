@@ -37,7 +37,7 @@ Order.findOrCreateCartByUserId = async function(userId) {
 
 const forceOneCart = async order => {
   if (order.status === 'cart') {
-    try {
+    try { 
       const { userId } = order.dataValues
       const existingCart = await Order.findOne({
         where: {userId, status: 'cart'}
