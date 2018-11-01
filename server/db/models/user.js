@@ -76,7 +76,10 @@ User.prototype.deserializeCart = async function() {
     return {
       ...cart.dataValues,
       items: Object.keys(jellyOrders)
-        .map(key => jellyOrders[key].dataValues)
+        .reduce( (obj, key) => {
+          obj[ jellyOrders[key].dataValues.jellyId ] = jellyOrders[key].dataValues
+          return obj
+        }, {})
     }
   } catch (e) { console.error(e) }    
 }

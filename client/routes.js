@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly, AdminLanding } from './components'
+import { Login, Signup, UserHome, AddJellyForm, JellyList, SingleJelly, AdminLanding, SingleReview } from './components'
 import {fetchUser, fetchCart} from './store'
+
 
 /**
  * COMPONENT
@@ -23,6 +24,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/admin/jellies/add" component={AddJellyForm} />
         <Route path="/admin" component={AdminLanding} />
+        <Route path='/jellies/:jellyId/reviews/:reviewId' component={SingleReview} />
         <Route path='/jellies/:jellyId' component={SingleJelly} />
         <Route path="/jellies" component={JellyList} />
          {isLoggedIn && (
