@@ -21,28 +21,26 @@ const Review = db.define('review', {
   }
 })
 
-// Must fix this.
-/* ERROR
-  TypeError: Cannot read property 'update' of null
-    at Function.averageRating (/Users/ChrisMejia/Google Drive/FS/Senior-Phase/grace-shopper/server/db/models/review.js:45:18)
-*/
-
 const averageRating = async review => {
-  const jellyP = Jelly.findById(review.jellyId)
-  const reviewsP = Review.findAll({
-    where: {jellyId: review.jellyId}
-  })
+  try {
+    const jellyP = Jelly.findById(review.jellyId)
+    const reviewsP = Review.findAll({
+      where: {jellyId: review.jellyId}
+    })
 
-  const [jellyRes, reviewsRes] = await Promise.all([jellyP, reviewsP])
+    const [jellyRes, reviewsRes] = await Promise.all([jellyP, reviewsP])
 
-  const reviews = Object.keys(reviewsRes)
-    .map(keys => reviewsRes[keys])
-    .map(review => review.dataValues)
+    const reviews = Object.keys(reviewsRes)
+      .map(keys => reviewsRes[keys])
+      .map(review => review.dataValues)
 
-  let rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
-  rating = Math.round(rating * 10) / 10
+    let rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
+    rating = Math.round(rating * 10) / 10
 
-  await jellyRes.update({rating})
+    jellyRes.update({rating})
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 Review.afterCreate(averageRating)
