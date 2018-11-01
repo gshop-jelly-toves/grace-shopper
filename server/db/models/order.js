@@ -30,7 +30,7 @@ Order.findOrCreateCartByUserId = async function(userId) {
     if (!cart) cart = await this.create({
       status: 'cart',
       userId
-    })
+    }) 
     return cart
   } catch (e) { console.error(e) }
 }
