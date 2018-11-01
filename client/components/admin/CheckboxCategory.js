@@ -23,7 +23,7 @@ class CheckboxCategory extends Component {
   render() {
     const {isChecked} = this.state
     // console.log('isChecked', isChecked)
-    console.log(this.props.checked)
+    console.log('checked or not', this.props.checked)
     return (
       <div className="checkbox">
         <label>

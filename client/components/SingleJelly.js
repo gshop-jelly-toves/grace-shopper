@@ -23,6 +23,7 @@ class SingleJelly extends Component {
 
   render() {
     const jelly = this.props.singleJelly
+    console.log('jelly props', jelly)
     return jelly ? (
       <div>
         <div>
