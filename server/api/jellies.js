@@ -77,6 +77,17 @@ router.get('/:jellyId/reviews', async (req, res, next) => {
   }
 })
 
+// /api/jellies/:jellyId/reviews POST new review for single jelly
+router.post('/:jellyId/reviews', async (req, res, next) => {
+  try {
+    const {jellyId} = req.params
+    const review = await Review.create(req.body)
+    res.json(review)
+  } catch (e) {
+    next(e)
+  }
+})
+
 // /api/jellies/:jellyId GET specific jelly
 router.get('/:jellyId', async (req, res, next) => {
   try {

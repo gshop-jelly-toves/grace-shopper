@@ -62,7 +62,6 @@ export default function(state = initState, action) {
       return {
         ...state,
         reviews: {
-          ...state.reviews,
           ...action.reviews.reduce((obj, item) => {
             obj[item.id] = item
             return obj
@@ -70,7 +69,7 @@ export default function(state = initState, action) {
         }
       }
     case GET_SINGLE_REVIEW:
-      return {...state, singleReview: action.review}
+      return {singleReview: action.review}
 
     default:
       return state

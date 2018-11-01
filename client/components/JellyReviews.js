@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchReviews} from '../store'
+import { Link } from 'react-router-dom'
 
 
 class JellyReviews extends Component {
@@ -17,7 +18,7 @@ class JellyReviews extends Component {
     const latest = this.props.jellyId
     const prev = prevProps.jellyId
     if (prev !== latest) {
-      this.props.fetchReviews(latest.jellyId)
+      this.props.fetchReviews(latest)
     }
   }
 
@@ -26,14 +27,14 @@ class JellyReviews extends Component {
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
     return reviewsList ? (
       reviewsList.map(review => (
-        <div key={review.id}>
+        <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`} key={review.id}>
           <div>
             <h2>Reviewed by: {review.user.name}</h2>
             <img src={review.user.avatar} />
             <p>Rating: {review.starRating} / 5</p>
             <p>Review: {review.text}</p>
           </div>
-        </div>
+        </Link>
       ))
     ) : (
       <p>This product has no reviews!</p>

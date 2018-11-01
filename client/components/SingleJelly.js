@@ -4,18 +4,27 @@ import {fetchSingleJelly} from '../store'
 import NoMatch from './NoMatch'
 import EditJellyForm from './admin/EditJellyForm'
 import JellyReviews from './JellyReviews'
+import AddReviewForm from './AddReviewForm'
 
 class SingleJelly extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      editing: false
+      editing: false,
+      reviewing: false
     }
     this.doneEditing = this.doneEditing.bind(this)
+    this.doneReviewing = this.doneReviewing.bind(this)
   }
 
   doneEditing() {
     this.setState({editing: false})
+    const jellyId = this.props.match.params.jellyId
+    this.props.fetchSingleJelly(jellyId)
+  }
+
+  doneReviewing() {
+    this.setState({reviewing: false})
     const jellyId = this.props.match.params.jellyId
     this.props.fetchSingleJelly(jellyId)
   }
@@ -35,7 +44,12 @@ class SingleJelly extends Component {
 
   render() {
     const {editing} = this.state
+    const {reviewing} = this.state
     const {isAdmin} = this.props
+    const {isLoggedIn} = this.props
+
+    console.log('USER', this.props.user)
+
     const jelly = this.props.singleJelly
 
     return jelly ? (
@@ -53,6 +67,7 @@ class SingleJelly extends Component {
 
             {isAdmin && (
               <button
+                type="button"
                 onClick={() => {
                   this.setState({editing: true})
                 }}
@@ -61,7 +76,27 @@ class SingleJelly extends Component {
               </button>
             )}
 
-            <JellyReviews jellyId={this.props.match.params.jellyId}/>
+            {isLoggedIn && (
+              <button
+                type="button"
+                onClick={() => {
+                  this.setState({reviewing: true})
+                }}
+              >
+                ADD REVIEW
+              </button>
+            )}
+
+            {isLoggedIn &&
+              reviewing && (
+                <AddReviewForm
+                  jellyId={this.props.match.params.jellyId}
+                  userId={this.props.user.id}
+                  done={this.doneReviewing}
+                />
+              )}
+
+            <JellyReviews jellyId={this.props.match.params.jellyId} />
           </div>
         )}
       </div>
@@ -73,7 +108,9 @@ class SingleJelly extends Component {
 
 const mapState = ({jellies: {singleJelly}, user: {user}}) => ({
   singleJelly,
-  isAdmin: user.accessLevel >= 3
+  user,
+  isAdmin: user.accessLevel >= 3,
+  isLoggedIn: user.accessLevel >= 1
 })
 
 const mapDispatch = dispatch => ({
