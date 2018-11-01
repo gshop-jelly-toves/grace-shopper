@@ -38,7 +38,17 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/me', (req, res) => {
+router.get('/me', async (req, res, next) => {
+  let cart = req.session.cart || []
+
+  if (req.user) {
+    try {
+      const user = await User.findById(req.user.id)
+      cart = await user.deserializeCart()
+    } catch (e) { next(e) }
+  }
+
+  req.session.cart = cart
   res.json(req.user)
 })
 

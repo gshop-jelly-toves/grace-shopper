@@ -18,13 +18,13 @@
     "userId": 48
   },
   {
-    "status": "cart",
+    "status": "delivered",
     "cartTotal": 86.37,
     "orderTotal": 157.36,
     "userId": 35
   },
   {
-    "status": "cart",
+    "status": "cancelled",
     "cartTotal": 55.39,
     "orderTotal": 227.62,
     "userId": 42

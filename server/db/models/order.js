@@ -24,16 +24,42 @@ const Order = db.define('order', {
   }
 })
 
-const setCartTotal = async order => {
-  const items = await Jelly.findAll({
-    where: {
-      orderId: order.id
-    }
-  })
-  const total = items.reduce((a, b) => a + b.price, 0)
-  order.cartTotal = total
+Order.findOrCreateCartByUserId = async function(userId) {
+  try {
+    let cart = await this.findOne({where: {userId, status: 'cart'}})
+    if (!cart) cart = await this.create({
+      status: 'cart',
+      userId
+    })
+    return cart
+  } catch (e) { console.error(e) }
 }
 
+const forceOneCart = async order => {
+  if (order.status === 'cart') {
+    try {
+      const { userId } = order.dataValues
+      const existingCart = await Order.findOne({
+        where: {userId, status: 'cart'}
+      })
+      if (existingCart) throw new Error(`User (id: ${userId}) can only have one cart.`)
+    } catch (e) { console.error(e) }
+  }
+}
+
+const setCartTotal = async order => {
+  try {
+    const items = await Jelly.findAll({
+      where: {
+        orderId: order.id
+      }
+    })
+    const total = items.reduce((a, b) => a + b.price, 0)
+    order.cartTotal = total
+  } catch (e) { console.error(e) }
+}
+
+Order.beforeCreate(forceOneCart)
 Order.beforeUpdate(setCartTotal)
 
 module.exports = Order
