@@ -13,7 +13,8 @@ class AddJellyForm extends Component {
       price: '',
       inventory: '',
       categoryIds: [],
-      photo: ''
+      photo: '',
+      checked: false
     }
   }
 
@@ -31,22 +32,6 @@ class AddJellyForm extends Component {
     })
   }
 
-  // toggleCheckbox = checkbox => {
-  //   if (this.selectedCheckboxes.has(checkbox)) {
-  //     this.selectedCheckboxes.delete(checkbox)
-
-  //     let array = [...this.state.categoryIds]
-  //     let index = array.indexOf(checkbox.id)
-  //     array.splice(index, 1)
-
-  //     this.setState({categoryIds: array})
-  //   } else {
-  //     this.selectedCheckboxes.add(checkbox)
-  //     this.setState(prevState => ({
-  //       categoryIds: [...prevState.categoryIds, checkbox.id]
-  //     }))
-  //   }
-  // }
 
   toggleCheckbox = (checkbox) => {
     if (this.selectedCheckboxes.has(checkbox)) {
@@ -71,9 +56,15 @@ class AddJellyForm extends Component {
     const newJelly = this.state
     await axios.post('/api/jellies', newJelly)
 
-    console.log('ENTIRE SET', this.selectedCheckboxes)
+    // console.log('ENTIRE SET', this.selectedCheckboxes)
     // this.selectedCheckboxes.forEach(e => e.delete(e))
     // console.log(this.selectedCheckboxes)
+
+
+    // (function() {
+    // document.getElementById("add-jelly-form").reset();
+    // })()
+
 
     this.setState({
       name: '',
@@ -81,13 +72,16 @@ class AddJellyForm extends Component {
       price: '',
       inventory: '',
       categoryIds: [],
-      photo: ''
+      photo: '',
     })
   }
 
   handleSaveRedirect = async event => {
     event.preventDefault()
     const newJelly = this.state
+    if (newJelly.photo === "") {
+      delete newJelly.photo
+    }
     const {data} = await axios.post('/api/jellies', newJelly)
 
     this.props.history.push(`/jellies/${data.id}`)
@@ -96,11 +90,11 @@ class AddJellyForm extends Component {
   render() {
     const {name, description, price, inventory} = this.state
     const isEnabled = name && description && price && inventory
-    console.log(this.state)
+    console.log('RENDER', this.state)
 
     return (
       <div>
-        <form>
+        <form id="add-jelly-form">
           <h2>Add Jelly</h2>
           <label htmlFor="name">Jelly Name:</label>
           <input
@@ -135,26 +129,21 @@ class AddJellyForm extends Component {
             required
           />
           <label htmlFor="category">Categories</label>
-          {/* <select
-            name="categoryId"
-            value={this.state.category}
-            onChange={this.handleChange}
-          >
-            <option>-</option>
-            {this.props.categories.map(category => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select> */}
+
+
+
+
+{/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
+
           {this.props.categories.map(category => (
             <CheckboxCategory
               category={category}
               key={category.id}
               handleCheckboxChange={this.toggleCheckbox}
-              checked={false}
+              checked={this.state.checked}
             />
           ))}
+
 
           <label htmlFor="photo">Jelly Photo</label>
           <input
