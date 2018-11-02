@@ -13,4 +13,14 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
+jellyOrder.saveItem = async function(orderId, jellyId) {
+  try {
+    const { [0]: item } = await jellyOrder.findOrCreate({ 
+      where: { orderId, jellyId }
+    })
+    await item.update({ quantity: item.quantity+1 })
+    return item
+  } catch (e) { console.error(e) }
+}
+
 module.exports = jellyOrder

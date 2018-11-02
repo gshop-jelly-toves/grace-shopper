@@ -25,6 +25,10 @@ router.get('/', async (req, res, next) => {
   res.json(req.session.cart)
 })
 
+
+
+// get route with hardcoded `jellyId = 1` for testing purposes,
+// should really be a put route with `jellyId = req.body`
 router.get('/add', async (req, res, next) => {
   const { cart } = req.session 
   const jellyId = 1
@@ -32,19 +36,20 @@ router.get('/add', async (req, res, next) => {
   if (cart) {
 
     if (req.user) {
-
+      // if user is logged in, save to db
+      // `req.session.cart` will be handled via
+      // deserializeCart whenever a user
+      // requests it
       try {
-        const item = await JellyOrder.findOrCreate({where: { 
-          jellyId,
-          orderId: cart.id
-        }})
-        await item[0].update({quantity: item[0].quantity+1})
-        cart.items[item[0].dataValues.jellyId] = item[0].dataValues
-        res.json(item[0])
+        const item = await JellyOrder.saveItem(cart.id, jellyId)
+        cart.items[item.jellyId] = item
+        res.json(item)
       } catch (e) { next(e) }
 
     } else {
-
+      // if user is not logged in, manually 
+      // persist item to cart session.
+      // this logic may want to be handled elsewhere
       if (cart.items[jellyId] ) {
         cart.items[jellyId].quantity++
       } else {
@@ -53,7 +58,8 @@ router.get('/add', async (req, res, next) => {
           quantity: 1
         }
       }
-      res.send(cart.items[jellyId])
+
+      res.json(cart.items[jellyId])
     }
 
   } else {
