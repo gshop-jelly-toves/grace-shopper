@@ -16,9 +16,10 @@ class Toolbar extends Component {
   render() {
     return (
       <div>
+        <span className="navbar-text">Search</span>
         <form className="form-inline my-3 my-lg-0">
-          <label>Search</label>
           <input
+            className="form-control"
             type="search"
             name="search"
             placeholder="ready for this jelly?"
