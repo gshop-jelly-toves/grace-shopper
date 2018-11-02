@@ -7,6 +7,8 @@
 // All Visitors
 export {default as Navbar} from './Navbar'
 export {default as UserHome} from './Homepage'
+export {default as BootNav} from './BootNavbar'
+
 export {default as SingleJelly} from './SingleJelly'
 export {default as JellyReviews} from './JellyReviews'
 export {default as SingleReview} from './SingleReview'
