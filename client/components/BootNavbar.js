@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink, Link} from 'react-router-dom'
 import {logout} from '../store'
-// import {Toolbar} from './index'
+import {Category, Toolbar} from './index'
 
 // --- WHAT'S BEEN BOOTSTRAP REFACTORED ---
 // ↳ BootNavbar.js has replaced Navbar.js (called in app.js)
@@ -120,7 +120,11 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
           </li>
         )}
 
-        {/*
+        <li className="nav-item">
+          <Category />
+        </li>
+      </ul>
+      {/*
 
             The plan here is to get admin links
             to be a dropdown somehow
@@ -152,25 +156,14 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
           </div>
         </li>
         */}
-        {/*
+      {/*
    _____                      __
   / ___/___  ____ ___________/ /_
   \__ \/ _ \/ __ `/ ___/ ___/ __ \
  ___/ /  __/ /_/ / /  / /__/ / / /
 /____/\___/\__,_/_/   \___/_/ /_/
         */}
-      </ul>
-      <form className="form-inline my-2 my-lg-0">
-        <input
-          className="form-control mr-sm-2"
-          type="search"
-          placeholder="Not hooked up yet :("
-          aria-label="Search"
-        />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
+      <Toolbar />
     </div>
   </nav>
 )
