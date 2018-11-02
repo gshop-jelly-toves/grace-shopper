@@ -39,9 +39,18 @@ class JellyList extends Component {
       search === ''
         ? jellyArr
         : [...jellyArr].filter(
-            jelly =>
-              jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+            jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
+
+    // const categoryFilter = jellyArr =>
+    //   this.props.selectedCategory === ''
+    //     ? jellyArr
+    //     : [...jellyArr].filter(
+    //       jelly =>
+    //         jelly.name.indexOf(search.toLowerCase()) > -1
+    //     )
+
+    console.log(this.props.selectedCategory)
 
     return (
       <div id="jellyList">
@@ -66,9 +75,14 @@ class JellyList extends Component {
   }
 }
 
-const mapState = ({jellies: {jellies}, jellies: {search}}) => ({
+const mapState = ({
+  jellies: {jellies},
+  jellies: {search},
+  jellies: {selectedCategory}
+}) => ({
   jellies,
-  search
+  search,
+  selectedCategory
 })
 
 const mapDispatch = dispatch => ({
