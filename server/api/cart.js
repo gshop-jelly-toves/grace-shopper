@@ -35,19 +35,19 @@ router.get('/add', async (req, res, next) => {
   const jellyId = 1
 
   if (cart) {
-{
-      if (req.user) {
-        // if user is logged in, save to db
-        try {
-          const item = await JellyOrder.addItem(cart.id, jellyId)
-          res.json(item)
-        } catch (e) { next(e) }
 
-      } else {
-        // if user is not logged in, persist item to `req.session.cart`
-        req.session.cart = cartSession.addJelly(cart, jellyId)
-        res.json(req.session.cart[jellyId])
-      }}
+    if (req.user) {
+      // if user is logged in, save to db
+      try {
+        const item = await JellyOrder.addItem(cart.id, jellyId)
+        res.json(item)
+      } catch (e) { next(e) }
+
+    } else {
+      // if user is not logged in, persist item to `req.session.cart`
+      req.session.cart = cartSession.addJelly(cart, jellyId)
+      res.json(req.session.cart[jellyId])
+    }
 
   } else {
     throw new Error('req.session.cart is not defined')
