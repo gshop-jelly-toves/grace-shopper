@@ -5,12 +5,42 @@ import {NavLink, Link} from 'react-router-dom'
 import {logout} from '../store'
 // import {Toolbar} from './index'
 
-// Bootstrap refactored version
+// --- WHAT'S BEEN BOOTSTRAP REFACTORED ---
+// ↳ BootNavbar.js has replaced Navbar.js (called in app.js)
+// ↳ HomePage.js cleaned and container'd; has carousel (hero image??) prep
+
+// --- IMPLEMENTED AND WORKING ---
+// ↳ DONE - isLoggedin implementation
+// ↳ DONE - isAdmin implementation
+// ↳ DONE - Bringing in email props used on homepage to display user name in
+// ↳ WORKING - All routes.js routes
+// ↳ JellyShop renders / pagination still works
+// ↳ Google OAuth works - displays name on page
+// ↳ Admin Tools links
+
+// --- STILL NEEDS ---
+// ↳ Bringing in Toolbar (jellyShop filtering function) - line 6 here
+// ↳ Getting the search field to cooperate (see note in bar on localhost)
+// ↳ Fix layout of login and signup
 
 const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <a className="navbar-brand" href="#">
-      Navbar
+    <a className="navbar-brand">
+      {/*
+    ____  ________    __    ________________
+   / __ )/ ____/ /   / /   /  _/ ____/ ___( )
+  / __  / __/ / /   / /    / // __/  \__ \|/
+ / /_/ / /___/ /___/ /____/ // /___ ___/ /
+/_____/_____/_____/_____/__//_____/_____/_
+      / / ____/ /   / /   /  _/ ____/ ___/
+ __  / / __/ / /   / /    / // __/  \__ \
+/ /_/ / /___/ /___/ /____/ // /___ ___/ /
+\____/_____/_____/_____/___/_____//____/
+      */}
+      <Link to="/home">
+        <div id="shopName">Bellies' Jellies</div>
+        <div id="shopSlogan">Jelly for your belly!</div>
+      </Link>
     </a>
     <button
       className="navbar-toggler"
@@ -23,19 +53,79 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
     >
       <span className="navbar-toggler-icon" />
     </button>
-
+    {/*
+    _   __            __    _       __
+   / | / /___ __   __/ /   (_)___  / /_______
+  /  |/ / __ `/ | / / /   / / __ \/ //_/ ___/
+ / /|  / /_/ /| |/ / /___/ / / / / ,< (__  )
+/_/ |_/\__,_/ |___/_____/_/_/ /_/_/|_/____/
+    */}
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
-          <a className="nav-link" href="#">
-            Home <span className="sr-only">(current)</span>
-          </a>
-        </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
-            Link
-          </a>
+          <div className="nav-link">
+            <NavLink to="/jellies" activeClassName="nav-active">
+              Jelly Shop
+            </NavLink>
+          </div>
         </li>
+        {/*
+    __                      ____         ______        __
+   / /   ____  ____ _      /  _/___    _/_/ __ \__  __/ /_
+  / /   / __ \/ __ `/_____ / // __ \ _/_// / / / / / / __/
+ / /___/ /_/ / /_/ /_____// // / / //_/ / /_/ / /_/ / /_
+/_____/\____/\__, /     /___/_/ /_/_/   \____/\__,_/\__/
+            /____/
+        */}
+        {isLoggedIn ? (
+          <li className="nav-item">
+            <div className="nav-link">
+              <li className="nav-item">
+                <a className="nav-link" href="#" onClick={handleClick}>
+                  Logout
+                </a>
+              </li>
+            </div>
+          </li>
+        ) : (
+          <div>
+            <li className="nav-item">
+              <div className="nav-link">
+                <NavLink to="/login" activeClassName="nav-active">
+                  Login
+                </NavLink>
+              </div>
+            </li>
+            <li className="nav-item">
+              <div className="nav-link">
+                <NavLink to="/signup" activeClassName="nav-active">
+                  Sign Up
+                </NavLink>
+              </div>
+            </li>
+          </div>
+        )}
+        {/*
+    ___       __          _          ______            __
+   /   | ____/ /___ ___  (_)___     /_  __/___  ____  / /____
+  / /| |/ __  / __ `__ \/ / __ \     / / / __ \/ __ \/ / ___/
+ / ___ / /_/ / / / / / / / / / /    / / / /_/ / /_/ / (__  )
+/_/  |_\__,_/_/ /_/ /_/_/_/ /_/    /_/  \____/\____/_/____/
+        */}
+        {isAdmin && (
+          <li className="nav-item">
+            <div className="nav-link">
+              <NavLink to="/admin">Admin Tools</NavLink>
+            </div>
+          </li>
+        )}
+
+        {/*
+
+            The plan here is to get admin links
+            to be a dropdown somehow
+            by porting over the admin functionalities
+
         <li className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"
@@ -46,7 +136,7 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Dropdown
+            Dropdown as Admin?
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             <a className="dropdown-item" href="#">
@@ -61,17 +151,20 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
             </a>
           </div>
         </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="#">
-            Disabled
-          </a>
-        </li>
+        */}
+        {/*
+   _____                      __
+  / ___/___  ____ ___________/ /_
+  \__ \/ _ \/ __ `/ ___/ ___/ __ \
+ ___/ /  __/ /_/ / /  / /__/ / / /
+/____/\___/\__,_/_/   \___/_/ /_/
+        */}
       </ul>
       <form className="form-inline my-2 my-lg-0">
         <input
           className="form-control mr-sm-2"
           type="search"
-          placeholder="Search"
+          placeholder="Not hooked up yet :("
           aria-label="Search"
         />
         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">

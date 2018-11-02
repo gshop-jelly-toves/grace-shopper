@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <BootNav />
-      {/* <Routes /> */}
+      <Routes />
     </div>
   )
 }

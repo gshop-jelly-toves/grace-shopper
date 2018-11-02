@@ -6,55 +6,51 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const Homepage = props => {
-  // const {email} = props
+  const {email} = props
 
   return (
     <main role="main">
-      <div
-        id="carouselExampleIndicators"
+      <h3>Welcome, {email}</h3>
+      {/*
+   ______                                 __
+  / ____/___ __________  __  __________  / /
+ / /   / __ `/ ___/ __ \/ / / / ___/ _ \/ /
+/ /___/ /_/ / /  / /_/ / /_/ (__  )  __/ /
+\____/\__,_/_/   \____/\__,_/____/\___/_/
+
+ON HOLD - PROBABLY IMPLEMENTING SOMETHING WILL ACTUALLY WORK T_T
+      */}
+
+      {/* <div
+        id="carouselExampleSlidesOnly"
         className="carousel slide"
         data-ride="carousel"
       >
-        <ol className="carousel-indicators">
-          <li
-            data-target="#carouselExampleIndicators"
-            data-slide-to="0"
-            className="active"
-          />
-          <li data-target="#carouselExampleIndicators" data-slide-to="1" />
-          <li data-target="#carouselExampleIndicators" data-slide-to="2" />
-        </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="d-block w-100" src="..." alt="First slide" />
+            <img
+              className="d-block w-100"
+              src="https://dummyimage.com/1200x400/000/fff.jpg&text=First+Image
+"
+              alt="First slide"
+            />
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100" src="..." alt="Second slide" />
+            <img
+              className="d-block w-100"
+              src="https://dummyimage.com/1200x400/960/fff.jpg&text=Second+Image"
+              alt="Second slide"
+            />
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100" src="..." alt="Third slide" />
+            <img
+              className="d-block w-100"
+              src="https://dummyimage.com/1200x400/99c/000.jpg&text=Third+Image"
+              alt="Third slide"
+            />
           </div>
         </div>
-        <a
-          className="carousel-control-prev"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true" />
-          <span className="sr-only">Previous</span>
-        </a>
-        <a
-          className="carousel-control-next"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true" />
-          <span className="sr-only">Next</span>
-          {/*<h3>Welcome, {email}</h3>*/}
-        </a>
-      </div>
+      </div> */}
     </main>
   )
 }
