@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import StripeTest from './StripeTest'
 
 /**
  * COMPONENT
@@ -11,6 +12,7 @@ export const Homepage = props => {
   return (
     <main role="main">
       <h3>Welcome, {email}</h3>
+      <StripeTest />
       {/*
    ______                                 __
   / ____/___ __________  __  __________  / /

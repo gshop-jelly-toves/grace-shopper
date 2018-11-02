@@ -20,3 +20,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 )
+
+console.log('STRIPE PUB KEY IS:', process.env.REACT_APP_STRIPE_KEY)
