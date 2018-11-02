@@ -1,31 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Toolbar} from './index'
 
 const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <div>
-    <h1>Jelly for your Belly!</h1>
-    <nav>
+    <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark d-flex align-items-center">
       {isLoggedIn ? (
         <div id="navbar-main">
           {/* The navbar will show these links after you log in */}
-          <NavLink to="/home" activeClassName="nav-active">
-            Home
-          </NavLink>
-          <NavLink to="/jellies" activeClassName="nav-active">
-            Shop
-          </NavLink>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          <Link to="/home">
+            <div id="shopName">Bellies' Jellies</div>
+            <div id="shopSlogan">Jelly for your belly!</div>
+          </Link>
+          <div className="d-flex p-2 bd-highlight">
+            <NavLink to="/jellies" activeClassName="nav-active">
+              Shop
+            </NavLink>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
           <Toolbar />
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
+          <Link to="/home">
+            <div id="shopName">Bellies' Jellies</div>
+            <div id="shopSlogan">Jelly for your belly!</div>
+          </Link>
           <NavLink to="/login" activeClassName="nav-active">
             Login
           </NavLink>
@@ -43,9 +49,9 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
 /**
  * CONTAINER
  */
-const mapState = ({ user: {user} }) => ({
-    isLoggedIn: !!user.id,
-    isAdmin: user.accessLevel >= 3
+const mapState = ({user: {user}}) => ({
+  isLoggedIn: !!user.id,
+  isAdmin: user.accessLevel >= 3
 })
 
 const mapDispatch = dispatch => {

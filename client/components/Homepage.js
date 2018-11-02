@@ -9,14 +9,49 @@ export const Homepage = props => {
   const {email} = props
 
   return (
-    <div>
+    <main role="main">
       <h3>Welcome, {email}</h3>
+      {/*
+   ______                                 __
+  / ____/___ __________  __  __________  / /
+ / /   / __ `/ ___/ __ \/ / / / ___/ _ \/ /
+/ /___/ /_/ / /  / /_/ / /_/ (__  )  __/ /
+\____/\__,_/_/   \____/\__,_/____/\___/_/
 
-      <p>because we don't want our jelly server to be</p> 
-      <p>cluttered with dev dependencies like jellypack,</p>
-      <p>we adhere to strict jellyOps principles in</p>
-      <p>order avoid any jelly-merge conflicts</p>
-    </div>
+ON HOLD - PROBABLY IMPLEMENTING SOMETHING WILL ACTUALLY WORK T_T
+      */}
+
+      {/* <div
+        id="carouselExampleSlidesOnly"
+        className="carousel slide"
+        data-ride="carousel"
+      >
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img
+              className="d-block w-100"
+              src="https://dummyimage.com/1200x400/000/fff.jpg&text=First+Image
+"
+              alt="First slide"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              className="d-block w-100"
+              src="https://dummyimage.com/1200x400/960/fff.jpg&text=Second+Image"
+              alt="Second slide"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              className="d-block w-100"
+              src="https://dummyimage.com/1200x400/99c/000.jpg&text=Third+Image"
+              alt="Third slide"
+            />
+          </div>
+        </div>
+      </div> */}
+    </main>
   )
 }
 

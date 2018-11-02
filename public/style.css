@@ -1,3 +1,21 @@
+/* Supplementary CSS for bootstrap */
+
+/* Font for shop name */
+@import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
+
+#shopName {
+  font-family: 'Spicy Rice', cursive;
+  font-size: 1.5em;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  line-height: 0.8em;
+}
+
+#shopSlogan {
+  font-family: 'Spicy Rice', cursive;
+  font-size: 1em;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -21,7 +39,7 @@ form div {
 }
 
 .nav-active {
-  color: green
+  color: green;
 }
 
 #navbar-main {
