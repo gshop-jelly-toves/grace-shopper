@@ -39,6 +39,8 @@ router.get('/add', async (req, res, next) => {
     if (req.user) {
       // if user is logged in, save to db
       try {
+        // line 43 is the only place where the registered
+        // users need their cart on the session (can be fixed)
         const item = await JellyOrder.addItem(cart.id, jellyId)
         res.json(item)
       } catch (e) { next(e) }
