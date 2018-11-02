@@ -20,7 +20,10 @@ jellyOrder.addItem = async function(orderId, jellyId) {
     const { [0]: item } = await jellyOrder.findOrCreate({ 
       where: { orderId, jellyId }
     })
-    return await item.update({ quantity: item.quantity+1 })
+    
+    return await item.update({ 
+      quantity: item.quantity+1 
+    })
   } catch (e) { console.error(e) }
 }
 
@@ -31,7 +34,9 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
     }})
 
     if (item) 
-      item = await item.update({ quantity: item.quantity-1})
+      item = await item.update({ 
+        quantity: item.quantity-1
+      })
 
     return item
   } catch (e) { console.error(e) }
