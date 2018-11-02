@@ -26,8 +26,21 @@ jellyOrder.addItem = async function(orderId, jellyId) {
 
 jellyOrder.removeItem = async function(orderId, jellyId) {
   try {
-    // todo
+    let item = await jellyOrder.findOne({where: {
+      jellyId, orderId
+    }})
+
+    if (item) 
+      item = await item.update({ quantity: item.quantity-1})
+
   } catch (e) { console.error(e) }
 }
+
+const rejectInvalidQuantity = item => {
+  if (item.quantity < 1)
+    item.destroy()
+}
+
+jellyOrder.afterUpdate(rejectInvalidQuantity)
 
 module.exports = jellyOrder
