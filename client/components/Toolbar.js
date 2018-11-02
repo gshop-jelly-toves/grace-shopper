@@ -16,7 +16,7 @@ class Toolbar extends Component {
   render() {
     return (
       <div>
-        <form className="form-inline my-2 my-lg-0">
+        <form className="form-inline my-3 my-lg-0">
           <label>Search</label>
           <input
             type="search"
