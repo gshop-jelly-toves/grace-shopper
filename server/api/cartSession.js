@@ -6,7 +6,8 @@ const newJelly = jellyId => ({
 module.exports = {
 
   /*
-    these functions assume jellies is a keyed object
+    these functions assume jellies 
+    is an object keyed by jellyId
     ex.
       jellies: {
         '0': {
