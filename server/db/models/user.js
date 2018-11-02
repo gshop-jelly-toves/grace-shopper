@@ -72,7 +72,8 @@ User.prototype.deserializeCart = async function() {
     // })
     // console.log(jellys)
     // return jellys
-    
+    console.log('CART', cart)
+
     return {
       ...cart.dataValues,
       items: Object.keys(jellyOrders)
@@ -81,7 +82,7 @@ User.prototype.deserializeCart = async function() {
           return obj
         }, {})
     }
-  } catch (e) { console.error(e) }    
+  } catch (e) { console.error(e) }
 }
 
 

@@ -67,6 +67,9 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
             <NavLink to="/jellies" activeClassName="nav-active">
               Jelly Shop
             </NavLink>
+            <NavLink to="/cart" activeClassName="nav-active">
+              Shopping Cart
+            </NavLink>
           </div>
         </li>
         {/*
