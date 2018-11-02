@@ -33,6 +33,7 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
     if (item) 
       item = await item.update({ quantity: item.quantity-1})
 
+    return item
   } catch (e) { console.error(e) }
 }
 

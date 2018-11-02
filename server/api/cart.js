@@ -66,13 +66,17 @@ router.get('/remove', async (req, res, next) => {
       // if user is logged in, remove/reduce db
       try {
         const item = await JellyOrder.removeItem(cart.id, jellyId)        
-        res.json(item)
+        res.json(item || {
+          message: 'item not in cart'
+        })
       } catch (e) { next(e) }
 
     } else {
       // if user is not logged in, update cart session
       req.session.cart = cartSession.removeJelly(cart, jellyId)
-      res.json(req.session.cart[jellyId])
+      res.json(req.session.cart[jellyId] || {
+        message: 'item not in cart'
+      })
     }
 
   } else {
