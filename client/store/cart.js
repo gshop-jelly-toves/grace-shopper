@@ -5,7 +5,6 @@ import history from '../history'
  * ACTION TYPES
 */
 
-const SERIALIZE_CART = 'SERIALIZE_CART'
 const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
@@ -13,7 +12,9 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 /**
  * INITIAL STATE
  */
-const cart = {}
+const cart = {
+  items: {}
+}
 
 /**
  * ACTION CREATORS
@@ -27,13 +28,18 @@ const addToCart = jelly => ({
   type: ADD_TO_CART, jelly
 })
 
-const removeFromCart = jelly => ({
-  type: REMOVE_FROM_CART, jelly
+const removeFromCart = jellyId => ({
+  type: REMOVE_FROM_CART, jellyId
 })
 
 /**
  * THUNK CREATORS
  */
+
+// no thunk-actions should care whether or not the 
+// user is logged in. all of this logic should be
+// handled in express so that components can remain
+// completely agnostic to all db/session logic
 
 export const fetchCart = () => async dispatch => {
   try {
@@ -43,10 +49,18 @@ export const fetchCart = () => async dispatch => {
   } catch (e) { console.error(e) }
 }
 
-export const addJelly = jellyId => async dispatch => {
+export const addJellyById = jellyId => async dispatch => {
   try {
-    const { data } = await axios.put('/api/cart', jellyId)
+    const { data } = await axios.get('/api/cart/add')//, jellyId)
     const action = addToCart(data)
+    dispatch(action)
+  } catch (e) { console.error(e) }
+}
+
+export const removeJellyById = jellyId => async dispatch => {
+  try {
+    const { data } = await axios.get('/api/cart/remove')//, jellyId)
+    const action = removeFromCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
 }
@@ -61,7 +75,19 @@ export default function(state = cart, action) {
       return action.cart
     case ADD_TO_CART: 
       return {
-        ...state //todo
+        ...state,
+        items: {
+          ...state.items,
+          [action.jelly.id]: action.jelly
+        }
+      }
+    case REMOVE_FROM_CART: 
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [action.jellyId]: null
+        }
       }
     default:
       return state

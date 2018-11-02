@@ -13,13 +13,18 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
-jellyOrder.saveItem = async function(orderId, jellyId) {
+jellyOrder.addItem = async function(orderId, jellyId) {
   try {
     const { [0]: item } = await jellyOrder.findOrCreate({ 
       where: { orderId, jellyId }
     })
-    await item.update({ quantity: item.quantity+1 })
-    return item
+    return await item.update({ quantity: item.quantity+1 })
+  } catch (e) { console.error(e) }
+}
+
+jellyOrder.removeItem = async function(orderId, jellyId) {
+  try {
+
   } catch (e) { console.error(e) }
 }
 
