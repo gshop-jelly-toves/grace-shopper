@@ -39,7 +39,7 @@ router.get('/add', async (req, res, next) => {
       if (req.user) {
         // if user is logged in, save to db
         try {
-          const item = await JellyOrder.saveItem(cart.id, jellyId)
+          const item = await JellyOrder.addItem(cart.id, jellyId)
           res.json(item)
         } catch (e) { next(e) }
 
