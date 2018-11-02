@@ -16,6 +16,10 @@
   font-size: 1em;
 }
 
+#error-cat {
+  background-color: #dadfe2;
+}
+
 body {
   font-family: sans-serif;
 }

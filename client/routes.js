@@ -3,14 +3,15 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
-  Login,
-  Signup,
-  UserHome,
   AddJellyForm,
-  JellyList,
-  SingleJelly,
   AdminLanding,
-  SingleReview
+  JellyList,
+  Login,
+  NoMatch,
+  Signup,
+  SingleJelly,
+  SingleReview,
+  UserHome
 } from './components'
 import {fetchUser, fetchCart} from './store'
 
@@ -48,7 +49,7 @@ class Routes extends Component {
           )}
 
           {/* Displays Login component as our NoMatch fallback */}
-          <Route component={Login} />
+          <Route component={NoMatch} />
         </Switch>
       </div>
     )
