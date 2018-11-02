@@ -6,7 +6,7 @@ import {logout} from '../store'
 // import {Toolbar} from './index'
 
 // --- WHAT'S BEEN BOOTSTRAP REFACTORED ---
-// ↳ BootNavbar.js has replaced Navbar.js (called in app.js)
+// ↳ BootNavbar.js has replaced Navbar.js (called in app.js) 
 // ↳ HomePage.js cleaned and container'd; has carousel (hero image??) prep
 
 // --- IMPLEMENTED AND WORKING ---
