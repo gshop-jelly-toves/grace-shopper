@@ -15,6 +15,8 @@ const jellyOrder = db.define('jelly-orders', {
 
 jellyOrder.saveItem = async function(orderId, jellyId) {
   try {
+    // `findOrCreate` (oddly) returns an array containing a single 
+    // instance, so a little destructuring can be used
     const { [0]: item } = await jellyOrder.findOrCreate({ 
       where: { orderId, jellyId }
     })
