@@ -24,7 +24,7 @@ jellyOrder.addItem = async function(orderId, jellyId) {
 
 jellyOrder.removeItem = async function(orderId, jellyId) {
   try {
-
+    // todo
   } catch (e) { console.error(e) }
 }
 

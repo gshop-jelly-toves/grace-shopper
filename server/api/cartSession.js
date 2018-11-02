@@ -5,6 +5,22 @@ const newJelly = jellyId => ({
 
 module.exports = {
 
+  /*
+    these functions assume jellies is a keyed object
+    ex.
+      jellies: {
+        '0': {
+          jellyId: 0,
+          quantity: 10
+        },
+        '5': {
+          jellyId: 5,
+          quantity: 50
+        },
+        ...etc
+      }
+  */
+
   addJelly: (jellies, jellyId) => {
     const newJellies = { ... jellies }
     newJellies[jellyId]
