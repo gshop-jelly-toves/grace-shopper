@@ -11,7 +11,7 @@ const Jelly = db.define('jelly', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   inventory: {

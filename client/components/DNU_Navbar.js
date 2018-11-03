@@ -19,6 +19,9 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
             <NavLink to="/jellies" activeClassName="nav-active">
               Shop
             </NavLink>
+            <NavLink to="/cart" activeClassName="nav-active">
+              Shopping Cart
+            </NavLink>
             <a href="#" onClick={handleClick}>
               Logout
             </a>

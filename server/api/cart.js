@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id)
 
-      // i don't think we actually need to put a 
+      // i don't think we actually need to put a
       // registered user's cart on the session,
       // nonetheless leaving this for dev purposes
       cart = await user.deserializeCart()
@@ -30,9 +30,13 @@ router.get('/', async (req, res, next) => {
 
 // get route with hardcoded `jellyId = 1` for testing purposes,
 // should really be a put route with `jellyId = req.body`
-router.get('/add', async (req, res, next) => {
-  let { cart } = req.session 
-  const jellyId = 1
+router.put('/add/:jellyId', async (req, res, next) => {
+  let { cart } = req.session
+//  console.log('req.body', req.body)
+//  console.log('req.params', req.params)
+//  console.log('req.param', req.param)
+const jellyId = req.params.jellyId
+
 
   if (cart) {
 
@@ -58,16 +62,16 @@ router.get('/add', async (req, res, next) => {
 
 // get route with hardcoded `jellyId = 1` for testing purposes,
 // should really be a delete route with `jellyId = req.body`
-router.get('/remove', async (req, res, next) => {
-  let { cart } = req.session 
-  const jellyId = 1
+router.delete('/remove/:jellyId', async (req, res, next) => {
+  let { cart } = req.session
+  const jellyId = req.params.jellyId
 
   if (cart) {
 
     if (req.user) {
       // if user is logged in, remove/reduce db
       try {
-        const item = await JellyOrder.removeItem(cart.id, jellyId)        
+        const item = await JellyOrder.removeItem(cart.id, jellyId)
         res.json(item || {
           message: 'item not in cart'
         })
