@@ -53,9 +53,10 @@ class SingleJelly extends Component {
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
 
-    console.log('USER', this.props.user)
+    // console.log('USER', this.props.user)
 
-    const jelly = this.props.singleJelly
+    const {jellyId} = this.props.match.params
+    const jelly = this.props.jellies[jellyId]
 
     return jelly ? (
       <div>
@@ -120,8 +121,8 @@ class SingleJelly extends Component {
   }
 }
 
-const mapState = ({jellies: {singleJelly}, user: {user}}) => ({
-  singleJelly,
+const mapState = ({jellies: {jellies}, user: {user}}) => ({
+  jellies,
   user,
   isAdmin: user.accessLevel >= 3,
   isLoggedIn: user.accessLevel >= 1

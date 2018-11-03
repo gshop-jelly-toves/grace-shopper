@@ -16,6 +16,7 @@ export {default as AddReviewForm} from './AddReviewForm'
 export {default as JellyList} from './JellyList'
 export {default as Toolbar} from './Toolbar'
 export {Login, Signup} from './AuthForm'
+export {default as CartView} from './CartView'
 
 // Admins Only
 export {default as AddJellyForm} from './admin/AddJellyForm'

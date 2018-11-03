@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import { fetchSingleJelly } from './jellies'
 
 /**
  * ACTION TYPES
@@ -44,6 +45,14 @@ const removeFromCart = jellyId => ({
 export const fetchCart = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/cart')
+
+    // makes sure all of the jellies in your cart
+    // are on state.jellies
+    Object.keys(data.items)
+      .forEach(async id => await dispatch(
+        fetchSingleJelly(id)
+      ))
+
     const action = getCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
