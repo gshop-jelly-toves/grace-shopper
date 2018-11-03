@@ -69,19 +69,16 @@ const setCartTotal = async item => {
     })
     const total = items.reduce((a, b) => a + b.priceCents * b.quantity, 0)
 
-    // console.log(total)
-
     const cart = await Order.findOne({
       where: {
         id: item.orderId
       }
     })
 
-    // console.log(cart)
-
     cart.update({
       cartTotal: total
     })
+
   } catch (e) {
     console.error(e)
   }
