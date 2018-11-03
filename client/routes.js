@@ -10,7 +10,8 @@ import {
   JellyList,
   SingleJelly,
   AdminLanding,
-  SingleReview
+  SingleReview,
+  CartView
 } from './components'
 import {fetchUser, fetchCart} from './store'
 
@@ -39,6 +40,7 @@ class Routes extends Component {
           />
           <Route path="/jellies/:jellyId" component={SingleJelly} />
           <Route path="/jellies" component={JellyList} />
+          <Route path='/cart' component={CartView} />
 
           {/* Routes placed here are only available after logging in */}
           {isLoggedIn && (

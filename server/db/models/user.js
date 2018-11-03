@@ -72,7 +72,7 @@ User.prototype.deserializeCart = async function() {
     // })
     // console.log(jellys)
     // return jellys
-    console.log('CART', cart)
+    // console.log('CART', cart)
 
     return {
       ...cart.dataValues,
