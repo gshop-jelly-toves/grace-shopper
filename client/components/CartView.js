@@ -28,7 +28,7 @@ class CartView extends React.Component {
         { haveNeededJellies() && jellyIds.map(id => (
           <div key={id}>
             {cart.items[id].quantity + ' '} 
-            {jellies[id].name}
+            {jellies[id].name} 
           </div>
         )) }
       </div>
