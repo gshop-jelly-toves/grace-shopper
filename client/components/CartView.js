@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchCart } from '../store'
 import { connect } from 'react-redux'
+import { priceCentsToString } from '../utils'
 
 class CartView extends React.Component {
 
@@ -25,12 +26,15 @@ class CartView extends React.Component {
       
     return (
       <div>
-        { haveNeededJellies() && jellyIds.map(id => (
-          <div key={id}>
-            {cart.items[id].quantity + ' '} 
-            {jellies[id].name} 
-          </div>
-        )) }
+        Total: {haveNeededJellies() && priceCentsToString(cart.cartTotal)} 
+        { haveNeededJellies() && 
+            jellyIds.map(id => (
+              <div key={id}>
+                {cart.items[id].quantity + ' '} 
+                {jellies[id].name} 
+              </div>
+            )) 
+        }
       </div>
     )
   }

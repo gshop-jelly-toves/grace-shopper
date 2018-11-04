@@ -1,13 +1,15 @@
-const newJelly = jellyId => ({
-  jellyId,
+const { Jelly } = require('../db/models')
+const newJelly = jelly => ({
+  jellyId: jelly.id,
+  priceCents: jelly.price,
   quantity: 1
 })
 
 module.exports = {
 
   /*
-    these functions assume jellies 
-    is an object keyed by jellyId
+    these functions assume cart is an identical
+    datastructure to the result of model User.deserializeCart 
     ex.
       jellies: {
         '0': {
@@ -22,21 +24,30 @@ module.exports = {
       }
   */
 
-  addJelly: (jellies, jellyId) => {
-    const newJellies = { ... jellies }
+  addJelly: async (cart, jellyId) => {
+    const { dataValues: jelly } = await Jelly.findById(jellyId)
+    const newJellies = { ... cart.items }
     newJellies[jellyId]
      ? newJellies[jellyId].quantity++
-     : newJellies[jellyId] = newJelly(jellyId)
-    return newJellies
+     : newJellies[jellyId] = newJelly(jelly)
+    return {
+      ...cart,
+      cartTotal: cart.cartTotal + jelly.price,
+      items: newJellies
+    }
   },
 
-  removeJelly: (jellies, jellyId) => {
-    const newJellies = { ... jellies }
+  removeJelly: (cart, jellyId) => {
+    const newJellies = { ... cart.items }
     jelly = newJellies[jellyId]
     if (jelly) jelly.quantity--
     if (jelly.quantity < 1)
       newJellies[jellyId] = undefined
-    return newJellies
+    return {
+      ...cart,
+      cartTotal: cart.cartTotal - newJellies[jellyId].price,
+      items: newJellies
+    }
   }
 
 }
