@@ -56,6 +56,13 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
   }
 }
 
+jellyOrder.prototype.updatePrice = async function() {
+  const jelly = await Jelly.findOne({
+    where: {id: this.jellyId}
+  })
+  this.update({priceCents: jelly.price})
+}
+
 const rejectInvalidQuantity = item => {
   if (item.quantity < 1) item.destroy()
 }
@@ -81,20 +88,14 @@ const setCartTotal = async item => {
 }
 
 const savePrice = async item => {
-  const jelly = await Jelly.findOne({
-    where: {
-      id: item.jellyId
-    }
-  })
-
-  item.priceCents = jelly.dataValues.price
-
+  await item.updatePrice()
   return item
 }
 
 jellyOrder.afterUpdate(item => {
   rejectInvalidQuantity(item)
   setCartTotal(item)
+  savePrice(item)
 })
 jellyOrder.afterCreate(setCartTotal)
 jellyOrder.afterDestroy(setCartTotal)

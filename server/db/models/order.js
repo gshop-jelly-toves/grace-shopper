@@ -35,10 +35,39 @@ Order.findOrCreateCartByUserId = async function(userId) {
   } catch (e) { console.error(e) }
 }
 
+Order.prototype.updatePrices = async function() {
+  if (this.status === 'cart') {
+    try {
+      const jellyOrders = await JellyOrder.findAll(
+        {where: {orderId: this.id}}
+      )
+      
+      jellyOrders.forEach(async item => await item.updatePrice())
+    } catch(e) { console.error(e) }
+  } else {
+    throw new Error('only orders with status cart can be updated')
+  }
+}
+
+Order.prototype.checkout = async function() {
+  if (this.status === 'cart') {
+
+    const dummyTaxesAndShipping = total => total*1.337
+
+    await this.updatePrices()
+    this.orderTotal = dummyTaxesAndShipping(this.cartTotal)
+    this.status = 'processing'
+    // todo..
+
+  } else {
+    throw new Error('only orders with status cart can be checked out')
+  }
+}
+
+
 const forceOneCart = async order => {
   if (order.status === 'cart') {
     try {
-      console.log('FORCE ONE CART')
       const { userId } = order.dataValues
       const existingCart = await Order.findOne({
         where: {userId, status: 'cart'}
@@ -48,21 +77,6 @@ const forceOneCart = async order => {
   }
 }
 
-// const setCartTotal = async order => {
-//   try {
-//     console.log('SET CART TOTAL')
-//     const items = await Jelly.findAll({
-//       where: {
-//         orderId: order.id
-//       }
-//     })
-//     const total = items.reduce((a, b) => a + b.price, 0)
-//     order.cartTotal = total
-//     return order
-//   } catch (e) { console.error(e) }
-// }
-
 Order.beforeCreate(forceOneCart)
-// Order.beforeUpdate(setCartTotal)
 
 module.exports = Order

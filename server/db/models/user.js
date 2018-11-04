@@ -8,8 +8,7 @@ const Jelly = require('./jelly')
 
 const User = db.define('user', {
   name: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   avatar: {
     type: Sequelize.STRING,
@@ -61,18 +60,10 @@ module.exports = User
 User.prototype.deserializeCart = async function() {
   try {
     const cart = await Order.findOrCreateCartByUserId(this.id)
+    await cart.updatePrices()
     const jellyOrders = await JellyOrder.findAll(
       {where: {orderId: cart.id}}
     )
-    // const jellyIds = jellyOrders.map(item => ({id: item.jellyId}) )
-    // const jellys = await Jelly.findAll({
-    //   where: {
-    //     [Op.or]: jellyIds
-    //   }
-    // })
-    // console.log(jellys)
-    // return jellys
-    // console.log('CART', cart)
 
     return {
       ...cart.dataValues,
@@ -93,7 +84,6 @@ User.prototype.destroyActiveCart = async function() {
     )
 
     jellyOrders.forEach(async item => await item.destroy())
-
 
   } catch (e) { console.error(e) }
 }
