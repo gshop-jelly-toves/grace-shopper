@@ -6,11 +6,12 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const Homepage = props => {
-  const {email} = props
+  // Moved to <Accessbar />
+  // const {email} = props
 
   return (
     <main role="main">
-      <h3>Welcome, {email}</h3>
+      {/* <h3>Welcome, {email}</h3> */}
       {/*
    ______                                 __
   / ____/___ __________  __  __________  / /
