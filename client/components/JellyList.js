@@ -26,6 +26,7 @@ class JellyList extends Component {
     const amount = this.state.jelliesPerReq
     const {search} = this.props
     const keyedJellies = this.props.jellies
+    const {category} = this.props.selectedCategory
 
     const jelliesList = Object.keys(keyedJellies)
       .map(key => keyedJellies[key])
@@ -41,16 +42,16 @@ class JellyList extends Component {
         : [...jellyArr].filter(
             jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
+          
 
     // const categoryFilter = jellyArr =>
-    //   this.props.selectedCategory === ''
+    //   category === ''
     //     ? jellyArr
     //     : [...jellyArr].filter(
     //       jelly =>
     //         jelly.name.indexOf(search.toLowerCase()) > -1
     //     )
 
-    console.log(this.props.selectedCategory)
 
     return (
       <div id="jellyList">
