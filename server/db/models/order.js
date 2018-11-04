@@ -41,6 +41,7 @@ Order.findOrCreateCartByUserId = async function(userId) {
 const forceOneCart = async order => {
   if (order.status === 'cart') {
     try {
+      console.log('FORCE ONE CART')
       const {userId} = order.dataValues
       const existingCart = await Order.findOne({
         where: {userId, status: 'cart'}
@@ -53,21 +54,21 @@ const forceOneCart = async order => {
   }
 }
 
-const setCartTotal = async order => {
-  try {
-    const items = await Jelly.findAll({
-      where: {
-        orderId: order.id
-      }
-    })
-    const total = items.reduce((a, b) => a + b.price, 0)
-    order.cartTotal = total
-  } catch (e) {
-    console.error(e)
-  }
-}
+// const setCartTotal = async order => {
+//   try {
+//     console.log('SET CART TOTAL')
+//     const items = await Jelly.findAll({
+//       where: {
+//         orderId: order.id
+//       }
+//     })
+//     const total = items.reduce((a, b) => a + b.price, 0)
+//     order.cartTotal = total
+//     return order
+//   } catch (e) { console.error(e) }
+// }
 
 Order.beforeCreate(forceOneCart)
-Order.beforeUpdate(setCartTotal)
+// Order.beforeUpdate(setCartTotal)
 
 module.exports = Order

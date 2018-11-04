@@ -24,8 +24,8 @@ const getCart = cart => ({
   type: GET_CART, cart
 })
 
-const addToCart = jelly => ({
-  type: ADD_TO_CART, jelly
+const addToCart = item => ({
+  type: ADD_TO_CART, item
 })
 
 const removeFromCart = jellyId => ({
@@ -36,7 +36,7 @@ const removeFromCart = jellyId => ({
  * THUNK CREATORS
  */
 
-// no thunk-actions should care whether or not the 
+// no thunk-actions should care whether or not the
 // user is logged in. all of this logic should be
 // handled in express so that components can remain
 // completely agnostic to all db/session logic
@@ -51,7 +51,7 @@ export const fetchCart = () => async dispatch => {
 
 export const addJellyById = jellyId => async dispatch => {
   try {
-    const { data } = await axios.get('/api/cart/add')//, jellyId)
+    const { data } = await axios.put(`/api/cart/add/${jellyId}`)
     const action = addToCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
@@ -59,7 +59,7 @@ export const addJellyById = jellyId => async dispatch => {
 
 export const removeJellyById = jellyId => async dispatch => {
   try {
-    const { data } = await axios.get('/api/cart/remove')//, jellyId)
+    const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
     const action = removeFromCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
@@ -71,17 +71,17 @@ export const removeJellyById = jellyId => async dispatch => {
  */
 export default function(state = cart, action) {
   switch (action.type) {
-    case GET_CART: 
+    case GET_CART:
       return action.cart
-    case ADD_TO_CART: 
+    case ADD_TO_CART:
       return {
-        ...state,
+        // ...state,
         items: {
           ...state.items,
-          [action.jelly.id]: action.jelly
+          [action.item.jellyId]: action.item
         }
       }
-    case REMOVE_FROM_CART: 
+    case REMOVE_FROM_CART:
       return {
         ...state,
         items: {

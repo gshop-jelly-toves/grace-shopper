@@ -14,6 +14,8 @@ class Toolbar extends Component {
   }
 
   render() {
+    const {categories} = this.props
+
     return (
       <div>
         <span className="navbar-text">Search</span>

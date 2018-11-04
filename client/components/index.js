@@ -5,7 +5,7 @@
  */
 
 // All Visitors
-export {default as Navbar} from './Navbar'
+// export {default as Navbar} from './Navbar'
 export {default as UserHome} from './Homepage'
 export {default as BootNav} from './BootNavbar'
 export {default as NoMatch} from './NoMatch'

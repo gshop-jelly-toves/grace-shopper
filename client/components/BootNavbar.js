@@ -6,7 +6,7 @@ import {logout} from '../store'
 import {Category, Toolbar} from './index'
 
 // --- WHAT'S BEEN BOOTSTRAP REFACTORED ---
-// ↳ BootNavbar.js has replaced Navbar.js (called in app.js)
+// ↳ BootNavbar.js has replaced Navbar.js (called in app.js) 
 // ↳ HomePage.js cleaned and container'd; has carousel (hero image??) prep
 
 // --- IMPLEMENTED AND WORKING ---
@@ -66,6 +66,9 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
           <div className="nav-link">
             <NavLink to="/jellies" activeClassName="nav-active">
               Jelly Shop
+            </NavLink>
+            <NavLink to="/cart" activeClassName="nav-active">
+              Shopping Cart
             </NavLink>
           </div>
         </li>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleJelly} from '../store'
+import {addJellyById} from '../store'
 import NoMatch from './NoMatch'
 import EditJellyForm from './admin/EditJellyForm'
 import JellyReviews from './JellyReviews'
@@ -21,6 +22,10 @@ class SingleJelly extends Component {
     this.setState({editing: false})
     const jellyId = this.props.match.params.jellyId
     this.props.fetchSingleJelly(jellyId)
+  }
+
+  addToCart = () => {
+    this.props.addToCart(this.props.match.params.jellyId)
   }
 
   doneReviewing() {
@@ -61,6 +66,15 @@ class SingleJelly extends Component {
             <h2>{jelly.name}</h2>
             <img src={jelly.photo} />
             <p>${jelly.price}</p>
+            <button
+                type="button"
+                onClick={this.addToCart}
+              >
+                ADD TO CART
+              </button>
+
+
+
             <p>Rating: {jelly.rating}/5</p>
             <p>{jelly.inventory} remaining</p>
             <p>Description: {jelly.description}</p>
@@ -114,7 +128,8 @@ const mapState = ({jellies: {singleJelly}, user: {user}}) => ({
 })
 
 const mapDispatch = dispatch => ({
-  fetchSingleJelly: jellyId => dispatch(fetchSingleJelly(jellyId))
+  fetchSingleJelly: jellyId => dispatch(fetchSingleJelly(jellyId)),
+  addToCart: jellyId => dispatch(addJellyById(jellyId))
 })
 
 export default connect(mapState, mapDispatch)(SingleJelly)
