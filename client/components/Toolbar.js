@@ -17,19 +17,16 @@ class Toolbar extends Component {
     const {categories} = this.props
 
     return (
-      <div>
-        <span className="navbar-text">Search</span>
-        <form className="form-inline my-3 my-lg-0">
-          <input
-            className="form-control"
-            type="search"
-            name="search"
-            placeholder="ready for this jelly?"
-            aria-label="Search"
-            onChange={this.handleSearch}
-          />
-        </form>
-      </div>
+      <form>
+        <input
+          className="form-control"
+          type="search"
+          name="search"
+          placeholder="ready for this jelly?"
+          aria-label="Search"
+          onChange={this.handleSearch}
+        />
+      </form>
     )
   }
 }

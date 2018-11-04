@@ -1,6 +1,7 @@
 import React, {Component, Link} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Category, Toolbar} from './index'
 
 const AccessBar = props => {
   console.log('props is:', props)
@@ -8,35 +9,37 @@ const AccessBar = props => {
   console.log('name is:', name)
 
   return (
-    <div className="container-fluid" role="access">
+    /*
+    ___                            ____
+   /   | _____________  __________/ __ )____ ______
+  / /| |/ ___/ ___/ _ \/ ___/ ___/ __  / __ `/ ___/
+ / ___ / /__/ /__/  __(__  |__  ) /_/ / /_/ / /
+/_/  |_\___/\___/\___/____/____/_____/\__,_/_/
+    */
+    <div className="container-fluid align-middle" id="access-bar" role="access">
       {/* <ul className="nav justify-content-end"> */}
-      <ul className="nav nav-fill">
-        <li className="nav-item">
+      <div className="nav nav-fill">
+        <div className="nav-item">
           <p className="nav-link active" href="#">
-            Welcome, {name}
+            Welcome {name}
           </p>
-        </li>
-        <li className="nav-item">
+        </div>
+        <div className="nav-item">
           <a className="nav-link active" href="#">
-            Active
+            Yellow only to show Accessbar size
           </a>
-        </li>
-        <li className="nav-item">
+        </div>
+        <div className="nav-item">
           <a className="nav-link" href="#">
-            Link
+            <Category />
           </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-            Link
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="#">
-            Disabled
-          </a>
-        </li>
-      </ul>
+        </div>
+        <div className="nav-item">
+          <div className="nav-link" href="#">
+            <Toolbar />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

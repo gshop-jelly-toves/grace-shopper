@@ -1,5 +1,7 @@
 /* Supplementary CSS for bootstrap */
 
+/* ########## Shop Name  ########## */
+
 /* Font for shop name */
 @import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
 
@@ -16,9 +18,18 @@
   font-size: 1em;
 }
 
+/* ########## 404 Page ########## */
+
 #error-cat {
   background-color: #dadfe2;
 }
+
+/* ########## Whole Page ########## */
+#access-bar {
+  background-color: yellow;
+}
+
+/* ########## Whole Page ########## */
 
 body {
   font-family: sans-serif;

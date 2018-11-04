@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink, Link} from 'react-router-dom'
 import {logout} from '../store'
-import {Category, Toolbar} from './index'
+// import {Category, Toolbar} from './index'
 
 // --- WHAT'S BEEN BOOTSTRAP REFACTORED ---
 // ↳ BootNavbar.js has replaced Navbar.js (called in app.js)
@@ -121,9 +121,9 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
           </li>
         )}
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Category />
-        </li>
+        </li> */}
       </ul>
       {/*
 
@@ -164,7 +164,7 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
  ___/ /  __/ /_/ / /  / /__/ / / /
 /____/\___/\__,_/_/   \___/_/ /_/
         */}
-      <Toolbar />
+      {/* <Toolbar /> */}
     </div>
   </nav>
 )

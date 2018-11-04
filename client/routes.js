@@ -51,7 +51,7 @@ class Routes extends Component {
           )}
 
           {/* Displays Login component as our NoMatch fallback */}
-          <Route component={NoMatch} />
+          <Route component={Login} />
         </Switch>
       </div>
     )
