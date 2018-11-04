@@ -85,6 +85,19 @@ User.prototype.deserializeCart = async function() {
   } catch (e) { console.error(e) }
 }
 
+User.prototype.destroyActiveCart = async function() {
+  try {
+    const cart = await Order.findOrCreateCartByUserId(this.id)
+    const jellyOrders = await JellyOrder.findAll(
+      {where: {orderId: cart.id}}
+    )
+
+    jellyOrders.forEach(async item => await item.destroy())
+
+
+  } catch (e) { console.error(e) }
+}
+
 
 // can be used to check a users role and
 // choose which features they have access to

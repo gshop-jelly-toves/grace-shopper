@@ -97,6 +97,7 @@ jellyOrder.afterUpdate(item => {
   setCartTotal(item)
 })
 jellyOrder.afterCreate(setCartTotal)
+jellyOrder.afterDestroy(setCartTotal)
 jellyOrder.beforeCreate(savePrice)
 
 module.exports = jellyOrder

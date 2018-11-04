@@ -48,6 +48,11 @@ module.exports = {
       cartTotal: cart.cartTotal - newJellies[jellyId].price,
       items: newJellies
     }
-  }
+  },
+
+  newCart: () => ({ // clone of deserialize cart
+    cartTotal: 0,
+    items: {}
+  })
 
 }
