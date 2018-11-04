@@ -20,7 +20,11 @@ router.get('/', async (req, res, next) => {
       cart = await user.deserializeCart()
     } catch (e) { next(e) }
   } else {
-    cart = req.session.cart || {}
+    cart = req.session.cart || 
+      { // clone of deserialize cart
+        cartTotal: 0,
+        items: {}
+      }
   }
 
   req.session.cart = cart
@@ -28,8 +32,7 @@ router.get('/', async (req, res, next) => {
 })
 
 
-// get route with hardcoded `jellyId = 1` for testing purposes,
-// should really be a put route with `jellyId = req.body`
+// /api/:jellyId PUT - add a single jelly to cart`
 router.put('/add/:jellyId', async (req, res, next) => {
   let { cart } = req.session
 //  console.log('req.body', req.body)
@@ -51,7 +54,7 @@ const jellyId = req.params.jellyId
 
     } else {
       // if user is not logged in, persist item to `req.session.cart`
-      req.session.cart = cartSession.addJelly(cart, jellyId)
+      req.session.cart = await cartSession.addJelly(cart, jellyId)
       res.json(req.session.cart[jellyId])
     }
 
@@ -60,8 +63,7 @@ const jellyId = req.params.jellyId
   }
 })
 
-// get route with hardcoded `jellyId = 1` for testing purposes,
-// should really be a delete route with `jellyId = req.body`
+// /api/:jellyId PUT - remove a single jelly from the cart`
 router.delete('/remove/:jellyId', async (req, res, next) => {
   let { cart } = req.session
   const jellyId = req.params.jellyId
