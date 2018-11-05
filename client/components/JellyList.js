@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies} from '../store'
@@ -42,7 +42,6 @@ class JellyList extends Component {
         : [...jellyArr].filter(
             jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
-          
 
     // const categoryFilter = jellyArr =>
     //   category === ''
@@ -52,26 +51,30 @@ class JellyList extends Component {
     //         jelly.name.indexOf(search.toLowerCase()) > -1
     //     )
 
-
     return (
-      <div id="jellyList">
-        {searchFilter(jelliesList).map(jelly => (
-          <div key={jelly.id}>
-            <Link to={`/jellies/${jelly.id}`}>
-              <img src={jelly.photo} />
-              <h3>{jelly.name}</h3>
-              <p>{jelly.rating}/5</p>
-              <p>{jelly.price}</p>
-            </Link>
-          </div>
-        ))}
-
-        <button
-          onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
-        >
-          MORE JELLIES
-        </button>
-      </div>
+      <Fragment>
+        <div className="d-flex flex-wrap" id="jellyList">
+          {searchFilter(jelliesList).map(jelly => (
+            <div className="mx-auto p-5" key={jelly.id}>
+              <Link to={`/jellies/${jelly.id}`}>
+                <img src={jelly.photo} />
+                <h3>{jelly.name}</h3>
+                <p>{jelly.rating}/5</p>
+                <p>{jelly.price}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
+        <div className="row justify-content-center">
+          <button
+            type="button"
+            className="btn btn-lg btn-primary mb-5"
+            onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
+          >
+            SEE MORE JELLIES
+          </button>
+        </div>
+      </Fragment>
     )
   }
 }

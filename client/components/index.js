@@ -5,10 +5,10 @@
  */
 
 // All Visitors
-// export {default as Navbar} from './Navbar'
-export {default as UserHome} from './Homepage'
-export {default as BootNav} from './BootNavbar'
 export {default as AccessBar} from './AccessBar'
+export {default as BootNav} from './BootNavbar'
+export {default as Footer} from './Footer'
+export {default as UserHome} from './Homepage'
 export {default as NoMatch} from './NoMatch'
 
 export {default as SingleJelly} from './SingleJelly'
@@ -17,7 +17,7 @@ export {default as JellyReviews} from './JellyReviews'
 export {default as SingleReview} from './SingleReview'
 export {default as AddReviewForm} from './AddReviewForm'
 export {default as JellyList} from './JellyList'
-export {default as Toolbar} from './Toolbar'
+export {default as Searchbar} from './Toolbar'
 export {Login, Signup} from './AuthForm'
 export {default as CartView} from './CartView'
 
