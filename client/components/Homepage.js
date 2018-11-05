@@ -50,8 +50,7 @@ export const Homepage = props => {
  * CONTAINER
  */
 const mapState = state => ({
-  email: state.user.user.email,
-  name: state.user.user.name
+  email: state.user.user.email
 })
 
 export default connect(mapState)(Homepage)
