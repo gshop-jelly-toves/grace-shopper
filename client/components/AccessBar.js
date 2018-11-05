@@ -27,7 +27,7 @@ const AccessBar = props => {
           <p className="navbar-text">Welcome {name}</p>
         </div>
         <div className="nav-item">
-          <p className="navbar-text">Yellow only to show Accessbar size</p>
+          <p className="navbar-text">Are you ready for this jelly?</p>
         </div>
         <div className="nav-item">
           <div className="nav-link" href="#">
