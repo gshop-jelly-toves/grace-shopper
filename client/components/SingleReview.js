@@ -46,12 +46,14 @@ class SingleReview extends Component {
     const review = this.props.singleReview
     console.log('STATE', this.state)
 
+    console.log('REVIEW', review)
     return review.id ? (
       <div>
         <h2>Review by: {review.user.name}</h2>
         <img src={review.user.avatar} />
         <p>Rating: {review.starRating} / 5</p>
-        <p>Review: {review.text}</p>
+        <p>Review Title: {review.title}</p>
+        <p>Review Body: {review.body}</p>
 
         {isAdmin && (
           <button
