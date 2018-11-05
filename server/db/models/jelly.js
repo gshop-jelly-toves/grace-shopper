@@ -10,7 +10,7 @@ const Jelly = db.define('jelly', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  price: {
+  priceCents: {
     type: Sequelize.INTEGER,
     allowNull: false
   },

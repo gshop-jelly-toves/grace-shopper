@@ -3,12 +3,12 @@ const Sequelize = require('sequelize')
 const { Op } = Sequelize
 const db = require('../db')
 const JellyOrder = require('./jellyOrder')
-const Order = require('./order')
-const Jelly = require('./jelly')
+const Order = db.models.order
 
 const User = db.define('user', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   avatar: {
     type: Sequelize.STRING,

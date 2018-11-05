@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
@@ -9,9 +9,21 @@ import {auth} from '../store'
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
+  console.log('//////', displayName)
+
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
+        {displayName === 'Sign Up' ? (
+          <div>
+            <label htmlFor="fullName">
+              <small>Name</small>
+            </label>
+            <input name="fullName" type="text" />
+          </div>
+        ) : (
+          <Fragment />
+        )}
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -64,7 +76,8 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      const fullName = evt.target.fullName.value
+      dispatch(auth(email, password, formName, fullName))
     }
   }
 }

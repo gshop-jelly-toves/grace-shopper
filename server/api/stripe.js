@@ -5,11 +5,11 @@ const { requireLogin } = require('../middlewares')
 module.exports = router
 
 router.post("/charge", requireLogin, async (req, res) => {
-  let amount = 500;
+  let amount = 500
 
   const customer = await stripe.customers.create({
-    email: req.body.stripeEmail,
-    source: req.body.stripeToken
+    email: req.body.email,
+    source: req.body.id
   })
   const charge = await stripe.charges.create({
     amount,
@@ -17,6 +17,5 @@ router.post("/charge", requireLogin, async (req, res) => {
     currency: "usd",
     customer: customer.id
   })
-  console.log('charge:',charge)
-  res.json(req.user)
+  res.json(charge)
 });

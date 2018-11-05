@@ -20,4 +20,8 @@ class StripeForm extends React.Component {
   }
 }
 
+// mapDispatch = dispatch => ({
+//   handleToken: token => dispatch(handleToken(token))
+// })
+
 export default connect(null, { handleToken })(StripeForm)

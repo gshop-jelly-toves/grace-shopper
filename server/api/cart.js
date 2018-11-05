@@ -54,7 +54,7 @@ router.delete('/', async (req, res, next) => {
 // /api/cart/add/:jellyId PUT - add a single jelly to cart`
 router.put('/add/:jellyId', async (req, res, next) => {
   let { cart } = req.session
-
+  // console.log(cart)
   const jellyId = req.params.jellyId
 
   if (cart) {
@@ -71,7 +71,7 @@ router.put('/add/:jellyId', async (req, res, next) => {
     } else {
       // if user is not logged in, persist item to `req.session.cart`
       req.session.cart = await cartSession.addJelly(cart, jellyId)
-      res.json(req.session.cart[jellyId])
+      res.json(req.session.cart.items[jellyId])
     }
 
   } else {
@@ -98,7 +98,7 @@ router.delete('/remove/:jellyId', async (req, res, next) => {
     } else {
       // if user is not logged in, update cart session
       req.session.cart = cartSession.removeJelly(cart, jellyId)
-      res.json(req.session.cart[jellyId] || {
+      res.json(req.session.cart.items[jellyId] || {
         message: 'item not in cart'
       })
     }

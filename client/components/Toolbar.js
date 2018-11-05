@@ -14,15 +14,13 @@ class SearchBar extends Component {
   }
 
   render() {
-    const {categories} = this.props
-
     return (
       <form>
         <input
           className="form-control"
           type="search"
           name="search"
-          placeholder="ready for this jelly?"
+          placeholder="Search"
           aria-label="Search"
           onChange={this.handleSearch}
         />

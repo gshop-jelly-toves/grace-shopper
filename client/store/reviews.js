@@ -69,7 +69,7 @@ export default function(state = initState, action) {
         }
       }
     case GET_SINGLE_REVIEW:
-      return {singleReview: action.review}
+      return {...state, singleReview: action.review}
 
     default:
       return state

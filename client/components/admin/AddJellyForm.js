@@ -10,7 +10,7 @@ class AddJellyForm extends Component {
     this.state = {
       name: '',
       description: '',
-      price: '',
+      priceCents: '',
       inventory: '',
       categoryIds: [],
       photo: '',
@@ -69,7 +69,7 @@ class AddJellyForm extends Component {
     this.setState({
       name: '',
       description: '',
-      price: '',
+      priceCents: '',
       inventory: '',
       categoryIds: [],
       photo: '',
@@ -88,8 +88,8 @@ class AddJellyForm extends Component {
   }
 
   render() {
-    const {name, description, price, inventory} = this.state
-    const isEnabled = name && description && price && inventory
+    const {name, description, priceCents, inventory} = this.state
+    const isEnabled = name && description && priceCents && inventory
     console.log('RENDER', this.state)
 
     return (
@@ -112,11 +112,11 @@ class AddJellyForm extends Component {
             onChange={this.handleChange}
             required
           />
-          <label htmlFor="price">Price: $</label>
+          <label htmlFor="priceCents">Price (cents):</label>
           <input
             type="number"
-            name="price"
-            value={this.state.price}
+            name="priceCents"
+            value={this.state.priceCents}
             onChange={this.handleChange}
             required
           />

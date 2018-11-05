@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Order = require('./order')
-const Jelly = require('./jelly')
+console.log(db.models)
+const Order = db.models.order
+const Jelly = db.models.jelly
 
 const jellyOrder = db.define('jelly-orders', {
   id: {
@@ -24,12 +25,16 @@ jellyOrder.addItem = async function(orderId, jellyId) {
   try {
     // `findOrCreate` (oddly) returns an array containing a single
     // instance, so a little destructuring can be used
-    const {[0]: item} = await jellyOrder.findOrCreate({
+    console.log('info',orderId, jellyId)
+
+    const item = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
-    return await item.update({
-      quantity: item.quantity + 1
+    console.log('item', item[0])
+
+    return await item[0].update({
+      quantity: item[0].quantity + 1
     })
   } catch (e) {
     console.error(e)
@@ -60,11 +65,12 @@ jellyOrder.prototype.updatePrice = async function() {
   const jelly = await Jelly.findOne({
     where: {id: this.jellyId}
   })
-  this.update({priceCents: jelly.price})
+  this.update({priceCents: jelly.priceCents})
 }
 
 const rejectInvalidQuantity = item => {
   if (item.quantity < 1) item.destroy()
+  return item
 }
 
 const setCartTotal = async item => {
@@ -82,7 +88,7 @@ const setCartTotal = async item => {
     cart.update({
       cartTotal: total
     })
-
+    return item
   } catch (e) {
     console.error(e)
   }

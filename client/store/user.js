@@ -37,16 +37,18 @@ export const fetchUser = () => async dispatch => {
 }
 
 export const handleToken = token => async dispatch => {
-  const {data} = axios.post('/api/stripe/charge', token)
-  // const action = getUser(data)
-  // dispatch(action)
+  try {
+    const {data} = await axios.post('/api/stripe/charge', token)
+  } catch (err) {
+    console.error(err)
+  }
 }
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth = (email, password, method, name) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/${method}`, {email, password})
-  } catch(authError) {
+    res = await axios.post(`/auth/${method}`, {email, password, name})
+  } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
 
