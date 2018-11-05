@@ -2,7 +2,14 @@
 
 const db = require('../db')
 const dbFilled = require('../db/db')
-const {Order, User, Jelly, Review, Category, JellyOrder} = require('../db/models')
+const {
+  Order,
+  User,
+  Jelly,
+  Review,
+  Category,
+  JellyOrder
+} = require('../db/models')
 
 /*  -------------  Data -------------
     - 11 Categories  (multiple per jelly??)
@@ -32,24 +39,28 @@ async function seed() {
 
   // changed this so that beforeCreate hook can see
   // previously seeded orders and perform cart checks
-  for( let i=0; i < Orders.length; i++ ) {
-    await Order.create( Orders[i] )
+  for (let i = 0; i < Orders.length; i++) {
+    await Order.create(Orders[i])
   }
 
   await Promise.all(Jellies.map(jelly => Jelly.create(jelly)))
   await Promise.all(Reviews.map(review => Review.create(review)))
-  
+
   // ASSOCIATION TABLES
-  await Promise.all(JellyOrders.map(item => JellyOrder.create(item) ))
+  await Promise.all(JellyOrders.map(item => JellyOrder.create(item)))
   await Promise.all(JellyCat.map(jellyCat => jellyCategory.create(jellyCat)))
 
   console.log(`\n########### SEEDING REPORT ###########\n`)
-  console.log(`Seeded ${Categories.length} categories.`)
-  console.log(`Seeded ${Orders.length} orders.`)
-  console.log(`Seeded ${Users.length} users.`)
-  console.log(`Seeded ${Jellies.length} jellies.`)
-  console.log(`Seeded ${Reviews.length} reviews.\n`)
-  console.log(`Seeded ${JellyCat.length} associations.\n`)
+  console.log(`Seed data ver. 11/05/18\n`)
+  console.log(`Created ${Categories.length} categories.`)
+  console.log(`Created ${Orders.length} orders (status and totals).`)
+  console.log(
+    `Created ${JellyOrders.length} orders (jelly quantity per order).`
+  )
+  console.log(`Created ${Users.length} users.`)
+  console.log(`Created ${Jellies.length} jellies.`)
+  console.log(`Created ${Reviews.length} reviews.\n`)
+  console.log(`Associated ${JellyCat.length} jellies to categories.\n`)
   console.log(`Seeding completed successfully!\n`)
   console.log(`######################################\n`)
 }

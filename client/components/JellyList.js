@@ -3,13 +3,17 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies} from '../store'
 import {addJellyById} from '../store'
-import { priceCentsToString } from '../utils'
+import {priceCentsToString} from '../utils'
 
 class JellyList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      jelliesPerReq: 10
+      //  Changed to 6 from 10 b/c:
+      //    6 % 2 === 0
+      //    6 % 3 === 0
+      //  6 jellies in 2 rows is essentially a full screen height
+      jelliesPerReq: 6
     }
   }
 
@@ -69,7 +73,7 @@ class JellyList extends Component {
                 ADD TO CART
               </button>
               <Link to={`/jellies/${jelly.id}`}>
-                <p>{jelly.rating}/5</p>
+                <p>{jelly.rating} ★</p>
                 <p>{priceCentsToString(jelly.priceCents)}</p>
               </Link>
             </div>
