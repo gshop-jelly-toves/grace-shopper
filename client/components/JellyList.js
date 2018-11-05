@@ -65,13 +65,15 @@ class JellyList extends Component {
             </div>
           ))}
         </div>
-        <button
-          type="button"
-          className="btn btn-lg btn-block btn-primary"
-          onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
-        >
-          SEE MORE JELLIES
-        </button>
+        <div className="row justify-content-center">
+          <button
+            type="button"
+            className="btn btn-lg btn-primary mb-5"
+            onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
+          >
+            SEE MORE JELLIES
+          </button>
+        </div>
       </Fragment>
     )
   }
