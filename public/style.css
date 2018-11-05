@@ -53,6 +53,14 @@ body {
   background-image: url(./restaurant_icons.png);
 }
 
+#footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2em;
+}
+
 a {
   text-decoration: none;
 }

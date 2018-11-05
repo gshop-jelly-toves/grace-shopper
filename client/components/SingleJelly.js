@@ -73,12 +73,25 @@ class SingleJelly extends Component {
 
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
 
-                <p>Rating: {jelly.rating} ★</p>
-                <p>{jelly.inventory} remaining</p>
+                <p>{jelly.rating} ★</p>
+                <label Htmlfor="quantity">Quantity</label>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon3">
+                      {jelly.inventory} remaining
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="basic-url"
+                    aria-describedby="basic-addon3"
+                  />
+                </div>
                 <p>{jelly.description}</p>
                 <button
                   type="button"
-                  className="btn btn-primary btn-block"
+                  className="btn btn-success btn-block"
                   onClick={this.addToCart}
                 >
                   ADD TO CART
