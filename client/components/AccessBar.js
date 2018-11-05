@@ -1,4 +1,4 @@
-import React, {Component, Link} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Category, Searchbar} from './index'
@@ -31,7 +31,9 @@ const AccessBar = props => {
         </div>
         <div className="nav-item">
           <div className="nav-link" href="#">
+            {/* where categories will go once active. inactive for pull req.
             <Category />
+            */}
           </div>
         </div>
         <div className="nav-item">
