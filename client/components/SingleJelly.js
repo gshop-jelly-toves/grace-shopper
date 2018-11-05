@@ -6,8 +6,7 @@ import NoMatch from './NoMatch'
 import EditJellyForm from './admin/EditJellyForm'
 import JellyReviews from './JellyReviews'
 import AddReviewForm from './AddReviewForm'
-import { priceCentsToString } from '../utils'
-
+import {priceCentsToString} from '../utils'
 
 class SingleJelly extends Component {
   constructor(props) {
@@ -54,29 +53,21 @@ class SingleJelly extends Component {
     const {reviewing} = this.state
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
-
-    // console.log('USER', this.props.user)
-
     const {jellyId} = this.props.match.params
     const jelly = this.props.jellies[jellyId]
 
     return jelly ? (
-      <div>
+      <div className="align-self-center">
         {editing && isAdmin ? (
           <EditJellyForm done={this.doneEditing} />
         ) : (
-          <div>
+          <div className="align-self-center">
             <h2>{jelly.name}</h2>
             <img src={jelly.photo} />
             <p>{priceCentsToString(jelly.priceCents)}</p>
-            <button
-                type="button"
-                onClick={this.addToCart}
-              >
-                ADD TO CART
-              </button>
-
-
+            <button type="button" onClick={this.addToCart}>
+              ADD TO CART
+            </button>
 
             <p>Rating: {jelly.rating}/5</p>
             <p>{jelly.inventory} remaining</p>
