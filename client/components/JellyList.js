@@ -75,14 +75,16 @@ class JellyList extends Component {
                   <h3>{priceCentsToString(jelly.priceCents)}</h3>
                 </div>
               </div>
-              <div className="p-2">
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  onClick={() => this.props.addToCart(jelly.id)}
-                >
-                  ADD TO CART
-                </button>
+              <div className="d-flex flex-row-reverse">
+                <div className="p-2">
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={() => this.props.addToCart(jelly.id)}
+                  >
+                    ADD TO CART
+                  </button>
+                </div>
               </div>
             </div>
           ))}
