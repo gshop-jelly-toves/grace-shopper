@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {fetchSingleJelly} from '../store'
-import {addJellyById} from '../store'
+import {fetchSingleJelly, addJellyById} from '../store'
 import NoMatch from './NoMatch'
 import EditJellyForm from './admin/EditJellyForm'
 import JellyReviews from './JellyReviews'
@@ -64,7 +63,7 @@ class SingleJelly extends Component {
         {editing && isAdmin ? (
           <EditJellyForm done={this.doneEditing} />
         ) : (
-          <div>
+          <Fragment>
             <div className="row p-3">
               <div className="col col-lg-8">
                 <img src={jelly.photo} alt={jelly.name} />
@@ -101,6 +100,7 @@ class SingleJelly extends Component {
             {isLoggedIn && (
               <button
                 type="button"
+                className="btn btn-secondary"
                 onClick={() => {
                   this.setState({reviewing: true})
                 }}
@@ -108,7 +108,6 @@ class SingleJelly extends Component {
                 ADD REVIEW
               </button>
             )}
-
             {isLoggedIn &&
               reviewing && (
                 <AddReviewForm
@@ -119,7 +118,7 @@ class SingleJelly extends Component {
               )}
 
             <JellyReviews jellyId={this.props.match.params.jellyId} />
-          </div>
+          </Fragment>
         )}
       </div>
     ) : (
