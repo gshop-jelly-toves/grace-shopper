@@ -83,8 +83,10 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
         {isLoggedIn ? (
           <Fragment>
             <li className="nav-item">
-              <div className="nav-link" href="#" onClick={handleClick}>
-                Logout
+              <div className="nav-link" onClick={handleClick}>
+                <NavLink to="/" activeClassName="nav-active">
+                  Logout
+                </NavLink>
               </div>
             </li>
           </Fragment>
@@ -113,13 +115,15 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
  / ___ / /_/ / / / / / / / / / /    / / / /_/ / /_/ / (__  )
 /_/  |_\__,_/_/ /_/ /_/_/_/ /_/    /_/  \____/\____/_/____/
         */}
-        {isAdmin && (
-          <li className="nav-item">
-            <div className="nav-link">
-              <NavLink to="/admin">Admin Tools</NavLink>
-            </div>
-          </li>
-        )}
+        <Fragment>
+          {isAdmin && (
+            <li className="nav-item">
+              <div className="nav-link">
+                <NavLink to="/admin">Admin Tools</NavLink>
+              </div>
+            </li>
+          )}
+        </Fragment>
 
         {/* <li className="nav-item">
           <Category />

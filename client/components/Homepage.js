@@ -30,11 +30,11 @@ export const Homepage = props => {
           */}
         <h3 className="display-4 font-weight-normal">Welcome, {email}</h3>
         <p className="lead font-weight-normal">
-          And an even wittier subheading to boot. Jumpstart your marketing
-          efforts with this example based on Apple's marketing pages. Except it
-          should be about jellies and jams.
+          Jellies, jams, & preserves! Kick off your excursion into the world of
+          jellies with a selection of unforgettable jellies to tantalize one's
+          taste buds.
         </p>
-        <a className="btn btn-outline-secondary" href="#">
+        <a className="btn btn-outline-secondary" href="/jellies">
           Let's jam!
         </a>
       </div>
