@@ -29,10 +29,9 @@ const averageRating = async review => {
     })
 
     const [jellyRes, reviewsRes] = await Promise.all([jellyP, reviewsP])
-
+    
     const reviews = Object.keys(reviewsRes)
-      .map(keys => reviewsRes[keys])
-      .map(review => review.dataValues)
+      .map(keys => reviewsRes[keys].dataValues)
 
     let rating = reviews.reduce((a, b) => a + b.starRating, 0) / reviews.length
     rating = Math.round(rating * 10) / 10

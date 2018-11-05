@@ -20,26 +20,42 @@ router.get('/', async (req, res, next) => {
       cart = await user.deserializeCart()
     } catch (e) { next(e) }
   } else {
-    cart = req.session.cart || 
-      { // clone of deserialize cart
-        cartTotal: 0,
-        items: {}
-      }
+    cart = req.session.cart || cartSession.newCart()
   }
 
   req.session.cart = cart
   res.json(req.session.cart)
 })
 
+// /api/cart DELETE - clear cart from session and remove
+// from database
+router.delete('/', async (req, res, next) => {
+  let { cart } = req.session
 
-// /api/:jellyId PUT - add a single jelly to cart`
+  if (cart) {
+
+    if (req.user) {
+      try {
+        const user = await User.findById(req.user.id)
+        await user.destroyActiveCart()
+        req.session.cart = await user.deserializeCart()
+      } catch (e) { next(e) }
+    } else {
+      req.session.cart = cartSession.newCart()
+    }
+
+    res.sendStatus(200)
+  } else {
+    throw new Error('req.session.cart is not defined')
+  }
+})
+
+
+// /api/cart/add/:jellyId PUT - add a single jelly to cart`
 router.put('/add/:jellyId', async (req, res, next) => {
   let { cart } = req.session
-//  console.log('req.body', req.body)
-//  console.log('req.params', req.params)
-//  console.log('req.param', req.param)
-const jellyId = req.params.jellyId
 
+  const jellyId = req.params.jellyId
 
   if (cart) {
 
@@ -63,7 +79,7 @@ const jellyId = req.params.jellyId
   }
 })
 
-// /api/:jellyId PUT - remove a single jelly from the cart`
+// /api/cart/add/:jellyId PUT - remove a single jelly from the cart`
 router.delete('/remove/:jellyId', async (req, res, next) => {
   let { cart } = req.session
   const jellyId = req.params.jellyId

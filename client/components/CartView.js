@@ -1,9 +1,18 @@
 import React from 'react'
-import { fetchCart } from '../store'
+import { fetchCart, destroyCart } from '../store'
 import { connect } from 'react-redux'
 import { priceCentsToString } from '../utils'
 
 class CartView extends React.Component {
+  constructor(props) {
+    super(props)
+    this.clearCart = this.clearCart.bind(this)
+  }
+
+  clearCart() {
+    this.props.destroyCart()
+    this.props.fetchCart()
+  }
 
   componentDidMount() {
     this.props.fetchCart()
@@ -24,9 +33,12 @@ class CartView extends React.Component {
       return true
     }
       
-    return (
+    return this.props.cart.cartTotal ? (
       <div>
-        Total: {haveNeededJellies() && priceCentsToString(cart.cartTotal)} 
+        <button onClick={this.clearCart}>
+          Clear cart
+        </button>
+        Total: {priceCentsToString(cart.cartTotal)} 
         { haveNeededJellies() && 
             jellyIds.map(id => (
               <div key={id}>
@@ -36,7 +48,7 @@ class CartView extends React.Component {
             )) 
         }
       </div>
-    )
+    ) : <div>No Jellies here...</div>
   }
 }
 
@@ -45,7 +57,7 @@ const mapState = ({ cart, jellies: {jellies} }) => ({
 })
 
 const mapDispatch = {
-  fetchCart
+  fetchCart, destroyCart
 }
 
 export default connect(mapState, mapDispatch)(CartView)
