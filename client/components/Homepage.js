@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const Homepage = props => {
+  // Moved to <Accessbar />
   const {email} = props
 
   return (
