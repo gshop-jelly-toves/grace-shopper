@@ -32,7 +32,7 @@ module.exports = {
      : newJellies[jellyId] = newJelly(jelly)
     return {
       ...cart,
-      cartTotal: cart.cartTotal + jelly.price,
+      cartTotal: cart.cartTotal + jelly.priceCents,
       items: newJellies
     }
   },
@@ -45,7 +45,7 @@ module.exports = {
       newJellies[jellyId] = undefined
     return {
       ...cart,
-      cartTotal: cart.cartTotal - newJellies[jellyId].price,
+      cartTotal: cart.cartTotal - newJellies[jellyId].priceCents,
       items: newJellies
     }
   },
