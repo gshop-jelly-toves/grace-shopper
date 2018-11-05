@@ -103,6 +103,7 @@ jellyOrder.afterUpdate(item => {
   rejectInvalidQuantity(item)
   setCartTotal(item)
   savePrice(item)
+  return item
 })
 jellyOrder.afterCreate(setCartTotal)
 jellyOrder.afterDestroy(setCartTotal)
