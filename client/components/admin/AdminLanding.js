@@ -7,6 +7,9 @@ const AdminLanding = props => {
       <Link to="/admin/jellies/add">
         <p>Add Jelly</p>
       </Link>
+      <Link to="/admin/jellies/orders">
+        <p>Pending Orders</p>
+      </Link>
     </div>
   )
 }
