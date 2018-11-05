@@ -11,7 +11,10 @@ export const Homepage = props => {
   const {email} = props
 
   return (
-    <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div
+      className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center"
+      id="welcome-hero"
+    >
       {/*
     __  __                __
    / / / /__  _________  / /
@@ -19,19 +22,20 @@ export const Homepage = props => {
  / __  /  __/ /  / /_/ /_/
 /_/ /_/\___/_/   \____(_)
     */}
-      <div className="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 className="display-4 font-weight-normal">Punny headline</h1>
-        <p className="lead font-weight-normal">
-          And an even wittier subheading to boot. Jumpstart your marketing
-          efforts with this example based on Apple's marketing pages.
-        </p>
-        <a className="btn btn-outline-secondary" href="#">
-          {/*
-          Leave in or else
-          Travis CI test will fail!
+      <div className="col-md-7 p-lg-5 mx-auto my-5 bg-dark text-light">
+        {/*
+          HERE is the h3 that Travis needs to pass tests!
+          Travis CI test will fail without it!
           Edit test later!
           */}
-          <h3>Welcome, {email}</h3>
+        <h3 className="display-4 font-weight-normal">Welcome, {email}</h3>
+        <p className="lead font-weight-normal">
+          And an even wittier subheading to boot. Jumpstart your marketing
+          efforts with this example based on Apple's marketing pages. Except it
+          should be about jellies and jams.
+        </p>
+        <a className="btn btn-outline-secondary" href="#">
+          Let's jam!
         </a>
       </div>
       <div className="product-device box-shadow d-none d-md-block" />
