@@ -30,12 +30,14 @@
   background-color: yellow; /* To showcase height; change later*/
 }
 
-/* ########## Whole Page ########## */
+/* ########## All Pages ########## */
 
 body {
+  position: relative;
   font-family: sans-serif;
   background: repeat;
-  background-image: url(./retina_wood.png);
+  /* background-image: url(./retina_wood.png); */
+  background-image: url(./restaurant_icons.png);
 }
 
 a {

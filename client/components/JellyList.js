@@ -42,7 +42,6 @@ class JellyList extends Component {
         : [...jellyArr].filter(
             jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
-          
 
     // const categoryFilter = jellyArr =>
     //   category === ''
@@ -52,11 +51,10 @@ class JellyList extends Component {
     //         jelly.name.indexOf(search.toLowerCase()) > -1
     //     )
 
-
     return (
-      <div id="jellyList">
+      <div className="d-flex flex-wrap" id="jellyList">
         {searchFilter(jelliesList).map(jelly => (
-          <div key={jelly.id}>
+          <div className="mx-auto p-3" key={jelly.id}>
             <Link to={`/jellies/${jelly.id}`}>
               <img src={jelly.photo} />
               <h3>{jelly.name}</h3>

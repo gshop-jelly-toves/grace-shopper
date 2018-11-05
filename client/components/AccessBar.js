@@ -24,19 +24,15 @@ const AccessBar = props => {
       {/* <ul className="nav justify-content-end"> */}
       <div className="nav nav-fill">
         <div className="nav-item">
-          <p className="nav-link active" href="#">
-            Welcome {name}
-          </p>
+          <p className="navbar-text">Welcome {name}</p>
         </div>
         <div className="nav-item">
-          <a className="nav-link active" href="#">
-            Yellow only to show Accessbar size
-          </a>
+          <p className="navbar-text">Yellow only to show Accessbar size</p>
         </div>
         <div className="nav-item">
-          <a className="nav-link" href="#">
+          <div className="nav-link" href="#">
             <Category />
-          </a>
+          </div>
         </div>
         <div className="nav-item">
           <div className="nav-link" href="#">

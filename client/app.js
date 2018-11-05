@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {AccessBar, BootNav} from './components'
+import {AccessBar, BootNav, Footer} from './components'
 import Routes from './routes'
 
 const App = () => {
@@ -9,6 +9,7 @@ const App = () => {
       <BootNav />
       <AccessBar />
       <Routes />
+      <Footer />
     </div>
   )
 }

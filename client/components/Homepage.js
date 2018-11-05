@@ -26,7 +26,11 @@ export const Homepage = props => {
           efforts with this example based on Apple's marketing pages.
         </p>
         <a className="btn btn-outline-secondary" href="#">
-          {/* Leave in or else Travis CI test will fail! Edit test later! */}
+          {/*
+          Leave in or else
+          Travis CI test will fail!
+          Edit test later!
+          */}
           <h3>Welcome, {email}</h3>
         </a>
       </div>
