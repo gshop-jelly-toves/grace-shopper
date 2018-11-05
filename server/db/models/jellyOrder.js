@@ -60,7 +60,7 @@ jellyOrder.prototype.updatePrice = async function() {
   const jelly = await Jelly.findOne({
     where: {id: this.jellyId}
   })
-  this.update({priceCents: jelly.price})
+  this.update({priceCents: jelly.priceCents})
 }
 
 const rejectInvalidQuantity = item => {

@@ -8,7 +8,8 @@ const Jelly = require('./jelly')
 
 const User = db.define('user', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   avatar: {
     type: Sequelize.STRING,

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies} from '../store'
 import {addJellyById} from '../store'
+import { priceCentsToString } from '../utils'
 
 class JellyList extends Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class JellyList extends Component {
               </button>
               <Link to={`/jellies/${jelly.id}`}>
                 <p>{jelly.rating}/5</p>
-                <p>${jelly.price}</p>
+                <p>{priceCentsToString(jelly.priceCents)}</p>
               </Link>
             </div>
           ))}
