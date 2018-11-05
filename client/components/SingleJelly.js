@@ -65,11 +65,11 @@ class SingleJelly extends Component {
           <EditJellyForm done={this.doneEditing} />
         ) : (
           <div>
-            <div className="row p-5">
-              <div className="col-md-7">
+            <div className="row p-3">
+              <div className="col col-lg-8">
                 <img src={jelly.photo} alt={jelly.name} />
               </div>
-              <div className="col-md-5">
+              <div className="col col-lg-4">
                 <h2>{jelly.name}</h2>
 
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>

@@ -66,7 +66,9 @@ class JellyList extends Component {
               </Link>
               <div className="d-flex align-items-center">
                 <div className="mr-auto p-2">
-                  <h3>{jelly.name}</h3>
+                  <Link to={`/jellies/${jelly.id}`}>
+                    <h3>{jelly.name}</h3>
+                  </Link>
                 </div>
                 <div className="p-2">
                   <h3>{jelly.rating} ★</h3>
