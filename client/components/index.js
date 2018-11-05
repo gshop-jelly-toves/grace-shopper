@@ -26,3 +26,5 @@ export {default as CartView} from './CartView'
 export {default as AddJellyForm} from './admin/AddJellyForm'
 export {default as EditJellyForm} from './admin/EditJellyForm'
 export {default as AdminLanding} from './admin/AdminLanding'
+export {default as AllOrders} from './admin/AllOrders'
+

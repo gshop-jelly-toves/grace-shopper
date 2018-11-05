@@ -1,8 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchJellies} from '../store'
-import {addJellyById} from '../store'
+import {fetchJellies, addJellyById} from '../store'
 import { priceCentsToString } from '../utils'
 
 class JellyList extends Component {
