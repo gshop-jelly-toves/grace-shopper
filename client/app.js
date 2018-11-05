@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {BootNav} from './components'
+import {AccessBar, BootNav, Footer} from './components'
 import Routes from './routes'
 import StripeForm from './components/StripeForm';
 
@@ -9,7 +9,9 @@ const App = () => {
     <div>
       <StripeForm />
       <BootNav />
+      <AccessBar />
       <Routes />
+      <Footer />
     </div>
   )
 }

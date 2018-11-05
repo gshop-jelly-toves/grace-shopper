@@ -14,7 +14,7 @@ module.exports = router
   GUEST ROUTES
 */
 
-// /api/jellies GET all jellies
+// /api/jellies?index=0&amount=10 GET jellies in range (index, amount)
 router.get('/', async (req, res, next) => {
   try {
     const index = parseInt(req.query.index)

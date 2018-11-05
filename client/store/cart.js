@@ -1,18 +1,21 @@
 import axios from 'axios'
 import history from '../history'
+import { fetchSingleJelly } from './jellies'
 
 /**
  * ACTION TYPES
 */
 
 const GET_CART = 'GET_CART'
+const CLEAR_CART_FROM_CLIENT = 'CLEAR_CART_FROM_CLIENT'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
 /**
  * INITIAL STATE
  */
-const cart = {
+const initCart = {
+  cartTotal: 0,
   items: {}
 }
 
@@ -22,6 +25,10 @@ const cart = {
 
 const getCart = cart => ({
   type: GET_CART, cart
+})
+
+const clearCartFromClient = () => ({
+  type: clearCartFromClient
 })
 
 const addToCart = item => ({
@@ -44,9 +51,25 @@ const removeFromCart = jellyId => ({
 export const fetchCart = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/cart')
+
+    // makes sure all of the jellies in your cart
+    // are on state.jellies
+    Object.keys(data.items)
+      .forEach(async id => await dispatch(
+          fetchSingleJelly(id)
+        )
+      )
+
     const action = getCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
+}
+
+export const destroyCart = () => async dispatch => {
+  try {
+    await axios.delete('/api/cart')
+    dispatch( clearCartFromClient() )
+  } catch (e) { console.error(e) }  
 }
 
 export const addJellyById = jellyId => async dispatch => {
@@ -69,10 +92,12 @@ export const removeJellyById = jellyId => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = cart, action) {
+export default function(state = initCart, action) {
   switch (action.type) {
     case GET_CART:
       return action.cart
+    case CLEAR_CART_FROM_CLIENT:
+      return initCart
     case ADD_TO_CART:
       return {
         // ...state,
@@ -86,7 +111,7 @@ export default function(state = cart, action) {
         ...state,
         items: {
           ...state.items,
-          [action.jellyId]: null
+          [action.jellyId]: undefined
         }
       }
     default:

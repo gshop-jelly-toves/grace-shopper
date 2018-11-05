@@ -1,5 +1,7 @@
 /* Supplementary CSS for bootstrap */
 
+/* ########## Shop Name  ########## */
+
 /* Font for shop name */
 @import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
 
@@ -16,8 +18,39 @@
   font-size: 1em;
 }
 
+/* ########## 404 Page ########## */
+
+#error-cat {
+  min-height: 100vh;
+  /* background-color: #dadfe2; */
+}
+
+/* ########## Whole Page ########## */
+#access-bar {
+  background-color: yellow; /* To showcase height; change later*/
+}
+
+/* ########## Front Page Hero ########## */
+#welcome-hero {
+  background-image: url(./JambyRuthHartnup.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  /* Add the blur effect */
+  /* filter: blur(2px);
+  -webkit-filter: blur(2px); */
+  z-index: 0;
+}
+
+/* ########## All Pages ########## */
+
 body {
+  position: relative;
   font-family: sans-serif;
+  background: repeat;
+  /* background-image: url(./retina_wood.png); */
+  background-image: url(./restaurant_icons.png);
 }
 
 a {

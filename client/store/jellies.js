@@ -15,7 +15,6 @@ const SET_CATEGORY = 'SET_CATEGORY'
  */
 const initState = {
   jellies: {},
-  singleJelly: {},
   categories: [],
   search: '',
   selectedCategory: ''
@@ -99,7 +98,12 @@ export default function(state = initState, action) {
         }
       }
     case GET_SINGLE_JELLY:
-      return {...state, singleJelly: action.jelly}
+      return {
+        ...state, jellies: {
+          ...state.jellies,
+          [action.jelly.id]: action.jelly
+        }
+      }
     case GET_CATEGORIES:
       return {...state, categories: action.categories}
     case SET_CATEGORY:
