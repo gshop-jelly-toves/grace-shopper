@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchCategories} from '../../store/jellies'
 import axios from 'axios'
+import {withRouter} from 'react-router-dom'
 
 class EditJellyForm extends Component {
   constructor(props) {
     super(props)
-    this.state = props.jelly
+    this.state = props.jelly[this.props.match.params.jellyId]
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -31,7 +32,7 @@ class EditJellyForm extends Component {
   render() {
     const {name, description, priceCents, inventory} = this.state
     const isEnabled = name && description && priceCents && inventory
-    const { jelly } = this.props
+    const {jelly} = this.props
 
     return (
       <div>
@@ -61,7 +62,7 @@ class EditJellyForm extends Component {
             onChange={this.handleChange}
             required
           />
-          <p>Rating: {jelly.rating}/5</p>          
+          <p>Rating: {jelly.rating}/5</p>
           <label htmlFor="inventory">Inventory</label>
           <input
             type="number"
@@ -117,13 +118,13 @@ class EditJellyForm extends Component {
   }
 }
 
-const mapState = ({ jellies: {categories, singleJelly} }) => ({
-  categories, 
-  jelly: singleJelly
+const mapState = ({jellies: {categories}, jellies: {jellies}}) => ({
+  categories,
+  jelly: jellies
 })
 
 const mapDispatch = {
   fetchCategories
 }
 
-export default connect(mapState, mapDispatch)(EditJellyForm)
+export default withRouter(connect(mapState, mapDispatch)(EditJellyForm))

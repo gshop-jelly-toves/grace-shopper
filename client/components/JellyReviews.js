@@ -25,7 +25,7 @@ class JellyReviews extends Component {
   render() {
     const keyedReviews = this.props.reviews
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
-    return reviewsList ? (
+    return keyedReviews ? (
       reviewsList.map(review => (
         <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`} key={review.id}>
           <div>
