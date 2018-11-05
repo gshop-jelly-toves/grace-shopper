@@ -20,8 +20,10 @@
 
 /* ########## 404 Page ########## */
 
-#error-cat {
+div#error-cat {
   min-height: 100vh;
+  width: 100vw;
+  background-image: url(./ErrorHoneyCat.jpg);
   /* background-color: #dadfe2; */
 }
 
