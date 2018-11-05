@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies} from '../store'
@@ -52,24 +52,27 @@ class JellyList extends Component {
     //     )
 
     return (
-      <div className="d-flex flex-wrap" id="jellyList">
-        {searchFilter(jelliesList).map(jelly => (
-          <div className="mx-auto p-3" key={jelly.id}>
-            <Link to={`/jellies/${jelly.id}`}>
-              <img src={jelly.photo} />
-              <h3>{jelly.name}</h3>
-              <p>{jelly.rating}/5</p>
-              <p>{jelly.price}</p>
-            </Link>
-          </div>
-        ))}
-
+      <Fragment>
+        <div className="d-flex flex-wrap" id="jellyList">
+          {searchFilter(jelliesList).map(jelly => (
+            <div className="mx-auto p-5" key={jelly.id}>
+              <Link to={`/jellies/${jelly.id}`}>
+                <img src={jelly.photo} />
+                <h3>{jelly.name}</h3>
+                <p>{jelly.rating}/5</p>
+                <p>{jelly.price}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
         <button
+          type="button"
+          className="btn btn-lg btn-block btn-primary"
           onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
         >
-          MORE JELLIES
+          SEE MORE JELLIES
         </button>
-      </div>
+      </Fragment>
     )
   }
 }
