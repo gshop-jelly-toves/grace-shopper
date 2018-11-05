@@ -12,7 +12,8 @@ import {
   Signup,
   SingleJelly,
   SingleReview,
-  UserHome
+  UserHome,
+  OrderHistory
 } from './components'
 import {fetchUser, fetchCart} from './store'
 
@@ -30,6 +31,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/" component={UserHome} />
         <Route path="/home" component={UserHome} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
@@ -40,6 +42,7 @@ class Routes extends Component {
         <Route path="/jellies/:jellyId" component={SingleJelly} />
         <Route path="/jellies" component={JellyList} />
         <Route path="/cart" component={CartView} />
+        <Route path="/orders" component={OrderHistory} />
 
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (

@@ -1,7 +1,8 @@
 import React from 'react'
-import { fetchCart, destroyCart } from '../store'
-import { connect } from 'react-redux'
-import { priceCentsToString } from '../utils'
+import {fetchCart, destroyCart} from '../store'
+import {connect} from 'react-redux'
+import {priceCentsToString} from '../utils'
+import { Link } from 'react-router-dom'
 
 class CartView extends React.Component {
   constructor(props) {
@@ -26,38 +27,45 @@ class CartView extends React.Component {
     // in the cart make their way through redux
     const haveNeededJellies = () => {
       const propsJellyIds = Object.keys(jellies)
-      for (let i=0; i < jellyIds.length; i++) {
-        if (!propsJellyIds.includes(jellyIds[i]))
-          return false
+      for (let i = 0; i < jellyIds.length; i++) {
+        if (!propsJellyIds.includes(jellyIds[i])) return false
       }
       return true
     }
-      
+
     return this.props.cart.cartTotal ? (
-      <div>
-        <button onClick={this.clearCart}>
+      <div id="cart-container">
+        <button type="button" onClick={this.clearCart}>
           Clear cart
         </button>
-        Total: {priceCentsToString(cart.cartTotal)} 
-        { haveNeededJellies() && 
-            jellyIds.map(id => (
-              <div key={id}>
-                {cart.items[id].quantity + ' '} 
-                {jellies[id].name} 
-              </div>
-            )) 
-        }
+        <div>Total: {priceCentsToString(cart.cartTotal)}</div>
+        {haveNeededJellies() &&
+          jellyIds.map(id => (
+            <div className="cart-item-container" key={id}>
+
+              <p>{'Quantity: ' + cart.items[id].quantity + ' '}</p>
+              <Link to={`/jellies/${id}`}>
+              <p>{jellies[id].name}</p>
+              </Link>
+
+              <img src={jellies[id].photo} />
+            </div>
+          ))}
       </div>
-    ) : <div>No Jellies here...</div>
+    ) : (
+      <div>Your cart is currently empty, add some jellies!</div>
+    )
   }
 }
 
-const mapState = ({ cart, jellies: {jellies} }) => ({
-  cart, jellies
+const mapState = ({cart, jellies: {jellies}}) => ({
+  cart,
+  jellies
 })
 
 const mapDispatch = {
-  fetchCart, destroyCart
+  fetchCart,
+  destroyCart
 }
 
 export default connect(mapState, mapDispatch)(CartView)
