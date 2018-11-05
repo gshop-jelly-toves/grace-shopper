@@ -24,7 +24,7 @@ const Order = db.define('order', {
 })
 
 const JellyOrder = require('./jellyOrder')
-  
+
 Order.findOrCreateCartByUserId = async function(userId) {
   try {
     let cart = await this.findOne({where: {userId, status: 'cart'}})

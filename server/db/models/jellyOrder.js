@@ -79,6 +79,8 @@ const setCartTotal = async item => {
       where: {orderId: item.dataValues.orderId}
     })
 
+    // console.log('123456789', item.dataValues.orderId)
+
     const total = items.reduce((a, b) => a + b.dataValues.priceCents * b.dataValues.quantity, 0)
 
     const cart = await Order.findOne({
