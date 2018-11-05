@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { User } = require('../db/models')
+const { Order } = require('../db/models')
 
 // see /server/middlewares/user
 const { requireLogin, requireSeller, requireAdmin, requiredev } = require('../middlewares')
@@ -38,6 +39,27 @@ router.get('/', requireSeller, async (req, res, next) => {
 /*
   ADMIN ROUTES
 */
+
+router.get('/:userId/orders', requireAdmin, async (req, res, next) => {
+  const { userId } = req.params
+
+  try {
+    const user = await User.findOne({
+      where: {
+        id: userId
+      },
+      include: [{model: Order}]
+    })
+    res.json(user)
+  } catch (e) {
+    console.log(e) // for debugging purposes
+
+    // 204 => no content
+    res.status(204).json({
+      message: `no user by id ${userId}`
+    })
+  }
+})
 
 router.get('/:userId', requireAdmin, async (req, res, next) => {
   const { userId } = req.params
