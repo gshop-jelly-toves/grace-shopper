@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
@@ -9,22 +9,27 @@ import {auth} from '../store'
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
-  return name === 'signup' ? (
+  console.log('//////', displayName)
+
+  return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
+        {displayName === 'Sign Up' ? (
+          <div>
+            <label htmlFor="fullName">
+              <small>Name</small>
+            </label>
+            <input name="fullName" type="text" />
+          </div>
+        ) : (
+          <Fragment />
+        )}
         <div>
           <label htmlFor="email">
             <small>Email</small>
           </label>
           <input name="email" type="text" />
         </div>
-        <div>
-          <label htmlFor="fullName">
-            <small>Name</small>
-          </label>
-          <input name="fullName" type="text" />
-        </div>
-
         <div>
           <label htmlFor="password">
             <small>Password</small>
@@ -38,28 +43,6 @@ const AuthForm = props => {
       </form>
       <a href="/auth/google">{displayName} with Google</a>
     </div>
-  ) : (
-    <div>
-    <form onSubmit={handleSubmit} name={name}>
-      <div>
-        <label htmlFor="email">
-          <small>Email</small>
-        </label>
-        <input name="email" type="text" />
-      </div>
-      <div>
-        <label htmlFor="password">
-          <small>Password</small>
-        </label>
-        <input name="password" type="password" />
-      </div>
-      <div>
-        <button type="submit">{displayName}</button>
-      </div>
-      {error && error.response && <div> {error.response.data} </div>}
-    </form>
-    <a href="/auth/google">{displayName} with Google</a>
-  </div>
   )
 }
 
