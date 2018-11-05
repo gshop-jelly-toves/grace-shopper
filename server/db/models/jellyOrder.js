@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Order = require('./order')
-const Jelly = require('./jelly')
+console.log(db.models)
+const Order = db.models.order
+const Jelly = db.models.jelly
 
 const jellyOrder = db.define('jelly-orders', {
   id: {
@@ -24,12 +25,16 @@ jellyOrder.addItem = async function(orderId, jellyId) {
   try {
     // `findOrCreate` (oddly) returns an array containing a single
     // instance, so a little destructuring can be used
-    const {[0]: item} = await jellyOrder.findOrCreate({
+    // console.log('info',orderId, jellyId)
+
+    const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
+    // console.log('item', item[0])
+
     return await item.update({
-      quantity: item.quantity + 1
+      quantity: item.dataValues.quantity + 1
     })
   } catch (e) {
     console.error(e)
@@ -47,7 +52,7 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
 
     if (item)
       item = await item.update({
-        quantity: item.quantity - 1
+        quantity: item.dataValues.quantity - 1
       })
 
     return item
@@ -58,30 +63,32 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
 
 jellyOrder.prototype.updatePrice = async function() {
   const jelly = await Jelly.findOne({
-    where: {id: this.jellyId}
+    where: {id: this.dataValues.jellyId}
   })
-  this.update({priceCents: jelly.priceCents})
+  this.update({priceCents: jelly.dataValues.priceCents})
 }
 
 const rejectInvalidQuantity = item => {
   if (item.quantity < 1) item.destroy()
+  return item
 }
 
 const setCartTotal = async item => {
   try {
     const items = await jellyOrder.findAll({
-      where: {orderId: item.orderId}
+      where: {orderId: item.dataValues.orderId}
     })
 
-    const total = items.reduce((a, b) => a + b.priceCents * b.quantity, 0)
+    const total = items.reduce((a, b) => a + b.dataValues.priceCents * b.dataValues.quantity, 0)
 
     const cart = await Order.findOne({
-      where: {id: item.orderId}
+      where: {id: item.dataValues.orderId}
     })
 
     cart.update({
       cartTotal: total
     })
+    return item
   } catch (e) {
     console.error(e)
   }
@@ -96,9 +103,20 @@ jellyOrder.afterUpdate(item => {
   rejectInvalidQuantity(item)
   setCartTotal(item)
   savePrice(item)
+  return item
 })
-jellyOrder.afterCreate(setCartTotal)
-jellyOrder.afterDestroy(setCartTotal)
-jellyOrder.beforeCreate(savePrice)
+jellyOrder.beforeCreate(item => {
+  savePrice(item)
+  return item
+})
+
+jellyOrder.afterCreate(item => {
+  setCartTotal(item)
+  return item
+})
+jellyOrder.afterDestroy(item => {
+  setCartTotal(item)
+  return item
+})
 
 module.exports = jellyOrder

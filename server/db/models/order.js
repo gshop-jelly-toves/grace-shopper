@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize')
-const Jelly = require('./jelly')
 const db = require('../db')
-// const JellyOrder = require('./jellyOrder')
 
 const Order = db.define('order', {
   status: {
@@ -12,9 +10,9 @@ const Order = db.define('order', {
       'shipped',
       'delivered',
       'cart'
-    ),
-    allowNull: false,
-    defaultValue: 'cart'
+      ),
+      allowNull: false,
+      defaultValue: 'cart'
   },
   cartTotal: {
     type: Sequelize.INTEGER,
@@ -24,6 +22,8 @@ const Order = db.define('order', {
     type: Sequelize.INTEGER
   }
 })
+
+const JellyOrder = require('./jellyOrder')
 
 Order.findOrCreateCartByUserId = async function(userId) {
   try {

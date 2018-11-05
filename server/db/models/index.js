@@ -1,9 +1,9 @@
-const User = require('./user')
 const Jelly = require('./jelly')
-const Review = require('./review')
 const Order = require('./order')
-const Category = require('./category')
 const JellyOrder = require('./jellyOrder')
+const User = require('./user')
+const Review = require('./review')
+const Category = require('./category')
 
 /**
  * If we had any associations to make, this would be a great place to put them!

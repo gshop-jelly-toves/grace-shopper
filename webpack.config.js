@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
@@ -13,6 +14,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  plugins: [
+    new webpack.DefinePlugin({           
+      STRIPE_PUB_KEY: JSON.stringify('pk_test_klwlyJ71bHE4CNw2dkY1Zihp')
+    })
+  ],
   devtool: 'source-map',
   module: {
     rules: [
