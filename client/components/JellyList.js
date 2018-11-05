@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies} from '../store'
+import {addJellyById} from '../store'
 
 class JellyList extends Component {
   constructor(props) {
@@ -59,8 +60,16 @@ class JellyList extends Component {
               <Link to={`/jellies/${jelly.id}`}>
                 <img src={jelly.photo} />
                 <h3>{jelly.name}</h3>
+              </Link>
+              <button
+                type="button"
+                onClick={() => this.props.addToCart(jelly.id)}
+              >
+                ADD TO CART
+              </button>
+              <Link to={`/jellies/${jelly.id}`}>
                 <p>{jelly.rating}/5</p>
-                <p>{jelly.price}</p>
+                <p>${jelly.price}</p>
               </Link>
             </div>
           ))}
@@ -90,7 +99,8 @@ const mapState = ({
 })
 
 const mapDispatch = dispatch => ({
-  fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount))
+  fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount)),
+  addToCart: jellyId => dispatch(addJellyById(jellyId))
 })
 
 export default connect(mapState, mapDispatch)(JellyList)
