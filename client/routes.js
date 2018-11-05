@@ -49,7 +49,7 @@ class Routes extends Component {
           </Switch>
         )}
 
-        {/* Displays Login component as our NoMatch fallback */}
+        {/* Displays NoMatch for bad routes */}
         <Route component={NoMatch} />
       </Switch>
     )
