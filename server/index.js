@@ -36,6 +36,7 @@ const createApp = () => {
 
   // body parsing middleware
   app.use(express.json())
+  app.set('view engine', 'pug')
   app.use(express.urlencoded({extended: true}))
 
   // compression middleware
