@@ -17,6 +17,6 @@ describe('Homepage', () => {
   })
 
   it('renders the name in an h3', () => {
-    expect(homepage.find('h3').text()).to.be.equal('Welcome, cody@gmail.com')
+    expect(homepage.find('h3').text()).to.be.equal('Welcome cody@gmail.com')
   })
 })
