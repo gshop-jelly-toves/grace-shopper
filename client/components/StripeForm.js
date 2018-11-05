@@ -13,7 +13,7 @@ class StripeForm extends React.Component {
         name="Bellies' Jellies"
         description="Let's get these jellies in that belly."
         amount={500}
-        token={() => this.props.handleToken(token)}
+        token={token => this.props.handleToken(token)}
         stripeKey={STRIPE_PUB_KEY}
       />
     )

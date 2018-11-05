@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Jelly, Category, Review, User} = require('../db/models')
+const {Jelly, Category, Review, User, JellyOrder} = require('../db/models')
 const {jelly_category: JellyCategory} = require('../db/db').models
 const {
   requireLogin,

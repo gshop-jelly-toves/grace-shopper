@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize')
-const Jelly = require('./jelly')
+// const Jelly = require('./jelly')
 const db = require('../db')
+const models = require('./jelly')
+
+console.log('jellyOrder:',models)
 
 const Order = db.define('order', {
   status: {
