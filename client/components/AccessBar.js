@@ -24,7 +24,7 @@ const AccessBar = props => {
       {/* <ul className="nav justify-content-end"> */}
       <div className="nav nav-fill">
         <div className="nav-item">
-          <p className="navbar-text">Welcome {name}</p>
+          <p className="navbar-text">Welcome!</p>
         </div>
         <div className="nav-item">
           <p className="navbar-text">Are you ready for this jelly?</p>
