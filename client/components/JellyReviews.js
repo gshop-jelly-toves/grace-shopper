@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchReviews} from '../store'
-import { Link } from 'react-router-dom'
-
+import {Link} from 'react-router-dom'
 
 class JellyReviews extends Component {
   // constructor(props) {
@@ -27,7 +26,12 @@ class JellyReviews extends Component {
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
     return keyedReviews ? (
       reviewsList.map(review => (
-        <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`} key={review.id}>
+        // Keep in mind that this renders on the SingleJelly page
+        // The main <div> there is a container with classes row p-3
+        <Link
+          to={`/jellies/${review.jellyId}/reviews/${review.id}`}
+          key={review.id}
+        >
           <div>
             <h2>Reviewed by: {review.user.name}</h2>
             <img src={review.user.avatar} />

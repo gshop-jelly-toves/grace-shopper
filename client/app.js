@@ -9,7 +9,7 @@ const App = () => {
       <BootNav />
       <AccessBar />
       <Routes />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
