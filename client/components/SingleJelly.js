@@ -1,13 +1,11 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {fetchSingleJelly} from '../store'
-import {addJellyById} from '../store'
+import {fetchSingleJelly, addJellyById} from '../store'
 import NoMatch from './NoMatch'
 import EditJellyForm from './admin/EditJellyForm'
 import JellyReviews from './JellyReviews'
 import AddReviewForm from './AddReviewForm'
-import { priceCentsToString } from '../utils'
-
+import {priceCentsToString} from '../utils'
 
 class SingleJelly extends Component {
   constructor(props) {
@@ -61,30 +59,36 @@ class SingleJelly extends Component {
     const jelly = this.props.jellies[jellyId]
 
     return jelly ? (
-      <div>
+      <div className="container">
         {editing && isAdmin ? (
           <EditJellyForm done={this.doneEditing} />
         ) : (
-          <div>
-            <h2>{jelly.name}</h2>
-            <img src={jelly.photo} />
-            <p>{priceCentsToString(jelly.priceCents)}</p>
-            <button
-                type="button"
-                onClick={this.addToCart}
-              >
-                ADD TO CART
-              </button>
+          <Fragment>
+            <div className="row p-3">
+              <div className="col col-lg-8">
+                <img src={jelly.photo} alt={jelly.name} />
+              </div>
+              <div className="col col-lg-4">
+                <h2>{jelly.name}</h2>
 
+                <h4>{priceCentsToString(jelly.priceCents)}</h4>
 
-
-            <p>Rating: {jelly.rating}/5</p>
-            <p>{jelly.inventory} remaining</p>
-            <p>Description: {jelly.description}</p>
-
+                <p>Rating: {jelly.rating} ★</p>
+                <p>{jelly.inventory} remaining</p>
+                <p>{jelly.description}</p>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block"
+                  onClick={this.addToCart}
+                >
+                  ADD TO CART
+                </button>
+              </div>
+            </div>
             {isAdmin && (
               <button
                 type="button"
+                className="btn btn-secondary"
                 onClick={() => {
                   this.setState({editing: true})
                 }}
@@ -96,6 +100,7 @@ class SingleJelly extends Component {
             {isLoggedIn && (
               <button
                 type="button"
+                className="btn btn-secondary"
                 onClick={() => {
                   this.setState({reviewing: true})
                 }}
@@ -103,7 +108,6 @@ class SingleJelly extends Component {
                 ADD REVIEW
               </button>
             )}
-
             {isLoggedIn &&
               reviewing && (
                 <AddReviewForm
@@ -114,7 +118,7 @@ class SingleJelly extends Component {
               )}
 
             <JellyReviews jellyId={this.props.match.params.jellyId} />
-          </div>
+          </Fragment>
         )}
       </div>
     ) : (

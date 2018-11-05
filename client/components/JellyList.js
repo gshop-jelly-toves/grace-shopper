@@ -1,15 +1,18 @@
 import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchJellies} from '../store'
-import {addJellyById} from '../store'
-import { priceCentsToString } from '../utils'
+import {fetchJellies, addJellyById} from '../store'
+import {priceCentsToString} from '../utils'
 
 class JellyList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      jelliesPerReq: 10
+      //  Changed to 6 from 10 b/c:
+      //    6 % 2 === 0
+      //    6 % 3 === 0
+      //  6 jellies in 2 rows is essentially a full screen height
+      jelliesPerReq: 6
     }
   }
 
@@ -60,18 +63,31 @@ class JellyList extends Component {
             <div className="mx-auto p-5" key={jelly.id}>
               <Link to={`/jellies/${jelly.id}`}>
                 <img src={jelly.photo} />
-                <h3>{jelly.name}</h3>
               </Link>
-              <button
-                type="button"
-                onClick={() => this.props.addToCart(jelly.id)}
-              >
-                ADD TO CART
-              </button>
-              <Link to={`/jellies/${jelly.id}`}>
-                <p>{jelly.rating}/5</p>
-                <p>{priceCentsToString(jelly.priceCents)}</p>
-              </Link>
+              <div className="d-flex align-items-center">
+                <div className="mr-auto p-2">
+                  <Link to={`/jellies/${jelly.id}`}>
+                    <h3>{jelly.name}</h3>
+                  </Link>
+                </div>
+                <div className="p-2">
+                  <h3>{jelly.rating} ★</h3>
+                </div>
+                <div className="p-2">
+                  <h3>{priceCentsToString(jelly.priceCents)}</h3>
+                </div>
+              </div>
+              <div className="d-flex flex-row-reverse">
+                <div className="p-2">
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={() => this.props.addToCart(jelly.id)}
+                  >
+                    ADD TO CART
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
