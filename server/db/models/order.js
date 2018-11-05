@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const Jelly = require('./jelly')
 const db = require('../db')
+const JellyOrder = require('./jellyOrder')
 
 const Order = db.define('order', {
   status: {
@@ -44,7 +45,7 @@ Order.prototype.updatePrices = async function() {
       const jellyOrders = await JellyOrder.findAll(
         {where: {orderId: this.id}}
       )
-      
+
       jellyOrders.forEach(async item => await item.updatePrice())
     } catch(e) { console.error(e) }
   } else {
