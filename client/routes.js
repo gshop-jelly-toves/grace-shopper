@@ -13,9 +13,11 @@ import {
   SingleJelly,
   SingleReview,
   UserHome,
-  OrderHistory
+  OrderHistory,
+  AllOrders
 } from './components'
 import {fetchUser, fetchCart} from './store'
+
 
 /**
  * COMPONENT
@@ -47,6 +49,7 @@ class Routes extends Component {
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>
+            <Route path="/admin/jellies/orders" component={AllOrders} />
             <Route path="/admin/jellies/add" component={AddJellyForm} />
             <Route path="/admin" component={AdminLanding} />
           </Switch>

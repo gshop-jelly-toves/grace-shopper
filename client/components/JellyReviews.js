@@ -32,7 +32,8 @@ class JellyReviews extends Component {
             <h2>Reviewed by: {review.user.name}</h2>
             <img src={review.user.avatar} />
             <p>Rating: {review.starRating} / 5</p>
-            <p>Review: {review.text}</p>
+            <p>Review Title: {review.title}</p>
+        <p>Review Body: {review.body}</p>
           </div>
         </Link>
       ))
