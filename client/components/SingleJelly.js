@@ -74,6 +74,7 @@ class SingleJelly extends Component {
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
 
                 <p>{jelly.rating} ★</p>
+                <p>{jelly.description}</p>
                 <label Htmlfor="quantity">Quantity</label>
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
@@ -88,7 +89,6 @@ class SingleJelly extends Component {
                     aria-describedby="basic-addon3"
                   />
                 </div>
-                <p>{jelly.description}</p>
                 <button
                   type="button"
                   className="btn btn-success btn-block"
