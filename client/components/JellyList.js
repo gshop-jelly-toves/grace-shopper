@@ -60,7 +60,7 @@ class JellyList extends Component {
                 <img src={jelly.photo} />
                 <h3>{jelly.name}</h3>
                 <p>{jelly.rating}/5</p>
-                <p>{jelly.price}</p>
+                <p>{jelly.priceCents}</p>
               </Link>
             </div>
           ))}

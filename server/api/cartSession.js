@@ -1,7 +1,7 @@
 const { Jelly } = require('../db/models')
 const newJelly = jelly => ({
   jellyId: jelly.id,
-  priceCents: jelly.price,
+  priceCents: jelly.priceCents,
   quantity: 1
 })
 
