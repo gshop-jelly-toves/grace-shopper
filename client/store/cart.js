@@ -54,6 +54,7 @@ export const fetchCart = () => async dispatch => {
 
     // makes sure all of the jellies in your cart
     // are on state.jellies
+    // fix this...
     Object.keys(data.items)
       .forEach(async id => await dispatch(
           fetchSingleJelly(id)
