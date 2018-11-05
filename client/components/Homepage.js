@@ -28,7 +28,7 @@ export const Homepage = props => {
           Travis CI test will fail without it!
           Edit test later!
           */}
-        <h3 className="display-4 font-weight-normal">Welcome {email}</h3>
+        <h3 className="display-4 font-weight-normal">Welcome, {email}</h3>
         <p className="lead font-weight-normal">
           Jellies, jams, & preserves! Kick off your excursion into the world of
           jellies with a selection of unforgettable jellies to tantalize one's
