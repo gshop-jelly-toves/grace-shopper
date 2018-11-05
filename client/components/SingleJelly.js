@@ -6,6 +6,8 @@ import NoMatch from './NoMatch'
 import EditJellyForm from './admin/EditJellyForm'
 import JellyReviews from './JellyReviews'
 import AddReviewForm from './AddReviewForm'
+import { priceCentsToString } from '../utils'
+
 
 class SingleJelly extends Component {
   constructor(props) {
@@ -66,7 +68,7 @@ class SingleJelly extends Component {
           <div>
             <h2>{jelly.name}</h2>
             <img src={jelly.photo} />
-            <p>${jelly.priceCents}</p>
+            <p>{priceCentsToString(jelly.priceCents)}</p>
             <button
                 type="button"
                 onClick={this.addToCart}

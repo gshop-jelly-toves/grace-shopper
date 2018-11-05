@@ -36,10 +36,10 @@ export const fetchUser = () => async dispatch => {
   }
 }
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth = (email, password, method, name) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/${method}`, {email, password})
+    res = await axios.post(`/auth/${method}`, {email, password, name})
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
