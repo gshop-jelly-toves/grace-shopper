@@ -20,19 +20,22 @@ const Order = db.define('order', {
     defaultValue: 0
   },
   orderTotal: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   }
 })
 
 Order.findOrCreateCartByUserId = async function(userId) {
   try {
     let cart = await this.findOne({where: {userId, status: 'cart'}})
-    if (!cart) cart = await this.create({
-      status: 'cart',
-      userId
-    })
+    if (!cart)
+      cart = await this.create({
+        status: 'cart',
+        userId
+      })
     return cart
-  } catch (e) { console.error(e) }
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 Order.prototype.updatePrices = async function() {
@@ -72,8 +75,11 @@ const forceOneCart = async order => {
       const existingCart = await Order.findOne({
         where: {userId, status: 'cart'}
       })
-      if (existingCart) throw new Error(`User (id: ${userId}) can only have one cart.`)
-    } catch (e) { console.error(e) }
+      if (existingCart)
+        throw new Error(`User (id: ${userId}) can only have one cart.`)
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 

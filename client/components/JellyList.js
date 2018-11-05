@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies} from '../store'
@@ -26,6 +26,7 @@ class JellyList extends Component {
     const amount = this.state.jelliesPerReq
     const {search} = this.props
     const keyedJellies = this.props.jellies
+    const {category} = this.props.selectedCategory
 
     const jelliesList = Object.keys(keyedJellies)
       .map(key => keyedJellies[key])
@@ -39,36 +40,53 @@ class JellyList extends Component {
       search === ''
         ? jellyArr
         : [...jellyArr].filter(
-            jelly =>
-              jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+            jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
 
-    return (
-      <div id="jellyList">
-        {searchFilter(jelliesList).map(jelly => (
-          <div key={jelly.id}>
-            <Link to={`/jellies/${jelly.id}`}>
-              <img src={jelly.photo} />
-              <h3>{jelly.name}</h3>
-              <p>{jelly.rating}/5</p>
-              <p>{jelly.price}</p>
-            </Link>
-          </div>
-        ))}
+    // const categoryFilter = jellyArr =>
+    //   category === ''
+    //     ? jellyArr
+    //     : [...jellyArr].filter(
+    //       jelly =>
+    //         jelly.name.indexOf(search.toLowerCase()) > -1
+    //     )
 
-        <button
-          onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
-        >
-          MORE JELLIES
-        </button>
-      </div>
+    return (
+      <Fragment>
+        <div className="d-flex flex-wrap" id="jellyList">
+          {searchFilter(jelliesList).map(jelly => (
+            <div className="mx-auto p-5" key={jelly.id}>
+              <Link to={`/jellies/${jelly.id}`}>
+                <img src={jelly.photo} />
+                <h3>{jelly.name}</h3>
+                <p>{jelly.rating}/5</p>
+                <p>{jelly.price}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
+        <div className="row justify-content-center">
+          <button
+            type="button"
+            className="btn btn-lg btn-primary mb-5"
+            onClick={() => this.props.fetchJellies(jelliesList.length, amount)}
+          >
+            SEE MORE JELLIES
+          </button>
+        </div>
+      </Fragment>
     )
   }
 }
 
-const mapState = ({jellies: {jellies}, jellies: {search}}) => ({
+const mapState = ({
+  jellies: {jellies},
+  jellies: {search},
+  jellies: {selectedCategory}
+}) => ({
   jellies,
-  search
+  search,
+  selectedCategory
 })
 
 const mapDispatch = dispatch => ({

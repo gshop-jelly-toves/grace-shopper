@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink, Link} from 'react-router-dom'
 import {logout} from '../store'
-// import {Toolbar} from './index'
+// import {Category, Toolbar} from './index'
 
 // --- WHAT'S BEEN BOOTSTRAP REFACTORED ---
-// ↳ BootNavbar.js has replaced Navbar.js (called in app.js) 
+// ↳ BootNavbar.js has replaced Navbar.js (called in app.js)
 // ↳ HomePage.js cleaned and container'd; has carousel (hero image??) prep
 
 // --- IMPLEMENTED AND WORKING ---
@@ -17,10 +17,10 @@ import {logout} from '../store'
 // ↳ JellyShop renders / pagination still works
 // ↳ Google OAuth works - displays name on page
 // ↳ Admin Tools links
+// ↳ Bring in Toolbar (jellyShop filtering function) as Category
+// ↳ Getting the search field to cooperate (see note in bar on localhost)
 
 // --- STILL NEEDS ---
-// ↳ Bringing in Toolbar (jellyShop filtering function) - line 6 here
-// ↳ Getting the search field to cooperate (see note in bar on localhost)
 // ↳ Fix layout of login and signup
 
 const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
@@ -81,17 +81,15 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
             /____/
         */}
         {isLoggedIn ? (
-          <li className="nav-item">
-            <div className="nav-link">
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={handleClick}>
-                  Logout
-                </a>
-              </li>
-            </div>
-          </li>
+          <Fragment>
+            <li className="nav-item">
+              <div className="nav-link" href="#" onClick={handleClick}>
+                Logout
+              </div>
+            </li>
+          </Fragment>
         ) : (
-          <div>
+          <Fragment>
             <li className="nav-item">
               <div className="nav-link">
                 <NavLink to="/login" activeClassName="nav-active">
@@ -106,7 +104,7 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
                 </NavLink>
               </div>
             </li>
-          </div>
+          </Fragment>
         )}
         {/*
     ___       __          _          ______            __
@@ -123,7 +121,11 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
           </li>
         )}
 
-        {/*
+        {/* <li className="nav-item">
+          <Category />
+        </li> */}
+      </ul>
+      {/*
 
             The plan here is to get admin links
             to be a dropdown somehow
@@ -155,25 +157,14 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
           </div>
         </li>
         */}
-        {/*
+      {/*
    _____                      __
   / ___/___  ____ ___________/ /_
   \__ \/ _ \/ __ `/ ___/ ___/ __ \
  ___/ /  __/ /_/ / /  / /__/ / / /
 /____/\___/\__,_/_/   \___/_/ /_/
         */}
-      </ul>
-      <form className="form-inline my-2 my-lg-0">
-        <input
-          className="form-control mr-sm-2"
-          type="search"
-          placeholder="Not hooked up yet :("
-          aria-label="Search"
-        />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
+      {/* <Toolbar /> */}
     </div>
   </nav>
 )
