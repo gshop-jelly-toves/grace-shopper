@@ -87,6 +87,13 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
                 Logout
               </div>
             </li>
+            <li className="nav-item">
+              <div className="nav-link">
+                <NavLink to="/orders" activeClassName="nav-active">
+                  Order History
+                </NavLink>
+              </div>
+            </li>
           </Fragment>
         ) : (
           <Fragment>
