@@ -66,7 +66,7 @@ class SingleJelly extends Component {
           <div>
             <h2>{jelly.name}</h2>
             <img src={jelly.photo} />
-            <p>${jelly.price}</p>
+            <p>${jelly.priceCents}</p>
             <button
                 type="button"
                 onClick={this.addToCart}
