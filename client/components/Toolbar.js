@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {setSearch} from '../store'
 
-class Toolbar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props)
 
@@ -35,4 +35,4 @@ const mapDispatch = dispatch => ({
   setSearch: search => dispatch(setSearch(search))
 })
 
-export default connect(null, mapDispatch)(Toolbar)
+export default connect(null, mapDispatch)(SearchBar)

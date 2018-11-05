@@ -24,7 +24,7 @@ class Category extends Component {
 
     return (
       <div id="toolbar">
-        <select onChange={this.handleChange}>
+        <select className="form-control" onChange={this.handleChange}>
           <option>Choose Category</option>
           {categories.map(category => (
             <option key={category.id} value={category.name}>

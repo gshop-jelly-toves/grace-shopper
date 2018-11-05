@@ -6,54 +6,36 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const Homepage = props => {
-  // Moved to <Accessbar />
+  // Leave in or else Travis CI test will fail!
+  // Edit test later!
   const {email} = props
 
   return (
-    <main role="main">
-      <h3>Welcome, {email}</h3>
+    <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       {/*
-   ______                                 __
-  / ____/___ __________  __  __________  / /
- / /   / __ `/ ___/ __ \/ / / / ___/ _ \/ /
-/ /___/ /_/ / /  / /_/ / /_/ (__  )  __/ /
-\____/\__,_/_/   \____/\__,_/____/\___/_/
-
-ON HOLD - PROBABLY IMPLEMENTING SOMETHING WILL ACTUALLY WORK T_T
-      */}
-
-      {/* <div
-        id="carouselExampleSlidesOnly"
-        className="carousel slide"
-        data-ride="carousel"
-      >
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img
-              className="d-block w-100"
-              src="https://dummyimage.com/1200x400/000/fff.jpg&text=First+Image
-"
-              alt="First slide"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              className="d-block w-100"
-              src="https://dummyimage.com/1200x400/960/fff.jpg&text=Second+Image"
-              alt="Second slide"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              className="d-block w-100"
-              src="https://dummyimage.com/1200x400/99c/000.jpg&text=Third+Image"
-              alt="Third slide"
-            />
-          </div>
-        </div>
-      </div> */}
-    </main>
+    __  __                __
+   / / / /__  _________  / /
+  / /_/ / _ \/ ___/ __ \/ /
+ / __  /  __/ /  / /_/ /_/
+/_/ /_/\___/_/   \____(_)
+    */}
+      <div className="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 className="display-4 font-weight-normal">Punny headline</h1>
+        <p className="lead font-weight-normal">
+          And an even wittier subheading to boot. Jumpstart your marketing
+          efforts with this example based on Apple's marketing pages.
+        </p>
+        <a className="btn btn-outline-secondary" href="#">
+          {/* Leave in or else Travis CI test will fail! Edit test later! */}
+          <h3>Welcome, {email}</h3>
+        </a>
+      </div>
+      <div className="product-device box-shadow d-none d-md-block" />
+      <div className="product-device product-device-2 box-shadow d-none d-md-block" />
+    </div>
   )
+  // <main role="main">
+  // </main>
 }
 
 /**

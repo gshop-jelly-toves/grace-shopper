@@ -1,7 +1,7 @@
 import React, {Component, Link} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Category, Toolbar} from './index'
+import {Category, Searchbar} from './index'
 
 const AccessBar = props => {
   console.log('props is:', props)
@@ -16,7 +16,11 @@ const AccessBar = props => {
  / ___ / /__/ /__/  __(__  |__  ) /_/ / /_/ / /
 /_/  |_\___/\___/\___/____/____/_____/\__,_/_/
     */
-    <div className="container-fluid align-middle" id="access-bar" role="access">
+    <div
+      className="container-fluid align-items-center"
+      id="access-bar"
+      role="access"
+    >
       {/* <ul className="nav justify-content-end"> */}
       <div className="nav nav-fill">
         <div className="nav-item">
@@ -36,7 +40,7 @@ const AccessBar = props => {
         </div>
         <div className="nav-item">
           <div className="nav-link" href="#">
-            <Toolbar />
+            <Searchbar />
           </div>
         </div>
       </div>

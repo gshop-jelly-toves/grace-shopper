@@ -21,18 +21,21 @@
 /* ########## 404 Page ########## */
 
 #error-cat {
-  background-color: #dadfe2;
+  min-height: 100vh;
+  /* background-color: #dadfe2; */
 }
 
 /* ########## Whole Page ########## */
 #access-bar {
-  background-color: yellow;
+  background-color: yellow; /* To showcase height; change later*/
 }
 
 /* ########## Whole Page ########## */
 
 body {
   font-family: sans-serif;
+  background: repeat;
+  background-image: url(./retina_wood.png);
 }
 
 a {

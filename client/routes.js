@@ -28,32 +28,30 @@ class Routes extends Component {
     const {isLoggedIn} = this.props
 
     return (
-      <div className="container">
-        <Switch>
-          {/* Routes placed here are available to all visitors */}
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/admin/jellies/add" component={AddJellyForm} />
-          <Route path="/admin" component={AdminLanding} />
-          <Route
-            path="/jellies/:jellyId/reviews/:reviewId"
-            component={SingleReview}
-          />
-          <Route path="/jellies/:jellyId" component={SingleJelly} />
-          <Route path="/jellies" component={JellyList} />
-          <Route path="/cart" component={CartView} />
+      <Switch>
+        {/* Routes placed here are available to all visitors */}
+        <Route path="/home" component={UserHome} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route
+          path="/jellies/:jellyId/reviews/:reviewId"
+          component={SingleReview}
+        />
+        <Route path="/jellies/:jellyId" component={SingleJelly} />
+        <Route path="/jellies" component={JellyList} />
+        <Route path="/cart" component={CartView} />
 
-          {/* Routes placed here are only available after logging in */}
-          {isLoggedIn && (
-            <Switch>
-              <Route path="/home" component={UserHome} />
-            </Switch>
-          )}
+        {/* Routes placed here are only available after logging in */}
+        {isLoggedIn && (
+          <Switch>
+            <Route path="/admin/jellies/add" component={AddJellyForm} />
+            <Route path="/admin" component={AdminLanding} />
+          </Switch>
+        )}
 
-          {/* Displays Login component as our NoMatch fallback */}
-          <Route component={Login} />
-        </Switch>
-      </div>
+        {/* Displays Login component as our NoMatch fallback */}
+        <Route component={NoMatch} />
+      </Switch>
     )
   }
 }
