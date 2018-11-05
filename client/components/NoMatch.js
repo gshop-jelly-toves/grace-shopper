@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 const NoMatch = () => {
   return (
-    <div>
+    <div id="error-cat" className="container">
       <h1>Sorry the page you're looking for doesn't exist</h1>
-      <img id="errorcat" src="https://i.imgur.com/unzfnaD.jpg" />
+      <img src="./ErrorHoneyCat.jpg" alt="ErrorHoneyCat" />
     </div>
-  );
-};
+  )
+}
 
-export default NoMatch;
+export default NoMatch

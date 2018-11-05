@@ -19,8 +19,14 @@ const JellyOrder = require('./jellyOrder')
  * instead of: const User = require('../db/models/user')
  */
 
-Jelly.belongsToMany(Order, {through: {model: JellyOrder, unique: false}, constraints: false})
-Order.belongsToMany(Jelly, {through: {model: JellyOrder, unique: false}, constraints: false})
+Jelly.belongsToMany(Order, {
+  through: {model: JellyOrder, unique: false},
+  constraints: false
+})
+Order.belongsToMany(Jelly, {
+  through: {model: JellyOrder, unique: false},
+  constraints: false
+})
 
 /* On Order - userId */
 Order.belongsTo(User)

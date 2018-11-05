@@ -3,15 +3,16 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
-  Login,
-  Signup,
-  UserHome,
   AddJellyForm,
-  JellyList,
-  SingleJelly,
   AdminLanding,
+  CartView,
+  JellyList,
+  Login,
+  NoMatch,
+  Signup,
+  SingleJelly,
   SingleReview,
-  CartView
+  UserHome
 } from './components'
 import {fetchUser, fetchCart} from './store'
 
@@ -40,7 +41,7 @@ class Routes extends Component {
           />
           <Route path="/jellies/:jellyId" component={SingleJelly} />
           <Route path="/jellies" component={JellyList} />
-          <Route path='/cart' component={CartView} />
+          <Route path="/cart" component={CartView} />
 
           {/* Routes placed here are only available after logging in */}
           {isLoggedIn && (
