@@ -66,7 +66,7 @@ class JellyList extends Component {
         </div>
         <div className="d-flex flex-wrap" id="jellyList">
           {searchFilter(jelliesList).map(jelly => (
-            <div className="mx-auto p-5" key={jelly.id}>
+            <div className="mx-auto px-5 pb-5" key={jelly.id}>
               <Link to={`/jellies/${jelly.id}`}>
                 <img src={jelly.photo} />
               </Link>

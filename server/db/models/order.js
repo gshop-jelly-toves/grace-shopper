@@ -40,7 +40,7 @@ Order.findOrCreateCartByUserId = async function(userId) {
   }
 }
 
-Order
+
 
 Order.prototype.updatePrices = async function() {
   if (this.status === 'cart') {
@@ -61,13 +61,13 @@ Order.prototype.checkout = async function() {
 
     try {
       await this.updatePrices()
-  
+
       return await this.update({
         orderTotal: dummyTaxesAndShipping(this.cartTotal),
         status: 'processing'
       })
     } catch(e) { console.error(e) }
-    
+
   } else {
     throw new Error('only orders with status cart can be checked out')
   }

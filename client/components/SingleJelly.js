@@ -12,7 +12,8 @@ class SingleJelly extends Component {
     super(props)
     this.state = {
       editing: false,
-      reviewing: false
+      reviewing: false,
+      quantity: ''
     }
     this.doneEditing = this.doneEditing.bind(this)
     this.doneReviewing = this.doneReviewing.bind(this)
@@ -25,7 +26,13 @@ class SingleJelly extends Component {
   }
 
   addToCart = () => {
-    this.props.addToCart(this.props.match.params.jellyId)
+    const quantity = this.state.quantity
+    const jellyId = this.props.match.params.jellyId
+    if (this.state.quantity === '') {
+      this.props.addToCart(jellyId, 1)
+    } else {
+      this.props.addToCart(jellyId, quantity)
+    }
   }
 
   doneReviewing() {
@@ -47,13 +54,19 @@ class SingleJelly extends Component {
     }
   }
 
+  handleQuantity = event => {
+    this.setState({
+      quantity: event.target.value
+    })
+  }
+
   render() {
     const {editing} = this.state
     const {reviewing} = this.state
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
 
-    // console.log('USER', this.props.user)
+    console.log('STATE', this.state)
 
     const {jellyId} = this.props.match.params
     const jelly = this.props.jellies[jellyId]
@@ -70,12 +83,13 @@ class SingleJelly extends Component {
               </div>
               <div className="col col-lg-7">
                 <h2>{jelly.name}</h2>
-
+                <p>
+                  <em className=""> By {jelly.maker}</em>
+                </p>
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
-
                 <p>{jelly.rating} ★</p>
                 <p>{jelly.description}</p>
-                <label Htmlfor="quantity">Quantity</label>
+                <label htmlFor="quantity">Quantity</label>
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
                     <span className="input-group-text" id="basic-addon3">
@@ -87,6 +101,7 @@ class SingleJelly extends Component {
                     className="form-control"
                     id="basic-url"
                     aria-describedby="basic-addon3"
+                    onChange={this.handleQuantity}
                   />
                 </div>
                 <button
@@ -98,6 +113,12 @@ class SingleJelly extends Component {
                 </button>
               </div>
             </div>
+            <div className="row p-3 align-items-center">
+              <div className="col">
+                <h2>Reviews</h2>
+              </div>
+            </div>
+
             {isAdmin && (
               <button
                 type="button"
@@ -129,7 +150,14 @@ class SingleJelly extends Component {
                   done={this.doneReviewing}
                 />
               )}
-
+            {/*
+       __     ____      ____            _
+      / /__  / / /_  __/ __ \___ _   __(_)__ _      _______
+ __  / / _ \/ / / / / / /_/ / _ \ | / / / _ \ | /| / / ___/
+/ /_/ /  __/ / / /_/ / _, _/  __/ |/ / /  __/ |/ |/ (__  )
+\____/\___/_/_/\__, /_/ |_|\___/|___/_/\___/|__/|__/____/
+              /____/
+            */}
             <JellyReviews jellyId={this.props.match.params.jellyId} />
           </Fragment>
         )}
@@ -143,13 +171,14 @@ class SingleJelly extends Component {
 const mapState = ({jellies: {jellies}, user: {user}}) => ({
   jellies,
   user,
+  // reviews /* to access reviews.length */,
   isAdmin: user.accessLevel >= 3,
   isLoggedIn: user.accessLevel >= 1
 })
 
 const mapDispatch = dispatch => ({
   fetchSingleJelly: jellyId => dispatch(fetchSingleJelly(jellyId)),
-  addToCart: jellyId => dispatch(addJellyById(jellyId))
+  addToCart: (jellyId, quantity) => dispatch(addJellyById(jellyId, quantity))
 })
 
 export default connect(mapState, mapDispatch)(SingleJelly)
