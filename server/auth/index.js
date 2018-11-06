@@ -21,7 +21,16 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    const user = await User.create(req.body)
+
+    // should prevent anyone from creating 
+    // a user with `role: 'dev'` on the req.body
+    const newUser = {
+      email: req.body.email,
+      password: req.body.password,
+      name: req.body.name
+    }
+
+    const user = await User.create(newUser)
     req.session.cart = await user.deserializeCart()
 
     req.login(user, err => (err ? next(err) : res.json(user)))
