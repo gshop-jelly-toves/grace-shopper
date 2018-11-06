@@ -43,6 +43,21 @@
   z-index: 0;
 }
 
+/* ########## Cart View ########## */
+
+#jelly-in-cart {
+  font-size: 1.25em;
+}
+
+#maker-in-cart {
+  line-height: 0;
+  font-size: 0.85em;
+  font-style: italic;
+}
+#delete-cart-item {
+  font-size: 0.75em;
+}
+
 /* ########## All Pages ########## */
 
 body {

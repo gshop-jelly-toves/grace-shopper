@@ -51,10 +51,9 @@ class CartView extends React.Component {
           </div>
         </div>
         {/* MAPPING TO CREATE CART ITEM ROWS */}
-
         {haveNeededJellies() &&
           jellyIds.map(id => (
-            <div className="row p-3 align-items-center" key={id}>
+            <div className="row py-3 border-bottom align-items-center" key={id}>
               <div className="col-2 col-md-2">
                 <img
                   src={jellies[id].photo}
@@ -64,22 +63,82 @@ class CartView extends React.Component {
               </div>
               <div className="col-6 col-md-6">
                 <Link to={`/jellies/${id}`}>
-                  <p>{jellies[id].name}</p>
+                  <p id="jelly-in-cart">{jellies[id].name}</p>
                 </Link>
+                <p id="maker-in-cart">{jellies[id].maker}</p>
+                {/*
+                    NEEDS
+                    DELETE
+                    FUNCTIONALITY
+                */}
+                <a href="#" id="delete-cart-item">
+                  Delete
+                </a>
               </div>
               <div className="col-2 col-md-2">
-                <p>{priceCentsToString(jellies[id].priceCents)}</p>
+                <h5>{priceCentsToString(jellies[id].priceCents)}</h5>
               </div>
+
               <div className="col-2 col-md-2">
-                <p>{cart.items[id].quantity}</p>
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    {/*
+                        NEEDS
+                        CONNECTION TO
+                        REMOVE ITEM ROUTE
+                    */}
+                    <button
+                      className="btn btn-secondary"
+                      type="button"
+                      id="button-addon1"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder={cart.items[id].quantity}
+                    aria-label="Quantity"
+                    aria-describedby="button-addon1"
+                  />
+                  <div className="input-group-append">
+                    {/*
+                        NEEDS
+                        CONNECTION TO
+                        ADD ITEM ROUTE
+                    */}
+                    <button
+                      className="btn btn-secondary"
+                      type="button"
+                      id="button-addon1"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
-        <StripeForm />
-        <button type="button" onClick={this.clearCart}>
-          Clear cart
-        </button>
-        <div>Total: {priceCentsToString(cart.cartTotal)}</div>
+        {/* CHECKOUT FUNCTIONALITY */}
+        <div className="row py-3 align-items-center">
+          <div className="col-8 col-md-8">
+            <button
+              type="button"
+              className="btn-lg btn-warning"
+              onClick={this.clearCart}
+            >
+              Clear cart
+            </button>
+          </div>
+          <div className="col-2 col-md-2">
+            <h5>{priceCentsToString(cart.cartTotal)}</h5>
+          </div>
+          <div className="col-1 col-md-1">
+            <StripeForm />
+          </div>
+        </div>
+        {/* END OF CART CONTAINER */}
       </div>
     ) : (
       <div>Your cart is currently empty, add some jellies!</div>
