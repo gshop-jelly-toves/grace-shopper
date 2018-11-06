@@ -24,7 +24,7 @@ class JellyReviews extends Component {
   render() {
     const keyedReviews = this.props.reviews
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
-    return keyedReviews.length !== 0 ? ( // The main <div> there is a container with classes row p-3 // Keep in mind that this renders on the SingleJelly page
+    return reviewsList.length ? ( // The main <div> there is a container with classes row p-3 // Keep in mind that this renders on the SingleJelly page
       // <Fragment>
       reviewsList.map(review => (
         <div key={review.id}>
