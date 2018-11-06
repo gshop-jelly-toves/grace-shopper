@@ -94,14 +94,14 @@ class AllOrders extends Component {
 
     return (
       <div className="container">
-        <div className="row p-3">
+        <div className="row p-3 align-items-center">
           {/*
             ADMIN TOOLS
             ALL ORDERS
             BUTTON FILTERS
         */}
           <div className="col">
-            <h2>Order Type Filter</h2>
+            <h2>View All Orders</h2>
           </div>
         </div>
         <div className="row p-3">
@@ -170,10 +170,7 @@ class AllOrders extends Component {
             ALL ORDERS
         */}
         {orderFilter(this.state.orders).map(order => (
-          <div
-            className="row p-3 align-items-center border border-top"
-            key={order.id}
-          >
+          <div className="row p-3 align-items-center border-top" key={order.id}>
             <div className="col-9 col-md-9">
               <h4>Order #{order.id}</h4>
               <p>Order Status: {order.status}</p>
