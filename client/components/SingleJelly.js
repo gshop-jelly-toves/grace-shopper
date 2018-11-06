@@ -98,7 +98,14 @@ class SingleJelly extends Component {
                 </button>
               </div>
             </div>
-            <div className="row p-3" />
+            <div className="row p-3 border border-top">
+              <div className="col col-md-8">
+                <h2>Review</h2>
+              </div>
+              <div className="col col-md-8">
+                <p>asd</p>
+              </div>
+            </div>
             {/*
        __     ____      ____            _
       / /__  / / /_  __/ __ \___ _   __(_)__ _      _______

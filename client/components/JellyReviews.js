@@ -27,18 +27,19 @@ class JellyReviews extends Component {
     return keyedReviews ? (
       // Keep in mind that this renders on the SingleJelly page
       // The main <div> there is a container with classes row p-3
+
       reviewsList.map(review => (
-        <Fragment key={review.id}>
+        <div key={review.id}>
           <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
             <h2>{review.title}</h2>
           </Link>
           <div>
             <h4>Review by: {review.user.name}</h4>
-            <img src={review.user.avatar} />
+            <img src={review.user.avatar} className="rounded-circle" />
             <p>Rating: {review.starRating} / 5</p>
             <p>{review.body}</p>
           </div>
-        </Fragment>
+        </div>
       ))
     ) : (
       <p>This product has no reviews!</p>
