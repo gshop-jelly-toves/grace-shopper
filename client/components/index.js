@@ -5,7 +5,7 @@
  */
 
 // All Visitors
-export {default as AccessBar} from './AccessBar'
+export {default as AccessBar} from './admin/AccessBar'
 export {default as BootNav} from './BootNavbar'
 export {default as Footer} from './Footer'
 export {default as UserHome} from './Homepage'
@@ -31,4 +31,3 @@ export {default as AddJellyForm} from './admin/AddJellyForm'
 export {default as EditJellyForm} from './admin/EditJellyForm'
 export {default as AdminLanding} from './admin/AdminLanding'
 export {default as AllOrders} from './admin/AllOrders'
-
