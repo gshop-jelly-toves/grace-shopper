@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <BootNav />
-      <AccessBar />
+      {/* <AccessBar /> */}
       <Routes />
       {/* <Footer /> */}
     </div>

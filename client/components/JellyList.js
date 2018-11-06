@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies, addJellyById} from '../store'
 import {priceCentsToString} from '../utils'
+import {Searchbar} from './index'
 
 class JellyList extends Component {
   constructor(props) {
@@ -58,6 +59,11 @@ class JellyList extends Component {
 
     return (
       <Fragment>
+        <div className="d-flex flex-column" id="jellyList">
+          <div className="w-75 mx-auto p-5">
+            <Searchbar />
+          </div>
+        </div>
         <div className="d-flex flex-wrap" id="jellyList">
           {searchFilter(jelliesList).map(jelly => (
             <div className="mx-auto p-5" key={jelly.id}>
