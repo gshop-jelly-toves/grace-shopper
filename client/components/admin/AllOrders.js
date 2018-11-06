@@ -74,21 +74,21 @@ class AllOrders extends Component {
                 .indexOf(this.state.orderView.toLowerCase()) > -1
           )
 
-    const cancelButton = (
-      <button type="button" value="cancel" onClick={this.handleButton}>
-        Cancel
-      </button>
-    )
+    // const cancelButton = (
+    //   <button type="button" value="cancel" onClick={this.handleButton}>
+    //     Cancel
+    //   </button>
+    // )
 
-    const markAsProcessing = (
-      <button
-        type="button"
-        value="markAsProcessing"
-        onClick={this.handleProcess}
-      >
-        Mark as Procssing
-      </button>
-    )
+    // const markAsProcessing = (
+    //   <button
+    //     type="button"
+    //     value="markAsProcessing"
+    //     onClick={this.handleProcess}
+    //   >
+    //     Mark as Procssing
+    //   </button>
+    // )
 
     console.log(this.state.orderView)
 

@@ -57,7 +57,7 @@ class CartView extends React.Component {
         </div>
         {/* MAPPING TO CREATE CART ITEM ROWS */}
         {haveNeededJellies() &&
-          jellyIds.map(id => (
+          jellyIds.map(id => cart.items[id] ? (
             <div className="row py-3 border-bottom align-items-center" key={id}>
               <div className="col-2 col-md-2">
                 <img
@@ -107,7 +107,7 @@ class CartView extends React.Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder={cart.items[id].quantity}
+                    placeholder={cart.items[id] ?cart.items[id].quantity : 1337}
                     aria-label="Quantity"
                     aria-describedby="button-addon1"
                   />
@@ -128,7 +128,7 @@ class CartView extends React.Component {
                 </div>
               </div>
             </div>
-          ))}
+          ) : false )}
         {/* CHECKOUT FUNCTIONALITY */}
         <div className="row py-3 align-items-center">
           <div className="col-8 col-md-8">
@@ -196,15 +196,19 @@ const mapState = ({cart, jellies: {jellies}}) => ({
   jellies
 })
 
-// const mapDispatch = {
-//   fetchCart,
-//   destroyCart,
-// }
+const mapDispatch = {
+  fetchCart,
+  destroyCart,
+  removeJellyById
+}
 
-const mapDispatch = dispatch => ({
-  fetchCart: () => dispatch(fetchCart),
-  destroyCart: () => dispatch(destroyCart),
-  removeJellyById: (jellyId) => dispatch(removeJellyById(jellyId))
-})
+// const mapDispatch = dispatch => ({
+//   fetchCart: () => dispatch(fetchCart()),
+//   destroyCart: () => dispatch(destroyCart()),
+//   removeJellyById: (jellyId) => dispatch(removeJellyById(jellyId))
+// })
+
+
+
 
 export default connect(mapState, mapDispatch)(CartView)

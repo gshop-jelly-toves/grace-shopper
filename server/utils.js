@@ -1,3 +1,3 @@
 module.exports = {
-  dummyTaxesAndShipping: total => total*1.337
+  dummyTaxesAndShipping: total => Math.floor(total*1.337)
 }

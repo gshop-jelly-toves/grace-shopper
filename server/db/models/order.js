@@ -61,10 +61,10 @@ Order.prototype.checkout = async function() {
 
     try {
       await this.updatePrices()
-
+      console.log('can anyone hear me')
       return await this.update({
         orderTotal: dummyTaxesAndShipping(this.cartTotal),
-        status: 'processing'
+        status: 'created'
       })
     } catch(e) { console.error(e) }
 

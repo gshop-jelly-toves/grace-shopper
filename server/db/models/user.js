@@ -93,16 +93,17 @@ User.prototype.destroyActiveCart = async function() {
 }
 
 User.prototype.checkoutActiveCart = async function(address) {
+  console.log('user.prototype.checkoutActiveCart HELLOOOO'.repeat(7))
   try {
     const cart = await Order.findOrCreateCartByUserId(this.id)
     if (!cart.dataValues.cartTotal)
-      throw new Error('cart cannot be empty when checked out') 
+      throw new Error('cart cannot be empty when checked out')
     const newAddress = {
       ...address,
       id: undefined,
       orderId: cart.dataValues.id
     }
-    await Address.create(newAddress)
+    Address.create(newAddress)
     return await cart.checkout()
   } catch(e) {
     console.error(e)
