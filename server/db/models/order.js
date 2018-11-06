@@ -75,20 +75,28 @@ Order.prototype.checkout = async function() {
 
 
 const forceOneCart = async order => {
-  if (order.status === 'cart') {
+
+  if (order.dataValues.status === 'cart') {
     try {
       const { userId } = order.dataValues
-      const existingCart = await Order.findOne({
+      // console.log('userid',userId)
+
+      const existingCart = await Order.findAll({
         where: {userId, status: 'cart'}
       })
+      // console.log('cart',existingCart)
       if (existingCart)
         throw new Error(`User (id: ${userId}) can only have one cart.`)
     } catch (e) {
       console.error(e)
     }
   }
+  return order
 }
 
-Order.beforeCreate(forceOneCart)
+Order.beforeCreate( async order => {
+  order = await forceOneCart(order)
+  return order
+})
 
 module.exports = Order

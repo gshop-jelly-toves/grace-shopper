@@ -1,4 +1,4 @@
-const { Jelly } = require('../db/models')
+const { Jelly, JellyOrder, Order } = require('../db/models')
 const { dummyTaxesAndShipping } = require('../utils')
 
 const newJelly = jelly => ({
@@ -25,6 +25,57 @@ module.exports = {
         ...etc
       }
   */
+
+  saveSessionToDB: async (cart, userId) => {
+    try {
+
+      // find existing user cart or create new user cart
+      const {dataValues: order} = await Order.findOrCreateCartByUserId(userId)
+
+      // get existing user cart's jellies-orders
+      const existingJellyOrders = await JellyOrder.findAll({
+        where: {orderId: order.id}
+      })
+
+      // figure out which items on the session are/aren't 
+      // already saved in the database
+      const jelliesInCartIds = Object.keys(cart.items).map(id => parseInt(id))
+      const existingJellyIds = existingJellyOrders
+        .map( ({dataValues}) => dataValues.jellyId )
+        .filter(id => jelliesInCartIds.includes(id))
+
+      const newJellyOrders = Object.keys(cart.items).map(id => parseInt(id))
+        .filter(item => !existingJellyIds.includes(item.jellyId) )
+      
+
+      // update existing rows
+      const updateRes = existingJellyOrders
+        .filter(item => jelliesInCartIds.includes(item.dataValues.jellyId))
+        .map(item => {
+        console.log('item.datavalues.jellyid',item.dataValues.jellyId)
+        return item.update({
+          quantity: cart.items[item.dataValues.jellyId].quantity
+        })
+      })
+
+      // create new rows
+      const createRes = newJellyOrders.map(jellyId => 
+        JellyOrder.create({
+          jellyId,
+          orderId: order.id,
+          quantity: cart.items[jellyId].quantity
+        })
+      )
+
+      Promise.all(updateRes)
+      Promise.all(createRes)
+
+      return true
+
+  } catch (err) {
+    console.error(err)
+  }
+  },
 
   addJelly: async (cart, jellyId) => {
     const { dataValues: jelly } = await Jelly.findById(jellyId)
