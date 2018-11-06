@@ -7,7 +7,7 @@ import { clearCartFromClient, fetchCart } from './cart'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
-const SAVE_ADDRESS = 'SAVE_ADDRESS'
+const SET_ADDRESS = 'SET_ADDRESS'
 const SET_ADDRESS_PROP = 'SET_ADDRESS_PROP'
  
 /**
@@ -32,20 +32,33 @@ const getUser = user => ({type: GET_USER, user})
 
 const removeUser = () => ({type: REMOVE_USER})
 
-const setAddressProp = obj => ({
+export const setAddressProp = obj => ({
   type: SET_ADDRESS_PROP, obj
 })
 
+const setAddress = address => ({
+  type: SET_ADDRESS, address
+}) 
 
 
 /**
  * THUNK CREATORS
  */
+export const fetchAddress = () => async dispatch => {
+  try {
+    const {data} = await axios.get('/api/users/address')
+    console.log('data',data)
+    const action = setAddress(data)
+    dispatch(action)
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export const saveAddress = address => async dispatch => {
   try {
-    await axios.post('/api/user/address', address)
-    dispatch(({type: SAVE_ADDRESS, address}))
+    await axios.post('/api/users/address', address)
+    dispatch(setAddress(address))
   } catch (err) {
     console.error(err)
   }
@@ -98,7 +111,7 @@ export default function(state = initState, action) {
       return {...state, user: action.user}
     case REMOVE_USER:
       return {...state, user: {}}
-    case SAVE_ADDRESS:
+    case SET_ADDRESS:
       return { ...state, address: action.address }
     case SET_ADDRESS_PROP:
       return { ...state, 

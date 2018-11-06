@@ -15,7 +15,8 @@ import {
   UserHome,
   OrderHistory,
   AllOrders,
-  CheckoutSplash
+  CheckoutSplash,
+  FinalCheckout
 } from './components'
 import {fetchUser, fetchCart} from './store'
 
@@ -54,6 +55,7 @@ class Routes extends Component {
             <Route path="/admin/jellies/orders" component={AllOrders} />
             <Route path="/admin/jellies/add" component={AddJellyForm} />
             <Route path="/admin" component={AdminLanding} />
+            <Route path='/cart/order' component={FinalCheckout} />
           </Switch>
         )}
 

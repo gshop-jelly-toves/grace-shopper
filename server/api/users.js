@@ -1,6 +1,5 @@
 const router = require('express').Router()
-const { User } = require('../db/models')
-const { Order } = require('../db/models')
+const { User, Order, Address } = require('../db/models')
 
 // see /server/middlewares/user
 const { requireLogin, requireSeller, requireAdmin, requiredev } = require('../middlewares')
@@ -13,10 +12,25 @@ module.exports = router
 
 router.get('/address', requireLogin, async (req, res, next) => {
   try {
+
+    const addresses = await Address.findAll({
+      where: {userId: req.user.id}
+    })
+    res.json(addresses[0] || {})
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post('/address', requireLogin, async (req, res, next) => {
+  try {
     const newAddress = {
       ...req.body,
       userId: req.user.id
     }
+    console.log('-'.repeat(50))
+    console.log('newAddress:', newAddress)
+    console.log('-'.repeat(50))
     const address = await Address.create(newAddress)
     res.json(address)
   } catch (err) {

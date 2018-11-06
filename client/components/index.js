@@ -24,6 +24,7 @@ export {default as CartView} from './CartView'
 export {default as StripeForm} from './StripeForm'
 export {default as CheckoutSplash} from './CheckoutSplash'
 export {default as FinalCheckout} from './FinalCheckout'
+export {default as AddressForm} from './AddressForm'
 
 // Admins Only
 export {default as AddJellyForm} from './admin/AddJellyForm'

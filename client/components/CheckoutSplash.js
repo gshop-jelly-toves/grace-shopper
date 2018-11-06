@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {FinalCheckout} from './index'
+import {AddressForm} from './index'
 
 const CheckoutSplash = props => props.isLoggedIn 
-  ? <FinalCheckout />
+  ? <AddressForm />
   : <div>Please login/signup</div>
 
 
