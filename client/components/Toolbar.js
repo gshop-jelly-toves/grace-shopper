@@ -1,16 +1,22 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {setSearch} from '../store'
+import {setSearch, fetchJellies} from '../store'
 
 class SearchBar extends Component {
   constructor(props) {
     super(props)
 
     this.handleSearch = this.handleSearch.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   handleSearch(event) {
     this.props.setSearch(event.target.value)
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    this.props.fetchJellies(0, -1)
   }
 
   render() {
@@ -28,8 +34,9 @@ class SearchBar extends Component {
         </form>
         <div className="input-group-append">
           <button
-            type="button"
+            type="submit"
             className="btn btn-lg btn-block btn-outline-primary"
+            onClick={this.onSubmit}
           >
             Search
           </button>
@@ -39,8 +46,13 @@ class SearchBar extends Component {
   }
 }
 
-const mapDispatch = dispatch => ({
-  setSearch: search => dispatch(setSearch(search))
+const mapState = ({jellies: {search}}) => ({
+  search
 })
 
-export default connect(null, mapDispatch)(SearchBar)
+const mapDispatch = dispatch => ({
+  setSearch: search => dispatch(setSearch(search)),
+  fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount))
+})
+
+export default connect(mapState, mapDispatch)(SearchBar)

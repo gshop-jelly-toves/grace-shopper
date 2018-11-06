@@ -45,7 +45,6 @@ export const setSearch = search => ({
 
 export const setCategory = category => ({type: SET_CATEGORY, category})
 
-
 /**
  * THUNK CREATORS
  */
@@ -99,7 +98,8 @@ export default function(state = initState, action) {
       }
     case GET_SINGLE_JELLY:
       return {
-        ...state, jellies: {
+        ...state,
+        jellies: {
           ...state.jellies,
           [action.jelly.id]: action.jelly
         }

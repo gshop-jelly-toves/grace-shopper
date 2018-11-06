@@ -35,6 +35,21 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// /api/jellies?search=val GET jellies with name containing search query
+
+router.get('/', async (req, res, next) => {
+  try {
+    const search = req.query.search
+    const allJellies = await Jelly.findAll()
+    // const searchedJellies = allJellies.filter(
+    //   jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+    // )
+    res.json(allJellies)
+  } catch (e) {
+    next(e)
+  }
+})
+
 // /api/jellies/categories GET all categories
 router.get('/categories', async (req, res, next) => {
   try {
