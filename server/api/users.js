@@ -26,6 +26,7 @@ router.post('/address', requireLogin, async (req, res, next) => {
   try {
     const newAddress = {
       ...req.body,
+      id: undefined,
       userId: req.user.id
     }
     console.log('-'.repeat(50))

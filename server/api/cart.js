@@ -16,12 +16,14 @@ module.exports = router
 
 router.post("/checkout", requireLogin, async (req, res) => {
   const user = await User.findById(req.user.id)
-  const cart = await user.checkoutActiveCart()
+  const {address} = req.body
+  const cart = await user.checkoutActiveCart(address)
   let amount = cart.dataValues.orderTotal
 
+
   const customer = await stripe.customers.create({
-    email: req.body.email,
-    source: req.body.id
+    email: req.body.token.email,
+    source: req.body.token.id
   })
   const charge = await stripe.charges.create({
     amount,

@@ -39,20 +39,21 @@ class AddressForm extends React.Component {
   }  
 
   render() {
+    const {address} = this.props
     return (
       <div>
         FIRST
-        <input type='text' name='firstName' onChange={this.handleChange} />
+        <input type='text' value={address.firstName} name='firstName' onChange={this.handleChange} />
         LAST
-        <input type='text' name='lastName' onChange={this.handleChange} />
+        <input type='text' name='lastName' value={address.lastName} onChange={this.handleChange} />
         STATE
-        <input type='text' name='state' onChange={this.handleChange} />
+        <input type='text' name='state' value={address.state} onChange={this.handleChange} />
         CITY
-        <input type='text' name='city' onChange={this.handleChange} />
+        <input type='text' name='city' value={address.city} onChange={this.handleChange} />
         STREET
-        <input type='text' name='street' onChange={this.handleChange} />
+        <input type='text' name='street' value={address.street} onChange={this.handleChange} />
         ZIPCODE
-        <input type='text' name='zipcode' onChange={this.handleChange} />
+        <input type='text' name='zipcode' value={address.zipcode} onChange={this.handleChange} />
 
 
         { this.isFilledOut()

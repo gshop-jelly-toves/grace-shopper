@@ -135,7 +135,11 @@ class CartView extends React.Component {
             <h5>{priceCentsToString(cart.cartTotal)}</h5>
           </div>
           <div className="col-1 col-md-1">
-            <StripeForm />
+            <button onClick={() =>
+              this.props.history.push('/cart/checkout')
+            }>
+              Checkout
+            </button>
           </div>
         </div>
         {/* END OF CART CONTAINER */}
