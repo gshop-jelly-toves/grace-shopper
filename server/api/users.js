@@ -24,7 +24,7 @@ router.get('/:userId', async (req, res, next) => {
 
     // Destructure the response object
     // Pull off only the name to protect the user.
-    const {name} = user
+    const {name, avatar} = user
 
     const reviews = await Review.findAll({
       where: {
@@ -35,6 +35,7 @@ router.get('/:userId', async (req, res, next) => {
     // Pass in the name and that user's reviews to a response object; res. that
     const response = {
       name,
+      avatar,
       reviews
     }
     res.json(response)
