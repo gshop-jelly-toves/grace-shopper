@@ -32,7 +32,7 @@ class JellyList extends Component {
     const amount = this.state.jelliesPerReq
     const {search} = this.props
     const keyedJellies = this.props.jellies
-    const {category} = this.props.selectedCategory
+    // const {category} = this.props.selectedCategory
 
     const jelliesList = Object.keys(keyedJellies)
       .map(key => keyedJellies[key])

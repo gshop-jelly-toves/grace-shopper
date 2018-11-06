@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const { dummyTaxesAndShipping } = require('../../utils')
+const {dummyTaxesAndShipping} = require('../../utils')
 
 const Order = db.define('order', {
   status: {
@@ -11,9 +11,9 @@ const Order = db.define('order', {
       'shipped',
       'delivered',
       'cart'
-      ),
-      allowNull: false,
-      defaultValue: 'cart'
+    ),
+    allowNull: false,
+    defaultValue: 'cart'
   },
   cartTotal: {
     type: Sequelize.INTEGER,
@@ -40,17 +40,15 @@ Order.findOrCreateCartByUserId = async function(userId) {
   }
 }
 
-Order
-
 Order.prototype.updatePrices = async function() {
   if (this.status === 'cart') {
     try {
-      const jellyOrders = await JellyOrder.findAll(
-        {where: {orderId: this.id}}
-      )
+      const jellyOrders = await JellyOrder.findAll({where: {orderId: this.id}})
 
       jellyOrders.forEach(async item => await item.updatePrice())
-    } catch(e) { console.error(e) }
+    } catch (e) {
+      console.error(e)
+    }
   } else {
     throw new Error('only orders with status cart can be updated')
   }
@@ -58,27 +56,25 @@ Order.prototype.updatePrices = async function() {
 
 Order.prototype.checkout = async function() {
   if (this.status === 'cart') {
-
     try {
       await this.updatePrices()
-  
+
       return await this.update({
         orderTotal: dummyTaxesAndShipping(this.cartTotal),
         status: 'processing'
       })
-    } catch(e) { console.error(e) }
-    
+    } catch (e) {
+      console.error(e)
+    }
   } else {
     throw new Error('only orders with status cart can be checked out')
   }
 }
 
-
 const forceOneCart = async order => {
-
   if (order.dataValues.status === 'cart') {
     try {
-      const { userId } = order.dataValues
+      const {userId} = order.dataValues
       // console.log('userid',userId)
 
       const existingCart = await Order.findAll({
@@ -94,7 +90,7 @@ const forceOneCart = async order => {
   return order
 }
 
-Order.beforeCreate( async order => {
+Order.beforeCreate(async order => {
   order = await forceOneCart(order)
   return order
 })

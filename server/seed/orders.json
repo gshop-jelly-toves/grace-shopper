@@ -93,7 +93,7 @@
     "status": "cart",
     "cartTotal": 11.39,
     "orderTotal": 273.16,
-    "userId": 40
+    "userId": 49
   },
   {
     "status": "cart",
@@ -231,7 +231,7 @@
     "status": "created",
     "cartTotal": 58.22,
     "orderTotal": 167.01,
-    "userId": 40
+    "userId": 44
   },
   {
     "status": "delivered",
@@ -285,7 +285,7 @@
     "status": "shipped",
     "cartTotal": 54.91,
     "orderTotal": 29.86,
-    "userId": 44
+    "userId": 12
   },
   {
     "status": "shipped",

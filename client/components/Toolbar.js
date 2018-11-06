@@ -15,16 +15,26 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form className="form-group">
-        <input
-          className="form-control form-control-lg"
-          type="search"
-          name="search"
-          placeholder="What's your jam today?"
-          aria-label="Search"
-          onChange={this.handleSearch}
-        />
-      </form>
+      <div>
+        <form className="input-group mb-3">
+          <input
+            className="form-control form-control-lg"
+            type="search"
+            name="search"
+            placeholder="What's your jam today?"
+            aria-label="Search"
+            onChange={this.handleSearch}
+          />
+        </form>
+        <div className="input-group-append">
+          <button
+            type="button"
+            className="btn btn-lg btn-block btn-outline-primary"
+          >
+            Search
+          </button>
+        </div>
+      </div>
     )
   }
 }
