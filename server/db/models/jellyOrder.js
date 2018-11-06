@@ -21,18 +21,29 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
-jellyOrder.addItem = async function(orderId, jellyId) {
+jellyOrder.setQuantity = async function(orderId, jellyId, amount) {
   try {
-    // `findOrCreate` (oddly) returns an array containing a single
-    // instance, so a little destructuring can be used
-
-    console.log('info',orderId, jellyId) // always defined
 
     const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
-    console.log('item', item) // sometimes foreign keys are null
+    return await item.update({
+      quantity: amount
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+jellyOrder.addItem = async function(orderId, jellyId) {
+  try {
+    // `findOrCreate` (oddly) returns an array containing a single
+    // instance, so a little destructuring can be used
+
+    const {[0]: item} = await this.findOrCreate({
+      where: {orderId, jellyId}
+    })
 
     return await item.update({
       quantity: item.dataValues.quantity + 1
@@ -81,7 +92,6 @@ const setCartTotal = async item => {
     })
 
     const total = items.reduce((a, b) => a + b.priceCents * b.quantity, 0)
-    // console.log('item',item)
 
     const cart = await Order.findOne({
       where: {id: item.orderId}
