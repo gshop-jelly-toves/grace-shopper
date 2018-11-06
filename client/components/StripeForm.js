@@ -1,7 +1,7 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { connect } from 'react-redux'
-import { handleCheckout } from '../store'
+import { handleCheckout, saveAddress } from '../store'
 
 class StripeForm extends React.Component {
 
@@ -20,7 +20,7 @@ class StripeForm extends React.Component {
           Checkout
         </button>
       </StripeCheckout>
-    ) : <div>weee</div>
+    ) : <div>You have no cart!</div>
   }
 }
 
