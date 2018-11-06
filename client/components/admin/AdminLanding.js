@@ -6,8 +6,11 @@ import {Link} from 'react-router-dom'
 const AdminLanding = ({name}) => {
   return (
     <div className="d-flex flex-column m-auto align-items-center">
-      <div className="p-5">
-        <h1>Welcome {name}</h1>
+      <div className="px-5">
+        <h1>Welcome {name}!</h1>
+      </div>
+      <div className="px-3">
+        <h2>It is {new Date().now().toUTCString()}</h2>
       </div>
       <div className="p-3">
         <Link to="/admin/jellies/add" className="nav-link">
