@@ -84,7 +84,7 @@ router.put('/add/:jellyId', async (req, res, next) => {
 
   const jellyId = req.params.jellyId
   const {quantity} = req.body
-  console.log('USER', req.user)
+  // console.log('USER', req.user)
 
   if (cart) {
     if (req.user) {
