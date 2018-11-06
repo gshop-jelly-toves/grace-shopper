@@ -20,7 +20,7 @@ class StripeForm extends React.Component {
           Checkout
         </button>
       </StripeCheckout>
-    ) : <div>weee</div>
+    ) : <div>You have no cart!</div>
   }
 }
 

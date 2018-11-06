@@ -36,7 +36,11 @@ class CartView extends React.Component {
 
     return this.props.cart.cartTotal ? (
       <div id="cart-container">
-        <StripeForm />
+        <button type="button" onClick={
+          () => this.props.history.push('/cart/checkout')
+        }>
+          Checkout
+        </button>
         <button type="button" onClick={this.clearCart}>
           Clear cart
         </button>

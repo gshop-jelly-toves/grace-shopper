@@ -22,6 +22,8 @@ export {default as Searchbar} from './Toolbar'
 export {Login, Signup} from './AuthForm'
 export {default as CartView} from './CartView'
 export {default as StripeForm} from './StripeForm'
+export {default as CheckoutSplash} from './CheckoutSplash'
+export {default as FinalCheckout} from './FinalCheckout'
 
 // Admins Only
 export {default as AddJellyForm} from './admin/AddJellyForm'

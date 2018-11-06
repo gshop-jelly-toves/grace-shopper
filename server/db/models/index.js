@@ -4,6 +4,7 @@ const JellyOrder = require('./jellyOrder')
 const User = require('./user')
 const Review = require('./review')
 const Category = require('./category')
+const Address = require('./address')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -42,6 +43,12 @@ User.hasMany(Review)
 
 Jelly.belongsToMany(Category, {through: 'jelly_category'})
 Category.belongsToMany(Jelly, {through: 'jelly_category'})
+
+User.hasMany(Address)
+Address.belongsTo(User)
+
+Address.belongsTo(Order)
+Order.hasOne(Address)
 
 module.exports = {
   User,

@@ -11,8 +11,17 @@ module.exports = router
   USER ROUTES
 */
 
-router.get('/test', requireLogin, async (req, res, next) => {
-  res.json({message: 'success'})
+router.get('/address', requireLogin, async (req, res, next) => {
+  try {
+    const newAddress = {
+      ...req.body,
+      userId: req.user.id
+    }
+    const address = await Address.create(newAddress)
+    res.json(address)
+  } catch (err) {
+    next(err)
+  }
 })
 
 /*

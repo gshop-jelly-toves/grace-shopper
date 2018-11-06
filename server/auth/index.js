@@ -58,10 +58,10 @@ router.post('/logout', (req, res) => {
 router.get('/me', async (req, res, next) => {
   try {
     // persist cart to db
+    
     if (req.session.cart.cartTotal)
       await cartSession.saveSessionToDB(req.session.cart, req.user.id)
-  // const user = await User.create(req.body) 
-  // req.session.cart = await user.deserializeCart()
+
   res.json(req.user)
   } catch (e) { next(e)}
 })
