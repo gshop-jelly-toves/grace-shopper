@@ -44,6 +44,21 @@ router.get('/categories', async (req, res, next) => {
     next(e)
   }
 })
+// /api/jellies/categories/:jellyId GET jellies associated w category
+router.get('/categories/:categoryId', async (req, res, next) => {
+  try {
+    const {categoryId} = req.params
+    const jellies = await JellyCategory.findAll({
+      where: {
+        categoryId: categoryId
+      }
+    })
+    const jellyIds = jellies.map(item => item.dataValues.jellyId)
+    res.json(jellyIds)
+  } catch (e) {
+    next(e)
+  }
+})
 
 // /api/jellies/:jellyId/reviews/:reviewId GET single review for single jelly
 router.get('/:jellyId/reviews/:reviewId', async (req, res, next) => {
