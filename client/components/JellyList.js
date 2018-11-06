@@ -123,7 +123,7 @@ const mapState = ({
 
 const mapDispatch = dispatch => ({
   fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount)),
-  addToCart: jellyId => dispatch(addJellyById(jellyId))
+  addToCart: (jellyId, quantity) => dispatch(addJellyById(jellyId, quantity))
 })
 
 export default connect(mapState, mapDispatch)(JellyList)

@@ -84,7 +84,7 @@ router.put('/add/:jellyId', async (req, res, next) => {
 
   const jellyId = req.params.jellyId
   const {quantity} = req.body
-  console.log('USER', req.user)
+  // console.log('USER', req.user)
 
   if (cart) {
     if (req.user) {
@@ -97,11 +97,11 @@ router.put('/add/:jellyId', async (req, res, next) => {
       } catch (e) {
         next(e)
       }
-    } else if (quantity === 1) {
+    } else if (quantity < 1) {
       // if user is not logged in, persist item to `req.session.cart`
       req.session.cart = await cartSession.addJelly(cart, jellyId)
       res.json(req.session.cart.items[jellyId])
-    } else if (quantity > 1) {
+    } else if (quantity === 1) {
       req.session.cart = await cartSession.setJelly(cart, jellyId, quantity)
       res.json(req.session.cart.items[jellyId])
     }
