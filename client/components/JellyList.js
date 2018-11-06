@@ -88,7 +88,7 @@ class JellyList extends Component {
                   <button
                     type="button"
                     className="btn btn-success"
-                    onClick={() => this.props.addToCart(jelly.id)}
+                    onClick={() => this.props.addToCart(jelly.id, 1)}
                   >
                     ADD TO CART
                   </button>
@@ -123,7 +123,7 @@ const mapState = ({
 
 const mapDispatch = dispatch => ({
   fetchJellies: (index, amount) => dispatch(fetchJellies(index, amount)),
-  addToCart: jellyId => dispatch(addJellyById(jellyId))
+  addToCart: (jellyId, quantity) => dispatch(addJellyById(jellyId, quantity))
 })
 
 export default connect(mapState, mapDispatch)(JellyList)
