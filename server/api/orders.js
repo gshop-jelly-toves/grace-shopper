@@ -35,3 +35,16 @@ router.get('/all', requireAdmin, async (req, res, next) => {
     next(e)
   }
 })
+
+router.get('/:orderId', requireAdmin, async (req, res, next) => {
+  try {
+    const orders = await Order.findOne({
+      where: {
+        id: req.params.orderId
+      }
+    })
+    res.json(orders)
+  } catch (e) {
+    next(e)
+  }
+})
