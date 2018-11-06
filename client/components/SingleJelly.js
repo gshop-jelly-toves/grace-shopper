@@ -12,7 +12,8 @@ class SingleJelly extends Component {
     super(props)
     this.state = {
       editing: false,
-      reviewing: false
+      reviewing: false,
+      quantity: ''
     }
     this.doneEditing = this.doneEditing.bind(this)
     this.doneReviewing = this.doneReviewing.bind(this)
@@ -25,7 +26,13 @@ class SingleJelly extends Component {
   }
 
   addToCart = () => {
-    this.props.addToCart(this.props.match.params.jellyId)
+    const quantity = this.state.quantity
+    const jellyId = this.props.match.params.jellyId
+    if (this.state.quantity === '') {
+      this.props.addToCart(jellyId, 1)
+    } else {
+      this.props.addToCart(jellyId, quantity)
+    }
   }
 
   doneReviewing() {
@@ -47,13 +54,19 @@ class SingleJelly extends Component {
     }
   }
 
+  handleQuantity = event => {
+    this.setState({
+      quantity: event.target.value
+    })
+  }
+
   render() {
     const {editing} = this.state
     const {reviewing} = this.state
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
 
-    // console.log('USER', this.props.user)
+    console.log('STATE', this.state)
 
     const {jellyId} = this.props.match.params
     const jelly = this.props.jellies[jellyId]
@@ -88,6 +101,7 @@ class SingleJelly extends Component {
                     className="form-control"
                     id="basic-url"
                     aria-describedby="basic-addon3"
+                    onChange={this.handleQuantity}
                   />
                 </div>
                 <button
@@ -164,7 +178,7 @@ const mapState = ({jellies: {jellies}, user: {user}}) => ({
 
 const mapDispatch = dispatch => ({
   fetchSingleJelly: jellyId => dispatch(fetchSingleJelly(jellyId)),
-  addToCart: jellyId => dispatch(addJellyById(jellyId))
+  addToCart: (jellyId, quantity) => dispatch(addJellyById(jellyId, quantity))
 })
 
 export default connect(mapState, mapDispatch)(SingleJelly)

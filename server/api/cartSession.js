@@ -8,10 +8,9 @@ const newJelly = jelly => ({
 })
 
 module.exports = {
-
   /*
     these functions assume cart is an identical
-    datastructure to the result of model User.deserializeCart 
+    datastructure to the result of model User.deserializeCart
     ex.
       jellies: {
         '0': {
@@ -26,6 +25,21 @@ module.exports = {
       }
   */
 
+  setJelly: async (cart, jellyId, quantity) => {
+    const {dataValues: jelly} = await Jelly.findById(jellyId)
+    const newJellies = {...cart.items}
+    const quantNum = parseInt(quantity)
+
+    newJellies[jellyId] = newJelly(jelly)
+    newJellies[jellyId].quantity = quantNum
+
+    return {
+      ...cart,
+      cartTotal: cart.cartTotal + jelly.priceCents,
+      items: newJellies
+    }
+  },
+
   saveSessionToDB: async (cart, userId) => {
     try {
 
@@ -37,7 +51,7 @@ module.exports = {
         where: {orderId: order.id}
       })
 
-      // figure out which items on the session are/aren't 
+      // figure out which items on the session are/aren't
       // already saved in the database
       const jelliesInCartIds = Object.keys(cart.items).map(id => parseInt(id))
       const existingJellyIds = existingJellyOrders
@@ -46,7 +60,7 @@ module.exports = {
 
       const newJellyOrders = Object.keys(cart.items).map(id => parseInt(id))
         .filter(item => !existingJellyIds.includes(item.jellyId) )
-      
+
 
       // update existing rows
       const updateRes = existingJellyOrders
@@ -59,7 +73,7 @@ module.exports = {
       })
 
       // create new rows
-      const createRes = newJellyOrders.map(jellyId => 
+      const createRes = newJellyOrders.map(jellyId =>
         JellyOrder.create({
           jellyId,
           orderId: order.id,
@@ -78,8 +92,8 @@ module.exports = {
   },
 
   addJelly: async (cart, jellyId) => {
-    const { dataValues: jelly } = await Jelly.findById(jellyId)
-    const newJellies = { ... cart.items }
+    const {dataValues: jelly} = await Jelly.findById(jellyId)
+    const newJellies = {...cart.items}
     newJellies[jellyId]
      ? newJellies[jellyId].quantity++
      : newJellies[jellyId] = newJelly(jelly)
@@ -93,7 +107,7 @@ module.exports = {
   },
 
   removeJelly: (cart, jellyId) => {
-    const newJellies = { ... cart.items }
+    const newJellies = {...cart.items}
     jelly = newJellies[jellyId]
     if (jelly) jelly.quantity--
     if (jelly.quantity < 1)
@@ -107,9 +121,9 @@ module.exports = {
     }
   },
 
-  newCart: () => ({ // clone of deserialize cart
+  newCart: () => ({
+    // clone of deserialize cart
     cartTotal: 0,
     items: {}
   })
-
 }
