@@ -102,7 +102,7 @@ class SingleJelly extends Component {
               <div className="col col-md-8">
                 <h2>Review</h2>
               </div>
-              <div className="col col-md-8">
+              <div className="col col-md-4">
                 <p>asd</p>
               </div>
             </div>
