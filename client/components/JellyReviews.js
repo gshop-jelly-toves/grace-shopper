@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchReviews} from '../store'
 import {Link} from 'react-router-dom'
@@ -24,25 +24,39 @@ class JellyReviews extends Component {
   render() {
     const keyedReviews = this.props.reviews
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
-    return keyedReviews ? (
-      // Keep in mind that this renders on the SingleJelly page
-      // The main <div> there is a container with classes row p-3
-
+    return keyedReviews.length !== 0 ? ( // The main <div> there is a container with classes row p-3 // Keep in mind that this renders on the SingleJelly page
+      // <Fragment>
       reviewsList.map(review => (
         <div key={review.id}>
-          <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
-            <h2>{review.title}</h2>
-          </Link>
-          <div>
-            <h4>Review by: {review.user.name}</h4>
-            <img src={review.user.avatar} className="rounded-circle" />
-            <p>Rating: {review.starRating} / 5</p>
-            <p>{review.body}</p>
+          <div className="row px-3">
+            <div className="col">
+              <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
+                <h2>{review.title}</h2>
+              </Link>
+            </div>
+          </div>
+          <div className="row px-3 align-items-center">
+            <div className="col-1 col-md-1">
+              <img src={review.user.avatar} className="rounded-circle" />
+            </div>
+            <div className="col-11 col-md-11">
+              <h4>Review by: {review.user.name}</h4>
+            </div>
+          </div>
+          <div className="row p-3">
+            <div className="col">
+              <p>Rating: {review.starRating} / 5 ★</p>
+              <p>{review.body}</p>
+            </div>
           </div>
         </div>
       ))
     ) : (
-      <p>This product has no reviews!</p>
+      <div className="row px-3">
+        <div className="col">
+          <h4>This product has no reviews - be the first!</h4>
+        </div>
+      </div>
     )
   }
 }
