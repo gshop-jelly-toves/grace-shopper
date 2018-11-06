@@ -9,6 +9,7 @@ class AllOrders extends Component {
       orders: [],
       orderView: ''
     }
+    this.renderShipButton = this.renderShipButton.bind(this)
   }
 
   async componentDidMount() {
@@ -17,7 +18,6 @@ class AllOrders extends Component {
     this.setState({
       orders: [...allOrders]
     })
-
   }
 
   handleFilter = event => {
@@ -26,9 +26,22 @@ class AllOrders extends Component {
     })
   }
 
+  handleShip = async event => {
+    console.log('event.target', event.target)
+    // const {res} = await axios.get(`/api/orders/${orderId}`)
+  }
 
-
-
+  renderShipButton() {
+    return (
+      <button
+        type="button"
+        value="markAsShipping"
+        onClick={this.handleShip}
+      >
+        Mark as Shipped
+      </button>
+    )
+  }
 
   render() {
     const orderFilter = orders =>
@@ -48,29 +61,28 @@ class AllOrders extends Component {
     )
 
     const markAsProcessing = (
-      <button type="button" value="markAsProcessing" onClick={this.handleButton}>
+      <button
+        type="button"
+        value="markAsProcessing"
+        onClick={this.handleProcess}
+      >
         Mark as Procssing
       </button>
     )
 
-    const markAsShipped = (
-      <button type="button" value="markAsShipping" onClick={this.handleButton}>
-        Mark as Shipped
-      </button>
-    )
-
-
-    let renderButton
-    if (this.state.orderView === 'created') {
-      renderButton = markAsProcessing
-    } else if (this.state.orderView === 'processing') {
-      renderButton = markAsShipped
-    }
-
+    // let renderButton
+    // if (this.state.orderView === 'created') {
+    //   renderButton = markAsProcessing
+    // } else if (this.state.orderView === 'processing') {
+    //   renderButton = markAsShipped
+    // }
 
     return (
       <div>
         <h4>Order Type Filter</h4>
+        <button type="button" value="" onClick={this.handleFilter}>
+          All
+        </button>
         <button type="button" value="created" onClick={this.handleFilter}>
           Created
         </button>
@@ -98,8 +110,10 @@ class AllOrders extends Component {
               <div>Order Total: {priceCentsToString(order.orderTotal)}</div>
             )}
             <br />
-            {cancelButton}
-            {renderButton}
+            {this.state.orderView !== 'cancelled' ? cancelButton : ''}
+            {this.state.orderView === 'processing'
+              ? this.renderShipButton()
+              : ''}
           </div>
         ))}
       </div>
