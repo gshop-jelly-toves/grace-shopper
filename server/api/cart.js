@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {User, JellyOrder} = require('../db/models')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const { User, JellyOrder, Order } = require('../db/models')
 const cartSession = require('./cartSession')
 
 // see /server/middlewares/user
@@ -11,6 +12,25 @@ const {
 } = require('../middlewares')
 
 module.exports = router
+
+
+router.post("/checkout", requireLogin, async (req, res) => {
+  const user = await User.findById(req.user.id)
+  const cart = await user.checkoutActiveCart()
+  let amount = cart.dataValues.orderTotal
+
+  const customer = await stripe.customers.create({
+    email: req.body.email,
+    source: req.body.id
+  })
+  const charge = await stripe.charges.create({
+    amount,
+    description: "Bought jelly for my belly.",
+    currency: "usd",
+    customer: customer.id
+  })
+  res.json(charge)
+});
 
 router.get('/', async (req, res, next) => {
   let cart

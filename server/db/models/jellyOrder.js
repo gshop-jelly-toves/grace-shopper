@@ -21,6 +21,21 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
+jellyOrder.setQuantity = async function(orderId, jellyId, amount) {
+  try {
+
+    const {[0]: item} = await this.findOrCreate({
+      where: {orderId, jellyId}
+    })
+
+    return await item.update({
+      quantity: amount
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 jellyOrder.addItem = async function(orderId, jellyId, quantity) {
   try {
     // `findOrCreate` (oddly) returns an array containing a single
@@ -85,7 +100,6 @@ const setCartTotal = async item => {
     })
 
     const total = items.reduce((a, b) => a + b.priceCents * b.quantity, 0)
-    // console.log('item',item)
 
     const cart = await Order.findOne({
       where: {id: item.orderId}

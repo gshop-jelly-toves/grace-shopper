@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const { dummyTaxesAndShipping } = require('../../utils')
 
 const Order = db.define('order', {
   status: {
@@ -39,6 +40,8 @@ Order.findOrCreateCartByUserId = async function(userId) {
   }
 }
 
+
+
 Order.prototype.updatePrices = async function() {
   if (this.status === 'cart') {
     try {
@@ -56,12 +59,14 @@ Order.prototype.updatePrices = async function() {
 Order.prototype.checkout = async function() {
   if (this.status === 'cart') {
 
-    const dummyTaxesAndShipping = total => total*1.337
+    try {
+      await this.updatePrices()
 
-    await this.updatePrices()
-    this.orderTotal = dummyTaxesAndShipping(this.cartTotal)
-    this.status = 'processing'
-    // todo..
+      return await this.update({
+        orderTotal: dummyTaxesAndShipping(this.cartTotal),
+        status: 'processing'
+      })
+    } catch(e) { console.error(e) }
 
   } else {
     throw new Error('only orders with status cart can be checked out')
@@ -70,20 +75,28 @@ Order.prototype.checkout = async function() {
 
 
 const forceOneCart = async order => {
-  if (order.status === 'cart') {
+
+  if (order.dataValues.status === 'cart') {
     try {
       const { userId } = order.dataValues
-      const existingCart = await Order.findOne({
+      // console.log('userid',userId)
+
+      const existingCart = await Order.findAll({
         where: {userId, status: 'cart'}
       })
+      // console.log('cart',existingCart)
       if (existingCart)
         throw new Error(`User (id: ${userId}) can only have one cart.`)
     } catch (e) {
       console.error(e)
     }
   }
+  return order
 }
 
-Order.beforeCreate(forceOneCart)
+Order.beforeCreate( async order => {
+  order = await forceOneCart(order)
+  return order
+})
 
 module.exports = Order

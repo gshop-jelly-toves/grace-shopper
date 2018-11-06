@@ -2,6 +2,7 @@ import axios from 'axios'
 import history from '../history'
 import { fetchSingleJelly } from './jellies'
 
+
 /**
  * ACTION TYPES
 */
@@ -16,6 +17,7 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
  */
 const initCart = {
   cartTotal: 0,
+  orderTotal: 0,
   items: {}
 }
 
@@ -64,6 +66,15 @@ export const fetchCart = () => async dispatch => {
     const action = getCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
+}
+
+export const handleCheckout = token => async dispatch => {
+  try {
+    axios.post('/api/cart/checkout', token)
+    dispatch( clearCartFromClient() )
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 export const destroyCart = () => async dispatch => {
