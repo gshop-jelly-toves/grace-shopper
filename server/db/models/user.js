@@ -3,6 +3,7 @@ const Sequelize = require('sequelize')
 const { Op } = Sequelize
 const db = require('../db')
 const JellyOrder = require('./jellyOrder')
+const Address = require('./address')
 const { dummyTaxesAndShipping } = require('../../utils')
 
 const Order = db.models.order
@@ -91,11 +92,17 @@ User.prototype.destroyActiveCart = async function() {
   } catch (e) { console.error(e) }
 }
 
-User.prototype.checkoutActiveCart = async function() {
+User.prototype.checkoutActiveCart = async function(address) {
   try {
     const cart = await Order.findOrCreateCartByUserId(this.id)
     if (!cart.dataValues.cartTotal)
       throw new Error('cart cannot be empty when checked out') 
+    const newAddress = {
+      ...address,
+      id: undefined,
+      orderId: cart.dataValues.id
+    }
+    await Address.create(newAddress)
     return await cart.checkout()
   } catch(e) {
     console.error(e)

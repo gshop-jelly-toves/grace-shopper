@@ -68,9 +68,9 @@ export const fetchCart = () => async dispatch => {
   } catch (e) { console.error(e) }
 }
 
-export const handleCheckout = token => async dispatch => {
+export const handleCheckout = (token, address) => async dispatch => {
   try {
-    axios.post('/api/cart/checkout', token)
+    axios.post('/api/cart/checkout', {token, address})
     dispatch( clearCartFromClient() )
   } catch (err) {
     console.error(err)

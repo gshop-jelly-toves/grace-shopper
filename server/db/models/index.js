@@ -1,6 +1,7 @@
 const Jelly = require('./jelly')
 const Order = require('./order')
 const JellyOrder = require('./jellyOrder')
+const Address = require('./address')
 const User = require('./user')
 const Review = require('./review')
 const Category = require('./category')
@@ -43,11 +44,18 @@ User.hasMany(Review)
 Jelly.belongsToMany(Category, {through: 'jelly_category'})
 Category.belongsToMany(Jelly, {through: 'jelly_category'})
 
+User.hasMany(Address)
+Address.belongsTo(User)
+
+Address.belongsTo(Order)
+Order.hasOne(Address)
+
 module.exports = {
   User,
   Jelly,
   Review,
   Order,
   Category,
-  JellyOrder
+  JellyOrder,
+  Address
 }
