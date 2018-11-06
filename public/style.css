@@ -28,6 +28,7 @@
 /* ########## Whole Page ########## */
 #access-bar {
   background-color: #ff9999; /* To showcase height; change later*/
+  height: 3em;
 }
 
 /* ########## Front Page Hero ########## */

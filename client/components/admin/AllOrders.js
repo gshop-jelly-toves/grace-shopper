@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {priceCentsToString} from '../../utils'
+import {AccessBar} from '../index'
 
 class AllOrders extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class AllOrders extends Component {
 
     return (
       <div className="container">
+        <AccessBar />
         <div className="row p-3 align-items-center">
           {/*
             ADMIN TOOLS
