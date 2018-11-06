@@ -6,6 +6,10 @@ const Jelly = db.define('jelly', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  maker: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   description: {
     type: Sequelize.TEXT,
     allowNull: false
@@ -22,7 +26,7 @@ const Jelly = db.define('jelly', {
     type: Sequelize.STRING,
     allowNull: true,
     defaultValue:
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/300px-Cat03.jpg'
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/300px-Cat03.jpg'
   },
   rating: {
     type: Sequelize.FLOAT,

@@ -65,10 +65,10 @@ class SingleJelly extends Component {
         ) : (
           <Fragment>
             <div className="row p-3">
-              <div className="col col-lg-8">
+              <div className="col col-lg-5">
                 <img src={jelly.photo} alt={jelly.name} />
               </div>
-              <div className="col col-lg-4">
+              <div className="col col-lg-7">
                 <h2>{jelly.name}</h2>
 
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
