@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../db/models/user')
+const cartSession = require('../api/cartSession')
 module.exports = router
 
 router.post('/login', async (req, res, next) => {
@@ -12,6 +13,8 @@ router.post('/login', async (req, res, next) => {
       console.log('Incorrect password for user:', req.body.email)
       res.status(401).send('Wrong username and/or password')
     } else {
+      if (req.session.cart.cartTotal)
+        await cartSession.saveSessionToDB(req.session.cart, user.dataValues.id)
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {
@@ -21,8 +24,19 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
+
+    // should prevent anyone from creating 
+    // a user with `role: 'dev'` on the req.body
+    const newUser = {
+      email: req.body.email,
+      password: req.body.password,
+      name: req.body.name
+    }
     
-    const user = await User.create(req.body)
+    const user = await User.create(newUser)
+    // // persist cart to db
+    if (req.session.cart.cartTotal)
+      await cartSession.saveSessionToDB(req.session.cart, user.dataValues.id)
     req.session.cart = await user.deserializeCart()
 
     req.login(user, err => (err ? next(err) : res.json(user)))
@@ -43,7 +57,10 @@ router.post('/logout', (req, res) => {
 
 router.get('/me', async (req, res, next) => {
   try {
-  // const user = await User.create(req.body)
+    // persist cart to db
+    if (req.session.cart.cartTotal)
+      await cartSession.saveSessionToDB(req.session.cart, req.user.id)
+  // const user = await User.create(req.body) 
   // req.session.cart = await user.deserializeCart()
   res.json(req.user)
   } catch (e) { next(e)}

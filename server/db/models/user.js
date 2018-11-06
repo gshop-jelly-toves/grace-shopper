@@ -3,6 +3,8 @@ const Sequelize = require('sequelize')
 const { Op } = Sequelize
 const db = require('../db')
 const JellyOrder = require('./jellyOrder')
+const { dummyTaxesAndShipping } = require('../../utils')
+
 const Order = db.models.order
 
 const User = db.define('user', {
@@ -67,6 +69,7 @@ User.prototype.deserializeCart = async function() {
 
     return {
       ...cart.dataValues,
+      orderTotal: dummyTaxesAndShipping(cart.dataValues.cartTotal),
       items: Object.keys(jellyOrders)
         .reduce( (obj, key) => {
           obj[ jellyOrders[key].dataValues.jellyId ] = jellyOrders[key].dataValues
@@ -86,6 +89,17 @@ User.prototype.destroyActiveCart = async function() {
     jellyOrders.forEach(async item => await item.destroy())
 
   } catch (e) { console.error(e) }
+}
+
+User.prototype.checkoutActiveCart = async function() {
+  try {
+    const cart = await Order.findOrCreateCartByUserId(this.id)
+    if (!cart.dataValues.cartTotal)
+      throw new Error('cart cannot be empty when checked out') 
+    return await cart.checkout()
+  } catch(e) {
+    console.error(e)
+  }
 }
 
 
