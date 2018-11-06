@@ -107,9 +107,12 @@ module.exports = {
     newJellies[jellyId] = newJelly(jelly)
     newJellies[jellyId].quantity = quantNum
 
+    const cartTotal = cart.cartTotal + jelly.priceCents
+    const orderTotal = dummyTaxesAndShipping(cartTotal)
+
     return {
       ...cart,
-      cartTotal: cart.cartTotal + jelly.priceCents,
+      cartTotal, orderTotal,
       items: newJellies
     }
   },

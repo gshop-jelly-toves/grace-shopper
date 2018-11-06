@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, JellyOrder, Order } = require('../db/models')
+const { User, JellyOrder, Order, Jelly } = require('../db/models')
 const cartSession = require('./cartSession')
 
 // see /server/middlewares/user
@@ -36,14 +36,37 @@ router.get('/all', requireAdmin, async (req, res, next) => {
   }
 })
 
+// include: [{model: JellyOrder}]
+
 router.get('/:orderId', requireAdmin, async (req, res, next) => {
   try {
-    const orders = await Order.findOne({
+    const order = await JellyOrder.findAll({
+      where: {
+        orderId: req.params.orderId
+      }, include: [{all: true }]
+    })
+
+    res.json(order)
+  } catch (e) {
+    next(e)
+  }
+})
+
+
+
+router.put('/:orderId', requireAdmin, async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
       where: {
         id: req.params.orderId
       }
     })
-    res.json(orders)
+
+    console.log(req.body.newOrderType)
+    order.update({
+      status: req.body.newOrderType
+    })
+    res.json(order)
   } catch (e) {
     next(e)
   }
