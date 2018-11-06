@@ -1,9 +1,10 @@
 import React from 'react'
-import {fetchCart, destroyCart} from '../store'
+import {fetchCart, destroyCart, removeJellyById} from '../store'
 import {connect} from 'react-redux'
 import {priceCentsToString} from '../utils'
 import {Link} from 'react-router-dom'
 import {StripeForm} from './index'
+import axios from 'axios'
 
 class CartView extends React.Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class CartView extends React.Component {
   componentDidMount() {
     this.props.fetchCart()
   }
+
+  // removeSingleJelly = (id) => {
+  //   axios.delete(`/remove/${id}`)
+  // }
 
   render() {
     const jellyIds = Object.keys(this.props.cart.items)
@@ -71,7 +76,11 @@ class CartView extends React.Component {
                     DELETE
                     FUNCTIONALITY
                 */}
-                <a href="#" id="delete-cart-item">
+                <a
+                  href="#"
+                  id="delete-cart-item"
+                  onClick={() => this.props.removeJellyById(id)}
+                >
                   Delete
                 </a>
               </div>
@@ -179,9 +188,15 @@ const mapState = ({cart, jellies: {jellies}}) => ({
   jellies
 })
 
-const mapDispatch = {
-  fetchCart,
-  destroyCart
-}
+// const mapDispatch = {
+//   fetchCart,
+//   destroyCart,
+// }
+
+const mapDispatch = dispatch => ({
+  fetchCart: () => dispatch(fetchCart),
+  destroyCart: () => dispatch(destroyCart),
+  removeJellyById: (jellyId) => dispatch(removeJellyById(jellyId))
+})
 
 export default connect(mapState, mapDispatch)(CartView)
