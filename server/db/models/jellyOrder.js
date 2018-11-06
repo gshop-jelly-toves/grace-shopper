@@ -34,8 +34,12 @@ jellyOrder.addItem = async function(orderId, jellyId, quantity) {
 
     // console.log('item', item) // sometimes foreign keys are null
 
+
+    let oldQuantity = item.dataValues.quantity
+    let newQuantity = oldQuantity + parseInt(quantity)
+
     return await item.update({
-      quantity: item.dataValues.quantity + quantity
+      quantity: newQuantity
     })
   } catch (e) {
     console.error(e)
