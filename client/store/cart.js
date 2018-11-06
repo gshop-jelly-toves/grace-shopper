@@ -70,12 +70,13 @@ export const destroyCart = () => async dispatch => {
   try {
     await axios.delete('/api/cart')
     dispatch( clearCartFromClient() )
-  } catch (e) { console.error(e) }  
+  } catch (e) { console.error(e) }
 }
 
-export const addJellyById = jellyId => async dispatch => {
+export const addJellyById = (jellyId, quantity) => async dispatch => {
   try {
-    const { data } = await axios.put(`/api/cart/add/${jellyId}`)
+    console.log('store cart', quantity)
+    const { data } = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
     const action = addToCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }

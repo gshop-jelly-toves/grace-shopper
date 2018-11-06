@@ -21,21 +21,21 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
-jellyOrder.addItem = async function(orderId, jellyId) {
+jellyOrder.addItem = async function(orderId, jellyId, quantity) {
   try {
     // `findOrCreate` (oddly) returns an array containing a single
     // instance, so a little destructuring can be used
 
-    console.log('info',orderId, jellyId) // always defined
+    // console.log('info',orderId, jellyId) // always defined
 
     const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
-    console.log('item', item) // sometimes foreign keys are null
+    // console.log('item', item) // sometimes foreign keys are null
 
     return await item.update({
-      quantity: item.dataValues.quantity + 1
+      quantity: item.dataValues.quantity + quantity
     })
   } catch (e) {
     console.error(e)

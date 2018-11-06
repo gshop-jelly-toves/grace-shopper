@@ -54,8 +54,9 @@ router.delete('/', async (req, res, next) => {
 // /api/cart/add/:jellyId PUT - add a single jelly to cart`
 router.put('/add/:jellyId', async (req, res, next) => {
   let { cart } = req.session
-  // console.log(cart)
+
   const jellyId = req.params.jellyId
+  const {quantity} = req.body
 
   if (cart) {
 
@@ -64,7 +65,7 @@ router.put('/add/:jellyId', async (req, res, next) => {
       try {
         // line 44 is the only place where the registered
         // users need their cart on the session (can be fixed)
-        const item = await JellyOrder.addItem(cart.id, jellyId)
+        const item = await JellyOrder.addItem(cart.id, jellyId, quantity)
         res.json(item)
       } catch (e) { next(e) }
 
