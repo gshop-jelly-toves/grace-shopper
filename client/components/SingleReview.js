@@ -49,6 +49,7 @@ class SingleReview extends Component {
     console.log('REVIEW', review)
     return review.id ? (
       <div>
+        <Link>
           <h2>{review.title}</h2>
         </Link>
         <div>
@@ -57,8 +58,8 @@ class SingleReview extends Component {
           <p>Rating: {review.starRating} / 5</p>
           <p>{review.body}</p>
         </div>
-        {isAdmin && (
-        )}
+        {/* {isAdmin && (
+        )} */}
       </div>
     ) : (
       <div />
