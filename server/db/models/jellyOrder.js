@@ -71,9 +71,7 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
     })
 
     if (item)
-      item = await item.update({
-        quantity: item.dataValues.quantity - 1
-      })
+      item.destroy()
 
     return item
   } catch (e) {
@@ -90,7 +88,8 @@ jellyOrder.prototype.updatePrice = async function() {
 }
 
 const rejectInvalidQuantity = item => {
-  if (item.quantity < 1) item.destroy()
+  // console.log('reject invalid quantity id ', item)
+  if (item.dataValues.quantity < 1) item.destroy()
 }
 
 const setCartTotal = async item => {
@@ -121,7 +120,7 @@ const savePrice = item => {
 
 jellyOrder.afterUpdate(async item => {
   item = await savePrice(item)
-  item = setCartTotal(item)
+  item = await setCartTotal(item)
   rejectInvalidQuantity(item)
   return item
 })

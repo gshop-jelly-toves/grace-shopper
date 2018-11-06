@@ -37,8 +37,8 @@ const addToCart = item => ({
   type: ADD_TO_CART, item
 })
 
-const removeFromCart = jellyId => ({
-  type: REMOVE_FROM_CART, jellyId
+const removeFromCart = item => ({
+  type: REMOVE_FROM_CART, item
 })
 
 /**
@@ -70,8 +70,9 @@ export const fetchCart = () => async dispatch => {
 
 export const handleCheckout = (token, address) => async dispatch => {
   try {
-    axios.post('/api/cart/checkout', {token, address})
+    await axios.post('/api/cart/checkout', {token, address})
     dispatch( clearCartFromClient() )
+
   } catch (err) {
     console.error(err)
   }
@@ -114,7 +115,8 @@ export default function(state = initCart, action) {
       return initCart
     case ADD_TO_CART:
       return {
-        // ...state,
+        ...state,
+        cartTotal: state.cartTotal + action.item.priceCents * action.item.quantity,
         items: {
           ...state.items,
           [action.item.jellyId]: action.item
@@ -123,9 +125,10 @@ export default function(state = initCart, action) {
     case REMOVE_FROM_CART:
       return {
         ...state,
+        cartTotal: state.cartTotal - action.item.priceCents * action.item.quantity,
         items: {
           ...state.items,
-          [action.jellyId]: undefined
+          [action.item.jellyId]: undefined
         }
       }
     default:
