@@ -96,6 +96,7 @@ export const addJellyById = (jellyId, quantity) => async dispatch => {
 export const removeJellyById = jellyId => async dispatch => {
   try {
     const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
+    console.log(data)
     const action = removeFromCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
