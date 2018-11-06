@@ -49,7 +49,7 @@ class SingleReview extends Component {
     console.log('REVIEW', review)
     return review.id ? (
       <div>
-        <Link>
+        <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
           <h2>{review.title}</h2>
         </Link>
         <div>
@@ -58,8 +58,16 @@ class SingleReview extends Component {
           <p>Rating: {review.starRating} / 5</p>
           <p>{review.body}</p>
         </div>
-        {/* {isAdmin && (
-        )} */}
+        {isAdmin && (
+          <button
+            type="button"
+            onClick={() => {
+              this.setState({editing: true})
+            }}
+          >
+            EDIT REVIEW
+          </button>
+        )}
       </div>
     ) : (
       <div />
