@@ -168,12 +168,8 @@ class SingleJelly extends Component {
   }
 }
 
-const mapState = ({jellies: {jellies}, user: {user}}) => ({
-  jellies,
-  user,
-  // reviews /* to access reviews.length */,
-  isAdmin: user.accessLevel >= 3,
-  isLoggedIn: user.accessLevel >= 1
+const mapState = ({reviews: {reviews}}) => ({
+  reviews
 })
 
 const mapDispatch = dispatch => ({

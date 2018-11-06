@@ -1,8 +1,13 @@
 const router = require('express').Router()
-const { User, Order, Address } = require('../db/models')
+const {User, Order, Address, Review} = require('../db/models')
 
 // see /server/middlewares/user
-const { requireLogin, requireSeller, requireAdmin, requiredev } = require('../middlewares')
+const {
+  requireLogin,
+  requireSeller,
+  requireAdmin,
+  requiredev
+} = require('../middlewares')
 
 module.exports = router
 
@@ -10,9 +15,41 @@ module.exports = router
   USER ROUTES
 */
 
+// User profile - showcases their product reviews
+router.get('/:userId', async (req, res, next) => {
+  const {userId} = req.params
+
+  try {
+    const user = await User.findById(userId)
+
+    // Destructure the response object
+    // Pull off only the name to protect the user.
+    const {name} = user
+
+    const reviews = await Review.findAll({
+      where: {
+        userId: userId
+      }
+    })
+
+    // Pass in the name and that user's reviews to a response object; res. that
+    const response = {
+      name,
+      reviews
+    }
+    res.json(response)
+  } catch (e) {
+    console.log(e) // for debugging purposes
+
+    // 204 => no content
+    res.status(204).json({
+      message: `no user by id ${userId}`
+    })
+  }
+})
+
 router.get('/address', requireLogin, async (req, res, next) => {
   try {
-
     const addresses = await Address.findAll({
       where: {userId: req.user.id}
     })
@@ -59,13 +96,12 @@ router.get('/', requireSeller, async (req, res, next) => {
   }
 })
 
-
 /*
   ADMIN ROUTES
 */
 
 router.get('/:userId/orders', requireAdmin, async (req, res, next) => {
-  const { userId } = req.params
+  const {userId} = req.params
 
   try {
     const user = await User.findOne({
@@ -74,22 +110,6 @@ router.get('/:userId/orders', requireAdmin, async (req, res, next) => {
       },
       include: [{model: Order}]
     })
-    res.json(user)
-  } catch (e) {
-    console.log(e) // for debugging purposes
-
-    // 204 => no content
-    res.status(204).json({
-      message: `no user by id ${userId}`
-    })
-  }
-})
-
-router.get('/:userId', requireAdmin, async (req, res, next) => {
-  const { userId } = req.params
-
-  try {
-    const user = await User.findById(userId)
     res.json(user)
   } catch (e) {
     console.log(e) // for debugging purposes
