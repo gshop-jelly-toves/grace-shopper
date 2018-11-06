@@ -64,9 +64,9 @@ body {
   position: relative;
   font-family: sans-serif;
   background: repeat;
+  background-image: url(./restaurant_icons.png);
   /* background-image: url(./retina_wood.png); */
   /* background-image: url(./crisp_paper_ruffles.png); */
-  background-image: url(./restaurant_icons.png);
 }
 
 #footer {

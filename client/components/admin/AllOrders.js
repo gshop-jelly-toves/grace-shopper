@@ -35,6 +35,7 @@ class AllOrders extends Component {
     return (
       <button
         type="button"
+        className="btn btn-warning"
         value="markAsShipping"
         onClick={this.handleShip}
       >
@@ -55,19 +56,27 @@ class AllOrders extends Component {
           )
 
     const cancelButton = (
-      <button type="button" value="cancel" onClick={this.handleButton}>
-        Cancel
+      <button
+        type="button"
+        className="btn btn-danger"
+        value="cancel"
+        onClick={this.handleButton}
+      >
+        Cancel Order
       </button>
     )
 
     const markAsProcessing = (
-      <button
-        type="button"
-        value="markAsProcessing"
-        onClick={this.handleProcess}
-      >
-        Mark as Procssing
-      </button>
+      <div>
+        <button
+          type="button"
+          className="btn btn-block btn-primary"
+          value="markAsProcessing"
+          onClick={this.handleProcess}
+        >
+          Mark as Processing
+        </button>
+      </div>
     )
 
     // let renderButton
@@ -78,42 +87,101 @@ class AllOrders extends Component {
     // }
 
     return (
-      <div>
-        <h4>Order Type Filter</h4>
-        <button type="button" value="" onClick={this.handleFilter}>
-          All
-        </button>
-        <button type="button" value="created" onClick={this.handleFilter}>
-          Created
-        </button>
-        <button type="button" value="processing" onClick={this.handleFilter}>
-          Processing
-        </button>
-        <button type="button" value="shipped" onClick={this.handleFilter}>
-          Shipped
-        </button>
-        <button type="button" value="delivered" onClick={this.handleFilter}>
-          Delivered
-        </button>
-        <button type="button" value="cancelled" onClick={this.handleFilter}>
-          Cancelled
-        </button>
-
+      <div className="container">
+        <div className="row p-3">
+          {/*
+            ADMIN TOOLS
+            ALL ORDERS
+            BUTTON FILTERS
+        */}
+          <div className="col">
+            <h2>Order Type Filter</h2>
+          </div>
+        </div>
+        <div className="row p-3">
+          <div className="col">
+            <button
+              type="button"
+              className="btn btn-block btn-secondary"
+              value=""
+              onClick={this.handleFilter}
+            >
+              All
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="button"
+              className="btn btn-block btn-primary"
+              value="created"
+              onClick={this.handleFilter}
+            >
+              Created
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="button"
+              className="btn btn-block btn-info"
+              value="processing"
+              onClick={this.handleFilter}
+            >
+              Processing
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="button"
+              className="btn btn-block btn-warning"
+              value="shipped"
+              onClick={this.handleFilter}
+            >
+              Shipped
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="button"
+              className="btn btn-block btn-success"
+              value="delivered"
+              onClick={this.handleFilter}
+            >
+              Delivered
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="button"
+              className="btn btn-block btn-danger"
+              value="cancelled"
+              onClick={this.handleFilter}
+            >
+              Cancelled
+            </button>
+          </div>
+        </div>
+        {/*
+            ALL ORDERS
+        */}
         {orderFilter(this.state.orders).map(order => (
-          <div key={order.id}>
-            <h4>Order ID: {order.id}</h4>
-            <p>Order Status: {order.status}</p>
-            <p>Ordered on {order.createdAt}</p>
-            {order.status === 'cart' ? (
-              <div>Cart Total: {priceCentsToString(order.cartTotal)}</div>
-            ) : (
-              <div>Order Total: {priceCentsToString(order.orderTotal)}</div>
-            )}
-            <br />
-            {this.state.orderView !== 'cancelled' ? cancelButton : ''}
-            {this.state.orderView === 'processing'
-              ? this.renderShipButton()
-              : ''}
+          <div className="row p-3 align-items-center" key={order.id}>
+            <div className="col-3 col-md-3">
+              {this.state.orderView === 'processing'
+                ? this.renderShipButton()
+                : ''}
+              {this.state.orderView !== 'cancelled' ? cancelButton : ''}
+            </div>
+            <div className="col-9 col-md-9">
+              <h4>Order #{order.id}</h4>
+              <p>Order Status: {order.status}</p>
+
+              <p>Ordered on {new Date(order.createdAt).toUTCString()}</p>
+              {order.status === 'cart' ? (
+                <div>Cart Total: {priceCentsToString(order.cartTotal)}</div>
+              ) : (
+                <div>Order Total: {priceCentsToString(order.orderTotal)}</div>
+              )}
+            </div>
           </div>
         ))}
       </div>
