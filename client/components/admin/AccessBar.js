@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {Searchbar} from './index'
 
 const AccessBar = props => {
   console.log('props is:', props)
@@ -16,32 +16,22 @@ const AccessBar = props => {
  / ___ / /__/ /__/  __(__  |__  ) /_/ / /_/ / /
 /_/  |_\___/\___/\___/____/____/_____/\__,_/_/
     */
-    <div
-      className="container-fluid align-items-center"
-      id="access-bar"
-      role="access"
-    >
-      {/* <ul className="nav justify-content-end"> */}
-      <div className="nav nav-fill">
+    <div className="container-fluid">
+      <nav className="nav nav-fill px-5 align-items-center" id="access-bar">
         <div className="nav-item">
-          <p className="navbar-text">Welcome!</p>
+          <h4>Admin: {name}</h4>
         </div>
         <div className="nav-item">
-          <p className="navbar-text">Are you ready for this jelly?</p>
+          <Link to="/admin/jellies/add" className="nav-link">
+            <h4>Add Jelly</h4>
+          </Link>
         </div>
         <div className="nav-item">
-          <div className="nav-link" href="#">
-            {/* where categories will go once active. inactive for pull req.
-            <Category />
-            */}
-          </div>
+          <Link to="/admin/jellies/orders" className="nav-link">
+            <h4>All Orders</h4>
+          </Link>
         </div>
-        <div className="nav-item">
-          <div className="nav-link" href="#">
-            <Searchbar />
-          </div>
-        </div>
-      </div>
+      </nav>
     </div>
   )
 }
