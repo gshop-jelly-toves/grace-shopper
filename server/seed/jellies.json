@@ -6,7 +6,7 @@
     "priceCents": 7645,
     "inventory": 121,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Sweet Sriracha",
@@ -15,7 +15,7 @@
     "priceCents": 5158,
     "inventory": 100,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Apple Crumble",
@@ -24,7 +24,7 @@
     "priceCents": 7915,
     "inventory": 127,
     "categoryId": 2,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dd23dd/000000"
   },
   {
     "name": "Black Raspberry - Seedless",
@@ -33,7 +33,7 @@
     "priceCents": 9365,
     "inventory": 86,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Moscato Marmalade",
@@ -42,7 +42,7 @@
     "priceCents": 6926,
     "inventory": 58,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dd9812/000000"
   },
   {
     "name": "Maple Bacon Onion",
@@ -51,7 +51,7 @@
     "priceCents": 2571,
     "inventory": 52,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/1123ddd/000000"
   },
   {
     "name": "New England Cranberry Relish",
@@ -60,7 +60,7 @@
     "priceCents": 1427,
     "inventory": 19,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Fruitcake Jam",
@@ -69,7 +69,7 @@
     "priceCents": 1085,
     "inventory": 8,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4124/ffffff"
   },
   {
     "name": "Peach Pecan",
@@ -78,7 +78,7 @@
     "priceCents": 1604,
     "inventory": 88,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dd2356dd/000000"
   },
   {
     "name": "Homemade Honeycomb",
@@ -87,7 +87,7 @@
     "priceCents": 7635,
     "inventory": 77,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/124444/ffffff"
   },
   {
     "name": "Sprite",
@@ -96,7 +96,7 @@
     "priceCents": 9427,
     "inventory": 122,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Coca-Cola",
@@ -105,7 +105,7 @@
     "priceCents": 8065,
     "inventory": 145,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Bordeaux Blend",
@@ -114,7 +114,7 @@
     "priceCents": 5782,
     "inventory": 22,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Clementine",
@@ -123,7 +123,7 @@
     "priceCents": 545,
     "inventory": 79,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Prune",
@@ -132,7 +132,7 @@
     "priceCents": 9900,
     "inventory": 35,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Sweet Potato and Horseradish",
@@ -141,7 +141,7 @@
     "priceCents": 3507,
     "inventory": 131,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "3 Pack - Liquor Jam",
@@ -150,7 +150,7 @@
     "priceCents": 6484,
     "inventory": 34,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Canadian Maple",
@@ -159,7 +159,7 @@
     "priceCents": 6961,
     "inventory": 24,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Chocolate Crunch",
@@ -168,7 +168,7 @@
     "priceCents": 8554,
     "inventory": 46,
     "categoryId": 11,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Peanut's Best Friend",
@@ -177,7 +177,7 @@
     "priceCents": 3864,
     "inventory": 92,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Orange Pear",
@@ -186,7 +186,7 @@
     "priceCents": 588,
     "inventory": 7,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Vanilla Light",
@@ -195,7 +195,7 @@
     "priceCents": 3148,
     "inventory": 55,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Cherry Cranberry",
@@ -204,7 +204,7 @@
     "priceCents": 8713,
     "inventory": 121,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Ezy Change Mophandle",
@@ -213,7 +213,7 @@
     "priceCents": 3580,
     "inventory": 92,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Habanero Strawberry",
@@ -222,7 +222,7 @@
     "priceCents": 1255,
     "inventory": 118,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Slime",
@@ -231,7 +231,7 @@
     "priceCents": 7903,
     "inventory": 5,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Jiffy's Jam",
@@ -240,7 +240,7 @@
     "priceCents": 979,
     "inventory": 66,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Cherry Almond",
@@ -249,7 +249,7 @@
     "priceCents": 3187,
     "inventory": 77,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Fig",
@@ -258,7 +258,7 @@
     "priceCents": 2231,
     "inventory": 48,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Rhubarb Raisin",
@@ -267,7 +267,7 @@
     "priceCents": 5612,
     "inventory": 22,
     "categoryId": 11,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Key Lime",
@@ -276,7 +276,7 @@
     "priceCents": 1429,
     "inventory": 28,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Ten-Berry Spread",
@@ -285,7 +285,7 @@
     "priceCents": 8956,
     "inventory": 59,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Berry Basil",
@@ -294,7 +294,7 @@
     "priceCents": 2141,
     "inventory": 95,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Apple Pie",
@@ -303,7 +303,7 @@
     "priceCents": 693,
     "inventory": 129,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Cranberry Chipotle",
@@ -312,7 +312,7 @@
     "priceCents": 1714,
     "inventory": 22,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Wild Maine Blueberry",
@@ -321,7 +321,7 @@
     "priceCents": 1704,
     "inventory": 149,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Blueberry Rhubarb",
@@ -330,7 +330,7 @@
     "priceCents": 685,
     "inventory": 35,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Raspberry Peach Champagne",
@@ -339,7 +339,7 @@
     "priceCents": 1884,
     "inventory": 68,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Candied Bacon",
@@ -348,7 +348,7 @@
     "priceCents": 7231,
     "inventory": 112,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Sweet Chili",
@@ -357,7 +357,7 @@
     "priceCents": 8254,
     "inventory": 79,
     "categoryId": 2,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "SuperSport - Strawberry",
@@ -366,7 +366,7 @@
     "priceCents": 9708,
     "inventory": 150,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "SuperSport - Lime",
@@ -375,7 +375,7 @@
     "priceCents": 2236,
     "inventory": 55,
     "categoryId": 4,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "SuperSport - Grape",
@@ -384,7 +384,7 @@
     "priceCents": 9972,
     "inventory": 18,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "SuperSport - Lemon",
@@ -393,7 +393,7 @@
     "priceCents": 1231,
     "inventory": 70,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Momma's Marmalade",
@@ -402,7 +402,7 @@
     "priceCents": 6883,
     "inventory": 139,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Pineapple Cinnamon",
@@ -411,7 +411,7 @@
     "priceCents": 3603,
     "inventory": 68,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Basil",
@@ -420,7 +420,7 @@
     "priceCents": 5074,
     "inventory": 36,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Texas Jalapeno",
@@ -429,7 +429,7 @@
     "priceCents": 9257,
     "inventory": 58,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Blueberry Cobbler",
@@ -438,7 +438,7 @@
     "priceCents": 4259,
     "inventory": 22,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Honey Dandelion",
@@ -447,7 +447,7 @@
     "priceCents": 3783,
     "inventory": 28,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Spiced Pear",
@@ -456,7 +456,7 @@
     "priceCents": 9760,
     "inventory": 111,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "4 Leaf Clover",
@@ -465,7 +465,7 @@
     "priceCents": 4668,
     "inventory": 18,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
     "name": "Cinnabon",
@@ -474,7 +474,7 @@
     "priceCents": 4138,
     "inventory": 78,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Christmas Jam",
@@ -483,7 +483,7 @@
     "priceCents": 9421,
     "inventory": 107,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Banana",
@@ -492,7 +492,7 @@
     "priceCents": 9753,
     "inventory": 91,
     "categoryId": 4,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Buttercup",
@@ -501,7 +501,7 @@
     "priceCents": 4463,
     "inventory": 13,
     "categoryId": 11,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Summer Ginger",
@@ -510,7 +510,7 @@
     "priceCents": 9803,
     "inventory": 29,
     "categoryId": 4,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
     "name": "Wine - Red, Pinot Noir, Chateau",
@@ -519,7 +519,7 @@
     "priceCents": 7030,
     "inventory": 132,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
     "name": "Roasted Beets",
@@ -528,7 +528,7 @@
     "priceCents": 4607,
     "inventory": 65,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
     "name": "Pink Grapefruit",
@@ -537,6 +537,6 @@
     "priceCents": 8271,
     "inventory": 139,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   }
 ]

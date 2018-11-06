@@ -73,17 +73,17 @@ class JellyList extends Component {
               <div className="d-flex align-items-center">
                 <div className="mr-auto p-2">
                   <Link to={`/jellies/${jelly.id}`}>
-                    <h3>{jelly.name}</h3>
+                    <h4>{jelly.name}</h4>
                   </Link>
                 </div>
-                <div className="p-2">
-                  <h3>{jelly.rating} ★</h3>
-                </div>
-                <div className="p-2">
-                  <h3>{priceCentsToString(jelly.priceCents)}</h3>
-                </div>
               </div>
-              <div className="d-flex flex-row-reverse">
+              <div className="d-flex flex-row">
+                <div className="p-2">
+                  <h4>{jelly.rating} ★</h4>
+                </div>
+                <div className="mr-auto p-2">
+                  <h4>{priceCentsToString(jelly.priceCents)}</h4>
+                </div>
                 <div className="p-2">
                   <button
                     type="button"
