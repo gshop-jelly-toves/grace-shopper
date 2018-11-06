@@ -1,4 +1,6 @@
 const { Jelly } = require('../db/models')
+const { dummyTaxesAndShipping } = require('../utils')
+
 const newJelly = jelly => ({
   jellyId: jelly.id,
   priceCents: jelly.priceCents,
@@ -30,9 +32,11 @@ module.exports = {
     newJellies[jellyId]
      ? newJellies[jellyId].quantity++
      : newJellies[jellyId] = newJelly(jelly)
+    const cartTotal = cart.cartTotal + jelly.priceCents
+    const orderTotal = dummyTaxesAndShipping(cartTotal)
     return {
       ...cart,
-      cartTotal: cart.cartTotal + jelly.priceCents,
+      cartTotal, orderTotal,
       items: newJellies
     }
   },
@@ -43,9 +47,11 @@ module.exports = {
     if (jelly) jelly.quantity--
     if (jelly.quantity < 1)
       newJellies[jellyId] = undefined
+    const cartTotal = cart.cartTotal - newJellies[jellyId].priceCents
+    const orderTotal = dummyTaxesAndShipping(cartTotal)
     return {
       ...cart,
-      cartTotal: cart.cartTotal - newJellies[jellyId].priceCents,
+      cartTotal, orderTotal,
       items: newJellies
     }
   },

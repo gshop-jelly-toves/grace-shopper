@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const { dummyTaxesAndShipping } = require('../../utils')
 
 const Order = db.define('order', {
   status: {
@@ -39,6 +40,8 @@ Order.findOrCreateCartByUserId = async function(userId) {
   }
 }
 
+Order
+
 Order.prototype.updatePrices = async function() {
   if (this.status === 'cart') {
     try {
@@ -56,13 +59,15 @@ Order.prototype.updatePrices = async function() {
 Order.prototype.checkout = async function() {
   if (this.status === 'cart') {
 
-    const dummyTaxesAndShipping = total => total*1.337
-
-    await this.updatePrices()
-    this.orderTotal = dummyTaxesAndShipping(this.cartTotal)
-    this.status = 'processing'
-    // todo..
-
+    try {
+      await this.updatePrices()
+  
+      return await this.update({
+        orderTotal: dummyTaxesAndShipping(this.cartTotal),
+        status: 'processing'
+      })
+    } catch(e) { console.error(e) }
+    
   } else {
     throw new Error('only orders with status cart can be checked out')
   }

@@ -1,27 +1,35 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { connect } from 'react-redux'
-import { handleToken } from '../store'
+import { handleCheckout } from '../store'
 
 class StripeForm extends React.Component {
 
 
   render() {
-    
-    return (
+    console.log('total',this.props.orderTotal)
+    return this.props.orderTotal ? (
       <StripeCheckout 
         name="Bellies' Jellies"
         description="Let's get these jellies in that belly."
-        amount={500}
-        token={token => this.props.handleToken(token)}
+        amount={this.props.orderTotal}
+        token={token => this.props.handleCheckout(token)}
         stripeKey={STRIPE_PUB_KEY}
-      />
-    )
+      >
+        <button className="btn btn-primary">
+          Checkout
+        </button>
+      </StripeCheckout>
+    ) : <div>weee</div>
   }
 }
 
-// mapDispatch = dispatch => ({
-//   handleToken: token => dispatch(handleToken(token))
+// const mapDispatch = dispatch => ({
+//   handleCheckout: token => dispatch(handleCheckout(token))
 // })
 
-export default connect(null, { handleToken })(StripeForm)
+const mapState = ({cart: {orderTotal}}) => ({
+  orderTotal
+})
+
+export default connect(mapState, { handleCheckout })(StripeForm)

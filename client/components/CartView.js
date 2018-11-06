@@ -3,6 +3,7 @@ import {fetchCart, destroyCart} from '../store'
 import {connect} from 'react-redux'
 import {priceCentsToString} from '../utils'
 import { Link } from 'react-router-dom'
+import {StripeForm} from './index'
 
 class CartView extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class CartView extends React.Component {
 
     return this.props.cart.cartTotal ? (
       <div id="cart-container">
+        <StripeForm />
         <button type="button" onClick={this.clearCart}>
           Clear cart
         </button>
