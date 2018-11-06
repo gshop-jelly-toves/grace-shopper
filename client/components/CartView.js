@@ -2,7 +2,7 @@ import React from 'react'
 import {fetchCart, destroyCart} from '../store'
 import {connect} from 'react-redux'
 import {priceCentsToString} from '../utils'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {StripeForm} from './index'
 
 class CartView extends React.Component {
@@ -35,6 +35,60 @@ class CartView extends React.Component {
     }
 
     return this.props.cart.cartTotal ? (
+      <div className="container">
+        {/*
+        CART HEADERS
+        */}
+        <div className="row p-3">
+          <div className="col-8 col-md-8">
+            <h2>Your Items</h2>
+          </div>
+          <div className="col-2 col-md-2">
+            <h2>Price</h2>
+          </div>
+          <div className="col-2 col-md-2">
+            <h2>Quantity</h2>
+          </div>
+        </div>
+        {/* MAPPING TO CREATE CART ITEM ROWS */}
+
+        {haveNeededJellies() &&
+          jellyIds.map(id => (
+            <div className="row p-3 align-items-center" key={id}>
+              <div className="col-2 col-md-2">
+                <img
+                  src={jellies[id].photo}
+                  alt={jellies[id].name}
+                  height="100"
+                />
+              </div>
+              <div className="col-6 col-md-6">
+                <Link to={`/jellies/${id}`}>
+                  <p>{jellies[id].name}</p>
+                </Link>
+              </div>
+              <div className="col-2 col-md-2">
+                <p>{priceCentsToString(jellies[id].priceCents)}</p>
+              </div>
+              <div className="col-2 col-md-2">
+                <p>{cart.items[id].quantity}</p>
+              </div>
+            </div>
+          ))}
+        <StripeForm />
+        <button type="button" onClick={this.clearCart}>
+          Clear cart
+        </button>
+        <div>Total: {priceCentsToString(cart.cartTotal)}</div>
+      </div>
+    ) : (
+      <div>Your cart is currently empty, add some jellies!</div>
+    )
+  }
+}
+
+/* Original Cart View
+    return this.props.cart.cartTotal ? (
       <div id="cart-container">
         <StripeForm />
         <button type="button" onClick={this.clearCart}>
@@ -57,8 +111,9 @@ class CartView extends React.Component {
     ) : (
       <div>Your cart is currently empty, add some jellies!</div>
     )
-  }
-}
+
+
+*/
 
 const mapState = ({cart, jellies: {jellies}}) => ({
   cart,

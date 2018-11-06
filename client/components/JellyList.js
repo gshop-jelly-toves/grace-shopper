@@ -88,7 +88,7 @@ class JellyList extends Component {
                   <button
                     type="button"
                     className="btn btn-success"
-                    onClick={() => this.props.addToCart(jelly.id)}
+                    onClick={() => this.props.addToCart(jelly.id, 1)}
                   >
                     ADD TO CART
                   </button>
