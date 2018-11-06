@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Order = require('./order')
-const Jelly = require('./jelly')
+console.log(db.models)
+const Order = db.models.order
+const Jelly = db.models.jelly
 
 const jellyOrder = db.define('jelly-orders', {
   id: {
@@ -24,12 +25,17 @@ jellyOrder.addItem = async function(orderId, jellyId) {
   try {
     // `findOrCreate` (oddly) returns an array containing a single
     // instance, so a little destructuring can be used
-    const {[0]: item} = await jellyOrder.findOrCreate({
+
+    console.log('info',orderId, jellyId) // always defined
+
+    const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
+    console.log('item', item) // sometimes foreign keys are null
+
     return await item.update({
-      quantity: item.quantity + 1
+      quantity: item.dataValues.quantity + 1
     })
   } catch (e) {
     console.error(e)
@@ -47,7 +53,7 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
 
     if (item)
       item = await item.update({
-        quantity: item.quantity - 1
+        quantity: item.dataValues.quantity - 1
       })
 
     return item
@@ -60,7 +66,8 @@ jellyOrder.prototype.updatePrice = async function() {
   const jelly = await Jelly.findOne({
     where: {id: this.jellyId}
   })
-  this.update({priceCents: jelly.priceCents})
+  const item = await this.update({priceCents: jelly.dataValues.priceCents})
+  return item
 }
 
 const rejectInvalidQuantity = item => {
@@ -74,6 +81,7 @@ const setCartTotal = async item => {
     })
 
     const total = items.reduce((a, b) => a + b.priceCents * b.quantity, 0)
+    // console.log('item',item)
 
     const cart = await Order.findOne({
       where: {id: item.orderId}
@@ -82,23 +90,35 @@ const setCartTotal = async item => {
     cart.update({
       cartTotal: total
     })
+    return item
   } catch (e) {
     console.error(e)
   }
 }
 
-const savePrice = async item => {
-  await item.updatePrice()
+const savePrice = item => {
+  item.updatePrice()
   return item
 }
 
-jellyOrder.afterUpdate(item => {
+jellyOrder.afterUpdate(async item => {
+  item = await savePrice(item)
+  item = setCartTotal(item)
   rejectInvalidQuantity(item)
-  setCartTotal(item)
-  savePrice(item)
+  return item
 })
-jellyOrder.afterCreate(setCartTotal)
-jellyOrder.afterDestroy(setCartTotal)
-jellyOrder.beforeCreate(savePrice)
+
+jellyOrder.afterCreate(async item => {
+  item = await savePrice(item)
+  setCartTotal(item)
+})
+jellyOrder.afterDestroy(item => {
+  setCartTotal(item)
+  return item
+})
+// jellyOrder.afterDestroy(async item => {
+//   item = await setCartTotal(item)
+//   return item
+// })
 
 module.exports = jellyOrder

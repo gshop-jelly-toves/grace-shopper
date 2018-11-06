@@ -46,9 +46,9 @@ class SingleReview extends Component {
     const review = this.props.singleReview
     console.log('STATE', this.state)
 
+    console.log('REVIEW', review)
     return review.id ? (
       <div>
-        <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
           <h2>{review.title}</h2>
         </Link>
         <div>
@@ -58,14 +58,6 @@ class SingleReview extends Component {
           <p>{review.body}</p>
         </div>
         {isAdmin && (
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({editing: true})
-            }}
-          >
-            EDIT REVIEW
-          </button>
         )}
       </div>
     ) : (
