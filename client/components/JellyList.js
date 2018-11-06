@@ -60,7 +60,7 @@ class JellyList extends Component {
     return (
       <Fragment>
         <div className="d-flex flex-column" id="jellyList">
-          <div className="w-75 mx-auto p-5">
+          <div className="w-75 mx-auto p-3">
             <Searchbar />
           </div>
         </div>
