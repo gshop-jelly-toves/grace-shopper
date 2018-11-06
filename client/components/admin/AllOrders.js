@@ -170,13 +170,10 @@ class AllOrders extends Component {
             ALL ORDERS
         */}
         {orderFilter(this.state.orders).map(order => (
-          <div className="row p-3 align-items-center" key={order.id}>
-            <div className="col-3 col-md-3">
-              {this.state.orderView === 'processing'
-                ? this.renderShipButton()
-                : ''}
-              {this.state.orderView !== 'cancelled' ? cancelButton : ''}
-            </div>
+          <div
+            className="row p-3 align-items-center border border-top"
+            key={order.id}
+          >
             <div className="col-9 col-md-9">
               <h4>Order #{order.id}</h4>
               <p>Order Status: {order.status}</p>
@@ -186,6 +183,54 @@ class AllOrders extends Component {
                 <div>Cart Total: {priceCentsToString(order.cartTotal)}</div>
               ) : (
                 <div>Order Total: {priceCentsToString(order.orderTotal)}</div>
+              )}
+            </div>
+            <div className="col-3 col-md-3">
+              {this.state.orderView === 'created' ? (
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-block btn-info"
+                    value="markAsProcessing"
+                    onClick={() => this.handleProcess(order.id)}
+                  >
+                    Mark as Processing
+                  </button>
+                  <br />
+                  <br />
+                </div>
+              ) : (
+                ''
+              )}
+
+              {this.state.orderView === 'processing' ? (
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-block btn-warning"
+                    value="markAsShipped"
+                    onClick={() => this.handleShip(order.id)}
+                  >
+                    Mark as Shipped
+                  </button>
+                  <br />
+                  <br />
+                </div>
+              ) : (
+                ''
+              )}
+              {this.state.orderView === 'cancelled' ||
+              this.state.orderView === 'delivered' ? (
+                ''
+              ) : (
+                <button
+                  type="button"
+                  className="btn btn-block btn-danger"
+                  value="markAsCancelled"
+                  onClick={() => this.handleCancel(order.id)}
+                >
+                  Cancel Order
+                </button>
               )}
             </div>
           </div>
