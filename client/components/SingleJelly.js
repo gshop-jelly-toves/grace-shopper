@@ -83,12 +83,13 @@ class SingleJelly extends Component {
               </div>
               <div className="col col-lg-7">
                 <h2>{jelly.name}</h2>
-
+                <p>
+                  <em className=""> By {jelly.maker}</em>
+                </p>
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
-
                 <p>{jelly.rating} ★</p>
                 <p>{jelly.description}</p>
-                <label Htmlfor="quantity">Quantity</label>
+                <label htmlFor="quantity">Quantity</label>
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
                     <span className="input-group-text" id="basic-addon3">
@@ -112,6 +113,12 @@ class SingleJelly extends Component {
                 </button>
               </div>
             </div>
+            <div className="row p-3 align-items-center">
+              <div className="col">
+                <h2>Reviews</h2>
+              </div>
+            </div>
+
             {isAdmin && (
               <button
                 type="button"
@@ -143,7 +150,14 @@ class SingleJelly extends Component {
                   done={this.doneReviewing}
                 />
               )}
-
+            {/*
+       __     ____      ____            _
+      / /__  / / /_  __/ __ \___ _   __(_)__ _      _______
+ __  / / _ \/ / / / / / /_/ / _ \ | / / / _ \ | /| / / ___/
+/ /_/ /  __/ / / /_/ / _, _/  __/ |/ / /  __/ |/ |/ (__  )
+\____/\___/_/_/\__, /_/ |_|\___/|___/_/\___/|__/|__/____/
+              /____/
+            */}
             <JellyReviews jellyId={this.props.match.params.jellyId} />
           </Fragment>
         )}
@@ -157,6 +171,7 @@ class SingleJelly extends Component {
 const mapState = ({jellies: {jellies}, user: {user}}) => ({
   jellies,
   user,
+  // reviews /* to access reviews.length */,
   isAdmin: user.accessLevel >= 3,
   isLoggedIn: user.accessLevel >= 1
 })

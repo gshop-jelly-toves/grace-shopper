@@ -59,7 +59,7 @@ async function seed() {
   )
   console.log(`Created ${Users.length} users.`)
   console.log(`Created ${Jellies.length} jellies.`)
-  console.log(`Created ${Reviews.length} reviews.\n`)
+  console.log(`Created ${Reviews.length} reviews (Jelly 60 - no reviews).\n`)
   console.log(`Associated ${JellyCat.length} jellies to categories.\n`)
   console.log(`Seeding completed successfully!\n`)
   console.log(`######################################\n`)
@@ -69,9 +69,8 @@ async function seed() {
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
 
-const throttle_db_connection = timeSeconds => 
-   new Promise(resolve => setTimeout(resolve, timeSeconds*1000))
-
+const throttle_db_connection = timeSeconds =>
+  new Promise(resolve => setTimeout(resolve, timeSeconds * 1000))
 
 async function runSeed() {
   console.log('seeding...')
@@ -80,7 +79,6 @@ async function runSeed() {
     console.log('throttling to make sure everything gets done...')
     await throttle_db_connection(5)
     console.log('done throttling!')
-
   } catch (err) {
     console.error(err)
     process.exitCode = 1
