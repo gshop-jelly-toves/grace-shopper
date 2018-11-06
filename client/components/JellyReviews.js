@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {fetchReviews} from '../store'
-import { Link } from 'react-router-dom'
-
+import {Link} from 'react-router-dom'
 
 class JellyReviews extends Component {
   // constructor(props) {
@@ -26,16 +25,20 @@ class JellyReviews extends Component {
     const keyedReviews = this.props.reviews
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
     return keyedReviews ? (
+      // Keep in mind that this renders on the SingleJelly page
+      // The main <div> there is a container with classes row p-3
       reviewsList.map(review => (
-        <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`} key={review.id}>
+        <Fragment key={review.id}>
+          <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
+            <h2>{review.title}</h2>
+          </Link>
           <div>
-            <h2>Reviewed by: {review.user.name}</h2>
+            <h4>Review by: {review.user.name}</h4>
             <img src={review.user.avatar} />
             <p>Rating: {review.starRating} / 5</p>
-            <p>Review Title: {review.title}</p>
-        <p>Review Body: {review.body}</p>
+            <p>{review.body}</p>
           </div>
-        </Link>
+        </Fragment>
       ))
     ) : (
       <p>This product has no reviews!</p>

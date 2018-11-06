@@ -65,20 +65,33 @@ class SingleJelly extends Component {
         ) : (
           <Fragment>
             <div className="row p-3">
-              <div className="col col-lg-8">
+              <div className="col col-lg-5">
                 <img src={jelly.photo} alt={jelly.name} />
               </div>
-              <div className="col col-lg-4">
+              <div className="col col-lg-7">
                 <h2>{jelly.name}</h2>
 
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
 
-                <p>Rating: {jelly.rating} ★</p>
-                <p>{jelly.inventory} remaining</p>
+                <p>{jelly.rating} ★</p>
                 <p>{jelly.description}</p>
+                <label Htmlfor="quantity">Quantity</label>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon3">
+                      {jelly.inventory} remaining
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="basic-url"
+                    aria-describedby="basic-addon3"
+                  />
+                </div>
                 <button
                   type="button"
-                  className="btn btn-primary btn-block"
+                  className="btn btn-success btn-block"
                   onClick={this.addToCart}
                 >
                   ADD TO CART

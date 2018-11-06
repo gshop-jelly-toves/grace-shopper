@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Category, Searchbar} from './index'
+import {Searchbar} from './index'
 
 const AccessBar = props => {
   console.log('props is:', props)

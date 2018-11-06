@@ -49,12 +49,15 @@ class SingleReview extends Component {
     console.log('REVIEW', review)
     return review.id ? (
       <div>
-        <h2>Review by: {review.user.name}</h2>
-        <img src={review.user.avatar} />
-        <p>Rating: {review.starRating} / 5</p>
-        <p>Review Title: {review.title}</p>
-        <p>Review Body: {review.body}</p>
-
+        <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
+          <h2>{review.title}</h2>
+        </Link>
+        <div>
+          <h4>Review by: {review.user.name}</h4>
+          <img src={review.user.avatar} />
+          <p>Rating: {review.starRating} / 5</p>
+          <p>{review.body}</p>
+        </div>
         {isAdmin && (
           <button
             type="button"
@@ -65,9 +68,6 @@ class SingleReview extends Component {
             EDIT REVIEW
           </button>
         )}
-
-
-
       </div>
     ) : (
       <div />

@@ -50,7 +50,16 @@ body {
   font-family: sans-serif;
   background: repeat;
   /* background-image: url(./retina_wood.png); */
+  /* background-image: url(./crisp_paper_ruffles.png); */
   background-image: url(./restaurant_icons.png);
+}
+
+#footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2em;
 }
 
 a {

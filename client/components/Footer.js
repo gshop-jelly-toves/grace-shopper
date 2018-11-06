@@ -12,10 +12,8 @@ const Footer = () => {
  / __/ / /_/ / /_/ / /_/  __/ /
 /_/    \____/\____/\__/\___/_/
     */
-    <footer className="fixed-bottom bg-dark">
-      <div className="container">
-        <span className="text-muted">Place sticky footer content here.</span>
-      </div>
+    <footer className="container-fluid bg-dark" id="footer">
+      <span className="text-muted">Place sticky footer content here.</span>
     </footer>
   )
 }

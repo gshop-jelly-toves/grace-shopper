@@ -2,7 +2,8 @@ import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchJellies, addJellyById} from '../store'
-import { priceCentsToString } from '../utils'
+import {priceCentsToString} from '../utils'
+import {Searchbar} from './index'
 
 class JellyList extends Component {
   constructor(props) {
@@ -58,6 +59,11 @@ class JellyList extends Component {
 
     return (
       <Fragment>
+        <div className="d-flex flex-column" id="jellyList">
+          <div className="w-75 mx-auto p-3">
+            <Searchbar />
+          </div>
+        </div>
         <div className="d-flex flex-wrap" id="jellyList">
           {searchFilter(jelliesList).map(jelly => (
             <div className="mx-auto p-5" key={jelly.id}>
@@ -67,17 +73,17 @@ class JellyList extends Component {
               <div className="d-flex align-items-center">
                 <div className="mr-auto p-2">
                   <Link to={`/jellies/${jelly.id}`}>
-                    <h3>{jelly.name}</h3>
+                    <h4>{jelly.name}</h4>
                   </Link>
                 </div>
-                <div className="p-2">
-                  <h3>{jelly.rating} ★</h3>
-                </div>
-                <div className="p-2">
-                  <h3>{priceCentsToString(jelly.priceCents)}</h3>
-                </div>
               </div>
-              <div className="d-flex flex-row-reverse">
+              <div className="d-flex flex-row">
+                <div className="p-2">
+                  <h4>{jelly.rating} ★</h4>
+                </div>
+                <div className="mr-auto p-2">
+                  <h4>{priceCentsToString(jelly.priceCents)}</h4>
+                </div>
                 <div className="p-2">
                   <button
                     type="button"
