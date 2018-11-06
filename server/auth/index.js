@@ -25,14 +25,14 @@ router.post('/login', async (req, res, next) => {
 router.post('/signup', async (req, res, next) => {
   try {
 
-    // should prevent anyone from creating 
+    // should prevent anyone from creating
     // a user with `role: 'dev'` on the req.body
     const newUser = {
       email: req.body.email,
       password: req.body.password,
       name: req.body.name
     }
-    
+
     const user = await User.create(newUser)
     // // persist cart to db
     if (req.session.cart.cartTotal)
@@ -55,13 +55,13 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/me', async (req, res, next) => {
+router.get('/me',  (req, res, next) => {
   try {
     // persist cart to db
-    
-    if (req.session.cart.cartTotal)
-      await cartSession.saveSessionToDB(req.session.cart, req.user.id)
-
+    // if (req.session.cart.cartTotal)
+    //   await cartSession.saveSessionToDB(req.session.cart, req.user.id)
+  // const user = await User.create(req.body)
+  // req.session.cart = await user.deserializeCart()
   res.json(req.user)
   } catch (e) { next(e)}
 })

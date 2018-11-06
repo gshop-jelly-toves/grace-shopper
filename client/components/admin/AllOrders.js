@@ -26,18 +26,38 @@ class AllOrders extends Component {
     })
   }
 
-  handleShip = async event => {
-    console.log('event.target', event.target)
-    // const {res} = await axios.get(`/api/orders/${orderId}`)
+  handleProcess = async orderId => {
+    const {data} = await axios.put(`/api/orders/${orderId}`, {
+      newOrderType: 'processing'
+    })
+    const updatedOrder = data
+    this.setState({
+      orders: [...updatedOrder]
+    })
   }
 
+  handleShip = async orderId => {
+    const {data} = await axios.put(`/api/orders/${orderId}`, {
+      newOrderType: 'shipped'
+    })
+    const updatedOrder = data
+    this.setState({
+      orders: [...updatedOrder]
+    })
+  }
+
+  handleCancel = async orderId => {
+    const {data} = await axios.put(`/api/orders/${orderId}`, {
+      newOrderType: 'cancelled'
+    })
+    const updatedOrder = data
+    this.setState({
+      orders: [...updatedOrder]
+    })
+  }
   renderShipButton() {
     return (
-      <button
-        type="button"
-        value="markAsShipping"
-        onClick={this.handleShip}
-      >
+      <button type="button" value="markAsShipping" onClick={this.handleShip}>
         Mark as Shipped
       </button>
     )
@@ -70,12 +90,7 @@ class AllOrders extends Component {
       </button>
     )
 
-    // let renderButton
-    // if (this.state.orderView === 'created') {
-    //   renderButton = markAsProcessing
-    // } else if (this.state.orderView === 'processing') {
-    //   renderButton = markAsShipped
-    // }
+    console.log(this.state.orderView)
 
     return (
       <div>
@@ -110,10 +125,41 @@ class AllOrders extends Component {
               <div>Order Total: {priceCentsToString(order.orderTotal)}</div>
             )}
             <br />
-            {this.state.orderView !== 'cancelled' ? cancelButton : ''}
-            {this.state.orderView === 'processing'
-              ? this.renderShipButton()
-              : ''}
+            {this.state.orderView === 'cancelled' ? (
+              ''
+            ) : (
+              <button
+                type="button"
+                value="markAsCancelled"
+                onClick={() => this.handleCancel(order.id)}
+              >
+                Cancel Order
+              </button>
+            )}
+
+            {this.state.orderView === 'created' ? (
+              <button
+                type="button"
+                value="markAsProcessing"
+                onClick={() => this.handleProcess(order.id)}
+              >
+                Mark as Processing
+              </button>
+            ) : (
+              ''
+            )}
+
+            {this.state.orderView === 'processing' ? (
+              <button
+                type="button"
+                value="markAsShipped"
+                onClick={() => this.handleShip(order.id)}
+              >
+                Mark as Shipped
+              </button>
+            ) : (
+              ''
+            )}
           </div>
         ))}
       </div>
