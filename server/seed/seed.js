@@ -69,10 +69,18 @@ async function seed() {
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
 
+const throttle_db_connection = timeSeconds => 
+   new Promise(resolve => setTimeout(resolve, timeSeconds*1000))
+
+
 async function runSeed() {
   console.log('seeding...')
   try {
     await seed()
+    console.log('throttling to make sure everything gets done...')
+    await throttle_db_connection(5)
+    console.log('done throttling!')
+
   } catch (err) {
     console.error(err)
     process.exitCode = 1

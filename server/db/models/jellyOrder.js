@@ -64,14 +64,14 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
 
 jellyOrder.prototype.updatePrice = async function() {
   const jelly = await Jelly.findOne({
-    where: {id: this.dataValues.jellyId}
+    where: {id: this.jellyId}
   })
-  this.update({priceCents: jelly.dataValues.priceCents})
+  const item = await this.update({priceCents: jelly.dataValues.priceCents})
+  return item
 }
 
-const rejectInvalidQuantity = async item => {
-  if (item.quantity < 1) await item.destroy()
-  return item
+const rejectInvalidQuantity = item => {
+  if (item.quantity < 1) item.destroy()
 }
 
 const setCartTotal = async item => {
@@ -96,30 +96,29 @@ const setCartTotal = async item => {
   }
 }
 
-const savePrice = async item => {
-  await item.updatePrice()
+const savePrice = item => {
+  item.updatePrice()
   return item
 }
 
 jellyOrder.afterUpdate(async item => {
-  item = await setCartTotal(item)
   item = await savePrice(item)
-  item = await rejectInvalidQuantity(item)
+  item = setCartTotal(item)
+  rejectInvalidQuantity(item)
   return item
 })
 
-jellyOrder.beforeCreate(item => {
-  savePrice(item)
-  return item
-})
-
-jellyOrder.afterCreate(item => {
+jellyOrder.afterCreate(async item => {
+  item = await savePrice(item)
   setCartTotal(item)
-  return item
 })
 jellyOrder.afterDestroy(item => {
   setCartTotal(item)
   return item
 })
+// jellyOrder.afterDestroy(async item => {
+//   item = await setCartTotal(item)
+//   return item
+// })
 
 module.exports = jellyOrder
