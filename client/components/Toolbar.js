@@ -15,12 +15,12 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form>
+      <form className="form-group">
         <input
-          className="form-control"
+          className="form-control form-control-lg"
           type="search"
           name="search"
-          placeholder="Search"
+          placeholder="What's your jam today?"
           aria-label="Search"
           onChange={this.handleSearch}
         />

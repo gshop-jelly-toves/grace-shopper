@@ -1,542 +1,602 @@
 [
   {
-    "name": "Fireball Whisky",
+    "name": "Fireball Whisky Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia",
     "priceCents": 7645,
     "inventory": 121,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Sweet Sriracha",
+    "name": "Sweet Sriracha Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus",
     "priceCents": 5158,
     "inventory": 100,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Apple Crumble",
+    "name": "Apple Crumble Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at",
     "priceCents": 7915,
     "inventory": 127,
     "categoryId": 2,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dd23dd/000000"
   },
   {
-    "name": "Black Raspberry - Seedless",
+    "name": "Black Raspberry - Seedless Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at",
     "priceCents": 9365,
     "inventory": 86,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Moscato Marmalade",
+    "name": "Moscato Marmalade Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum",
     "priceCents": 6926,
     "inventory": 58,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dd9812/000000"
   },
   {
-    "name": "Maple Bacon Onion",
+    "name": "Maple Bacon Onion Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec",
     "priceCents": 2571,
     "inventory": 52,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/1123ddd/000000"
   },
   {
-    "name": "New England Cranberry Relish",
+    "name": "New England Cranberry Relish Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis",
     "priceCents": 1427,
     "inventory": 19,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Fruitcake Jam",
+    "name": "Fruitcake Jam Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum",
     "priceCents": 1085,
     "inventory": 8,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4124/ffffff"
   },
   {
-    "name": "Peach Pecan",
+    "name": "Peach Pecan Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis",
     "priceCents": 1604,
     "inventory": 88,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dd2356dd/000000"
   },
   {
-    "name": "Homemade Honeycomb",
+    "name": "Homemade Honeycomb Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea",
     "priceCents": 7635,
     "inventory": 77,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/124444/ffffff"
   },
   {
-    "name": "Sprite",
+    "name": "Sprite Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa",
     "priceCents": 9427,
     "inventory": 122,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Coca-Cola",
+    "name": "Coca-Cola Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue",
     "priceCents": 8065,
     "inventory": 145,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Bordeaux Blend",
+    "name": "Bordeaux Blend Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec",
     "priceCents": 5782,
     "inventory": 22,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Clementine",
+    "name": "Clementine Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis",
     "priceCents": 545,
     "inventory": 79,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Prune",
+    "name": "Prune Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor",
     "priceCents": 9900,
     "inventory": 35,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Sweet Potato and Horseradish",
+    "name": "Sweet Potato and Horseradish Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada",
     "priceCents": 3507,
     "inventory": 131,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "3 Pack - Liquor Jam",
+    "name": "3 Pack - Liquor Jam Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed",
     "priceCents": 6484,
     "inventory": 34,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Canadian Maple",
+    "name": "Canadian Maple Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit",
     "priceCents": 6961,
     "inventory": 24,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Chocolate Crunch",
+    "name": "Chocolate Crunch Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum",
     "priceCents": 8554,
     "inventory": 46,
     "categoryId": 11,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Peanut's Best Friend",
+    "name": "Peanut's Best Friend Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh",
     "priceCents": 3864,
     "inventory": 92,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Orange Pear",
+    "name": "Orange Pear Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean",
     "priceCents": 588,
     "inventory": 7,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Vanilla Light",
+    "name": "Vanilla Light Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in",
     "priceCents": 3148,
     "inventory": 55,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Cherry Cranberry",
+    "name": "Cherry Cranberry Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur",
     "priceCents": 8713,
     "inventory": 121,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Ezy Change Mophandle",
+    "name": "Ezy Change Mophandle Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis",
     "priceCents": 3580,
     "inventory": 92,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Habanero Strawberry",
+    "name": "Habanero Strawberry Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est",
     "priceCents": 1255,
     "inventory": 118,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Slime",
+    "name": "Slime Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi",
     "priceCents": 7903,
     "inventory": 5,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Jiffy's Jam",
+    "name": "Jiffy's Jam Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor",
     "priceCents": 979,
     "inventory": 66,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Cherry Almond",
+    "name": "Cherry Almond Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in",
     "priceCents": 3187,
     "inventory": 77,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Fig",
+    "name": "Fig Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla",
     "priceCents": 2231,
     "inventory": 48,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Rhubarb Raisin",
+    "name": "Rhubarb Raisin Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero",
     "priceCents": 5612,
     "inventory": 22,
     "categoryId": 11,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Key Lime",
+    "name": "Key Lime Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
     "priceCents": 1429,
     "inventory": 28,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Ten-Berry Spread",
+    "name": "Ten-Berry Spread Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst",
     "priceCents": 8956,
     "inventory": 59,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Berry Basil",
+    "name": "Berry Basil Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis",
     "priceCents": 2141,
     "inventory": 95,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Apple Pie",
+    "name": "Apple Pie Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac",
     "priceCents": 693,
     "inventory": 129,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Cranberry Chipotle",
+    "name": "Cranberry Chipotle Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet",
     "priceCents": 1714,
     "inventory": 22,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Wild Maine Blueberry",
+    "name": "Wild Maine Blueberry Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl",
     "priceCents": 1704,
     "inventory": 149,
     "categoryId": 7,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Blueberry Rhubarb",
+    "name": "Blueberry Rhubarb Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac",
     "priceCents": 685,
     "inventory": 35,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Raspberry Peach Champagne",
+    "name": "Raspberry Peach Champagne Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent",
     "priceCents": 1884,
     "inventory": 68,
     "categoryId": 9,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Candied Bacon",
+    "name": "Candied Bacon Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat",
     "priceCents": 7231,
     "inventory": 112,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Sweet Chili",
+    "name": "Sweet Chili Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia",
     "priceCents": 8254,
     "inventory": 79,
     "categoryId": 2,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "SuperSport - Strawberry",
+    "name": "SuperSport - Strawberry Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie",
     "priceCents": 9708,
     "inventory": 150,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "SuperSport - Lime",
+    "name": "SuperSport - Lime Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac",
     "priceCents": 2236,
     "inventory": 55,
     "categoryId": 4,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "SuperSport - Grape",
+    "name": "SuperSport - Grape Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec",
     "priceCents": 9972,
     "inventory": 18,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "SuperSport - Lemon",
+    "name": "SuperSport - Lemon Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo",
     "priceCents": 1231,
     "inventory": 70,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Momma's Marmalade",
+    "name": "Momma's Marmalade Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam",
     "priceCents": 6883,
     "inventory": 139,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Pineapple Cinnamon",
+    "name": "Pineapple Cinnamon Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer",
     "priceCents": 3603,
     "inventory": 68,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Basil",
+    "name": "Basil Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et",
     "priceCents": 5074,
     "inventory": 36,
     "categoryId": 6,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Texas Jalapeno",
+    "name": "Texas Jalapeno Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim",
     "priceCents": 9257,
     "inventory": 58,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Blueberry Cobbler",
+    "name": "Blueberry Cobbler Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit",
     "priceCents": 4259,
     "inventory": 22,
     "categoryId": 8,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Honey Dandelion",
+    "name": "Honey Dandelion Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non",
     "priceCents": 3783,
     "inventory": 28,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Spiced Pear",
+    "name": "Spiced Pear Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero",
     "priceCents": 9760,
     "inventory": 111,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "4 Leaf Clover",
+    "name": "4 Leaf Clover Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium",
     "priceCents": 4668,
     "inventory": 18,
     "categoryId": 1,
-    "photo": "http://dummyimage.com/600x300.jpg/dddddd/000000"
+    "photo": "http://dummyimage.com/400x300.png/dddddd/000000"
   },
   {
-    "name": "Cinnabon",
+    "name": "Cinnabon Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer",
     "priceCents": 4138,
     "inventory": 78,
     "categoryId": 3,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Christmas Jam",
+    "name": "Christmas Jam Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at",
     "priceCents": 9421,
     "inventory": 107,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Banana",
+    "name": "Banana Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna",
     "priceCents": 9753,
     "inventory": 91,
     "categoryId": 4,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Buttercup",
+    "name": "Buttercup Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie",
     "priceCents": 4463,
     "inventory": 13,
     "categoryId": 11,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Summer Ginger",
+    "name": "Summer Ginger Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce",
     "priceCents": 9803,
     "inventory": 29,
     "categoryId": 4,
-    "photo": "http://dummyimage.com/600x300.jpg/5fa2dd/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/5fa2dd/ffffff"
   },
   {
-    "name": "Wine - Red, Pinot Noir, Chateau",
+    "name": "Wine - Red, Pinot Noir, Chateau Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis",
     "priceCents": 7030,
     "inventory": 132,
     "categoryId": 5,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   },
   {
-    "name": "Roasted Beets",
+    "name": "Roasted Beets Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium",
     "priceCents": 4607,
     "inventory": 65,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/cc0000/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/cc0000/ffffff"
   },
   {
-    "name": "Pink Grapefruit",
+    "name": "Pink Grapefruit Jelly",
+    "maker": "Jelly Tove Farms",
     "description":
       "consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede",
     "priceCents": 8271,
     "inventory": 139,
     "categoryId": 10,
-    "photo": "http://dummyimage.com/600x300.jpg/ff4444/ffffff"
+    "photo": "http://dummyimage.com/400x300.png/ff4444/ffffff"
   }
 ]

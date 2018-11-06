@@ -9,9 +9,9 @@ const App = () => {
     <div>
       <StripeForm />
       <BootNav />
-      <AccessBar />
+      {/* <AccessBar /> */}
       <Routes />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
