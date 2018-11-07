@@ -6,6 +6,7 @@ import {clearCartFromClient, fetchCart} from './cart'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
+const GET_USER_PROFILE = 'GET_USER_PROFILE'
 const REMOVE_USER = 'REMOVE_USER'
 const SET_ADDRESS = 'SET_ADDRESS'
 const SET_ADDRESS_PROP = 'SET_ADDRESS_PROP'
@@ -14,6 +15,7 @@ const SET_ADDRESS_PROP = 'SET_ADDRESS_PROP'
  * INITIAL STATE
  */
 const initState = {
+  userProfile: {},
   user: {},
   address: {
     firstName: '',
@@ -30,6 +32,11 @@ const initState = {
  */
 const getUser = user => ({type: GET_USER, user})
 
+const getUserProfile = userProfile => ({
+  type: GET_USER_PROFILE,
+  userProfile
+})
+
 const removeUser = () => ({type: REMOVE_USER})
 
 export const setAddressProp = obj => ({
@@ -45,10 +52,20 @@ const setAddress = address => ({
 /**
  * THUNK CREATORS
  */
+export const fetchUserProfile = userId => async dispatch => {
+  try {
+    const response = await axios.get(`/api/users/${userId}`)
+    const userProfile = response.data
+    dispatch(getUserProfile(userProfile))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const fetchAddress = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/users/address')
-    console.log('data',data)
+    console.log('data', data)
     const action = setAddress(data)
     dispatch(action)
   } catch (err) {
@@ -109,6 +126,8 @@ export default function(state = initState, action) {
   switch (action.type) {
     case GET_USER:
       return {...state, user: action.user}
+    case GET_USER_PROFILE:
+      return {...state, userProfile: action.userProfile}
     case REMOVE_USER:
       return {...state, user: {}}
     case SET_ADDRESS:
