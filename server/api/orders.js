@@ -63,6 +63,8 @@ router.put('/:orderId', requireAdmin, async (req, res, next) => {
         id: req.params.orderId
       }
     })
+
+    console.log(req.body.newOrderType)
     order.update({
       status: req.body.newOrderType
     })

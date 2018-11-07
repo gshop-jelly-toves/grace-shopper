@@ -42,14 +42,9 @@ module.exports = {
         .map(({dataValues}) => dataValues.jellyId)
         .filter(id => jelliesInCartIds.includes(id))
 
-<<<<<<< HEAD
       const newJellyOrders = Object.keys(cart.items)
         .map(id => parseInt(id))
-        .filter(item => existingJellyIds.includes(item.jellyId))
-=======
-      const newJellyOrders = Object.keys(cart.items).map(id => parseInt(id))
-        .filter(item => !existingJellyIds.includes(item.jellyId) )
->>>>>>> master
+        .filter(item => !existingJellyIds.includes(item.jellyId))
 
       // very useful console logs for debugging
       // console.log('jellies in cart:', jelliesInCartIds)

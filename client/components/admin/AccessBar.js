@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const AccessBar = props => {
+  console.log('props is:', props)
   const {name} = props
+  console.log('name is:', name)
 
   return (
     /*
