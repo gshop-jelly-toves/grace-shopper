@@ -1,6 +1,6 @@
-Looking to mix up a backend with express/sequelize and a frontend with react/redux? That's `boilermaker`!
+## Jelly for your belly
 
-Follow along with the workshop to make your own! This canonical version can serve as a reference, or a starting point all on its own.
+[deployed jelly](https://jelly-belly.herokuapp.com/)
 
 ## Setup
 
