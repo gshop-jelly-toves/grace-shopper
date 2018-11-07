@@ -1,11 +1,10 @@
 import axios from 'axios'
 import history from '../history'
-import { fetchSingleJelly } from './jellies'
-
+import {fetchSingleJelly} from './jellies'
 
 /**
  * ACTION TYPES
-*/
+ */
 
 const GET_CART = 'GET_CART'
 const CLEAR_CART_FROM_CLIENT = 'CLEAR_CART_FROM_CLIENT'
@@ -27,7 +26,8 @@ const initCart = {
  */
 
 const getCart = cart => ({
-  type: GET_CART, cart
+  type: GET_CART,
+  cart
 })
 
 const clearCartFromClient = () => ({
@@ -35,7 +35,8 @@ const clearCartFromClient = () => ({
 })
 
 const addToCart = item => ({
-  type: ADD_TO_CART, item
+  type: ADD_TO_CART,
+  item
 })
 
 const removeFromCart = jellyId => ({
@@ -43,7 +44,8 @@ const removeFromCart = jellyId => ({
 })
 
 const decrementJelly = item => ({
-  type: DECREMENT_JELLY, item
+  type: DECREMENT_JELLY,
+  item
 })
 
 /**
@@ -57,27 +59,26 @@ const decrementJelly = item => ({
 
 export const fetchCart = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/cart')
+    const {data} = await axios.get('/api/cart')
 
     // makes sure all of the jellies in your cart
     // are on state.jellies
     // fix this...
-    Object.keys(data.items)
-      .forEach(async id => await dispatch(
-          fetchSingleJelly(id)
-        )
-      )
+    Object.keys(data.items).forEach(
+      async id => await dispatch(fetchSingleJelly(id))
+    )
 
     const action = getCart(data)
     dispatch(action)
-  } catch (e) { console.error(e) }
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 export const handleCheckout = (token, address) => async dispatch => {
   try {
     await axios.post('/api/cart/checkout', {token, address})
-    dispatch( clearCartFromClient() )
-
+    dispatch(clearCartFromClient())
   } catch (err) {
     console.error(err)
   }
@@ -86,27 +87,32 @@ export const handleCheckout = (token, address) => async dispatch => {
 export const destroyCart = () => async dispatch => {
   try {
     await axios.delete('/api/cart')
-    dispatch( ({type: GET_CART, cart: initCart }) )
-  } catch (e) { console.error(e) }
+    dispatch({type: GET_CART, cart: initCart})
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 export const addJellyById = (jellyId, quantity) => async dispatch => {
   try {
-    const { data } = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
+    const {data} = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
     const action = addToCart(data)
     dispatch(action)
     dispatch(fetchCart())
-  } catch (e) { console.error(e) }
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 export const decrementCartJelly = jellyId => async dispatch => {
   try {
-    const { data } = await axios.put(`/api/cart/remove/${jellyId}`)
-
+    const {data} = await axios.put(`/api/cart/remove/${jellyId}`)
     const action = decrementJelly(data)
     dispatch(action)
     dispatch(fetchCart())
-  } catch (e) {console.error(e)}
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 export const removeJellyById = jellyId => async dispatch => {
@@ -117,7 +123,6 @@ export const removeJellyById = jellyId => async dispatch => {
     dispatch(fetchCart())
   } catch (e) { console.error(e) }
 }
-
 
 /**
  * REDUCER
@@ -144,7 +149,7 @@ export default function(state = initCart, action) {
           [action.jellyId]: undefined
         }
       }
-      case DECREMENT_JELLY:
+    case DECREMENT_JELLY:
       return {
         ...state,
         items: {

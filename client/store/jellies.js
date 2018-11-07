@@ -9,6 +9,7 @@ const GET_JELLIES = 'GET_JELLIES'
 const GET_SINGLE_JELLY = 'GET_SINGLE_JELLY'
 const SET_SEARCH = 'SET_SEARCH'
 const SET_CATEGORY = 'SET_CATEGORY'
+const SET_CATEGORIES_JELLY_IDS = 'SET_CATEGORIES_JELLY_IDS'
 
 /**
  * INITIAL STATE
@@ -18,6 +19,7 @@ const initState = {
   categories: [],
   search: '',
   selectedCategory: '',
+  categoryJellyIds: []
 }
 
 /**
@@ -43,8 +45,10 @@ export const setSearch = search => ({
   search
 })
 
-export const setCategory = category => ({type: SET_CATEGORY, category})
-
+const setCategoryJellyIds = ids => ({
+  type: SET_CATEGORIES_JELLY_IDS,
+  ids
+})
 
 /**
  * THUNK CREATORS
@@ -81,7 +85,16 @@ export const fetchSingleJelly = jellyId => async dispatch => {
   }
 }
 
-
+export const setCategory = category => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/jellies/categories/${category.id}`)
+    dispatch(setCategoryJellyIds(data))
+    data.forEach(async id => await dispatch(fetchSingleJelly(id)))
+    dispatch({type: SET_CATEGORY, category: category.name || ''})
+  } catch (e) {
+    console.error(e)
+  }
+}
 
 /**
  * REDUCER
@@ -101,13 +114,16 @@ export default function(state = initState, action) {
       }
     case GET_SINGLE_JELLY:
       return {
-        ...state, jellies: {
+        ...state,
+        jellies: {
           ...state.jellies,
           [action.jelly.id]: action.jelly
         }
       }
     case GET_CATEGORIES:
       return {...state, categories: action.categories}
+    case SET_CATEGORIES_JELLY_IDS:
+      return {...state, categoryJellyIds: action.ids}
     case SET_CATEGORY:
       return {...state, selectedCategory: action.category}
     case SET_SEARCH:

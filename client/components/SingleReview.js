@@ -42,7 +42,6 @@ class SingleReview extends Component {
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
     const {editing} = this.state
-
     const review = this.props.singleReview
 
     return review.id ? (
