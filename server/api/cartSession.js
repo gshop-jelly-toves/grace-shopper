@@ -1,5 +1,5 @@
-const { Jelly, JellyOrder, Order } = require('../db/models')
-const { dummyTaxesAndShipping } = require('../utils')
+const {Jelly, JellyOrder, Order} = require('../db/models')
+const {dummyTaxesAndShipping} = require('../utils')
 
 const newJelly = jelly => ({
   jellyId: jelly.id,
@@ -25,11 +25,8 @@ module.exports = {
       }
   */
 
-
-
   saveSessionToDB: async (cart, userId) => {
     try {
-
       // find existing user cart or create new user cart
       const {dataValues: order} = await Order.findOrCreateCartByUserId(userId)
 
@@ -38,14 +35,14 @@ module.exports = {
         where: {orderId: order.id}
       })
 
-
       // figure out which items on the session are/aren't
       // already saved in the database
       const jelliesInCartIds = Object.keys(cart.items).map(id => parseInt(id))
       const existingJellyIds = existingJellyOrders
-        .map( ({dataValues}) => dataValues.jellyId )
+        .map(({dataValues}) => dataValues.jellyId)
         .filter(id => jelliesInCartIds.includes(id))
 
+<<<<<<< HEAD
       const newJellyOrders = Object.keys(cart.items).map(id => parseInt(id))
         .filter(item => !existingJellyIds.includes(item.jellyId) )
 
@@ -53,17 +50,26 @@ module.exports = {
       // console.log('jellies in cart:', jelliesInCartIds)
       // console.log('jellies in db:', existingJellyIds)
       // console.log('new jellies in cart:', newJellyOrders)
+=======
+      const newJellyOrders = Object.keys(cart.items)
+        .map(id => parseInt(id))
+        .filter(item => !existingJellyIds.includes(item.jellyId))
+>>>>>>> cfec18ea172a9ba7602ce464a9d8034abddb4bfe
 
+      // very useful console logs for debugging
+      // console.log('jellies in cart:', jelliesInCartIds)
+      // console.log('jellies in db:', existingJellyIds)
+      // console.log('new jellies in cart:', newJellyOrders)
 
       // update existing rows
       const updateRes = existingJellyOrders
         .filter(item => jelliesInCartIds.includes(item.dataValues.jellyId))
         .map(item => {
-        // console.log('item.datavalues.jellyid',item.dataValues.jellyId)
-        return item.update({
-          quantity: cart.items[item.dataValues.jellyId].quantity
+          // console.log('item.datavalues.jellyid',item.dataValues.jellyId)
+          return item.update({
+            quantity: cart.items[item.dataValues.jellyId].quantity
+          })
         })
-      })
 
       // create new rows
       const createRes = newJellyOrders.map(jellyId =>
@@ -78,10 +84,9 @@ module.exports = {
       Promise.all(createRes)
 
       return true
-
-  } catch (err) {
-    console.error(err)
-  }
+    } catch (err) {
+      console.error(err)
+    }
   },
 
   addJelly: async (cart, jellyId) => {
@@ -89,18 +94,19 @@ module.exports = {
     const newJellies = {...cart.items}
 
     newJellies[jellyId]
-     ? newJellies[jellyId].quantity++
-     : newJellies[jellyId] = newJelly(jelly)
+      ? newJellies[jellyId].quantity++
+      : (newJellies[jellyId] = newJelly(jelly))
     const cartTotal = cart.cartTotal + jelly.priceCents
     const orderTotal = dummyTaxesAndShipping(cartTotal)
     return {
       ...cart,
-      cartTotal, orderTotal,
+      cartTotal,
+      orderTotal,
       items: newJellies
     }
   },
 
-    setJelly: async (cart, jellyId, quantity) => {
+  setJelly: async (cart, jellyId, quantity) => {
     const {dataValues: jelly} = await Jelly.findById(jellyId)
     const newJellies = {...cart.items}
     const quantNum = parseInt(quantity)
@@ -111,16 +117,17 @@ module.exports = {
 
     let cartTotal = cart.cartTotal
     if (quantNum > oldQuantity) {
-      cartTotal = cart.cartTotal + ((quantNum-oldQuantity)*jelly.priceCents)
+      cartTotal = cart.cartTotal + (quantNum - oldQuantity) * jelly.priceCents
     } else if (quantNum < oldQuantity) {
-      cartTotal = cart.cartTotal - ((oldQuantity-quantNum)*jelly.priceCents)
+      cartTotal = cart.cartTotal - (oldQuantity - quantNum) * jelly.priceCents
     }
-    
+
     const orderTotal = dummyTaxesAndShipping(cartTotal)
 
     return {
       ...cart,
-      cartTotal, orderTotal,
+      cartTotal,
+      orderTotal,
       items: newJellies
     }
   },
@@ -130,12 +137,12 @@ module.exports = {
     jelly = newJellies[jellyId]
     if (jelly) jelly.quantity--
     const cartTotal = cart.cartTotal - newJellies[jellyId].priceCents
-    if (jelly.quantity < 1)
-      newJellies[jellyId] = undefined
+    if (jelly.quantity < 1) newJellies[jellyId] = undefined
     const orderTotal = dummyTaxesAndShipping(cartTotal)
     return {
       ...cart,
-      cartTotal, orderTotal,
+      cartTotal,
+      orderTotal,
       items: newJellies
     }
   },

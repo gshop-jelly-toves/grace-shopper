@@ -42,7 +42,6 @@ class SingleReview extends Component {
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
     const {editing} = this.state
-
     const review = this.props.singleReview
 
     return review.id ? (
@@ -72,11 +71,6 @@ class SingleReview extends Component {
     )
   }
 }
-
-// const mapState = ({reviews: {singleReview}, user: {user}}) => ({
-//   singleReview,
-//   isAdmin: user.accessLevel >= 3
-// })
 
 const mapState = state => {
   return {

@@ -32,8 +32,7 @@ class AddJellyForm extends Component {
     })
   }
 
-
-  toggleCheckbox = (checkbox) => {
+  toggleCheckbox = checkbox => {
     if (this.selectedCheckboxes.has(checkbox)) {
       this.selectedCheckboxes.delete(checkbox)
 
@@ -61,14 +60,14 @@ class AddJellyForm extends Component {
       priceCents: '',
       inventory: '',
       categoryIds: [],
-      photo: '',
+      photo: ''
     })
   }
 
   handleSaveRedirect = async event => {
     event.preventDefault()
     const newJelly = this.state
-    if (newJelly.photo === "") {
+    if (newJelly.photo === '') {
       delete newJelly.photo
     }
     const {data} = await axios.post('/api/jellies', newJelly)
@@ -117,10 +116,7 @@ class AddJellyForm extends Component {
           />
           <label htmlFor="category">Categories</label>
 
-
-
-
-{/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
+          {/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
 
           {this.props.categories.map(category => (
             <CheckboxCategory
@@ -130,7 +126,6 @@ class AddJellyForm extends Component {
               checked={this.state.checked}
             />
           ))}
-
 
           <label htmlFor="photo">Jelly Photo</label>
           <input

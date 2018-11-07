@@ -1,14 +1,12 @@
 import React, {Component} from 'react'
 
 class CheckboxCategory extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
       isChecked: this.props.checked
     }
   }
-
 
   toggleCheckboxChange = () => {
     const {handleCheckboxChange, category} = this.props
