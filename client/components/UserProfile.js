@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchUserProfile} from '../store'
+import {Link} from 'react-router-dom'
 
 class UserProfile extends Component {
   componentDidMount() {
@@ -26,40 +27,48 @@ class UserProfile extends Component {
 
   render() {
     // console.log(this.props.userProfile)
-    const {name, avatar, reviews} = this.props.userProfile
+    const {name, reviews} = this.props.userProfile
+    // const numReviews = reviews.length
+    // console.log(numReviews)
     // console.log('reviews', reviews)
     return (
       <div className="container">
-        <div className="row p-3">
-          <div className="col-2 col-md-2">
-            <img src={avatar} avatar={name} />
+        <div className="row p-4">
+          <div className="col-3 col-md-3">
+            <img
+              src="https://dummyimage.com/220x220/cccccc/000147.png&text=UserPhoto"
+              avatar={name}
+            />
           </div>
           <div className="col-9 col-md-9">
-            <h1>Hello {name}</h1>
+            <h1>{name}</h1>
+            <h3>JT Collective Lifetime Member</h3>
+            <h5>Jammin' Out with us since September 10, 2018 </h5>
+            {/* <h3>{numReviews} reviews</h3> */}
           </div>
         </div>
-        <div className="row p-3">
+        <div className="row p-4">
           <div className="col">
-            <h2>Reviews</h2>
+            <h2>{name}'s Product Reviews</h2>
           </div>
         </div>
         {reviews ? (
           reviews.map(userReview => (
             <div key={userReview.id}>
-              <div className="row p-3">
+              <div className="row p-4">
                 <div className="col-3 col-md-3">
-                  {/* <Link to="/jellies/12"> */}
-                  <div className="card">
-                    <img
-                      className="card-img-top"
-                      src="..."
-                      alt="Card image cap"
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
+                  <Link to={`/jellies/${userReview.jellyId}`}>
+                    <div className="card">
+                      <img
+                        className="card-img-top"
+                        src="https://dummyimage.com/250x180/000147/ffffff.png&text=JellyPic"
+                        alt="Jelly picture"
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="card-title">Jelly Name w/Link</h5>
+                      </div>
                     </div>
-                  </div>
-                  {/* </Link> */}
+                  </Link>
                 </div>
                 <div className="col-9 col-md-9">
                   <h3>{userReview.title}</h3>
@@ -69,6 +78,7 @@ class UserProfile extends Component {
                       {userReview.date}
                     </strong>
                   </p>
+                  <p>{userReview.body}</p>
                   <p>
                     <strong />
                   </p>
