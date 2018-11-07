@@ -11,7 +11,6 @@ export {default as Footer} from './Footer'
 export {default as UserHome} from './Homepage'
 export {default as NoMatch} from './NoMatch'
 
-export {default as UserProfile} from './UserProfile'
 export {default as SingleJelly} from './SingleJelly'
 export {default as Category} from './Category'
 export {default as JellyReviews} from './JellyReviews'
