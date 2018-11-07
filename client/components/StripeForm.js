@@ -16,7 +16,9 @@ class StripeForm extends React.Component {
         stripeKey={STRIPE_PUB_KEY}
         closed={() => this.props.history.push('/')}
       >
-        <button className="btn btn-primary">Checkout</button>
+        <button type="button" className="btn btn-block btn-lg btn-success">
+          Checkout
+        </button>
       </StripeCheckout>
     ) : (
       <div>You have no cart!</div>
