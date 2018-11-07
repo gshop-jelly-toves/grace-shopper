@@ -91,6 +91,8 @@ class AllOrders extends Component {
       </button>
     )
 
+    console.log(this.state.orderView)
+
     return (
       <div className="container">
         <AccessBar />

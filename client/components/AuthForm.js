@@ -9,7 +9,7 @@ import {auth} from '../store'
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
-  ('//////', displayName)
+  console.log('//////', displayName)
 
   return (
     <div>
