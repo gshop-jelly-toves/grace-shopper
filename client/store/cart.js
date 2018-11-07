@@ -45,7 +45,8 @@ const removeFromCart = item => ({
 })
 
 const decrementJelly = item => ({
-  type: DECREMENT_JELLY, item
+  type: DECREMENT_JELLY,
+  item
 })
 
 /**
@@ -87,53 +88,39 @@ export const handleCheckout = (token, address) => async dispatch => {
 export const destroyCart = () => async dispatch => {
   try {
     await axios.delete('/api/cart')
-<<<<<<< HEAD
-    dispatch(clearCartFromClient())
+    dispatch({type: GET_CART, cart: initCart})
   } catch (e) {
     console.error(e)
   }
-=======
-    dispatch( ({type: GET_CART, cart: initCart }) )
-  } catch (e) { console.error(e) }
->>>>>>> master
 }
 
 export const addJellyById = (jellyId, quantity) => async dispatch => {
   try {
-<<<<<<< HEAD
     const {data} = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
     const action = addToCart(data)
     dispatch(action)
+    dispatch(fetchCart())
   } catch (e) {
     console.error(e)
   }
-=======
-    const { data } = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
-    const action = addToCart(data)
-    dispatch(action)
-    dispatch(fetchCart())
-  } catch (e) { console.error(e) }
->>>>>>> master
 }
 
 export const decrementCartJelly = jellyId => async dispatch => {
   try {
-    const { data } = await axios.put(`/api/cart/remove/${jellyId}`)
+    const {data} = await axios.put(`/api/cart/remove/${jellyId}`)
 
     const action = decrementJelly(data)
     dispatch(action)
     dispatch(fetchCart())
-  } catch (e) {console.error(e)}
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 export const removeJellyById = jellyId => async dispatch => {
   try {
-<<<<<<< HEAD
     const {data} = await axios.delete(`/api/cart/remove/${jellyId}`)
-=======
-    const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
     // console.log(data)
->>>>>>> master
     const action = removeFromCart(data)
     dispatch(action)
   } catch (e) {
@@ -153,11 +140,6 @@ export default function(state = initCart, action) {
     case ADD_TO_CART:
       return {
         ...state,
-<<<<<<< HEAD
-        cartTotal:
-          state.cartTotal + action.item.priceCents * action.item.quantity,
-=======
->>>>>>> master
         items: {
           ...state.items,
           [action.item.jellyId]: action.item
@@ -166,17 +148,12 @@ export default function(state = initCart, action) {
     case REMOVE_FROM_CART:
       return {
         ...state,
-<<<<<<< HEAD
-        cartTotal:
-          state.cartTotal - action.item.priceCents * action.item.quantity,
-=======
->>>>>>> master
         items: {
           ...state.items,
           [action.item.jellyId]: undefined
         }
       }
-      case DECREMENT_JELLY:
+    case DECREMENT_JELLY:
       return {
         ...state,
         items: {

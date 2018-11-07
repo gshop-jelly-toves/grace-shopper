@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-const { User, JellyOrder, Order } = require('../db/models')
+const {User, JellyOrder, Order} = require('../db/models')
 const cartSession = require('./cartSession')
 
 // see /server/middlewares/user
@@ -13,13 +13,11 @@ const {
 
 module.exports = router
 
-
-router.post("/checkout", requireLogin, async (req, res) => {
+router.post('/checkout', requireLogin, async (req, res) => {
   const user = await User.findById(req.user.id)
   const {address} = req.body
   const cart = await user.checkoutActiveCart(address)
   let amount = cart.dataValues.orderTotal
-
 
   const customer = await stripe.customers.create({
     email: req.body.token.email,
@@ -27,12 +25,12 @@ router.post("/checkout", requireLogin, async (req, res) => {
   })
   const charge = await stripe.charges.create({
     amount,
-    description: "Bought jelly for my belly.",
-    currency: "usd",
+    description: 'Bought jelly for my belly.',
+    currency: 'usd',
     customer: customer.id
   })
   res.json(charge)
-});
+})
 
 router.get('/', async (req, res, next) => {
   let cart
@@ -100,10 +98,10 @@ router.put('/:jellyId', async (req, res, next) => {
       // if user is not logged in, persist item to `req.session.cart`
       req.session.cart = await cartSession.setItem(cart, jellyId, quantity)
       res.json(req.session.cart.items[jellyId])
-  } else {
-    throw new Error('req.session.cart is not defined')
+    } else {
+      throw new Error('req.session.cart is not defined')
+    }
   }
-}
 })
 
 // /api/cart/add/:jellyId PUT - add a single jelly to cart`
@@ -169,7 +167,6 @@ router.delete('/remove/:jellyId', async (req, res, next) => {
     throw new Error('req.session.cart is not defined')
   }
 })
-
 
 // remove a single jelly product from the cart`
 router.put('/remove/:jellyId', async (req, res, next) => {

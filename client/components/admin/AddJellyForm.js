@@ -32,8 +32,7 @@ class AddJellyForm extends Component {
     })
   }
 
-
-  toggleCheckbox = (checkbox) => {
+  toggleCheckbox = checkbox => {
     if (this.selectedCheckboxes.has(checkbox)) {
       this.selectedCheckboxes.delete(checkbox)
 
@@ -48,7 +47,6 @@ class AddJellyForm extends Component {
         categoryIds: [...prevState.categoryIds, checkbox.id]
       }))
     }
-    console.log('ONE CHECKBOX', this.selectedCheckboxes)
   }
 
   handleAddAnother = async event => {
@@ -56,30 +54,20 @@ class AddJellyForm extends Component {
     const newJelly = this.state
     await axios.post('/api/jellies', newJelly)
 
-    // console.log('ENTIRE SET', this.selectedCheckboxes)
-    // this.selectedCheckboxes.forEach(e => e.delete(e))
-    // console.log(this.selectedCheckboxes)
-
-
-    // (function() {
-    // document.getElementById("add-jelly-form").reset();
-    // })()
-
-
     this.setState({
       name: '',
       description: '',
       priceCents: '',
       inventory: '',
       categoryIds: [],
-      photo: '',
+      photo: ''
     })
   }
 
   handleSaveRedirect = async event => {
     event.preventDefault()
     const newJelly = this.state
-    if (newJelly.photo === "") {
+    if (newJelly.photo === '') {
       delete newJelly.photo
     }
     const {data} = await axios.post('/api/jellies', newJelly)
@@ -90,7 +78,6 @@ class AddJellyForm extends Component {
   render() {
     const {name, description, priceCents, inventory} = this.state
     const isEnabled = name && description && priceCents && inventory
-    console.log('RENDER', this.state)
 
     return (
       <div>
@@ -130,10 +117,7 @@ class AddJellyForm extends Component {
           />
           <label htmlFor="category">Categories</label>
 
-
-
-
-{/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
+          {/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
 
           {this.props.categories.map(category => (
             <CheckboxCategory
@@ -143,7 +127,6 @@ class AddJellyForm extends Component {
               checked={this.state.checked}
             />
           ))}
-
 
           <label htmlFor="photo">Jelly Photo</label>
           <input
