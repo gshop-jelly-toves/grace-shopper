@@ -47,7 +47,6 @@ const setAddress = address => ({
 export const fetchAddress = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/users/address')
-    console.log('data',data)
     const action = setAddress(data)
     dispatch(action)
   } catch (err) {

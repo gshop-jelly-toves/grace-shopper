@@ -47,11 +47,12 @@ module.exports = {
         .filter(id => jelliesInCartIds.includes(id))
 
       const newJellyOrders = Object.keys(cart.items).map(id => parseInt(id))
-        .filter(item => existingJellyIds.includes(item.jellyId) )
+        .filter(item => !existingJellyIds.includes(item.jellyId) )
 
-      console.log('jellies in cart:', jelliesInCartIds)
-      console.log('jellies in db:', existingJellyIds)
-      console.log('new jellies in cart:', newJellyOrders)
+      // very useful console logs for debugging
+      // console.log('jellies in cart:', jelliesInCartIds)
+      // console.log('jellies in db:', existingJellyIds)
+      // console.log('new jellies in cart:', newJellyOrders)
 
 
       // update existing rows
