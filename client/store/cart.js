@@ -86,16 +86,16 @@ export const handleCheckout = (token, address) => async dispatch => {
 export const destroyCart = () => async dispatch => {
   try {
     await axios.delete('/api/cart')
-    dispatch( clearCartFromClient() )
+    dispatch( ({type: GET_CART, cart: initCart }) )
   } catch (e) { console.error(e) }
 }
 
 export const addJellyById = (jellyId, quantity) => async dispatch => {
   try {
-    console.log('store cart', quantity)
     const { data } = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
     const action = addToCart(data)
     dispatch(action)
+    dispatch(fetchCart())
   } catch (e) { console.error(e) }
 }
 
@@ -103,9 +103,9 @@ export const decrementCartJelly = jellyId => async dispatch => {
   try {
     const { data } = await axios.put(`/api/cart/remove/${jellyId}`)
 
-    console.log('drecement data', data)
     const action = decrementJelly(data)
     dispatch(action)
+    dispatch(fetchCart())
   } catch (e) {console.error(e)}
 }
 
@@ -131,7 +131,6 @@ export default function(state = initCart, action) {
     case ADD_TO_CART:
       return {
         ...state,
-        cartTotal: state.cartTotal + action.item.priceCents * action.item.quantity,
         items: {
           ...state.items,
           [action.item.jellyId]: action.item
@@ -140,7 +139,6 @@ export default function(state = initCart, action) {
     case REMOVE_FROM_CART:
       return {
         ...state,
-        cartTotal: state.cartTotal - action.item.priceCents * action.item.quantity,
         items: {
           ...state.items,
           [action.item.jellyId]: undefined
@@ -149,7 +147,6 @@ export default function(state = initCart, action) {
       case DECREMENT_JELLY:
       return {
         ...state,
-        cartTotal: state.cartTotal - action.item.priceCents,
         items: {
           ...state.items,
           [action.item.jellyId]: action.item
