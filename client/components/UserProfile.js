@@ -8,14 +8,68 @@ class UserProfile extends Component {
     this.props.fetchUserProfile(userId)
   }
 
+  showStarRating = number => {
+    let starStr = ''
+    for (let i = 1; i <= number; i++) {
+      starStr += '★'
+    }
+    return starStr
+  }
+
   render() {
-    console.log('USER PROFILE', this.props.userProfile)
+    // console.log(this.props.userProfile)
     const {name, avatar, reviews} = this.props.userProfile
+    // console.log('reviews', reviews)
     return (
       <div className="container">
-        <div className="row px-3">
-          <h1>HELLO WORLD</h1>
+        <div className="row p-3">
+          <div className="col-2 col-md-2">
+            <img src={avatar} avatar={name} />
+          </div>
+          <div className="col-9 col-md-9">
+            <h1>Hello {name}</h1>
+          </div>
         </div>
+        <div className="row p-3">
+          <div className="col">
+            <h2>Reviews</h2>
+          </div>
+        </div>
+        {reviews ? (
+          reviews.map(userReview => (
+            <div key={userReview.id}>
+              <div className="row p-3">
+                <div className="col-3 col-md-3">
+                  {/* <Link to="/jellies/12"> */}
+                  <div className="card">
+                    <img
+                      className="card-img-top"
+                      src="..."
+                      alt="Card image cap"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Card title</h5>
+                    </div>
+                  </div>
+                  {/* </Link> */}
+                </div>
+                <div className="col-9 col-md-9">
+                  <h3>{userReview.title}</h3>
+                  <p>
+                    <strong>{userReview.date}</strong>
+                  </p>
+                  <p>
+                    <strong>
+                      {this.showStarRating(userReview.starRating)}
+                    </strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No reviews here!</p>
+        )}
       </div>
     )
   }
