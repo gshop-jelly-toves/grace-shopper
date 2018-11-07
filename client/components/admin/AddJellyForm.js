@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchCategories} from '../../store/jellies'
 import axios from 'axios'
 import CheckboxCategory from './CheckboxCategory'
+import {AccessBar} from '../index'
 
 class AddJellyForm extends Component {
   constructor(props) {
@@ -78,81 +79,122 @@ class AddJellyForm extends Component {
   render() {
     const {name, description, priceCents, inventory} = this.state
     const isEnabled = name && description && priceCents && inventory
+
     return (
-      <div>
-        <form id="add-jelly-form">
-          <h2>Add Jelly</h2>
-          <label htmlFor="name">Jelly Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
-          <label htmlFor="description">Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={this.state.description}
-            onChange={this.handleChange}
-            required
-          />
-          <label htmlFor="priceCents">Price (cents):</label>
-          <input
-            type="number"
-            name="priceCents"
-            value={this.state.priceCents}
-            onChange={this.handleChange}
-            required
-          />
-          <label htmlFor="inventory">Inventory</label>
-          <input
-            type="number"
-            name="inventory"
-            value={this.state.inventory}
-            onChange={this.handleChange}
-            required
-          />
-          <label htmlFor="category">Categories</label>
+      <div className="container">
+        <AccessBar />
 
-          {/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
+        <div className="row p-3">
+          <form id="add-jelly-form">
+            <h2>Add Jelly</h2>
 
-          {this.props.categories.map(category => (
-            <CheckboxCategory
-              category={category}
-              key={category.id}
-              handleCheckboxChange={this.toggleCheckbox}
-              checked={this.state.checked}
-            />
-          ))}
+            <div className="form-row">
+              <div className="col">
+                <label htmlFor="name">Jelly Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="form-control"
+                  placeholder="Jelly Name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
 
-          <label htmlFor="photo">Jelly Photo</label>
-          <input
-            type="url"
-            name="photo"
-            placeholder="http://example.com"
-            value={this.state.photo}
-            onChange={this.handleChange}
-            required
-          />
-          <button
-            type="submit"
-            onClick={this.handleAddAnother}
-            disabled={!isEnabled}
-            className={isEnabled ? 'enabled' : 'disabled'}
-          >
-            Save and add another
-          </button>
-          <button
-            type="submit"
-            onClick={this.handleSaveRedirect}
-            disabled={!isEnabled}
-            className={isEnabled ? 'enabled' : 'disabled'}
-          >
-            Save and go to jelly
-          </button>
-        </form>
+            <div className="form-row">
+              <div className="col">
+                <label htmlFor="photo">Jelly Photo</label>
+                <input
+                  type="url"
+                  name="photo"
+                  className="form-control"
+                  placeholder="Place link to jelly image here"
+                  value={this.state.photo}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="col">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  className="form-control"
+                  placeholder="Jelly description"
+                  rows="4"
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="col">
+                <label htmlFor="priceCents">Price (cents)</label>
+                <input
+                  type="number"
+                  name="priceCents"
+                  className="form-control"
+                  placeholder="Enter price in cents"
+                  value={this.state.priceCents}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              <div className="col">
+                <label htmlFor="inventory">Inventory</label>
+                <input
+                  type="number"
+                  name="inventory"
+                  className="form-control"
+                  placeholder="How many are in stock?"
+                  value={this.state.inventory}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Can't figure out how to reset checked to false after the handleAddAnother function call on the button submit */}
+            <div className="form-row">
+              <div className="col">
+                <label htmlFor="category">Categories</label>
+                {this.props.categories.map(category => (
+                  <CheckboxCategory
+                    category={category}
+                    key={category.id}
+                    handleCheckboxChange={this.toggleCheckbox}
+                    checked={this.state.checked}
+                  />
+                ))}
+              </div>
+            </div>
+          </form>
+          <div className="col">
+            <button
+              type="submit"
+              onClick={this.handleAddAnother}
+              disabled={!isEnabled}
+              className={isEnabled ? 'enabled' : 'disabled'}
+            >
+              Save and add another
+            </button>
+          </div>
+          <div className="col">
+            <button
+              type="submit"
+              onClick={this.handleSaveRedirect}
+              disabled={!isEnabled}
+              className={isEnabled ? 'enabled' : 'disabled'}
+            >
+              Save and go to jelly
+            </button>
+          </div>
+        </div>
       </div>
     )
   }
