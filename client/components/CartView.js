@@ -166,9 +166,12 @@ class CartView extends React.Component {
         </div>
         {/* END OF CART CONTAINER */}
       </div>
-    ) : (
-      <div>Your cart is currently empty, add some jellies!</div>
-    )
+    ) : ( <div className='center column'>
+      <h1 className='center'>Your cart is currently empty, add some jellies!</h1>
+      <button className='center' style={{width: 500}} onClick={() => this.props.history.push('/jellies')}>
+        Show me the jellies!
+      </button>
+    </div>)
   }
 }
 

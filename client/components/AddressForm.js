@@ -41,18 +41,19 @@ class AddressForm extends React.Component {
   render() {
     const {address} = this.props
     return (
-      <div>
-        FIRST
+      <div className='center column' style={{width: 400}}>
+        <h1 className='center'>Jelly Location</h1>
+        <h4 className='center'>First name</h4>
         <input type='text' value={address.firstName} name='firstName' onChange={this.handleChange} />
-        LAST
+        <h4 className='center'>Last name</h4>
         <input type='text' name='lastName' value={address.lastName} onChange={this.handleChange} />
-        STATE
+        <h4 className='center'>State</h4>
         <input type='text' name='state' value={address.state} onChange={this.handleChange} />
-        CITY
+        <h4 className='center'>City</h4>
         <input type='text' name='city' value={address.city} onChange={this.handleChange} />
-        STREET
+        <h4 className='center'>Street</h4>
         <input type='text' name='street' value={address.street} onChange={this.handleChange} />
-        ZIPCODE
+        <h4 className='center'>Zipcode</h4>
         <input type='text' name='zipcode' value={address.zipcode} onChange={this.handleChange} />
 
 

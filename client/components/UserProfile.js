@@ -65,7 +65,7 @@ class UserProfile extends Component {
                         alt="Jelly picture"
                       />
                       <div className="card-body text-center">
-                        <h5 className="card-title">Jelly Name w/Link</h5>
+                        {/* <h5 className="card-title">Jelly Name w/Link</h5> */}
                       </div>
                     </div>
                   </Link>

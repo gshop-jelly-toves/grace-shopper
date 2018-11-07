@@ -51,8 +51,8 @@ class SingleReview extends Component {
           <h2>{review.title}</h2>
         </Link>
         <div>
-          <h4>Review by: {review.user.name}</h4>
-          <img src={review.user.avatar} />
+          <h4 onClick={() => this.props.history.push(`/users/${review.user.id}`)} >Review by: {review.user.name}</h4>
+          <img onClick={() => this.props.history.push(`/users/${review.user.id}`)} src={review.user.avatar} />
           <p>Rating: {review.starRating} / 5</p>
           <p>{review.body}</p>
         </div>
@@ -72,11 +72,6 @@ class SingleReview extends Component {
     )
   }
 }
-
-// const mapState = ({reviews: {singleReview}, user: {user}}) => ({
-//   singleReview,
-//   isAdmin: user.accessLevel >= 3
-// })
 
 const mapState = state => {
   return {

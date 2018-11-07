@@ -104,3 +104,15 @@ form div {
   display: flex;
   align-content: center;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.column {
+  display: flex;  
+  flex-direction: column;
+}
+
