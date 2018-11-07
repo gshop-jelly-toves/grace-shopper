@@ -15,7 +15,8 @@ class JellyList extends Component {
       //    6 % 2 === 0
       //    6 % 3 === 0
       //  6 jellies in 2 rows is essentially a full screen height
-      jelliesPerReq: 6
+      jelliesPerReq: 6,
+      categoryFilter: ''
     }
   }
 
@@ -33,6 +34,7 @@ class JellyList extends Component {
   render() {
     const amount = this.state.jelliesPerReq
     const {search} = this.props
+    const {selectedCategory} = this.props
     const keyedJellies = this.props.jellies
     const category = this.props.selectedCategory
 

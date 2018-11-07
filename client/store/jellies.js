@@ -19,7 +19,10 @@ const initState = {
   categories: [],
   search: '',
   selectedCategory: '',
+<<<<<<< HEAD
   categoryJellyIds: []
+=======
+>>>>>>> master
 }
 
 /**

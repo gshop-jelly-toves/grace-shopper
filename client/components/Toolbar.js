@@ -1,36 +1,57 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {setSearch} from '../store'
+import {setSearch, setCategory, fetchCategories} from '../store'
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props)
 
-    this.handleSearch = this.handleSearch.bind(this)
+  componentDidMount() {
+    this.props.fetchCategories()
   }
 
-  handleSearch(event) {
+  handleCategory = (event) => {
+    this.props.setCategory(event.target.value)
+  }
+
+  handleSearch = (event) => {
     this.props.setSearch(event.target.value)
   }
 
   render() {
     return (
-      <form className="form-group">
-        <input
-          className="form-control form-control-lg"
-          type="search"
-          name="search"
-          placeholder="What's your jam today?"
-          aria-label="Search"
-          onChange={this.handleSearch}
-        />
-      </form>
+      <div>
+        <form className="form-group">
+          <input
+            className="form-control form-control-lg"
+            type="search"
+            name="search"
+            placeholder="What's your jam today?"
+            aria-label="Search"
+            onChange={this.handleSearch}
+          />
+        </form>
+
+        {/* <label>Select Category</label>
+        <select name="selectCategory" onChange={this.handleCategory}>
+          <option>-</option>
+          {this.props.categories.map(category => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select> */}
+      </div>
     )
   }
 }
 
-const mapDispatch = dispatch => ({
-  setSearch: search => dispatch(setSearch(search))
+const mapState = state => ({
+  categories: state.jellies.categories
 })
 
-export default connect(null, mapDispatch)(SearchBar)
+const mapDispatch = dispatch => ({
+  setSearch: search => dispatch(setSearch(search)),
+  setCategory: category => dispatch(setCategory(category)),
+  fetchCategories: () => dispatch(fetchCategories())
+})
+
+export default connect(mapState, mapDispatch)(SearchBar)

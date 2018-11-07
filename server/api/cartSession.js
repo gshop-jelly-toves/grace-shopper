@@ -105,9 +105,16 @@ module.exports = {
     const quantNum = parseInt(quantity)
 
     newJellies[jellyId] = newJelly(jelly)
+    const oldQuantity = newJellies[jellyId].quantity || 0
     newJellies[jellyId].quantity = quantNum
 
-    const cartTotal = cart.cartTotal + jelly.priceCents
+    let cartTotal = cart.cartTotal
+    if (quantNum > oldQuantity) {
+      cartTotal = cart.cartTotal + ((quantNum-oldQuantity)*jelly.priceCents)
+    } else if (quantNum < oldQuantity) {
+      cartTotal = cart.cartTotal - ((oldQuantity-quantNum)*jelly.priceCents)
+    }
+    
     const orderTotal = dummyTaxesAndShipping(cartTotal)
 
     return {
@@ -121,9 +128,9 @@ module.exports = {
     const newJellies = {...cart.items}
     jelly = newJellies[jellyId]
     if (jelly) jelly.quantity--
+    const cartTotal = cart.cartTotal - newJellies[jellyId].priceCents
     if (jelly.quantity < 1)
       newJellies[jellyId] = undefined
-    const cartTotal = cart.cartTotal - newJellies[jellyId].priceCents
     const orderTotal = dummyTaxesAndShipping(cartTotal)
     return {
       ...cart,
@@ -131,6 +138,21 @@ module.exports = {
       items: newJellies
     }
   },
+
+  // decrementJelly: (cart, jellyId) => {
+  //   const newJellies = {...cart.items}
+  //   jelly = newJellies[jellyId]
+  //   if (jelly) jelly.quantity--
+  //   if (jelly.quantity < 1)
+  //     newJellies[jellyId] = undefined
+  //   const cartTotal = cart.cartTotal - newJellies[jellyId].priceCents
+  //   const orderTotal = dummyTaxesAndShipping(cartTotal)
+  //   return {
+  //     ...cart,
+  //     cartTotal, orderTotal,
+  //     items: newJellies
+  //   }
+  // },
 
   newCart: () => ({
     // clone of deserialize cart

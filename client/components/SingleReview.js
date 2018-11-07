@@ -71,11 +71,6 @@ class SingleReview extends Component {
   }
 }
 
-// const mapState = ({reviews: {singleReview}, user: {user}}) => ({
-//   singleReview,
-//   isAdmin: user.accessLevel >= 3
-// })
-
 const mapState = state => {
   return {
     singleReview: state.reviews.singleReview,

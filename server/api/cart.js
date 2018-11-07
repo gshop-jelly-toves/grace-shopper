@@ -80,6 +80,32 @@ router.delete('/', async (req, res, next) => {
   }
 })
 
+router.put('/:jellyId', async (req, res, next) => {
+  let {cart} = req.session
+
+  const jellyId = req.params.jellyId
+  const {quantity} = req.body
+
+  if (cart) {
+    if (req.user) {
+      // if user is logged in, save to db
+      try {
+        // line 44 is the only place where the registered
+        // users need their cart on the session (can be fixed)
+        const item = await JellyOrder.setItem(cart.id, jellyId, quantity)
+        res.json(item)
+      } catch (e) {
+        next(e)
+      }
+      // if user is not logged in, persist item to `req.session.cart`
+      req.session.cart = await cartSession.setItem(cart, jellyId, quantity)
+      res.json(req.session.cart.items[jellyId])
+  } else {
+    throw new Error('req.session.cart is not defined')
+  }
+}
+})
+
 // /api/cart/add/:jellyId PUT - add a single jelly to cart`
 router.put('/add/:jellyId', async (req, res, next) => {
   let {cart} = req.session
@@ -112,7 +138,7 @@ router.put('/add/:jellyId', async (req, res, next) => {
   }
 })
 
-// /api/cart/add/:jellyId PUT - remove a single jelly from the cart`
+// remove a single jelly product from the cart`
 router.delete('/remove/:jellyId', async (req, res, next) => {
   let {cart} = req.session
   const jellyId = req.params.jellyId
@@ -122,6 +148,41 @@ router.delete('/remove/:jellyId', async (req, res, next) => {
       // if user is logged in, remove/reduce db
       try {
         const item = await JellyOrder.removeItem(cart.id, jellyId)
+        res.json(
+          item || {
+            message: 'item not in cart'
+          }
+        )
+      } catch (e) {
+        next(e)
+      }
+    } else {
+      // if user is not logged in, update cart session
+      req.session.cart = cartSession.removeJelly(cart, jellyId)
+      res.json(
+        req.session.cart.items[jellyId] || {
+          message: 'item not in cart'
+        }
+      )
+    }
+  } else {
+    throw new Error('req.session.cart is not defined')
+  }
+})
+
+
+// remove a single jelly product from the cart`
+router.put('/remove/:jellyId', async (req, res, next) => {
+  let {cart} = req.session
+  const jellyId = req.params.jellyId
+
+  if (cart) {
+    if (req.user) {
+      // if user is logged in, remove/reduce db
+      try {
+        const item = await JellyOrder.decrementJelly(cart.id, jellyId)
+
+        // console.log(item)
         res.json(
           item || {
             message: 'item not in cart'

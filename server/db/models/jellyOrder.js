@@ -21,15 +21,28 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
-jellyOrder.setQuantity = async function(orderId, jellyId, amount) {
+jellyOrder.setItem = async function(orderId, jellyId, quantity) {
   try {
 
     const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
+    return item.update({quantity})
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+jellyOrder.decrementJelly = async function(orderId, jellyId) {
+  try {
+
+    const item = await this.findOne({
+      where: {orderId, jellyId}
+    })
+
     return await item.update({
-      quantity: amount
+      quantity: item.quantity - 1
     })
   } catch (e) {
     console.error(e)

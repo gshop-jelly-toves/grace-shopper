@@ -173,7 +173,10 @@ class AllOrders extends Component {
           <div className="row p-3 align-items-center border-top" key={order.id}>
             <div className="col-9 col-md-9">
               <h4>Order #{order.id}</h4>
-              <p>Order Status: {order.status}</p>
+              <p>Status: {order.status}</p>
+              <p>Ordered by: {order.user.name} </p>
+              <p>email: {order.user.email}</p>
+              <img src={order.user.avatar} />
 
               <p>Ordered on {new Date(order.createdAt).toUTCString()}</p>
               {order.status === 'cart' ? (
