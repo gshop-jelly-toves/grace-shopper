@@ -21,8 +21,8 @@ class FinalCheckout extends React.Component {
   }
 
   render() {
-    console.log('CART', this.props.cart)
-    console.log('ADDRESS', this.props.address)
+    // console.log('CART', this.props.cart)
+    // console.log('ADDRESS', this.props.address)
     return this.isFilledOut() ? (
       <div className="container">
         <div className="row p-3">
