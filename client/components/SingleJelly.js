@@ -66,8 +66,6 @@ class SingleJelly extends Component {
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
 
-    console.log('STATE', this.state)
-
     const {jellyId} = this.props.match.params
     const jelly = this.props.jellies[jellyId]
 
