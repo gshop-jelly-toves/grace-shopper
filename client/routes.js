@@ -16,10 +16,10 @@ import {
   OrderHistory,
   AllOrders,
   CheckoutSplash,
-  FinalCheckout,
-  UserProfile
+  FinalCheckout
 } from './components'
 import {fetchUser, fetchCart} from './store'
+
 
 /**
  * COMPONENT
@@ -47,8 +47,7 @@ class Routes extends Component {
         <Route path="/jellies" component={JellyList} />
         <Route exact path="/cart" component={CartView} />
         <Route path="/orders" component={OrderHistory} />
-        <Route path="/users/:userId" component={UserProfile} />
-        <Route path="/cart/checkout" component={CheckoutSplash} />
+        <Route path='/cart/checkout'component={CheckoutSplash} />
 
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
@@ -56,7 +55,7 @@ class Routes extends Component {
             <Route path="/admin/jellies/orders" component={AllOrders} />
             <Route path="/admin/jellies/add" component={AddJellyForm} />
             <Route path="/admin" component={AdminLanding} />
-            <Route path="/cart/order" component={FinalCheckout} />
+            <Route path='/cart/order' component={FinalCheckout} />
           </Switch>
         )}
 
