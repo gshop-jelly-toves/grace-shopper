@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {fetchJellies, addJellyById} from '../store'
 import {priceCentsToString} from '../utils'
 import {Searchbar} from './index'
+import Category from './Category'
+import axios from 'axios'
 
 class JellyList extends Component {
   constructor(props) {
@@ -34,7 +36,7 @@ class JellyList extends Component {
     const {search} = this.props
     const {selectedCategory} = this.props
     const keyedJellies = this.props.jellies
-    const {category} = this.props.selectedCategory
+    const category = this.props.selectedCategory
 
     const jelliesList = Object.keys(keyedJellies)
       .map(key => keyedJellies[key])
@@ -51,23 +53,23 @@ class JellyList extends Component {
             jelly => jelly.name.toLowerCase().indexOf(search.toLowerCase()) > -1
           )
 
-    // const categoryFilter = jellyArr =>
-    //   category === ''
-    //     ? jellyArr
-    //     : [...jellyArr].filter(
-    //       jelly =>
-    //         jelly.name.indexOf(search.toLowerCase()) > -1
-    //     )
+    const categoryFilter = jellyArr =>
+      category === ''
+        ? jellyArr
+        : [...jellyArr].filter(jelly =>
+            this.props.categoryJellyIds.includes(jelly.id)
+          )
 
     return (
       <Fragment>
         <div className="d-flex flex-column" id="jellyList">
           <div className="w-75 mx-auto p-3">
             <Searchbar />
+            <Category />
           </div>
         </div>
         <div className="d-flex flex-wrap" id="jellyList">
-          {searchFilter(jelliesList).map(jelly => (
+          {categoryFilter(searchFilter(jelliesList)).map(jelly => (
             <div className="mx-auto px-5 pb-5" key={jelly.id}>
               <Link to={`/jellies/${jelly.id}`}>
                 <img src={jelly.photo} />
@@ -116,11 +118,13 @@ class JellyList extends Component {
 const mapState = ({
   jellies: {jellies},
   jellies: {search},
-  jellies: {selectedCategory}
+  jellies: {selectedCategory},
+  jellies: {categoryJellyIds}
 }) => ({
   jellies,
   search,
-  selectedCategory
+  selectedCategory,
+  categoryJellyIds
 })
 
 const mapDispatch = dispatch => ({

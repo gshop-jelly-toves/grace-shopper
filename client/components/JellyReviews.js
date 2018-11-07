@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchReviews} from '../store'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 class JellyReviews extends Component {
   // constructor(props) {
@@ -56,7 +56,7 @@ class JellyReviews extends Component {
           </div>
           <div className="row px-3 align-items-center">
             <div className="col-1 col-md-1">
-              <img src={review.user.avatar} className="rounded-circle" />
+              <img onClick={() => this.props.history.push(`/users/${review.user.id}`)} src={review.user.avatar} className="rounded-circle" />
             </div>
             <div className="col-11 col-md-11">
               <Link to={`/users/${review.userId}`}>
@@ -89,4 +89,4 @@ const mapDispatch = dispatch => ({
   fetchReviews: jellyId => dispatch(fetchReviews(jellyId))
 })
 
-export default connect(mapState, mapDispatch)(JellyReviews)
+export default withRouter(connect(mapState, mapDispatch)(JellyReviews))

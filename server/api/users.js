@@ -64,9 +64,7 @@ router.post('/address', requireLogin, async (req, res, next) => {
       id: undefined,
       userId: req.user.id
     }
-    console.log('-'.repeat(50))
-    console.log('newAddress:', newAddress)
-    console.log('-'.repeat(50))
+
     const address = await Address.create(newAddress)
     res.json(address)
   } catch (err) {
@@ -110,7 +108,6 @@ router.get('/:userId/orders', requireAdmin, async (req, res, next) => {
     })
     res.json(user)
   } catch (e) {
-    console.log(e) // for debugging purposes
 
     // 204 => no content
     res.status(204).json({

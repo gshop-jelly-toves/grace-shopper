@@ -14,9 +14,7 @@ class Category extends Component {
   }
 
   handleChange(event) {
-    this.props.setCategory({
-      category: event.target.value
-    })
+    this.props.setCategory(this.props.categories[event.target.value])
   }
 
   render() {
@@ -25,9 +23,9 @@ class Category extends Component {
     return (
       <div id="toolbar">
         <select className="form-control" onChange={this.handleChange}>
-          <option>Choose Category</option>
+          <option value="">Choose Category</option>
           {categories.map(category => (
-            <option key={category.id} value={category.name}>
+            <option key={category.id} value={category.id}>
               {category.name}
             </option>
           ))}

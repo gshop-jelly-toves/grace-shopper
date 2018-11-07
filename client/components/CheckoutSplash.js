@@ -12,8 +12,8 @@ const CheckoutSplash = props =>
     <div className="container">
       <div className="row p-5">
         <div className="col">
-          <Link to="/login">
-            <h2 className="text-center">Please log-in to continue.</h2>
+          <Link to="/signup">
+            <h2 className="text-center">Please sign-up to continue.</h2>
           </Link>
         </div>
       </div>

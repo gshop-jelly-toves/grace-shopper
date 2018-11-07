@@ -42,19 +42,16 @@ class SingleReview extends Component {
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
     const {editing} = this.state
-
     const review = this.props.singleReview
-    console.log('STATE', this.state)
 
-    console.log('REVIEW', review)
     return review.id ? (
       <div>
         <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
           <h2>{review.title}</h2>
         </Link>
         <div>
-          <h4>Review by: {review.user.name}</h4>
-          <img src={review.user.avatar} />
+          <h4 onClick={() => this.props.history.push(`/users/${review.user.id}`)} >Review by: {review.user.name}</h4>
+          <img onClick={() => this.props.history.push(`/users/${review.user.id}`)} src={review.user.avatar} />
           <p>Rating: {review.starRating} / 5</p>
           <p>{review.body}</p>
         </div>
@@ -74,11 +71,6 @@ class SingleReview extends Component {
     )
   }
 }
-
-// const mapState = ({reviews: {singleReview}, user: {user}}) => ({
-//   singleReview,
-//   isAdmin: user.accessLevel >= 3
-// })
 
 const mapState = state => {
   return {

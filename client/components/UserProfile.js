@@ -26,11 +26,8 @@ class UserProfile extends Component {
   }
 
   render() {
-    // console.log(this.props.userProfile)
     const {name, reviews} = this.props.userProfile
-    // const numReviews = reviews.length
-    // console.log(numReviews)
-    // console.log('reviews', reviews)
+
     return (
       <div className="container">
         <div className="row p-4">
@@ -65,7 +62,7 @@ class UserProfile extends Component {
                         alt="Jelly picture"
                       />
                       <div className="card-body text-center">
-                        <h5 className="card-title">Jelly Name w/Link</h5>
+                        {/* <h5 className="card-title">Jelly Name w/Link</h5> */}
                       </div>
                     </div>
                   </Link>

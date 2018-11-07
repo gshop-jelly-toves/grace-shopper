@@ -48,21 +48,12 @@ class AddJellyForm extends Component {
         categoryIds: [...prevState.categoryIds, checkbox.id]
       }))
     }
-    console.log('ONE CHECKBOX', this.selectedCheckboxes)
   }
 
   handleAddAnother = async event => {
     event.preventDefault()
     const newJelly = this.state
     await axios.post('/api/jellies', newJelly)
-
-    // console.log('ENTIRE SET', this.selectedCheckboxes)
-    // this.selectedCheckboxes.forEach(e => e.delete(e))
-    // console.log(this.selectedCheckboxes)
-
-    // (function() {
-    // document.getElementById("add-jelly-form").reset();
-    // })()
 
     this.setState({
       name: '',
@@ -88,7 +79,6 @@ class AddJellyForm extends Component {
   render() {
     const {name, description, priceCents, inventory} = this.state
     const isEnabled = name && description && priceCents && inventory
-    // console.log('RENDER', this.state)
 
     return (
       <div className="container">

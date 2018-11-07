@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-console.log(db.models)
 const Order = db.models.order
 const Jelly = db.models.jelly
 
@@ -51,17 +50,9 @@ jellyOrder.decrementJelly = async function(orderId, jellyId) {
 
 jellyOrder.addItem = async function(orderId, jellyId, quantity) {
   try {
-    // `findOrCreate` (oddly) returns an array containing a single
-    // instance, so a little destructuring can be used
-
-    // console.log('info',orderId, jellyId) // always defined
-
     const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
-
-    // console.log('item', item) // sometimes foreign keys are null
-
 
     let oldQuantity = item.dataValues.quantity
     let newQuantity = oldQuantity + parseInt(quantity)
@@ -101,7 +92,6 @@ jellyOrder.prototype.updatePrice = async function() {
 }
 
 const rejectInvalidQuantity = item => {
-  // console.log('reject invalid quantity id ', item)
   if (item.dataValues.quantity < 1) item.destroy()
 }
 
