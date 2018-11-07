@@ -17,7 +17,7 @@ const AccessBar = props => {
     <div className="container-fluid">
       <nav className="nav nav-fill px-5 align-items-center" id="access-bar">
         <div className="nav-item">
-          <h4>Admin: {name}</h4>
+          <h4>Dev: {name}</h4>
         </div>
         <div className="nav-item">
           <Link to="/admin/jellies/add" className="nav-link">
