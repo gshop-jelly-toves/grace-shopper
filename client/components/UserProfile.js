@@ -10,9 +10,17 @@ class UserProfile extends Component {
 
   showStarRating = number => {
     let starStr = ''
+
+    // Add starRating num of stars
     for (let i = 1; i <= number; i++) {
       starStr += '★'
     }
+
+    // Add blank stars if less than 5
+    while (starStr.length < 5) {
+      starStr += '☆'
+    }
+
     return starStr
   }
 
@@ -56,12 +64,13 @@ class UserProfile extends Component {
                 <div className="col-9 col-md-9">
                   <h3>{userReview.title}</h3>
                   <p>
-                    <strong>{userReview.date}</strong>
+                    <strong>
+                      {this.showStarRating(userReview.starRating)} -{' '}
+                      {userReview.date}
+                    </strong>
                   </p>
                   <p>
-                    <strong>
-                      {this.showStarRating(userReview.starRating)}
-                    </strong>
+                    <strong />
                   </p>
                 </div>
               </div>
