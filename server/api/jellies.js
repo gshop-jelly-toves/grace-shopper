@@ -123,12 +123,6 @@ router.post('/', requireAdmin, async (req, res, next) => {
   try {
     const jelly = await Jelly.create(req.body)
 
-    // await JellyCategory.create({
-    //   jellyId: jelly.dataValues.id,
-    //   categoryId: req.body.categoryId
-    // })
-
-    console.log('CATEGORY ARRAY', req.body.categoryIds)
     req.body.categoryIds.forEach(
       async id =>
         await JellyCategory.create({

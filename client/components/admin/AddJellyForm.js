@@ -78,7 +78,6 @@ class AddJellyForm extends Component {
   render() {
     const {name, description, priceCents, inventory} = this.state
     const isEnabled = name && description && priceCents && inventory
-
     return (
       <div>
         <form id="add-jelly-form">

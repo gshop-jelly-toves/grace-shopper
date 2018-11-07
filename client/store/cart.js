@@ -119,8 +119,12 @@ export const decrementCartJelly = jellyId => async dispatch => {
 
 export const removeJellyById = jellyId => async dispatch => {
   try {
+<<<<<<< HEAD
     const {data} = await axios.delete(`/api/cart/remove/${jellyId}`)
     // console.log(data)
+=======
+    const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
+>>>>>>> master
     const action = removeFromCart(data)
     dispatch(action)
   } catch (e) {
