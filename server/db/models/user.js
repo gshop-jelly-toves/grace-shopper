@@ -93,6 +93,7 @@ User.prototype.destroyActiveCart = async function() {
 }
 
 User.prototype.checkoutActiveCart = async function(address) {
+  console.log('user.prototype.checkoutActiveCart HELLOOOO'.repeat(7))
   try {
     const cart = await Order.findOrCreateCartByUserId(this.id)
     if (!cart.dataValues.cartTotal)
