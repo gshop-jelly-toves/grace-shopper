@@ -59,13 +59,9 @@ class JellyReviews extends Component {
               <img onClick={() => this.props.history.push(`/users/${review.user.id}`)} src={review.user.avatar} className="rounded-circle" />
             </div>
             <div className="col-11 col-md-11">
-<<<<<<< HEAD
-              <h4 onClick={() => this.props.history.push(`/users/${review.user.id}`)}>Review by: {review.user.name}</h4>
-=======
               <Link to={`/users/${review.userId}`}>
                 <h4>{review.user.name}</h4>
               </Link>
->>>>>>> master
             </div>
           </div>
           <div className="row p-3">
