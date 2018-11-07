@@ -25,7 +25,7 @@ import {logout} from '../store'
 
 const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <a className="navbar-brand">
+    <div className="navbar-brand">
       {/*
     ____  ________    __    ________________
    / __ )/ ____/ /   / /   /  _/ ____/ ___( )
@@ -41,7 +41,7 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
         <div id="shopName">Bellies' Jellies</div>
         <div id="shopSlogan">Jelly for your belly!</div>
       </Link>
-    </a>
+    </div>
     <button
       className="navbar-toggler"
       type="button"
@@ -131,10 +131,6 @@ const BootNavbar = ({handleClick, isLoggedIn, isAdmin}) => (
             </li>
           )}
         </Fragment>
-
-        {/* <li className="nav-item">
-          <Category />
-        </li> */}
       </ul>
       {/*
 

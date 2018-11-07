@@ -20,9 +20,8 @@
 
 /* ########## 404 Page ########## */
 
-#error-cat {
-  min-height: 100vh;
-  /* background-color: #dadfe2; */
+#xl-text {
+  font-size: 10em;
 }
 
 /* ########## Whole Page ########## */
