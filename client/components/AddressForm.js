@@ -40,6 +40,7 @@ class AddressForm extends React.Component {
 
   render() {
     const {address} = this.props
+    console.log(address)
     return (
       <Fragment>
         <div className="row px-5">

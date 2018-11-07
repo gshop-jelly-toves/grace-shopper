@@ -1,9 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {StripeForm} from './index'
+import {priceCentsToString} from '../utils'
 
 class FinalCheckout extends React.Component {
-
   constructor(props) {
     super(props)
     this.isFilledOut = this.isFilledOut.bind(this)
@@ -18,23 +18,35 @@ class FinalCheckout extends React.Component {
     if (address.city === '') return false
     if (address.zipcode === '') return false
     return true
-  }  
+  }
 
   render() {
-    return this.isFilledOut() 
-      ? (
-        <div>
-          {this.props.cart.subTotal}
-          <StripeForm />
+    console.log('CART', this.props.cart)
+    console.log('ADDRESS', this.props.address)
+    return this.isFilledOut() ? (
+      <div className="container">
+        <div className="row p-3">
+          <div className="col">
+            <h2 className="text-center">
+              Order Total:{priceCentsToString(this.props.cart.orderTotal)}
+            </h2>
+          </div>
         </div>
-      ) : <div>No address on file!</div>
+        <div className="row p-3 justify-content-center">
+          <div className="col-4">
+            <StripeForm />
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div>No address on file!</div>
+    )
   }
 }
 
 const mapState = ({cart, user: {address}}) => ({
-  cart, address
+  cart,
+  address
 })
 
-export default connect(mapState, {
-  
-})(FinalCheckout)
+export default connect(mapState, {})(FinalCheckout)
