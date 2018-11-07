@@ -1,10 +1,11 @@
 import React from 'react'
-import {fetchCart, destroyCart, removeJellyById} from '../store'
+import {fetchCart, destroyCart, removeJellyById, addJellyById, decrementCartJelly} from '../store'
 import {connect} from 'react-redux'
 import {priceCentsToString} from '../utils'
 import {Link} from 'react-router-dom'
 import {StripeForm} from './index'
 import axios from 'axios'
+
 
 class CartView extends React.Component {
   constructor(props) {
@@ -57,78 +58,92 @@ class CartView extends React.Component {
         </div>
         {/* MAPPING TO CREATE CART ITEM ROWS */}
         {haveNeededJellies() &&
-          jellyIds.map(id => (
-            <div className="row py-3 border-bottom align-items-center" key={id}>
-              <div className="col-2 col-md-2">
-                <img
-                  src={jellies[id].photo}
-                  alt={jellies[id].name}
-                  height="100"
-                />
-              </div>
-              <div className="col-6 col-md-6">
-                <Link to={`/jellies/${id}`}>
-                  <p id="jelly-in-cart">{jellies[id].name}</p>
-                </Link>
-                <p id="maker-in-cart">{jellies[id].maker}</p>
-                {/*
+          jellyIds.map(
+            id =>
+              cart.items[id] ? (
+                <div
+                  className="row py-3 border-bottom align-items-center"
+                  key={id}
+                >
+                  <div className="col-2 col-md-2">
+                    <img
+                      src={jellies[id].photo}
+                      alt={jellies[id].name}
+                      height="100"
+                    />
+                  </div>
+                  <div className="col-6 col-md-6">
+                    <Link to={`/jellies/${id}`}>
+                      <p id="jelly-in-cart">{jellies[id].name}</p>
+                    </Link>
+                    <p id="maker-in-cart">{jellies[id].maker}</p>
+                    {/*
                     NEEDS
                     DELETE
                     FUNCTIONALITY
                 */}
-                <a
-                  href="#"
-                  id="delete-cart-item"
-                  onClick={() => this.props.removeJellyById(id)}
-                >
-                  Delete
-                </a>
-              </div>
-              <div className="col-2 col-md-2">
-                <h5>{priceCentsToString(jellies[id].priceCents)}</h5>
-              </div>
+                    <a
+                      href="#"
+                      id="delete-cart-item"
+                      onClick={() => this.props.removeJellyById(id)}
+                    >
+                      Delete
+                    </a>
+                  </div>
+                  <div className="col-2 col-md-2">
+                    <h5>{priceCentsToString(jellies[id].priceCents)}</h5>
+                  </div>
 
-              <div className="col-2 col-md-2">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    {/*
+                  <div className="col-2 col-md-2">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        {/*
                         NEEDS
                         CONNECTION TO
                         REMOVE ITEM ROUTE
                     */}
-                    <button
-                      className="btn btn-secondary"
-                      type="button"
-                      id="button-addon1"
-                    >
-                      -
-                    </button>
-                  </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder={cart.items[id].quantity}
-                    aria-label="Quantity"
-                    aria-describedby="button-addon1"
-                  />
-                  <div className="input-group-append">
-                    {/*
+                        <button
+                          className="btn btn-secondary"
+                          type="button"
+                          id="button-addon1"
+                          onClick={() => this.props.decrementCartJelly(id)}
+                        >
+                          -
+                        </button>
+                      </div>
+                      <p
+                        type="text"
+                        className="form-control"
+                        placeholder={
+                          cart.items[id] ? cart.items[id].quantity : 1337
+                        }
+                        aria-label="Quantity"
+                        aria-describedby="button-addon1"
+                      >
+                        {cart.items[id] ? cart.items[id].quantity : 1337}
+                      </p>
+                      <div className="input-group-append">
+                        {/*
                         NEEDS
                         CONNECTION TO
                         ADD ITEM ROUTE
                     */}
-                    <button
-                      className="btn btn-secondary"
-                      type="button"
-                      id="button-addon1"
-                    >
-                      +
-                    </button>
+                        <button
+                          className="btn btn-secondary"
+                          type="button"
+                          id="button-addon1"
+                          onClick={() => this.props.addJellyById(id, 1)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ) : (
+                false
+              )
+          )}
         {/* CHECKOUT FUNCTIONALITY */}
         <div className="row py-3 align-items-center">
           <div className="col-8 col-md-8">
@@ -144,9 +159,7 @@ class CartView extends React.Component {
             <h5>{priceCentsToString(cart.cartTotal)}</h5>
           </div>
           <div className="col-1 col-md-1">
-            <button onClick={() =>
-              this.props.history.push('/cart/checkout')
-            }>
+            <button onClick={() => this.props.history.push('/cart/checkout')}>
               Checkout
             </button>
           </div>
@@ -196,15 +209,18 @@ const mapState = ({cart, jellies: {jellies}}) => ({
   jellies
 })
 
-// const mapDispatch = {
-//   fetchCart,
-//   destroyCart,
-// }
+const mapDispatch = {
+  fetchCart,
+  destroyCart,
+  removeJellyById,
+  addJellyById,
+  decrementCartJelly
+}
 
-const mapDispatch = dispatch => ({
-  fetchCart: () => dispatch(fetchCart),
-  destroyCart: () => dispatch(destroyCart),
-  removeJellyById: (jellyId) => dispatch(removeJellyById(jellyId))
-})
+// const mapDispatch = dispatch => ({
+//   fetchCart: () => dispatch(fetchCart()),
+//   destroyCart: () => dispatch(destroyCart()),
+//   removeJellyById: (jellyId) => dispatch(removeJellyById(jellyId))
+// })
 
 export default connect(mapState, mapDispatch)(CartView)

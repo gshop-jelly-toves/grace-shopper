@@ -21,15 +21,28 @@ const jellyOrder = db.define('jelly-orders', {
   }
 })
 
-jellyOrder.setQuantity = async function(orderId, jellyId, amount) {
+jellyOrder.setItem = async function(orderId, jellyId, quantity) {
   try {
 
     const {[0]: item} = await this.findOrCreate({
       where: {orderId, jellyId}
     })
 
+    return item.update({quantity})
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+jellyOrder.decrementJelly = async function(orderId, jellyId) {
+  try {
+
+    const item = await this.findOne({
+      where: {orderId, jellyId}
+    })
+
     return await item.update({
-      quantity: amount
+      quantity: item.quantity - 1
     })
   } catch (e) {
     console.error(e)
@@ -71,9 +84,7 @@ jellyOrder.removeItem = async function(orderId, jellyId) {
     })
 
     if (item)
-      item = await item.update({
-        quantity: item.dataValues.quantity - 1
-      })
+      item.destroy()
 
     return item
   } catch (e) {
@@ -90,7 +101,8 @@ jellyOrder.prototype.updatePrice = async function() {
 }
 
 const rejectInvalidQuantity = item => {
-  if (item.quantity < 1) item.destroy()
+  // console.log('reject invalid quantity id ', item)
+  if (item.dataValues.quantity < 1) item.destroy()
 }
 
 const setCartTotal = async item => {
@@ -121,7 +133,7 @@ const savePrice = item => {
 
 jellyOrder.afterUpdate(async item => {
   item = await savePrice(item)
-  item = setCartTotal(item)
+  item = await setCartTotal(item)
   rejectInvalidQuantity(item)
   return item
 })

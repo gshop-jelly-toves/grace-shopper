@@ -1,26 +1,26 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
-import { connect } from 'react-redux'
-import { handleCheckout, saveAddress } from '../store'
+import {connect} from 'react-redux'
+import {handleCheckout, saveAddress} from '../store'
+import {withRouter} from 'react-router-dom'
 
 class StripeForm extends React.Component {
-
-
   render() {
-    console.log('total',this.props.orderTotal)
+    console.log('total', this.props.orderTotal)
     return this.props.orderTotal ? (
-      <StripeCheckout 
+      <StripeCheckout
         name="Bellies' Jellies"
         description="Let's get these jellies in that belly."
         amount={this.props.orderTotal}
         token={token => this.props.handleCheckout(token)}
         stripeKey={STRIPE_PUB_KEY}
+        closed={() => this.props.history.push('/')}
       >
-        <button className="btn btn-primary">
-          Checkout
-        </button>
+        <button className="btn btn-primary">Checkout</button>
       </StripeCheckout>
-    ) : <div>You have no cart!</div>
+    ) : (
+      <div>You have no cart!</div>
+    )
   }
 }
 
@@ -32,4 +32,4 @@ const mapState = ({cart: {orderTotal}}) => ({
   orderTotal
 })
 
-export default connect(mapState, { handleCheckout })(StripeForm)
+export default withRouter(connect(mapState, {handleCheckout})(StripeForm))

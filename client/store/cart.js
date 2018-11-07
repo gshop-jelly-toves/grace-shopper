@@ -11,6 +11,7 @@ const GET_CART = 'GET_CART'
 const CLEAR_CART_FROM_CLIENT = 'CLEAR_CART_FROM_CLIENT'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+const DECREMENT_JELLY = 'DECREMENT_JELLY'
 
 /**
  * INITIAL STATE
@@ -37,8 +38,12 @@ const addToCart = item => ({
   type: ADD_TO_CART, item
 })
 
-const removeFromCart = jellyId => ({
-  type: REMOVE_FROM_CART, jellyId
+const removeFromCart = item => ({
+  type: REMOVE_FROM_CART, item
+})
+
+const decrementJelly = item => ({
+  type: DECREMENT_JELLY, item
 })
 
 /**
@@ -70,8 +75,9 @@ export const fetchCart = () => async dispatch => {
 
 export const handleCheckout = (token, address) => async dispatch => {
   try {
-    axios.post('/api/cart/checkout', {token, address})
+    await axios.post('/api/cart/checkout', {token, address})
     dispatch( clearCartFromClient() )
+
   } catch (err) {
     console.error(err)
   }
@@ -80,23 +86,33 @@ export const handleCheckout = (token, address) => async dispatch => {
 export const destroyCart = () => async dispatch => {
   try {
     await axios.delete('/api/cart')
-    dispatch( clearCartFromClient() )
+    dispatch( ({type: GET_CART, cart: initCart }) )
   } catch (e) { console.error(e) }
 }
 
 export const addJellyById = (jellyId, quantity) => async dispatch => {
   try {
-    console.log('store cart', quantity)
     const { data } = await axios.put(`/api/cart/add/${jellyId}`, {quantity})
     const action = addToCart(data)
     dispatch(action)
+    dispatch(fetchCart())
   } catch (e) { console.error(e) }
+}
+
+export const decrementCartJelly = jellyId => async dispatch => {
+  try {
+    const { data } = await axios.put(`/api/cart/remove/${jellyId}`)
+
+    const action = decrementJelly(data)
+    dispatch(action)
+    dispatch(fetchCart())
+  } catch (e) {console.error(e)}
 }
 
 export const removeJellyById = jellyId => async dispatch => {
   try {
     const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
-    console.log(data)
+    // console.log(data)
     const action = removeFromCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
@@ -114,7 +130,7 @@ export default function(state = initCart, action) {
       return initCart
     case ADD_TO_CART:
       return {
-        // ...state,
+        ...state,
         items: {
           ...state.items,
           [action.item.jellyId]: action.item
@@ -125,7 +141,15 @@ export default function(state = initCart, action) {
         ...state,
         items: {
           ...state.items,
-          [action.jellyId]: undefined
+          [action.item.jellyId]: undefined
+        }
+      }
+      case DECREMENT_JELLY:
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [action.item.jellyId]: action.item
         }
       }
     default:
