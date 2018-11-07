@@ -21,18 +21,37 @@ class JellyReviews extends Component {
     }
   }
 
+  showStarRating = number => {
+    let starStr = ''
+
+    // Add starRating num of stars
+    for (let i = 1; i <= number; i++) {
+      starStr += '★'
+    }
+
+    // Add blank stars if less than 5
+    while (starStr.length < 5) {
+      starStr += '☆'
+    }
+
+    return starStr
+  }
+
   render() {
     const keyedReviews = this.props.reviews
     const reviewsList = Object.keys(keyedReviews).map(key => keyedReviews[key])
-    return reviewsList.length ? ( // The main <div> there is a container with classes row p-3 // Keep in mind that this renders on the SingleJelly page
-      // <Fragment>
-      reviewsList.map(review => (
+    return reviewsList.length ? (
+      reviewsList.map((
+        review // <Fragment> // The main <div> there is a container with classes row p-3 // Keep in mind that this renders on the SingleJelly page
+      ) => (
         <div key={review.id}>
-          <div className="row px-3">
+          <div className="row p-3 border-top">
             <div className="col">
-              <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>
-                <h2>{review.title}</h2>
-              </Link>
+              <h2>
+                {this.showStarRating(review.starRating)}
+                {'  '}
+                {review.title}
+              </h2>
             </div>
           </div>
           <div className="row px-3 align-items-center">
@@ -40,12 +59,17 @@ class JellyReviews extends Component {
               <img onClick={() => this.props.history.push(`/users/${review.user.id}`)} src={review.user.avatar} className="rounded-circle" />
             </div>
             <div className="col-11 col-md-11">
+<<<<<<< HEAD
               <h4 onClick={() => this.props.history.push(`/users/${review.user.id}`)}>Review by: {review.user.name}</h4>
+=======
+              <Link to={`/users/${review.userId}`}>
+                <h4>{review.user.name}</h4>
+              </Link>
+>>>>>>> master
             </div>
           </div>
           <div className="row p-3">
             <div className="col">
-              <p>Rating: {review.starRating} / 5 ★</p>
               <p>{review.body}</p>
             </div>
           </div>
