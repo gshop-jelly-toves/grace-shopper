@@ -157,7 +157,7 @@ router.delete('/remove/:jellyId', async (req, res, next) => {
       }
     } else {
       // if user is not logged in, update cart session
-      req.session.cart = cartSession.removeJelly(cart, jellyId)
+      req.session.cart = cartSession.deleteJelly(cart, jellyId)
       res.json(
         req.session.cart.items[jellyId] || {
           message: 'item not in cart'

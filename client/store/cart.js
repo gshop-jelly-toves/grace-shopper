@@ -38,8 +38,8 @@ const addToCart = item => ({
   type: ADD_TO_CART, item
 })
 
-const removeFromCart = item => ({
-  type: REMOVE_FROM_CART, item
+const removeFromCart = jellyId => ({
+  type: REMOVE_FROM_CART, jellyId
 })
 
 const decrementJelly = item => ({
@@ -112,8 +112,9 @@ export const decrementCartJelly = jellyId => async dispatch => {
 export const removeJellyById = jellyId => async dispatch => {
   try {
     const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
-    const action = removeFromCart(data)
+    const action = removeFromCart(jellyId)
     dispatch(action)
+    dispatch(fetchCart())
   } catch (e) { console.error(e) }
 }
 
@@ -140,7 +141,7 @@ export default function(state = initCart, action) {
         ...state,
         items: {
           ...state.items,
-          [action.item.jellyId]: undefined
+          [action.jellyId]: undefined
         }
       }
       case DECREMENT_JELLY:

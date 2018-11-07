@@ -6,10 +6,8 @@ import {auth} from '../store'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
+const AuthForm = function(props)  {
   const {name, displayName, handleSubmit, error} = props
-
-  ('//////', displayName)
 
   return (
     <div>

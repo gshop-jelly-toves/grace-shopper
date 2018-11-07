@@ -140,6 +140,20 @@ module.exports = {
     }
   },
 
+  deleteJelly: (cart, jellyId) => {
+    const newJellies = {...cart.items}
+    jelly = newJellies[jellyId]
+    const cartTotal = cart.cartTotal - (jelly.priceCents * jelly.quantity)
+    const orderTotal = dummyTaxesAndShipping(cartTotal)
+    return {
+      cartTotal, orderTotal,
+      items: {
+        ...newJellies,
+        [jellyId]: undefined
+      }
+    }
+  },
+
   // decrementJelly: (cart, jellyId) => {
   //   const newJellies = {...cart.items}
   //   jelly = newJellies[jellyId]
