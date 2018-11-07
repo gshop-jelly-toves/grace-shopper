@@ -82,7 +82,7 @@ class SingleJelly extends Component {
               <div className="col col-lg-7">
                 <h2>{jelly.name}</h2>
                 <p>
-                  <em className=""> By {jelly.maker}</em>
+                  <em>by {jelly.maker}</em>
                 </p>
                 <h4>{priceCentsToString(jelly.priceCents)}</h4>
                 <p>{jelly.rating} ★</p>
