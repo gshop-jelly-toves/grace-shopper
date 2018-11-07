@@ -175,38 +175,6 @@ class CartView extends React.Component {
   }
 }
 
-/* Original Cart View
-    return this.props.cart.cartTotal ? (
-      <div id="cart-container">
-        <button type="button" onClick={
-          () => this.props.history.push('/cart/checkout')
-        }>
-          Checkout
-        </button>
-        <button type="button" onClick={this.clearCart}>
-          Clear cart
-        </button>
-        <div>Total: {priceCentsToString(cart.cartTotal)}</div>
-        {haveNeededJellies() &&
-          jellyIds.map(id => (
-            <div className="cart-item-container" key={id}>
-
-              <p>{'Quantity: ' + cart.items[id].quantity + ' '}</p>
-              <Link to={`/jellies/${id}`}>
-              <p>{jellies[id].name}</p>
-              </Link>
-
-              <img src={jellies[id].photo} />
-            </div>
-          ))}
-      </div>
-    ) : (
-      <div>Your cart is currently empty, add some jellies!</div>
-    )
-
-
-*/
-
 const mapState = ({cart, jellies: {jellies}}) => ({
   cart,
   jellies
@@ -219,11 +187,5 @@ const mapDispatch = {
   addJellyById,
   decrementCartJelly
 }
-
-// const mapDispatch = dispatch => ({
-//   fetchCart: () => dispatch(fetchCart()),
-//   destroyCart: () => dispatch(destroyCart()),
-//   removeJellyById: (jellyId) => dispatch(removeJellyById(jellyId))
-// })
 
 export default connect(mapState, mapDispatch)(CartView)
