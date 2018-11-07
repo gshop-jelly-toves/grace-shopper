@@ -6,10 +6,7 @@ import {withRouter} from 'react-router-dom'
 
 class StripeForm extends React.Component {
   render() {
-<<<<<<< HEAD
-=======
     console.log('total', this.props.orderTotal)
->>>>>>> master
     return this.props.orderTotal ? (
       <StripeCheckout
         name="Bellies' Jellies"
