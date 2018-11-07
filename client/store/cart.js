@@ -11,6 +11,7 @@ const GET_CART = 'GET_CART'
 const CLEAR_CART_FROM_CLIENT = 'CLEAR_CART_FROM_CLIENT'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+const DECREMENT_JELLY = 'DECREMENT_JELLY'
 
 /**
  * INITIAL STATE
@@ -39,6 +40,10 @@ const addToCart = item => ({
 
 const removeFromCart = item => ({
   type: REMOVE_FROM_CART, item
+})
+
+const decrementJelly = item => ({
+  type: DECREMENT_JELLY, item
 })
 
 /**
@@ -94,10 +99,20 @@ export const addJellyById = (jellyId, quantity) => async dispatch => {
   } catch (e) { console.error(e) }
 }
 
+export const decrementCartJelly = jellyId => async dispatch => {
+  try {
+    const { data } = await axios.put(`/api/cart/remove/${jellyId}`)
+
+    console.log('drecement data', data)
+    const action = decrementJelly(data)
+    dispatch(action)
+  } catch (e) {console.error(e)}
+}
+
 export const removeJellyById = jellyId => async dispatch => {
   try {
     const { data } = await axios.delete(`/api/cart/remove/${jellyId}`)
-    console.log(data)
+    // console.log(data)
     const action = removeFromCart(data)
     dispatch(action)
   } catch (e) { console.error(e) }
@@ -129,6 +144,15 @@ export default function(state = initCart, action) {
         items: {
           ...state.items,
           [action.item.jellyId]: undefined
+        }
+      }
+      case DECREMENT_JELLY:
+      return {
+        ...state,
+        cartTotal: state.cartTotal - action.item.priceCents,
+        items: {
+          ...state.items,
+          [action.item.jellyId]: action.item
         }
       }
     default:

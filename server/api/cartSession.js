@@ -132,6 +132,21 @@ module.exports = {
     }
   },
 
+  // decrementJelly: (cart, jellyId) => {
+  //   const newJellies = {...cart.items}
+  //   jelly = newJellies[jellyId]
+  //   if (jelly) jelly.quantity--
+  //   if (jelly.quantity < 1)
+  //     newJellies[jellyId] = undefined
+  //   const cartTotal = cart.cartTotal - newJellies[jellyId].priceCents
+  //   const orderTotal = dummyTaxesAndShipping(cartTotal)
+  //   return {
+  //     ...cart,
+  //     cartTotal, orderTotal,
+  //     items: newJellies
+  //   }
+  // },
+
   newCart: () => ({
     // clone of deserialize cart
     cartTotal: 0,

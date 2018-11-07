@@ -112,7 +112,7 @@ router.put('/add/:jellyId', async (req, res, next) => {
   }
 })
 
-// /api/cart/add/:jellyId PUT - remove a single jelly from the cart`
+// remove a single jelly product from the cart`
 router.delete('/remove/:jellyId', async (req, res, next) => {
   let {cart} = req.session
   const jellyId = req.params.jellyId
@@ -133,6 +133,41 @@ router.delete('/remove/:jellyId', async (req, res, next) => {
     } else {
       // if user is not logged in, update cart session
       req.session.cart = cartSession.removeJelly(cart, jellyId)
+      res.json(
+        req.session.cart.items[jellyId] || {
+          message: 'item not in cart'
+        }
+      )
+    }
+  } else {
+    throw new Error('req.session.cart is not defined')
+  }
+})
+
+
+// remove a single jelly product from the cart`
+router.put('/remove/:jellyId', async (req, res, next) => {
+  let {cart} = req.session
+  const jellyId = req.params.jellyId
+
+  if (cart) {
+    if (req.user) {
+      // if user is logged in, remove/reduce db
+      try {
+        const item = await JellyOrder.decrementJelly(cart.id, jellyId)
+
+        // console.log(item)
+        res.json(
+          item || {
+            message: 'item not in cart'
+          }
+        )
+      } catch (e) {
+        next(e)
+      }
+    } else {
+      // if user is not logged in, update cart session
+      req.session.cart = cartSession.decrementJelly(cart, jellyId)
       res.json(
         req.session.cart.items[jellyId] || {
           message: 'item not in cart'

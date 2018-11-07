@@ -17,7 +17,7 @@ const initState = {
   jellies: {},
   categories: [],
   search: '',
-  selectedCategory: ''
+  selectedCategory: '',
 }
 
 /**

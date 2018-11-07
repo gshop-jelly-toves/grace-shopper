@@ -29,7 +29,9 @@ router.get('/', requireLogin, async (req, res, next) => {
 //GET all orders
 router.get('/all', requireAdmin, async (req, res, next) => {
   try {
-    const orders = await Order.findAll()
+    const orders = await Order.findAll({
+      include: [{all: true }]
+    })
     res.json(orders)
   } catch (e) {
     next(e)
