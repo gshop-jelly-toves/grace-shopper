@@ -26,7 +26,6 @@ class CheckboxCategory extends Component {
         <label>
           <input
             type="checkbox"
-            // value={this.props.category.id}
             checked={isChecked}
             onChange={this.toggleCheckboxChange}
           />

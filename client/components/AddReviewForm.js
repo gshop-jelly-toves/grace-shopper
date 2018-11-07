@@ -29,10 +29,6 @@ class AddReviewForm extends Component {
       `/api/jellies/${jellyId}/reviews`,
       newReview
     )
-    // this.setState({
-    //   text: '',
-    //   starRating: 0
-    // });
 
     this.props.fetchReviews(jellyId)
     this.props.done()

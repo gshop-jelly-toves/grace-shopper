@@ -9,7 +9,6 @@ import {
 import {connect} from 'react-redux'
 import {priceCentsToString} from '../utils'
 import {Link} from 'react-router-dom'
-import {StripeForm} from './index'
 
 class CartView extends React.Component {
   constructor(props) {
