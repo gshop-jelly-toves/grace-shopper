@@ -42,11 +42,7 @@ class SingleReview extends Component {
     const {isAdmin} = this.props
     const {isLoggedIn} = this.props
     const {editing} = this.state
-
     const review = this.props.singleReview
-    console.log('STATE', this.state)
-
-    console.log('REVIEW', review)
     return review.id ? (
       <div>
         <Link to={`/jellies/${review.jellyId}/reviews/${review.id}`}>

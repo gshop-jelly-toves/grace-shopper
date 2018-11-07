@@ -90,7 +90,6 @@ export const setCategory = category => async dispatch => {
     const {data} = await axios.get(`/api/jellies/categories/${category.id}`)
     dispatch(setCategoryJellyIds(data))
     data.forEach(async id => await dispatch(fetchSingleJelly(id)))
-
     dispatch({type: SET_CATEGORY, category: category.name || ''})
   } catch (e) {
     console.error(e)

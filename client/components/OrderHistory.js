@@ -13,7 +13,6 @@ class OrderHistory extends Component {
   async componentDidMount() {
     const res = await axios.get('/api/orders')
     const orders = res.data
-    console.log('orders', orders)
     this.setState({
       orders: [...orders]
     })

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import history from '../history'
-import { clearCartFromClient, fetchCart } from './cart'
+import {clearCartFromClient, fetchCart} from './cart'
 
 /**
  * ACTION TYPES
@@ -9,7 +9,7 @@ const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const SET_ADDRESS = 'SET_ADDRESS'
 const SET_ADDRESS_PROP = 'SET_ADDRESS_PROP'
- 
+
 /**
  * INITIAL STATE
  */
@@ -33,13 +33,14 @@ const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
 export const setAddressProp = obj => ({
-  type: SET_ADDRESS_PROP, obj
+  type: SET_ADDRESS_PROP,
+  obj
 })
 
 const setAddress = address => ({
-  type: SET_ADDRESS, address
-}) 
-
+  type: SET_ADDRESS,
+  address
+})
 
 /**
  * THUNK CREATORS
@@ -47,7 +48,6 @@ const setAddress = address => ({
 export const fetchAddress = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/users/address')
-    console.log('data',data)
     const action = setAddress(data)
     dispatch(action)
   } catch (err) {
@@ -101,7 +101,6 @@ export const logout = () => async dispatch => {
   }
 }
 
-
 /**
  * REDUCER
  */
@@ -112,9 +111,10 @@ export default function(state = initState, action) {
     case REMOVE_USER:
       return {...state, user: {}}
     case SET_ADDRESS:
-      return { ...state, address: action.address }
+      return {...state, address: action.address}
     case SET_ADDRESS_PROP:
-      return { ...state, 
+      return {
+        ...state,
         address: {
           ...state.address,
           ...action.obj

@@ -1,5 +1,10 @@
-##Jelly for your Belly
+## Jelly for your Belly
 
 Click here for [Jelly](https://jelly-belly.herokuapp.com/)
 
-E-commerce app for Fullstack Academy by team jelly
+e-commerce app for Fullstack Academy developed by:
+
+@benjaminpwagner
+@chrismejia
+@jasonxhang
+@daltn
