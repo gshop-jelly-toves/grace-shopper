@@ -1,8 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { FinalCheckout } from './index'
-import { setAddressProp, saveAddress, fetchAddress } from '../store'
+import React, {Fragment} from 'react'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {FinalCheckout} from './index'
+import {setAddressProp, saveAddress, fetchAddress} from '../store'
 
 class AddressForm extends React.Component {
   constructor(props) {
@@ -36,41 +36,129 @@ class AddressForm extends React.Component {
     if (address.city === '') return false
     if (address.zipcode === '') return false
     return true
-  }  
+  }
 
   render() {
     const {address} = this.props
     return (
-      <div>
-        FIRST
-        <input type='text' value={address.firstName} name='firstName' onChange={this.handleChange} />
-        LAST
-        <input type='text' name='lastName' value={address.lastName} onChange={this.handleChange} />
-        STATE
-        <input type='text' name='state' value={address.state} onChange={this.handleChange} />
-        CITY
-        <input type='text' name='city' value={address.city} onChange={this.handleChange} />
-        STREET
-        <input type='text' name='street' value={address.street} onChange={this.handleChange} />
-        ZIPCODE
-        <input type='text' name='zipcode' value={address.zipcode} onChange={this.handleChange} />
-
-
-        { this.isFilledOut()
-          ? <button onClick={this.handleProceed}>
-            Save & Proceed to checkout
-          </button>
-          : <div>Please fillout your address.</div>
-        }
-      </div>
+      <Fragment>
+        <div className="row px-5">
+          <div className="col">
+            <h2>Please enter your shipping details.</h2>
+          </div>
+        </div>
+        <form>
+          <div className="row px-5">
+            <div className="form-group col">
+              <label htmlFor="address-firstName">First Name</label>
+              <input
+                type="text"
+                value={address.firstName}
+                placeholder={address.firstName}
+                name="firstName"
+                className="form-control"
+                id="address-firstName"
+                aria-describedby="address-firstName"
+              />
+              {/* <small id="emailHelp" className="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small> */}
+            </div>
+          </div>
+          <div className="row px-5">
+            <div className="form-group col">
+              <label htmlFor="address-lastName">Last Name</label>
+              <input
+                type="text"
+                value={address.lastName}
+                placeholder={address.lastName}
+                name="lastName"
+                className="form-control"
+                aria-describedby="address-lastName"
+                id="address-lastName"
+              />
+            </div>
+          </div>
+          <div className="row px-5">
+            <div className="form-group col-5">
+              <label htmlFor="address-street">Street Address</label>
+              <input
+                type="text"
+                value={address.street}
+                placeholder={address.street}
+                name="address"
+                className="form-control"
+                aria-describedby="address-street"
+                id="address-street"
+              />
+            </div>
+            <div className="form-group col-3">
+              <label htmlFor="address-city">City</label>
+              <input
+                type="text"
+                value={address.city}
+                placeholder={address.city}
+                name="city"
+                className="form-control"
+                aria-describedby="address-city"
+                id="address-city"
+              />
+            </div>
+            <div className="form-group col">
+              <label htmlFor="address-state">State</label>
+              <input
+                type="text"
+                value={address.state}
+                placeholder={address.state}
+                name="state"
+                className="form-control"
+                aria-describedby="address-state"
+                id="address-state"
+              />
+            </div>
+            <div className="form-group col">
+              <label htmlFor="address-zipcode">Zip Code</label>
+              <input
+                type="text"
+                value={address.zipcode}
+                placeholder={address.zipcode}
+                name="zipcode"
+                className="form-control"
+                aria-describedby="address-zipcode"
+                id="address-zipcode"
+              />
+            </div>
+          </div>
+          {this.isFilledOut() ? (
+            <div className="row px-5 justify-content-end">
+              <div className="col-4">
+                <button
+                  type="button"
+                  className="btn btn-block btn-lg btn-success"
+                  onClick={this.handleProceed}
+                >
+                  Save & Proceed to checkout
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div>Please fillout your address.</div>
+          )}
+        </form>
+      </Fragment>
     )
   }
 }
 
 const mapState = ({cart, user: {address}}) => ({
-  cart, address
+  cart,
+  address
 })
 
-export default withRouter(connect(mapState, {
- setAddressProp, saveAddress, fetchAddress
-})(AddressForm))
+export default withRouter(
+  connect(mapState, {
+    setAddressProp,
+    saveAddress,
+    fetchAddress
+  })(AddressForm)
+)
