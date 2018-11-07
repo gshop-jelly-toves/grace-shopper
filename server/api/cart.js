@@ -112,7 +112,6 @@ router.put('/add/:jellyId', async (req, res, next) => {
 
   const jellyId = req.params.jellyId
   const {quantity} = req.body
-  // console.log('USER', req.user)
 
   if (cart) {
     if (req.user) {
@@ -182,7 +181,6 @@ router.put('/remove/:jellyId', async (req, res, next) => {
       try {
         const item = await JellyOrder.decrementJelly(cart.id, jellyId)
 
-        // console.log(item)
         res.json(
           item || {
             message: 'item not in cart'

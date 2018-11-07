@@ -61,7 +61,6 @@ Order.prototype.checkout = async function() {
 
     try {
       await this.updatePrices()
-      console.log('can anyone hear me')
       return await this.update({
         orderTotal: dummyTaxesAndShipping(this.cartTotal),
         status: 'created'
@@ -79,12 +78,10 @@ const forceOneCart = async order => {
   if (order.dataValues.status === 'cart') {
     try {
       const { userId } = order.dataValues
-      // console.log('userid',userId)
 
       const existingCart = await Order.findAll({
         where: {userId, status: 'cart'}
       })
-      // console.log('cart',existingCart)
       if (existingCart)
         throw new Error(`User (id: ${userId}) can only have one cart.`)
     } catch (e) {
