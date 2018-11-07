@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchCategories} from '../../store/jellies'
 import axios from 'axios'
 import CheckboxCategory from './CheckboxCategory'
+import {AccessBar} from '../index'
 
 class AddJellyForm extends Component {
   constructor(props) {
@@ -91,6 +92,8 @@ class AddJellyForm extends Component {
 
     return (
       <div className="container">
+        <AccessBar />
+
         <div className="row p-3">
           <form id="add-jelly-form">
             <h2>Add Jelly</h2>
