@@ -26,11 +26,8 @@ class UserProfile extends Component {
   }
 
   render() {
-    // console.log(this.props.userProfile)
     const {name, reviews} = this.props.userProfile
-    // const numReviews = reviews.length
-    // console.log(numReviews)
-    // console.log('reviews', reviews)
+
     return (
       <div className="container">
         <div className="row p-4">

@@ -50,11 +50,6 @@ module.exports = {
       // console.log('jellies in db:', existingJellyIds)
       // console.log('new jellies in cart:', newJellyOrders)
 
-      // very useful console logs for debugging
-      // console.log('jellies in cart:', jelliesInCartIds)
-      // console.log('jellies in db:', existingJellyIds)
-      // console.log('new jellies in cart:', newJellyOrders)
-
       // update existing rows
       const updateRes = existingJellyOrders
         .filter(item => jelliesInCartIds.includes(item.dataValues.jellyId))

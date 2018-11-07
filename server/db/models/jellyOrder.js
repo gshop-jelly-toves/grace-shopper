@@ -92,7 +92,6 @@ jellyOrder.prototype.updatePrice = async function() {
 }
 
 const rejectInvalidQuantity = item => {
-  // console.log('reject invalid quantity id ', item)
   if (item.dataValues.quantity < 1) item.destroy()
 }
 
