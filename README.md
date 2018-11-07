@@ -8,3 +8,5 @@ e-commerce app for Fullstack Academy developed by:
 @chrismejia
 @jasonxhang
 @daltn
+
+s/o to our fellows & instructors for the guidance
