@@ -53,6 +53,7 @@ class AddressForm extends React.Component {
             <div className="form-group col">
               <label htmlFor="address-firstName">First Name</label>
               <input
+                onChange={this.handleChange}
                 type="text"
                 value={address.firstName}
                 placeholder={address.firstName}
@@ -70,6 +71,7 @@ class AddressForm extends React.Component {
             <div className="form-group col">
               <label htmlFor="address-lastName">Last Name</label>
               <input
+                onChange={this.handleChange}
                 type="text"
                 value={address.lastName}
                 placeholder={address.lastName}
@@ -84,6 +86,7 @@ class AddressForm extends React.Component {
             <div className="form-group col-5">
               <label htmlFor="address-street">Street Address</label>
               <input
+                onChange={this.handleChange}
                 type="text"
                 value={address.street}
                 placeholder={address.street}
@@ -96,6 +99,7 @@ class AddressForm extends React.Component {
             <div className="form-group col-3">
               <label htmlFor="address-city">City</label>
               <input
+                onChange={this.handleChange}
                 type="text"
                 value={address.city}
                 placeholder={address.city}
@@ -108,6 +112,7 @@ class AddressForm extends React.Component {
             <div className="form-group col">
               <label htmlFor="address-state">State</label>
               <input
+                onChange={this.handleChange}
                 type="text"
                 value={address.state}
                 placeholder={address.state}
@@ -120,6 +125,7 @@ class AddressForm extends React.Component {
             <div className="form-group col">
               <label htmlFor="address-zipcode">Zip Code</label>
               <input
+                onChange={this.handleChange}
                 type="text"
                 value={address.zipcode}
                 placeholder={address.zipcode}
